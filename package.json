@@ -21,12 +21,17 @@
     "./input": {
       "import": "./dist/input.js"
     },
+    "./textarea": {
+      "import": "./dist/textarea.js"
+    },
     "./tokens.css": "./dist/tokens.css",
     "./utilities.css": "./dist/utilities.css",
-    "./button.css": "./dist/button.css"
+    "./button.css": "./dist/button.css",
+    "./input.css": "./dist/input.css",
+    "./textarea.css": "./dist/textarea.css"
   },
   "files": ["dist"],
-  "sideEffects": ["dist/*.css", "dist/button.js", "dist/index.js", "dist/index.cjs"],
+  "sideEffects": ["dist/*.css", "dist/button.js", "dist/input.js", "dist/textarea.js", "dist/index.js", "dist/index.cjs"],
   "scripts": {
     "build": "tsc --noEmit && node build.mjs",
     "typecheck": "tsc --noEmit",

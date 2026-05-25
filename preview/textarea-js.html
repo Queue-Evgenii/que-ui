@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Textarea (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="index.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="index-js.html" variant="ghost" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <button data-mode="light">Light</button>
+      <button data-mode="dark">Dark</button>
+      <button data-mode="system">System</button>
+    </div>
+  </header>
+
+  <main style="max-width: 640px;">
+    <h2>Default</h2>
+    <que-textarea label="Label" placeholder="Placeholder..." hint="Helper text goes here"></que-textarea>
+    <br />
+    <que-textarea label="Required" placeholder="Required field..." required></que-textarea>
+
+    <h2>Intents</h2>
+    <que-textarea label="Danger" intent="danger" value="Invalid content here" error="This field is required"></que-textarea>
+    <br />
+    <que-textarea label="Success" intent="success" value="Valid content here" hint="Looks good!"></que-textarea>
+    <br />
+    <que-textarea label="Warning" intent="warning" value="Content needs review" hint="Please review your content"></que-textarea>
+
+    <h2>States</h2>
+    <que-textarea label="Disabled" placeholder="Disabled..." disabled></que-textarea>
+    <br />
+    <que-textarea label="Readonly" value="Read only content" readonly></que-textarea>
+
+    <h2>Events</h2>
+    <que-textarea id="live-textarea" label="Type something" placeholder="Watch events below..."></que-textarea>
+    <p id="event-log" style="font-family: var(--que-font-mono); font-size: var(--que-font-size-xs); color: var(--que-color-text-muted); margin-top: 8px;">—</p>
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/textarea.js'
+
+    const ctrl = applyTheme(createTheme())
+
+    document.querySelectorAll('.theme-toggle button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.theme-toggle button').forEach(b => b.classList.remove('active'))
+        btn.classList.add('active')
+        ctrl.setMode(btn.dataset.mode)
+      })
+    })
+
+    const sync = () => document.querySelectorAll('.theme-toggle button').forEach(b => {
+      b.classList.toggle('active', b.dataset.mode === ctrl.mode)
+    })
+    ctrl.onChange(sync)
+    sync()
+
+    const log = document.getElementById('event-log')
+    document.getElementById('live-textarea').addEventListener('que-input', e => {
+      log.textContent = `que-input → "${e.detail.value}"`
+    })
+  </script>
+</body>
+</html>

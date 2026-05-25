@@ -10,7 +10,7 @@ mkdirSync('dist', { recursive: true })
 
 // Bundle CSS-only exports into a temp file to extract values (no DOM/HTMLElement)
 await build({ entryPoints: ['src/css.ts'], bundle: true, format: 'esm', outfile: TMP })
-const { defaultTokens, defaultDarkTokens, utilitiesCSS, buttonCSS, inputCSS } = await import(pathToFileURL(TMP).href)
+const { defaultTokens, defaultDarkTokens, utilitiesCSS, buttonCSS, inputCSS, textareaCSS } = await import(pathToFileURL(TMP).href)
 import('fs').then(fs => fs.unlinkSync(TMP))
 
 function toCSSVars(tokens) {
@@ -42,6 +42,9 @@ console.log('dist/button.css')
 writeFileSync('dist/input.css', inputCSS.trim())
 console.log('dist/input.css')
 
+writeFileSync('dist/textarea.css', textareaCSS.trim())
+console.log('dist/textarea.css')
+
 const sharedConfig = { bundle: true, sourcemap: true }
 
 // Full library
@@ -61,5 +64,8 @@ console.log('dist/button.js')
 
 await build({ ...sharedConfig, entryPoints: ['src/components/input/input.ts'], format: 'esm', outfile: 'dist/input.js' })
 console.log('dist/input.js')
+
+await build({ ...sharedConfig, entryPoints: ['src/components/textarea/textarea.ts'], format: 'esm', outfile: 'dist/textarea.js' })
+console.log('dist/textarea.js')
 
 console.log('\nBuild complete.')

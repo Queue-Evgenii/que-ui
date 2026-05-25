@@ -52,7 +52,7 @@ Legend: ✅ Done · 🚧 In Progress · ⬜ Not Started · ❌ Blocked
 | Status | Component | Tag |
 |--------|-----------|-----|
 | ✅ | Button | `<que-button>` |
-| ⬜ | Input | `<que-input>` |
+| ✅ | Input | `<que-input>` |
 | ⬜ | Textarea | `<que-textarea>` |
 | ⬜ | Checkbox | `<que-checkbox>` |
 | ⬜ | Switch / Toggle | `<que-switch>` |

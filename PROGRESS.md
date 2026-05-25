@@ -57,7 +57,7 @@ Legend: ✅ Done · 🚧 In Progress · ⬜ Not Started · ❌ Blocked
 | ✅ | Checkbox | `<que-checkbox>` |
 | ✅ | Switch / Toggle | `<que-switch>` |
 | ✅ | Radio + Radio Group | `<que-radio>`, `<que-radio-group>` |
-| ⬜ | Select | `<que-select>` |
+| ✅ | Select | `<que-select>` |
 | ⬜ | Slider | `<que-slider>` |
 
 ---

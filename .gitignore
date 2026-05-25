@@ -1,0 +1,23 @@
+node_modules/
+dist/
+__tokens_tmp.mjs
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.suo
+*.user
+
+# Logs
+*.log
+npm-debug.log*
+
+# Env
+.env
+.env.local
+
+.claude

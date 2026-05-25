@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Checkbox (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/checkbox.css" />
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="index.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="index-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <button data-mode="light" class="active">Light</button>
+      <button data-mode="dark">Dark</button>
+      <button data-mode="system">System</button>
+    </div>
+  </header>
+
+  <main>
+    <h2>Default (label right)</h2>
+    <div class="col">
+      <label class="que-checkbox">
+        <input class="que-checkbox__input" type="checkbox" />
+        <span class="que-checkbox__control"></span>
+        <span class="que-checkbox__label">Unchecked</span>
+      </label>
+      <label class="que-checkbox">
+        <input class="que-checkbox__input" type="checkbox" checked />
+        <span class="que-checkbox__control"></span>
+        <span class="que-checkbox__label">Checked</span>
+      </label>
+      <label class="que-checkbox que-checkbox--indeterminate">
+        <input class="que-checkbox__input" type="checkbox" />
+        <span class="que-checkbox__control"></span>
+        <span class="que-checkbox__label">Indeterminate</span>
+      </label>
+    </div>
+
+    <h2>Label left</h2>
+    <div class="col">
+      <label class="que-checkbox que-checkbox--label-left">
+        <input class="que-checkbox__input" type="checkbox" />
+        <span class="que-checkbox__label">Unchecked</span>
+        <span class="que-checkbox__control"></span>
+      </label>
+      <label class="que-checkbox que-checkbox--label-left">
+        <input class="que-checkbox__input" type="checkbox" checked />
+        <span class="que-checkbox__label">Checked</span>
+        <span class="que-checkbox__control"></span>
+      </label>
+    </div>
+
+    <h2>With hint</h2>
+    <div class="col">
+      <div>
+        <label class="que-checkbox">
+          <input class="que-checkbox__input" type="checkbox" checked />
+          <span class="que-checkbox__control"></span>
+          <span class="que-checkbox__label">Enable notifications</span>
+        </label>
+        <span class="que-checkbox__hint">You will receive email updates</span>
+      </div>
+      <div>
+        <label class="que-checkbox que-checkbox--label-left">
+          <input class="que-checkbox__input" type="checkbox" />
+          <span class="que-checkbox__label">Dark mode</span>
+          <span class="que-checkbox__control"></span>
+        </label>
+        <span class="que-checkbox__hint">Switch to dark color scheme</span>
+      </div>
+    </div>
+
+    <h2>Disabled</h2>
+    <div class="col">
+      <label class="que-checkbox que-checkbox--disabled">
+        <input class="que-checkbox__input" type="checkbox" disabled />
+        <span class="que-checkbox__control"></span>
+        <span class="que-checkbox__label">Disabled unchecked</span>
+      </label>
+      <label class="que-checkbox que-checkbox--disabled">
+        <input class="que-checkbox__input" type="checkbox" checked disabled />
+        <span class="que-checkbox__control"></span>
+        <span class="que-checkbox__label">Disabled checked</span>
+      </label>
+    </div>
+
+    <h2>Multi-line label</h2>
+    <div style="max-width: 300px;">
+      <label class="que-checkbox">
+        <input class="que-checkbox__input" type="checkbox" />
+        <span class="que-checkbox__control"></span>
+        <span class="que-checkbox__label">I agree to the terms and conditions and the privacy policy of this service</span>
+      </label>
+    </div>
+  </main>
+
+  <style>
+    .col { display: flex; flex-direction: column; gap: 12px; }
+  </style>
+
+  <script src="shared.js"></script>
+</body>
+</html>

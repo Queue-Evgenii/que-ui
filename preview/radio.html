@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Radio (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/radio.css" />
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="index.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="index-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <button data-mode="light" class="active">Light</button>
+      <button data-mode="dark">Dark</button>
+      <button data-mode="system">System</button>
+    </div>
+  </header>
+
+  <main>
+    <h2>Vertical group</h2>
+    <div class="que-radio-group">
+      <label class="que-radio">
+        <input class="que-radio__input" type="radio" name="size" value="sm" />
+        <span class="que-radio__control"></span>
+        <span class="que-radio__label">Small</span>
+      </label>
+      <label class="que-radio">
+        <input class="que-radio__input" type="radio" name="size" value="md" checked />
+        <span class="que-radio__control"></span>
+        <span class="que-radio__label">Medium</span>
+      </label>
+      <label class="que-radio">
+        <input class="que-radio__input" type="radio" name="size" value="lg" />
+        <span class="que-radio__control"></span>
+        <span class="que-radio__label">Large</span>
+      </label>
+    </div>
+
+    <h2>Horizontal group</h2>
+    <div class="que-radio-group que-radio-group--horizontal">
+      <label class="que-radio">
+        <input class="que-radio__input" type="radio" name="color" value="red" checked />
+        <span class="que-radio__control"></span>
+        <span class="que-radio__label">Red</span>
+      </label>
+      <label class="que-radio">
+        <input class="que-radio__input" type="radio" name="color" value="green" />
+        <span class="que-radio__control"></span>
+        <span class="que-radio__label">Green</span>
+      </label>
+      <label class="que-radio">
+        <input class="que-radio__input" type="radio" name="color" value="blue" />
+        <span class="que-radio__control"></span>
+        <span class="que-radio__label">Blue</span>
+      </label>
+    </div>
+
+    <h2>Label left</h2>
+    <div class="que-radio-group" style="max-width: 240px;">
+      <label class="que-radio que-radio--label-left">
+        <input class="que-radio__input" type="radio" name="plan" value="free" checked />
+        <span class="que-radio__label">Free</span>
+        <span class="que-radio__control"></span>
+      </label>
+      <label class="que-radio que-radio--label-left">
+        <input class="que-radio__input" type="radio" name="plan" value="pro" />
+        <span class="que-radio__label">Pro</span>
+        <span class="que-radio__control"></span>
+      </label>
+      <label class="que-radio que-radio--label-left">
+        <input class="que-radio__input" type="radio" name="plan" value="enterprise" />
+        <span class="que-radio__label">Enterprise</span>
+        <span class="que-radio__control"></span>
+      </label>
+    </div>
+
+    <h2>With group label</h2>
+    <div>
+      <div class="que-radio-group__label">Notification preference</div>
+      <div class="que-radio-group">
+        <label class="que-radio">
+          <input class="que-radio__input" type="radio" name="notif" value="all" checked />
+          <span class="que-radio__control"></span>
+          <span class="que-radio__label">All notifications</span>
+        </label>
+        <label class="que-radio">
+          <input class="que-radio__input" type="radio" name="notif" value="important" />
+          <span class="que-radio__control"></span>
+          <span class="que-radio__label">Important only</span>
+        </label>
+        <label class="que-radio">
+          <input class="que-radio__input" type="radio" name="notif" value="none" />
+          <span class="que-radio__control"></span>
+          <span class="que-radio__label">None</span>
+        </label>
+      </div>
+    </div>
+
+    <h2>Disabled</h2>
+    <div class="que-radio-group">
+      <label class="que-radio que-radio--disabled">
+        <input class="que-radio__input" type="radio" name="dis" value="a" disabled />
+        <span class="que-radio__control"></span>
+        <span class="que-radio__label">Disabled unchecked</span>
+      </label>
+      <label class="que-radio que-radio--disabled">
+        <input class="que-radio__input" type="radio" name="dis" value="b" checked disabled />
+        <span class="que-radio__control"></span>
+        <span class="que-radio__label">Disabled checked</span>
+      </label>
+    </div>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

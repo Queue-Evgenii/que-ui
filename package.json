@@ -30,16 +30,20 @@
     "./switch": {
       "import": "./dist/switch.js"
     },
+    "./radio": {
+      "import": "./dist/radio.js"
+    },
     "./tokens.css": "./dist/tokens.css",
     "./utilities.css": "./dist/utilities.css",
     "./button.css": "./dist/button.css",
     "./input.css": "./dist/input.css",
     "./textarea.css": "./dist/textarea.css",
     "./checkbox.css": "./dist/checkbox.css",
-    "./switch.css": "./dist/switch.css"
+    "./switch.css": "./dist/switch.css",
+    "./radio.css": "./dist/radio.css"
   },
   "files": ["dist"],
-  "sideEffects": ["dist/*.css", "dist/button.js", "dist/input.js", "dist/textarea.js", "dist/checkbox.js", "dist/switch.js", "dist/index.js", "dist/index.cjs"],
+  "sideEffects": ["dist/*.css", "dist/button.js", "dist/input.js", "dist/textarea.js", "dist/checkbox.js", "dist/switch.js", "dist/radio.js", "dist/index.js", "dist/index.cjs"],
   "scripts": {
     "build": "tsc --noEmit && node build.mjs",
     "typecheck": "tsc --noEmit",

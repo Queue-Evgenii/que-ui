@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Radio (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="index.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="index-js.html" variant="ghost" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <button data-mode="light">Light</button>
+      <button data-mode="dark">Dark</button>
+      <button data-mode="system">System</button>
+    </div>
+  </header>
+
+  <main style="max-width: 480px;">
+    <h2>Vertical group</h2>
+    <que-radio-group name="size" label="Size">
+      <que-radio value="sm" label="Small"></que-radio>
+      <que-radio value="md" label="Medium" checked></que-radio>
+      <que-radio value="lg" label="Large"></que-radio>
+    </que-radio-group>
+
+    <h2>Horizontal group</h2>
+    <que-radio-group name="color" orientation="horizontal">
+      <que-radio value="red" label="Red" checked></que-radio>
+      <que-radio value="green" label="Green"></que-radio>
+      <que-radio value="blue" label="Blue"></que-radio>
+    </que-radio-group>
+
+    <h2>Label left</h2>
+    <que-radio-group name="plan" label="Plan" style="max-width: 240px; display: block;">
+      <que-radio value="free" label="Free" label-position="left" checked></que-radio>
+      <que-radio value="pro" label="Pro" label-position="left"></que-radio>
+      <que-radio value="enterprise" label="Enterprise" label-position="left"></que-radio>
+    </que-radio-group>
+
+    <h2>Disabled</h2>
+    <que-radio-group name="dis">
+      <que-radio value="a" label="Disabled unchecked" disabled></que-radio>
+      <que-radio value="b" label="Disabled checked" disabled checked></que-radio>
+    </que-radio-group>
+
+    <h2>Events</h2>
+    <que-radio-group id="live-group" name="live" label="Pick one">
+      <que-radio value="one" label="Option one" checked></que-radio>
+      <que-radio value="two" label="Option two"></que-radio>
+      <que-radio value="three" label="Option three"></que-radio>
+    </que-radio-group>
+    <p id="event-log" style="font-family: var(--que-font-mono); font-size: var(--que-font-size-xs); color: var(--que-color-text-muted); margin-top: 8px;">—</p>
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/radio.js'
+
+    const ctrl = applyTheme(createTheme())
+
+    document.querySelectorAll('.theme-toggle button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.theme-toggle button').forEach(b => b.classList.remove('active'))
+        btn.classList.add('active')
+        ctrl.setMode(btn.dataset.mode)
+      })
+    })
+
+    const sync = () => document.querySelectorAll('.theme-toggle button').forEach(b => {
+      b.classList.toggle('active', b.dataset.mode === ctrl.mode)
+    })
+    ctrl.onChange(sync)
+    sync()
+
+    const log = document.getElementById('event-log')
+    document.getElementById('live-group').addEventListener('que-change', e => {
+      log.textContent = `que-change → value: "${e.detail.value}"`
+    })
+  </script>
+</body>
+</html>

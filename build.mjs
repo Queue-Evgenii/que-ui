@@ -10,7 +10,7 @@ mkdirSync('dist', { recursive: true })
 
 // Bundle CSS-only exports into a temp file to extract values (no DOM/HTMLElement)
 await build({ entryPoints: ['src/css.ts'], bundle: true, format: 'esm', outfile: TMP })
-const { defaultTokens, defaultDarkTokens, utilitiesCSS, buttonCSS, inputCSS, textareaCSS, checkboxCSS, switchCSS } = await import(pathToFileURL(TMP).href)
+const { defaultTokens, defaultDarkTokens, utilitiesCSS, buttonCSS, inputCSS, textareaCSS, checkboxCSS, switchCSS, radioCSS } = await import(pathToFileURL(TMP).href)
 import('fs').then(fs => fs.unlinkSync(TMP))
 
 function toCSSVars(tokens) {
@@ -51,6 +51,9 @@ console.log('dist/checkbox.css')
 writeFileSync('dist/switch.css', switchCSS.trim())
 console.log('dist/switch.css')
 
+writeFileSync('dist/radio.css', radioCSS.trim())
+console.log('dist/radio.css')
+
 const sharedConfig = { bundle: true, sourcemap: true }
 
 // Full library
@@ -79,5 +82,8 @@ console.log('dist/checkbox.js')
 
 await build({ ...sharedConfig, entryPoints: ['src/components/switch/switch.ts'], format: 'esm', outfile: 'dist/switch.js' })
 console.log('dist/switch.js')
+
+await build({ ...sharedConfig, entryPoints: ['src/components/radio/radio.ts'], format: 'esm', outfile: 'dist/radio.js' })
+console.log('dist/radio.js')
 
 console.log('\nBuild complete.')

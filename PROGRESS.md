@@ -56,7 +56,7 @@ Legend: ✅ Done · 🚧 In Progress · ⬜ Not Started · ❌ Blocked
 | ✅ | Textarea | `<que-textarea>` |
 | ✅ | Checkbox | `<que-checkbox>` |
 | ✅ | Switch / Toggle | `<que-switch>` |
-| ⬜ | Radio + Radio Group | `<que-radio>`, `<que-radio-group>` |
+| ✅ | Radio + Radio Group | `<que-radio>`, `<que-radio-group>` |
 | ⬜ | Select | `<que-select>` |
 | ⬜ | Slider | `<que-slider>` |
 

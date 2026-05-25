@@ -10,7 +10,7 @@ Legend: ✅ Done · 🚧 In Progress · ⬜ Not Started · ❌ Blocked
 | Status | Task |
 |--------|------|
 | ✅ | Project setup (TypeScript strict, esbuild, exports map) |
-| ⬜ | `BaseElement` class — base for all components |
+| ✅ | `BaseElement` class — base for all components |
 | ⬜ | CSS adoption helper (`adoptedStyleSheets`) |
 | ✅ | Design token system (TS → CSS Custom Properties) |
 | ✅ | Utility classes generated from tokens (`dist/utilities.css`) |
@@ -51,7 +51,7 @@ Legend: ✅ Done · 🚧 In Progress · ⬜ Not Started · ❌ Blocked
 ### Form Controls (Core)
 | Status | Component | Tag |
 |--------|-----------|-----|
-| ⬜ | Button | `<que-button>` |
+| ✅ | Button | `<que-button>` |
 | ⬜ | Input | `<que-input>` |
 | ⬜ | Textarea | `<que-textarea>` |
 | ⬜ | Checkbox | `<que-checkbox>` |

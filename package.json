@@ -11,10 +11,19 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs",
       "types": "./dist/index.d.ts"
-    }
+    },
+    "./theme": {
+      "import": "./dist/theme.js"
+    },
+    "./button": {
+      "import": "./dist/button.js"
+    },
+    "./tokens.css": "./dist/tokens.css",
+    "./utilities.css": "./dist/utilities.css",
+    "./button.css": "./dist/button.css"
   },
   "files": ["dist"],
-  "sideEffects": false,
+  "sideEffects": ["dist/*.css", "dist/button.js", "dist/index.js", "dist/index.cjs"],
   "scripts": {
     "build": "tsc --noEmit && node build.mjs",
     "typecheck": "tsc --noEmit",

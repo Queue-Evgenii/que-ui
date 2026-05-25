@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>que-ui — Components (CSS)</title>
+  <title>que-ui — Button (CSS)</title>
   <link rel="stylesheet" href="../dist/tokens.css" />
   <link rel="stylesheet" href="../dist/button.css" />
-  <link rel="stylesheet" href="../dist/utilities.css" />
   <link rel="stylesheet" href="shared.css" />
 </head>
 <body>
   <header>
     <span class="logo">que-ui</span>
     <nav>
-      <a href="index.html" class="que-button que-button--sm">CSS</a>
+      <a href="index.html" class="que-button que-button--ghost que-button--sm">CSS</a>
       <a href="index-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
       <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
     </nav>
@@ -25,30 +24,7 @@
   </header>
 
   <main>
-    <h2>Colors</h2>
-    <div class="swatches">
-      <div class="swatch"><div class="swatch-color bg-primary"></div><div class="swatch-label">primary</div></div>
-      <div class="swatch"><div class="swatch-color bg-secondary"></div><div class="swatch-label">secondary</div></div>
-      <div class="swatch"><div class="swatch-color bg-bg"></div><div class="swatch-label">bg</div></div>
-      <div class="swatch"><div class="swatch-color bg-surface"></div><div class="swatch-label">surface</div></div>
-      <div class="swatch"><div class="swatch-color bg-text"></div><div class="swatch-label">text</div></div>
-      <div class="swatch"><div class="swatch-color bg-border"></div><div class="swatch-label">border</div></div>
-      <div class="swatch"><div class="swatch-color bg-success"></div><div class="swatch-label">success</div></div>
-      <div class="swatch"><div class="swatch-color bg-warning"></div><div class="swatch-label">warning</div></div>
-      <div class="swatch"><div class="swatch-color bg-danger"></div><div class="swatch-label">danger</div></div>
-    </div>
-
-    <h2>Typography</h2>
-    <div class="type-stack">
-      <span style="font-size:var(--que-font-size-xs)">xs — The quick brown fox</span>
-      <span style="font-size:var(--que-font-size-sm)">sm — The quick brown fox</span>
-      <span style="font-size:var(--que-font-size-md)">md — The quick brown fox</span>
-      <span style="font-size:var(--que-font-size-lg)">lg — The quick brown fox</span>
-      <span style="font-size:var(--que-font-size-xl)">xl — The quick brown fox</span>
-      <span style="font-size:var(--que-font-size-2xl)">2xl — The quick brown fox</span>
-    </div>
-
-    <h2>Button — Solid</h2>
+    <h2>Variants × Intents</h2>
     <div class="row">
       <button class="que-button que-button--intent-primary">Primary</button>
       <button class="que-button que-button--intent-secondary">Secondary</button>
@@ -56,8 +32,6 @@
       <button class="que-button que-button--intent-success">Success</button>
       <button class="que-button que-button--intent-warning">Warning</button>
     </div>
-
-    <h2>Button — Outline</h2>
     <div class="row">
       <button class="que-button que-button--outline que-button--intent-primary">Primary</button>
       <button class="que-button que-button--outline que-button--intent-secondary">Secondary</button>
@@ -65,8 +39,6 @@
       <button class="que-button que-button--outline que-button--intent-success">Success</button>
       <button class="que-button que-button--outline que-button--intent-warning">Warning</button>
     </div>
-
-    <h2>Button — Ghost</h2>
     <div class="row">
       <button class="que-button que-button--ghost que-button--intent-primary">Primary</button>
       <button class="que-button que-button--ghost que-button--intent-secondary">Secondary</button>
@@ -75,49 +47,39 @@
       <button class="que-button que-button--ghost que-button--intent-warning">Warning</button>
     </div>
 
-    <h2>Button — Sizes</h2>
+    <h2>Sizes</h2>
     <div class="row">
       <button class="que-button que-button--sm">Small</button>
       <button class="que-button">Medium</button>
       <button class="que-button que-button--lg">Large</button>
     </div>
 
-    <h2>Button — Disabled</h2>
+    <h2>Disabled</h2>
     <div class="row">
-      <button class="que-button que-button--intent-primary" disabled>Primary</button>
-      <button class="que-button que-button--outline que-button--intent-primary" disabled>Outline</button>
-      <button class="que-button que-button--ghost que-button--intent-primary" disabled>Ghost</button>
+      <button class="que-button" disabled>Solid</button>
+      <button class="que-button que-button--outline" disabled>Outline</button>
+      <button class="que-button que-button--ghost" disabled>Ghost</button>
       <button class="que-button que-button--intent-danger" disabled>Danger</button>
       <button class="que-button que-button--outline que-button--intent-danger" disabled>Danger outline</button>
     </div>
 
-    <h2>Button — Full width</h2>
+    <h2>Full width</h2>
     <div style="max-width: 400px;">
       <button class="que-button que-button--full">Full width button</button>
     </div>
 
-    <h2>Button — As anchor</h2>
+    <h2>As anchor</h2>
     <div class="row">
       <a href="#" class="que-button">Link button</a>
       <a href="#" class="que-button que-button--outline">Outline link</a>
       <a href="#" target="_blank" class="que-button">Opens in new tab</a>
     </div>
 
-    <h2>Button — Custom padding &amp; font size</h2>
+    <h2>Custom padding &amp; font size</h2>
     <div class="row">
       <button class="que-button" style="--que-button-padding-x: 32px; --que-button-padding-y: 12px;">Tall &amp; wide</button>
       <button class="que-button" style="--que-button-font-size: 18px; --que-button-padding-x: 24px;">Bigger text</button>
       <button class="que-button" style="--que-button-radius: var(--que-radius-full);">Pill shape</button>
-    </div>
-
-    <h2>Spacing / Radius / Shadow</h2>
-    <div class="row">
-      <div style="width:var(--que-space-4);height:var(--que-space-4);background:var(--que-color-primary);opacity:.5"></div>
-      <div style="width:var(--que-space-8);height:var(--que-space-8);background:var(--que-color-primary);opacity:.6;border-radius:var(--que-radius-sm)"></div>
-      <div style="width:var(--que-space-12);height:var(--que-space-12);background:var(--que-color-primary);opacity:.7;border-radius:var(--que-radius-md)"></div>
-      <div style="width:var(--que-space-16);height:var(--que-space-16);background:var(--que-color-primary);opacity:.8;border-radius:var(--que-radius-lg)"></div>
-      <div style="width:var(--que-space-16);height:var(--que-space-16);background:var(--que-color-surface);box-shadow:var(--que-shadow-md);border-radius:var(--que-radius-xl)"></div>
-      <div style="width:var(--que-space-16);height:var(--que-space-16);background:var(--que-color-surface);box-shadow:var(--que-shadow-lg);border-radius:var(--que-radius-2xl)"></div>
     </div>
   </main>
 

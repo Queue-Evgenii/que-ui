@@ -25,19 +25,9 @@ header {
 
 nav {
   display: flex;
-  gap: 2px;
+  gap: 4px;
   flex: 1;
 }
-
-nav a {
-  font-size: var(--que-font-size-sm);
-  color: var(--que-color-text-muted);
-  text-decoration: none;
-  padding: 5px 10px;
-  border-radius: var(--que-radius-md);
-}
-nav a:hover { background: var(--que-color-bg-muted); color: var(--que-color-text); }
-nav a.active { color: var(--que-color-primary); font-weight: var(--que-font-weight-medium); }
 
 .theme-toggle {
   display: flex;

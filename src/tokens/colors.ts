@@ -175,7 +175,7 @@ export const defaultLightColors = {
   'color-warning':          palette.yellow[400],
   'color-warning-hover':    palette.yellow[500],
   'color-warning-subtle':   palette.yellow[50],
-  'color-warning-text':     palette.yellow[800],
+  'color-warning-text':     palette.yellow[600],
 
   // Status — danger
   'color-danger':           palette.red[500],
@@ -188,6 +188,10 @@ export const defaultLightColors = {
   'color-info-hover':       palette.indigo[500],
   'color-info-subtle':      palette.indigo[50],
   'color-info-text':        palette.indigo[700],
+
+  // Interactive hover/active overlays — semi-transparent, work on any background
+  'color-interactive-hover':  'rgba(0, 0, 0, 0.06)',
+  'color-interactive-active': 'rgba(0, 0, 0, 0.12)',
 
   // Overlay / backdrop
   'color-overlay':          'rgba(0, 0, 0, 0.45)',
@@ -245,7 +249,7 @@ export const defaultDarkColors: SemanticColors = {
   'color-warning':          palette.yellow[400],
   'color-warning-hover':    palette.yellow[300],
   'color-warning-subtle':   palette.yellow[950],
-  'color-warning-text':     palette.yellow[300],
+  'color-warning-text':     palette.yellow[600],
 
   // Status — danger
   'color-danger':           palette.red[400],
@@ -258,6 +262,10 @@ export const defaultDarkColors: SemanticColors = {
   'color-info-hover':       palette.indigo[300],
   'color-info-subtle':      palette.indigo[950],
   'color-info-text':        palette.indigo[400],
+
+  // Interactive hover/active overlays — lighter tint for dark backgrounds
+  'color-interactive-hover':  'rgba(255, 255, 255, 0.08)',
+  'color-interactive-active': 'rgba(255, 255, 255, 0.15)',
 
   // Overlay / backdrop
   'color-overlay':          'rgba(0, 0, 0, 0.65)',

@@ -8,9 +8,9 @@ const TMP   = join(__dir, '__tokens_tmp.mjs')
 
 mkdirSync('dist', { recursive: true })
 
-// Bundle tokens + utilities into a temp file to extract values
-await build({ entryPoints: ['src/index.ts'], bundle: true, format: 'esm', outfile: TMP })
-const { defaultTokens, defaultDarkTokens, utilitiesCSS } = await import(pathToFileURL(TMP).href)
+// Bundle CSS-only exports into a temp file to extract values (no DOM/HTMLElement)
+await build({ entryPoints: ['src/css.ts'], bundle: true, format: 'esm', outfile: TMP })
+const { defaultTokens, defaultDarkTokens, utilitiesCSS, buttonCSS } = await import(pathToFileURL(TMP).href)
 import('fs').then(fs => fs.unlinkSync(TMP))
 
 function toCSSVars(tokens) {
@@ -36,25 +36,24 @@ console.log('dist/tokens.css')
 writeFileSync('dist/utilities.css', utilitiesCSS)
 console.log('dist/utilities.css')
 
-// Build ESM bundle
-await build({
-  entryPoints: ['src/index.ts'],
-  bundle: true,
-  format: 'esm',
-  outfile: 'dist/index.js',
-  sourcemap: true,
-})
+writeFileSync('dist/button.css', buttonCSS.trim())
+console.log('dist/button.css')
 
+const sharedConfig = { bundle: true, sourcemap: true }
+
+// Full library
+await build({ ...sharedConfig, entryPoints: ['src/index.ts'], format: 'esm', outfile: 'dist/index.js' })
 console.log('dist/index.js')
 
-// Build CJS bundle
-await build({
-  entryPoints: ['src/index.ts'],
-  bundle: true,
-  format: 'cjs',
-  outfile: 'dist/index.cjs',
-  sourcemap: true,
-})
-
+await build({ ...sharedConfig, entryPoints: ['src/index.ts'], format: 'cjs', outfile: 'dist/index.cjs' })
 console.log('dist/index.cjs')
+
+// Theme-only bundle
+await build({ ...sharedConfig, entryPoints: ['src/theme.ts'], format: 'esm', outfile: 'dist/theme.js' })
+console.log('dist/theme.js')
+
+// Per-component bundles
+await build({ ...sharedConfig, entryPoints: ['src/components/button/button.ts'], format: 'esm', outfile: 'dist/button.js' })
+console.log('dist/button.js')
+
 console.log('\nBuild complete.')

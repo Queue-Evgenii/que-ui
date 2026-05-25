@@ -12,10 +12,9 @@
   <header>
     <span class="logo">que-ui</span>
     <nav>
-      <a href="index.html">Components / CSS</a>
-      <a href="index-js.html">Components / JS</a>
-      <a href="theme.html">Theme / CSS</a>
-      <a href="theme-js.html" class="active">Theme / JS</a>
+      <que-button href="index.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="index-js.html" variant="ghost" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
     </nav>
     <div class="theme-toggle">
       <button data-mode="light">Light</button>
@@ -55,7 +54,8 @@
   </main>
 
   <script type="module">
-    import { applyTheme, createTheme } from '../dist/index.js'
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
 
     const ctrl = applyTheme(createTheme())
 

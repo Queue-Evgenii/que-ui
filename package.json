@@ -33,6 +33,9 @@
     "./radio": {
       "import": "./dist/radio.js"
     },
+    "./segmented": {
+      "import": "./dist/segmented.js"
+    },
     "./tokens.css": "./dist/tokens.css",
     "./utilities.css": "./dist/utilities.css",
     "./button.css": "./dist/button.css",
@@ -40,10 +43,11 @@
     "./textarea.css": "./dist/textarea.css",
     "./checkbox.css": "./dist/checkbox.css",
     "./switch.css": "./dist/switch.css",
-    "./radio.css": "./dist/radio.css"
+    "./radio.css": "./dist/radio.css",
+    "./segmented.css": "./dist/segmented.css"
   },
   "files": ["dist"],
-  "sideEffects": ["dist/*.css", "dist/button.js", "dist/input.js", "dist/textarea.js", "dist/checkbox.js", "dist/switch.js", "dist/radio.js", "dist/index.js", "dist/index.cjs"],
+  "sideEffects": ["dist/*.css", "dist/button.js", "dist/input.js", "dist/textarea.js", "dist/checkbox.js", "dist/switch.js", "dist/radio.js", "dist/segmented.js", "dist/index.js", "dist/index.cjs"],
   "scripts": {
     "build": "tsc --noEmit && node build.mjs",
     "typecheck": "tsc --noEmit",

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>que-ui — Radio (JS)</title>
+  <title>que-ui — Segmented (JS)</title>
   <link rel="stylesheet" href="shared.css" />
 </head>
 <body>
@@ -33,46 +33,60 @@
   </header>
 
   <main style="max-width: 480px;">
-    <h2>Vertical group</h2>
-    <que-radio-group name="size" label="Size">
-      <que-radio value="sm" label="Small"></que-radio>
-      <que-radio value="md" label="Medium" checked></que-radio>
-      <que-radio value="lg" label="Large"></que-radio>
-    </que-radio-group>
+    <h2>Default</h2>
+    <que-segmented name="view" value="list">
+      <que-segment value="list">List</que-segment>
+      <que-segment value="grid">Grid</que-segment>
+      <que-segment value="table">Table</que-segment>
+    </que-segmented>
 
-    <h2>Horizontal group</h2>
-    <que-radio-group name="color" orientation="horizontal">
-      <que-radio value="red" label="Red" checked></que-radio>
-      <que-radio value="green" label="Green"></que-radio>
-      <que-radio value="blue" label="Blue"></que-radio>
-    </que-radio-group>
+    <h2>Theme toggle</h2>
+    <que-segmented id="theme-seg" name="theme2" value="light">
+      <que-segment value="light">Light</que-segment>
+      <que-segment value="dark">Dark</que-segment>
+      <que-segment value="system">System</que-segment>
+    </que-segmented>
 
-    <h2>Label left</h2>
-    <que-radio-group name="plan" label="Plan" style="max-width: 240px; display: block;">
-      <que-radio value="free" label="Free" label-position="left" checked></que-radio>
-      <que-radio value="pro" label="Pro" label-position="left"></que-radio>
-      <que-radio value="enterprise" label="Enterprise" label-position="left"></que-radio>
-    </que-radio-group>
+    <h2>Shapes</h2>
+    <div class="col">
+      <que-segmented name="s1" value="a" shape="pill">
+        <que-segment value="a">Pill</que-segment>
+        <que-segment value="b">Default</que-segment>
+        <que-segment value="c">Shape</que-segment>
+      </que-segmented>
+      <que-segmented name="s2" value="a" shape="rounded">
+        <que-segment value="a">Rounded</que-segment>
+        <que-segment value="b">Default</que-segment>
+        <que-segment value="c">Shape</que-segment>
+      </que-segmented>
+      <que-segmented name="s3" value="a" shape="square">
+        <que-segment value="a">Square</que-segment>
+        <que-segment value="b">Default</que-segment>
+        <que-segment value="c">Shape</que-segment>
+      </que-segmented>
+    </div>
 
-    <h2>Disabled</h2>
-    <que-radio-group name="dis">
-      <que-radio value="a" label="Disabled unchecked" disabled></que-radio>
-      <que-radio value="b" label="Disabled checked" disabled checked></que-radio>
-    </que-radio-group>
+    <h2>With disabled option</h2>
+    <que-segmented name="period" value="day">
+      <que-segment value="day">Day</que-segment>
+      <que-segment value="week">Week</que-segment>
+      <que-segment value="month">Month</que-segment>
+      <que-segment value="year" disabled>Year</que-segment>
+    </que-segmented>
 
     <h2>Events</h2>
-    <que-radio-group id="live-group" name="live" label="Pick one">
-      <que-radio value="one" label="Option one" checked></que-radio>
-      <que-radio value="two" label="Option two"></que-radio>
-      <que-radio value="three" label="Option three"></que-radio>
-    </que-radio-group>
+    <que-segmented id="live-seg" name="live" value="a">
+      <que-segment value="a">Option A</que-segment>
+      <que-segment value="b">Option B</que-segment>
+      <que-segment value="c">Option C</que-segment>
+    </que-segmented>
     <p id="event-log" style="font-family: var(--que-font-mono); font-size: var(--que-font-size-xs); color: var(--que-color-text-muted); margin-top: 8px;">—</p>
   </main>
 
   <script type="module">
     import { applyTheme, createTheme } from '../dist/theme.js'
     import '../dist/button.js'
-    import '../dist/radio.js'
+    import '../dist/segmented.js'
 
     const ctrl = applyTheme(createTheme())
 
@@ -84,8 +98,13 @@
       sync()
     }
 
+    // Wire theme-seg to actually switch theme
+    document.getElementById('theme-seg').addEventListener('que-change', e => {
+      ctrl.setMode(e.detail.value)
+    })
+
     const log = document.getElementById('event-log')
-    document.getElementById('live-group').addEventListener('que-change', e => {
+    document.getElementById('live-seg').addEventListener('que-change', e => {
       log.textContent = `que-change → value: "${e.detail.value}"`
     })
   </script>

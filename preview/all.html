@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
@@ -60,9 +60,20 @@
       <a href="all.html" class="que-button que-button--sm">All pages</a>
     </nav>
     <div class="theme-toggle">
-      <button data-mode="light" class="active">Light</button>
-      <button data-mode="dark">Dark</button>
-      <button data-mode="system">System</button>
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
     </div>
   </header>
 
@@ -106,6 +117,20 @@
         <span class="page-card-tag js">JS</span>
         <span class="page-card-title">Input</span>
         <span class="page-card-desc">&lt;que-input&gt; Web Component, events</span>
+      </a>
+    </div>
+
+    <h2>Segmented</h2>
+    <div class="page-grid">
+      <a href="segmented.html" class="page-card">
+        <span class="page-card-tag">CSS</span>
+        <span class="page-card-title">Segmented</span>
+        <span class="page-card-desc">Segmented control, disabled option</span>
+      </a>
+      <a href="segmented-js.html" class="page-card">
+        <span class="page-card-tag js">JS</span>
+        <span class="page-card-title">Segmented</span>
+        <span class="page-card-desc">&lt;que-segmented&gt; + &lt;que-segment&gt;, events</span>
       </a>
     </div>
 

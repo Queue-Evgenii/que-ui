@@ -1,3 +1,5 @@
+@import url('../dist/segmented.css');
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -30,22 +32,7 @@ nav {
 }
 
 .theme-toggle {
-  display: flex;
-  gap: 2px;
-  padding: 3px;
-  background: var(--que-color-bg-muted);
-  border-radius: var(--que-radius-full);
   flex-shrink: 0;
-}
-.theme-toggle button {
-  background: none; border: none; cursor: pointer;
-  padding: 4px 12px; border-radius: var(--que-radius-full);
-  font-size: var(--que-font-size-sm); color: var(--que-color-text-muted);
-}
-.theme-toggle button.active {
-  background: var(--que-color-surface);
-  color: var(--que-color-text);
-  box-shadow: var(--que-shadow-sm);
 }
 
 main {

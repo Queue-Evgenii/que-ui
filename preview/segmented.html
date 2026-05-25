@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Segmented (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/segmented.css" />
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="index.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="index-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Default</h2>
+    <div class="que-segmented">
+      <label class="que-segmented__item">
+        <input class="que-segmented__input" type="radio" name="view" value="list" checked />
+        <span class="que-segmented__label">List</span>
+      </label>
+      <label class="que-segmented__item">
+        <input class="que-segmented__input" type="radio" name="view" value="grid" />
+        <span class="que-segmented__label">Grid</span>
+      </label>
+      <label class="que-segmented__item">
+        <input class="que-segmented__input" type="radio" name="view" value="table" />
+        <span class="que-segmented__label">Table</span>
+      </label>
+    </div>
+
+    <h2>Theme toggle (as in header)</h2>
+    <div class="que-segmented">
+      <label class="que-segmented__item">
+        <input class="que-segmented__input" type="radio" name="theme2" value="light" checked />
+        <span class="que-segmented__label">Light</span>
+      </label>
+      <label class="que-segmented__item">
+        <input class="que-segmented__input" type="radio" name="theme2" value="dark" />
+        <span class="que-segmented__label">Dark</span>
+      </label>
+      <label class="que-segmented__item">
+        <input class="que-segmented__input" type="radio" name="theme2" value="system" />
+        <span class="que-segmented__label">System</span>
+      </label>
+    </div>
+
+    <h2>Shapes</h2>
+    <div class="col">
+      <div class="que-segmented que-segmented--pill">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="s1" value="a" checked />
+          <span class="que-segmented__label">Pill</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="s1" value="b" />
+          <span class="que-segmented__label">Default</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="s1" value="c" />
+          <span class="que-segmented__label">Shape</span>
+        </label>
+      </div>
+      <div class="que-segmented que-segmented--rounded">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="s2" value="a" checked />
+          <span class="que-segmented__label">Rounded</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="s2" value="b" />
+          <span class="que-segmented__label">Default</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="s2" value="c" />
+          <span class="que-segmented__label">Shape</span>
+        </label>
+      </div>
+      <div class="que-segmented que-segmented--square">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="s3" value="a" checked />
+          <span class="que-segmented__label">Square</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="s3" value="b" />
+          <span class="que-segmented__label">Default</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="s3" value="c" />
+          <span class="que-segmented__label">Shape</span>
+        </label>
+      </div>
+    </div>
+
+    <h2>With disabled option</h2>
+    <div class="que-segmented">
+      <label class="que-segmented__item">
+        <input class="que-segmented__input" type="radio" name="period" value="day" checked />
+        <span class="que-segmented__label">Day</span>
+      </label>
+      <label class="que-segmented__item">
+        <input class="que-segmented__input" type="radio" name="period" value="week" />
+        <span class="que-segmented__label">Week</span>
+      </label>
+      <label class="que-segmented__item">
+        <input class="que-segmented__input" type="radio" name="period" value="month" />
+        <span class="que-segmented__label">Month</span>
+      </label>
+      <label class="que-segmented__item que-segmented__item--disabled">
+        <input class="que-segmented__input" type="radio" name="period" value="year" disabled />
+        <span class="que-segmented__label">Year</span>
+      </label>
+    </div>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

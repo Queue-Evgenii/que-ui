@@ -1,11 +1,15 @@
-document.querySelectorAll('.theme-toggle button').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.theme-toggle button').forEach(b => b.classList.remove('active'))
-    btn.classList.add('active')
-    if (btn.dataset.mode === 'system') {
+const toggle = document.getElementById('theme-toggle')
+if (toggle) {
+  const current = document.documentElement.getAttribute('data-theme') || 'light'
+  const initial = toggle.querySelector(`input[value="${current}"]`)
+  if (initial) initial.checked = true
+
+  toggle.addEventListener('change', e => {
+    const value = e.target.value
+    if (value === 'system') {
       document.documentElement.removeAttribute('data-theme')
     } else {
-      document.documentElement.setAttribute('data-theme', btn.dataset.mode)
+      document.documentElement.setAttribute('data-theme', value)
     }
   })
-})
+}

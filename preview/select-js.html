@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Select (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="index.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="index-js.html" variant="ghost" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main style="max-width: 640px;">
+    <h2>Default</h2>
+    <que-select label="Country" hint="Choose your country">
+      <que-option value="ua">Ukraine</que-option>
+      <que-option value="us">United States</que-option>
+      <que-option value="de">Germany</que-option>
+      <que-option value="fr">France</que-option>
+      <que-option value="jp">Japan</que-option>
+    </que-select>
+    <br />
+    <que-select label="Required" required>
+      <que-option value="a">Option A</que-option>
+      <que-option value="b">Option B</que-option>
+      <que-option value="c">Option C</que-option>
+    </que-select>
+
+    <h2>With pre-selected value</h2>
+    <que-select label="Status" value="active">
+      <que-option value="active">Active</que-option>
+      <que-option value="inactive">Inactive</que-option>
+      <que-option value="archived" disabled>Archived</que-option>
+    </que-select>
+
+    <h2>Intents</h2>
+    <que-select label="Danger" intent="danger" value="bad" error="This field is required">
+      <que-option value="bad">Invalid option</que-option>
+      <que-option value="good">Good option</que-option>
+    </que-select>
+    <br />
+    <que-select label="Success" intent="success" value="good" hint="Looks good!">
+      <que-option value="good">Valid option</que-option>
+      <que-option value="other">Other</que-option>
+    </que-select>
+    <br />
+    <que-select label="Warning" intent="warning" value="review" hint="Please review">
+      <que-option value="review">Needs review</que-option>
+      <que-option value="ok">OK</que-option>
+    </que-select>
+
+    <h2>Disabled</h2>
+    <que-select label="Disabled" disabled>
+      <que-option value="a">Option A</que-option>
+      <que-option value="b">Option B</que-option>
+    </que-select>
+
+    <h2>Events</h2>
+    <que-select id="live-select" label="Pick something" placeholder="Choose an option...">
+      <que-option value="1">First option</que-option>
+      <que-option value="2">Second option</que-option>
+      <que-option value="3">Third option</que-option>
+      <que-option value="4" disabled>Disabled option</que-option>
+    </que-select>
+    <p id="event-log" style="font-family: var(--que-font-mono); font-size: var(--que-font-size-xs); color: var(--que-color-text-muted); margin-top: 8px;">—</p>
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/select.js'
+
+    const ctrl = applyTheme(createTheme())
+
+    const toggle = document.getElementById('theme-toggle')
+    if (toggle) {
+      toggle.addEventListener('change', e => ctrl.setMode(e.target.value))
+      const sync = () => { const i = toggle.querySelector(`input[value="${ctrl.mode}"]`); if (i) i.checked = true }
+      ctrl.onChange(sync)
+      sync()
+    }
+
+    const log = document.getElementById('event-log')
+    document.getElementById('live-select').addEventListener('que-change', e => {
+      log.textContent = `que-change → value: "${e.detail.value}", label: "${e.detail.label}"`
+    })
+  </script>
+</body>
+</html>

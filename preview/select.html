@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Select (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/select.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .field-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; }
+    .field-row .que-select-field { min-width: 200px; flex: 1; }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="index.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="index-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Default</h2>
+    <div class="field-row">
+      <div class="que-select-field">
+        <div class="que-select-wrap">
+          <button class="que-select" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="que-select__value"></span>
+            <svg class="que-select__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <label class="que-select-label">Country</label>
+          <div class="que-select__dropdown" role="listbox">
+            <ul class="que-select__list">
+              <li class="que-select__option" role="option" data-value="ua">Ukraine</li>
+              <li class="que-select__option" role="option" data-value="us">United States</li>
+              <li class="que-select__option" role="option" data-value="de">Germany</li>
+              <li class="que-select__option" role="option" data-value="fr">France</li>
+            </ul>
+          </div>
+        </div>
+        <span class="que-input-hint">Choose your country</span>
+      </div>
+      <div class="que-select-field">
+        <div class="que-select-wrap">
+          <button class="que-select que-select--filled" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="que-select__value">Ukraine</span>
+            <svg class="que-select__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <label class="que-select-label que-select-label--required">Required</label>
+          <div class="que-select__dropdown" role="listbox">
+            <ul class="que-select__list">
+              <li class="que-select__option que-select__option--selected" role="option" data-value="ua">Ukraine</li>
+              <li class="que-select__option" role="option" data-value="us">United States</li>
+              <li class="que-select__option" role="option" data-value="de">Germany</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Open state</h2>
+    <div class="field-row">
+      <div class="que-select-field" style="position: relative; z-index: 1;">
+        <div class="que-select-wrap">
+          <button class="que-select que-select--open" type="button" aria-haspopup="listbox" aria-expanded="true">
+            <span class="que-select__value"></span>
+            <svg class="que-select__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <label class="que-select-label">Status</label>
+          <div class="que-select__dropdown" role="listbox">
+            <ul class="que-select__list">
+              <li class="que-select__option que-select__option--focused" role="option">Active</li>
+              <li class="que-select__option" role="option">Inactive</li>
+              <li class="que-select__option que-select__option--disabled" role="option">Archived</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Intents</h2>
+    <div class="field-row">
+      <div class="que-select-field">
+        <div class="que-select-wrap">
+          <button class="que-select que-select--intent-danger que-select--filled" type="button">
+            <span class="que-select__value">Invalid option</span>
+            <svg class="que-select__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <label class="que-select-label">Danger</label>
+          <div class="que-select__dropdown" role="listbox"><ul class="que-select__list"></ul></div>
+        </div>
+        <span class="que-input-error">This field is required</span>
+      </div>
+      <div class="que-select-field">
+        <div class="que-select-wrap">
+          <button class="que-select que-select--intent-success que-select--filled" type="button">
+            <span class="que-select__value">Valid option</span>
+            <svg class="que-select__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <label class="que-select-label">Success</label>
+          <div class="que-select__dropdown" role="listbox"><ul class="que-select__list"></ul></div>
+        </div>
+        <span class="que-input-hint">Looks good!</span>
+      </div>
+      <div class="que-select-field">
+        <div class="que-select-wrap">
+          <button class="que-select que-select--intent-warning que-select--filled" type="button">
+            <span class="que-select__value">Needs review</span>
+            <svg class="que-select__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <label class="que-select-label">Warning</label>
+          <div class="que-select__dropdown" role="listbox"><ul class="que-select__list"></ul></div>
+        </div>
+        <span class="que-input-hint">Please review</span>
+      </div>
+    </div>
+
+    <h2>Disabled</h2>
+    <div class="field-row">
+      <div class="que-select-field">
+        <div class="que-select-wrap">
+          <button class="que-select" type="button" disabled>
+            <span class="que-select__value"></span>
+            <svg class="que-select__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <label class="que-select-label">Disabled</label>
+          <div class="que-select__dropdown" role="listbox"><ul class="que-select__list"></ul></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="shared.js"></script>
+  <script>
+    // Wire up interactive selects for CSS demo
+    document.querySelectorAll('.que-select-wrap').forEach(wrap => {
+      const btn = wrap.querySelector('.que-select')
+      const list = wrap.querySelector('.que-select__list')
+      if (!btn || btn.disabled) return
+
+      btn.addEventListener('click', e => {
+        e.stopPropagation()
+        const isOpen = btn.classList.contains('que-select--open')
+        document.querySelectorAll('.que-select--open').forEach(b => b.classList.remove('que-select--open'))
+        if (!isOpen) btn.classList.add('que-select--open')
+      })
+
+      list?.querySelectorAll('.que-select__option:not(.que-select__option--disabled)').forEach(opt => {
+        opt.addEventListener('click', e => {
+          e.stopPropagation()
+          const valueEl = btn.querySelector('.que-select__value')
+          if (valueEl) {
+            valueEl.textContent = opt.textContent
+            valueEl.classList.remove('que-select__value--placeholder')
+          }
+          list.querySelectorAll('.que-select__option').forEach(o => o.classList.remove('que-select__option--selected'))
+          opt.classList.add('que-select__option--selected')
+          btn.classList.remove('que-select--open')
+          btn.classList.add('que-select--filled')
+        })
+      })
+    })
+
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.que-select--open').forEach(b => b.classList.remove('que-select--open'))
+    })
+  </script>
+</body>
+</html>

@@ -10,7 +10,7 @@ mkdirSync('dist', { recursive: true })
 
 // Bundle CSS-only exports into a temp file to extract values (no DOM/HTMLElement)
 await build({ entryPoints: ['src/css.ts'], bundle: true, format: 'esm', outfile: TMP })
-const { defaultTokens, defaultDarkTokens, utilitiesCSS, buttonCSS, inputCSS, textareaCSS, checkboxCSS, switchCSS, radioCSS, segmentedCSS } = await import(pathToFileURL(TMP).href)
+const { defaultTokens, defaultDarkTokens, utilitiesCSS, buttonCSS, inputCSS, textareaCSS, checkboxCSS, switchCSS, radioCSS, segmentedCSS, selectCSS } = await import(pathToFileURL(TMP).href)
 import('fs').then(fs => fs.unlinkSync(TMP))
 
 function toCSSVars(tokens) {
@@ -57,6 +57,9 @@ console.log('dist/radio.css')
 writeFileSync('dist/segmented.css', segmentedCSS.trim())
 console.log('dist/segmented.css')
 
+writeFileSync('dist/select.css', selectCSS.trim())
+console.log('dist/select.css')
+
 const sharedConfig = { bundle: true, sourcemap: true }
 
 // Full library
@@ -91,5 +94,8 @@ console.log('dist/radio.js')
 
 await build({ ...sharedConfig, entryPoints: ['src/components/segmented/segmented.ts'], format: 'esm', outfile: 'dist/segmented.js' })
 console.log('dist/segmented.js')
+
+await build({ ...sharedConfig, entryPoints: ['src/components/select/select.ts'], format: 'esm', outfile: 'dist/select.js' })
+console.log('dist/select.js')
 
 console.log('\nBuild complete.')

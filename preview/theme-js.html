@@ -1,25 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>que-ui — Components (CSS)</title>
-  <link rel="stylesheet" href="../dist/tokens.css" />
-  <!-- <link rel="stylesheet" href="../dist/button.css" /> -->
+  <title>que-ui — Theme (JS)</title>
   <link rel="stylesheet" href="../dist/utilities.css" />
   <link rel="stylesheet" href="shared.css" />
+  <!-- tokens.css not needed — applyTheme() injects all CSS vars -->
 </head>
 <body>
   <header>
     <span class="logo">que-ui</span>
     <nav>
-      <a href="index.html" class="active">Components / CSS</a>
+      <a href="index.html">Components / CSS</a>
       <a href="index-js.html">Components / JS</a>
       <a href="theme.html">Theme / CSS</a>
-      <a href="theme-js.html">Theme / JS</a>
+      <a href="theme-js.html" class="active">Theme / JS</a>
     </nav>
     <div class="theme-toggle">
-      <button data-mode="light" class="active">Light</button>
+      <button data-mode="light">Light</button>
       <button data-mode="dark">Dark</button>
       <button data-mode="system">System</button>
     </div>
@@ -49,17 +48,36 @@
       <span style="font-size:var(--que-font-size-2xl)">2xl — The quick brown fox</span>
     </div>
 
-    <h2>Spacing / Radius / Shadow</h2>
-    <div class="row">
-      <div style="width:var(--que-space-4);height:var(--que-space-4);background:var(--que-color-primary);opacity:.5"></div>
-      <div style="width:var(--que-space-8);height:var(--que-space-8);background:var(--que-color-primary);opacity:.6;border-radius:var(--que-radius-sm)"></div>
-      <div style="width:var(--que-space-12);height:var(--que-space-12);background:var(--que-color-primary);opacity:.7;border-radius:var(--que-radius-md)"></div>
-      <div style="width:var(--que-space-16);height:var(--que-space-16);background:var(--que-color-primary);opacity:.8;border-radius:var(--que-radius-lg)"></div>
-      <div style="width:var(--que-space-16);height:var(--que-space-16);background:var(--que-color-surface);box-shadow:var(--que-shadow-md);border-radius:var(--que-radius-xl)"></div>
-      <div style="width:var(--que-space-16);height:var(--que-space-16);background:var(--que-color-surface);box-shadow:var(--que-shadow-lg);border-radius:var(--que-radius-2xl)"></div>
+    <h2>ThemeController</h2>
+    <div class="row" style="gap:8px">
+      <code id="mode-display" style="font-family:var(--que-font-mono);font-size:var(--que-font-size-sm);color:var(--que-color-text-muted)">mode: light</code>
     </div>
   </main>
 
-  <script src="shared.js"></script>
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/index.js'
+
+    const ctrl = applyTheme(createTheme())
+
+    // Wire up the toggle buttons
+    document.querySelectorAll('.theme-toggle button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.theme-toggle button').forEach(b => b.classList.remove('active'))
+        btn.classList.add('active')
+        ctrl.setMode(btn.dataset.mode)
+      })
+    })
+
+    // Show resolved mode
+    const display = document.getElementById('mode-display')
+    const update = () => {
+      display.textContent = `mode: ${ctrl.mode} → resolved: ${ctrl.resolvedMode}`
+      document.querySelectorAll('.theme-toggle button').forEach(b => {
+        b.classList.toggle('active', b.dataset.mode === ctrl.mode)
+      })
+    }
+    ctrl.onChange(update)
+    update()
+  </script>
 </body>
 </html>

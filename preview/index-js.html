@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>que-ui — Components (CSS)</title>
-  <link rel="stylesheet" href="../dist/tokens.css" />
-  <!-- <link rel="stylesheet" href="../dist/button.css" /> -->
+  <title>que-ui — Components (JS)</title>
   <link rel="stylesheet" href="../dist/utilities.css" />
   <link rel="stylesheet" href="shared.css" />
+  <!-- tokens.css not needed — applyTheme() injects all CSS vars -->
+  <!-- <script type="module" src="../dist/button.js"></script> -->
 </head>
 <body>
   <header>
     <span class="logo">que-ui</span>
     <nav>
-      <a href="index.html" class="active">Components / CSS</a>
-      <a href="index-js.html">Components / JS</a>
+      <a href="index.html">Components / CSS</a>
+      <a href="index-js.html" class="active">Components / JS</a>
       <a href="theme.html">Theme / CSS</a>
       <a href="theme-js.html">Theme / JS</a>
     </nav>
     <div class="theme-toggle">
-      <button data-mode="light" class="active">Light</button>
+      <button data-mode="light">Light</button>
       <button data-mode="dark">Dark</button>
       <button data-mode="system">System</button>
     </div>
@@ -60,6 +60,24 @@
     </div>
   </main>
 
-  <script src="shared.js"></script>
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/index.js'
+
+    const ctrl = applyTheme(createTheme())
+
+    document.querySelectorAll('.theme-toggle button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.theme-toggle button').forEach(b => b.classList.remove('active'))
+        btn.classList.add('active')
+        ctrl.setMode(btn.dataset.mode)
+      })
+    })
+
+    const sync = () => document.querySelectorAll('.theme-toggle button').forEach(b => {
+      b.classList.toggle('active', b.dataset.mode === ctrl.mode)
+    })
+    ctrl.onChange(sync)
+    sync()
+  </script>
 </body>
 </html>

@@ -26,46 +26,132 @@ Published as an npm package with ESM, CJS, and type declarations.
 
 ---
 
-## How It Works
+## Two Layers
 
-```
-Public API            Internal
-─────────────         ──────────────────────────────────
-<que-button>   →      QueButton extends HTMLElement
-                        └─ Shadow DOM root
-                        └─ Plain DOM class (render, events, cleanup)
-                        └─ CSS via adoptedStyleSheets
-```
+Every component exists in two independent layers. Use only what you need.
 
-CSS Custom Properties are exposed on `:host` for external theming.
-Shadow DOM keeps styles encapsulated so components never leak or break host page styles.
-
----
-
-## API Example
+### Layer 1 — CSS only
+Pure styles via CSS classes. No JavaScript required. Works anywhere — plain HTML, any framework, email templates.
 
 ```html
-<!-- Plain HTML -->
-<que-button variant="primary" size="md">Click me</que-button>
-<que-input placeholder="Search..." clearable></que-input>
-<que-slider min="0" max="100" value="40"></que-slider>
+<link rel="stylesheet" href="que-ui/tokens.css" />
+<link rel="stylesheet" href="que-ui/button.css" />
+
+<button class="que-button que-button--primary">Click me</button>
+<button class="que-button que-button--ghost" disabled>Disabled</button>
+```
+
+When to use: static sites, server-rendered HTML, when you only need look & feel with no interactive behavior.
+
+### Layer 2 — Web Component (CSS + JS)
+Registers a Custom Element with full behavior: state management, events, accessibility, keyboard handling.
+
+```html
+<script type="module" src="que-ui/button.js"></script>
+
+<que-button variant="primary">Click me</que-button>
+<que-button loading>Saving...</que-button>
 ```
 
 ```js
-// JavaScript
-import { QueButton, QueSlider } from 'que-ui'
+// Or via npm
+import 'que-ui/button'
 
 const btn = document.querySelector('que-button')
-btn.addEventListener('que:click', (e) => console.log('clicked'))
-
-// Programmatic
-const slider = new QueSlider({ min: 0, max: 100, value: 40 })
-document.body.appendChild(slider)
+btn.addEventListener('que:click', () => console.log('clicked'))
 ```
 
+When to use: when you need interactive behavior (loading state, custom events, programmatic control).
+
+### What needs JS vs what doesn't
+
+| Component | CSS only | Needs JS |
+|-----------|----------|----------|
+| Button | ✅ look & feel | loading state, custom events |
+| Badge, Tag, Alert | ✅ fully functional | dismissible variant |
+| Input, Textarea | ✅ look & feel | clearable, character count, validation |
+| Checkbox, Switch | ✅ look & feel | indeterminate, controlled state |
+| Spinner, Skeleton | ✅ fully functional | — |
+| Select | ❌ | custom dropdown, search, multi |
+| Slider | ❌ | drag interaction |
+| Modal, Drawer | ❌ | focus trap, scroll lock |
+| Tooltip, Popover | ❌ | positioning, show/hide |
+| Date Picker | ❌ | calendar logic |
+
+---
+
+## Import Only What You Need
+
+```js
+// Only tokens (CSS vars) — the only required baseline
+import 'que-ui/tokens.css'          // ~2 KB
+
+// Individual CSS layers
+import 'que-ui/button.css'          // button styles only
+import 'que-ui/input.css'
+
+// Individual Web Components (CSS + JS)
+import 'que-ui/button'              // registers <que-button>
+import 'que-ui/input'               // registers <que-input>
+
+// Everything
+import 'que-ui'
+```
+
+Tokens CSS is the only required baseline — all component styles reference `--que-*` variables.
+Without it colors, spacing, and typography tokens won't resolve.
+
+---
+
+## Project Structure
+
+```
+que-ui/
+├── src/
+│   ├── tokens/              # Design tokens (TS → CSS vars)
+│   ├── utils/               # Shared DOM helpers
+│   ├── base/                # BaseElement — all Web Components extend this
+│   ├── components/
+│   │   ├── button/
+│   │   │   ├── button.css.ts    # CSS string (shared by both layers)
+│   │   │   ├── button.css.js    # CSS-only export  → dist/button.css
+│   │   │   ├── button.ts        # Web Component logic
+│   │   │   ├── index.ts         # JS entry  → dist/button.js
+│   │   │   └── button.test.ts
+│   │   ├── input/
+│   │   └── ...
+│   └── index.ts             # Full bundle entry
+├── dist/
+│   ├── tokens.css           # Just CSS vars — the baseline
+│   ├── button.css           # Button CSS only
+│   ├── button.js            # Button Web Component (CSS + JS)
+│   ├── index.css            # All component CSS
+│   └── index.js             # Full bundle
+└── preview/
+```
+
+---
+
+## React / Vue / Svelte usage
+
+Web Components work natively in all frameworks without wrappers:
+
 ```tsx
-// React (works natively, no wrapper needed)
+// React
+import 'que-ui/button'
 <que-button variant="primary" onClick={handler}>Click</que-button>
+```
+
+```vue
+<!-- Vue -->
+<script setup>import 'que-ui/button'</script>
+<que-button variant="primary">Click</que-button>
+```
+
+```svelte
+<!-- Svelte -->
+<script>import 'que-ui/button'</script>
+<que-button variant="primary">Click</que-button>
 ```
 
 ---
@@ -212,30 +298,6 @@ que-button {
 
 ---
 
-## Project Structure
-
-```
-que-ui/
-├── src/
-│   ├── tokens/         # Design tokens (TS → CSS vars)
-│   ├── utils/          # Shared DOM helpers, event bus, positioning
-│   ├── base/           # BaseElement class all components extend
-│   ├── components/
-│   │   ├── button/
-│   │   │   ├── index.ts
-│   │   │   ├── button.ts       # Plain DOM class (logic)
-│   │   │   ├── button.styles.ts # CSS string
-│   │   │   └── button.test.ts
-│   │   ├── input/
-│   │   └── ...
-│   └── index.ts        # Main entry, re-exports all components
-├── dist/               # Build output
-├── docs/               # Documentation site source
-└── tests/
-```
-
----
-
 ## Publishing
 
 | Artifact  | Registry | Name      |
@@ -246,9 +308,13 @@ Package exports:
 ```json
 {
   "exports": {
-    ".": { "import": "./dist/index.js", "require": "./dist/index.cjs" },
-    "./button": "./dist/components/button/index.js",
-    "./tokens": "./dist/tokens/index.js"
+    ".":              "./dist/index.js",
+    "./tokens.css":   "./dist/tokens.css",
+    "./index.css":    "./dist/index.css",
+    "./button":       "./dist/button.js",
+    "./button.css":   "./dist/button.css",
+    "./input":        "./dist/input.js",
+    "./input.css":    "./dist/input.css"
   }
 }
 ```

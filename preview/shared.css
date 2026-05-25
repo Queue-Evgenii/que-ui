@@ -1,0 +1,113 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--que-font-sans);
+  background: var(--que-color-bg);
+  color: var(--que-color-text);
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 12px 32px;
+  border-bottom: 1px solid var(--que-color-border);
+  background: var(--que-color-surface);
+}
+
+.logo {
+  font-weight: var(--que-font-weight-bold);
+  font-size: var(--que-font-size-md);
+  color: var(--que-color-primary);
+  flex-shrink: 0;
+}
+
+nav {
+  display: flex;
+  gap: 2px;
+  flex: 1;
+}
+
+nav a {
+  font-size: var(--que-font-size-sm);
+  color: var(--que-color-text-muted);
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: var(--que-radius-md);
+}
+nav a:hover { background: var(--que-color-bg-muted); color: var(--que-color-text); }
+nav a.active { color: var(--que-color-primary); font-weight: var(--que-font-weight-medium); }
+
+.theme-toggle {
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  background: var(--que-color-bg-muted);
+  border-radius: var(--que-radius-full);
+  flex-shrink: 0;
+}
+.theme-toggle button {
+  background: none; border: none; cursor: pointer;
+  padding: 4px 12px; border-radius: var(--que-radius-full);
+  font-size: var(--que-font-size-sm); color: var(--que-color-text-muted);
+}
+.theme-toggle button.active {
+  background: var(--que-color-surface);
+  color: var(--que-color-text);
+  box-shadow: var(--que-shadow-sm);
+}
+
+main {
+  padding: 40px 32px;
+  max-width: 960px;
+}
+
+h2 {
+  font-size: var(--que-font-size-xs);
+  font-weight: var(--que-font-weight-semibold);
+  color: var(--que-color-text-subtle);
+  text-transform: uppercase;
+  letter-spacing: var(--que-letter-spacing-wider);
+  margin: 32px 0 12px;
+}
+h2:first-child { margin-top: 0; }
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.type-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.swatch {
+  width: 80px;
+  border-radius: var(--que-radius-md);
+  overflow: hidden;
+  border: 1px solid var(--que-color-border);
+  font-size: 10px;
+  font-family: var(--que-font-mono);
+}
+.swatch-color { height: 40px; }
+.swatch-label {
+  padding: 4px 6px;
+  color: var(--que-color-text-muted);
+  background: var(--que-color-surface);
+}
+
+.empty {
+  font-size: var(--que-font-size-sm);
+  color: var(--que-color-text-muted);
+}
+

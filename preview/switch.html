@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Switch (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/switch.css" />
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="index.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="index-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <button data-mode="light" class="active">Light</button>
+      <button data-mode="dark">Dark</button>
+      <button data-mode="system">System</button>
+    </div>
+  </header>
+
+  <main>
+    <h2>Default (label right)</h2>
+    <div class="col">
+      <label class="que-switch">
+        <input class="que-switch__input" type="checkbox" role="switch" />
+        <span class="que-switch__track"><span class="que-switch__thumb"></span></span>
+        <span class="que-switch__label">Off</span>
+      </label>
+      <label class="que-switch">
+        <input class="que-switch__input" type="checkbox" role="switch" checked />
+        <span class="que-switch__track"><span class="que-switch__thumb"></span></span>
+        <span class="que-switch__label">On</span>
+      </label>
+    </div>
+
+    <h2>Label left</h2>
+    <div class="col">
+      <label class="que-switch que-switch--label-left">
+        <input class="que-switch__input" type="checkbox" role="switch" />
+        <span class="que-switch__label">Notifications</span>
+        <span class="que-switch__track"><span class="que-switch__thumb"></span></span>
+      </label>
+      <label class="que-switch que-switch--label-left">
+        <input class="que-switch__input" type="checkbox" role="switch" checked />
+        <span class="que-switch__label">Dark mode</span>
+        <span class="que-switch__track"><span class="que-switch__thumb"></span></span>
+      </label>
+    </div>
+
+    <h2>With hint</h2>
+    <div class="col">
+      <div>
+        <label class="que-switch">
+          <input class="que-switch__input" type="checkbox" role="switch" checked />
+          <span class="que-switch__track"><span class="que-switch__thumb"></span></span>
+          <span class="que-switch__label">Label right</span>
+        </label>
+        <span class="que-switch__hint">Hint aligns with label text</span>
+      </div>
+      <div>
+        <label class="que-switch que-switch--label-left">
+          <input class="que-switch__input" type="checkbox" role="switch" checked />
+          <span class="que-switch__label">Label left</span>
+          <span class="que-switch__track"><span class="que-switch__thumb"></span></span>
+        </label>
+        <span class="que-switch__hint">Hint aligns with label text</span>
+      </div>
+    </div>
+
+    <h2>Disabled</h2>
+    <div class="col">
+      <label class="que-switch que-switch--disabled">
+        <input class="que-switch__input" type="checkbox" role="switch" disabled />
+        <span class="que-switch__track"><span class="que-switch__thumb"></span></span>
+        <span class="que-switch__label">Disabled off</span>
+      </label>
+      <label class="que-switch que-switch--disabled">
+        <input class="que-switch__input" type="checkbox" role="switch" checked disabled />
+        <span class="que-switch__track"><span class="que-switch__thumb"></span></span>
+        <span class="que-switch__label">Disabled on</span>
+      </label>
+    </div>
+
+    <h2>Custom size</h2>
+    <div class="col">
+      <label class="que-switch" style="--que-switch-width: 32px; --que-switch-height: 18px;">
+        <input class="que-switch__input" type="checkbox" role="switch" checked />
+        <span class="que-switch__track"><span class="que-switch__thumb"></span></span>
+        <span class="que-switch__label">Small</span>
+      </label>
+      <label class="que-switch" style="--que-switch-width: 52px; --que-switch-height: 28px;">
+        <input class="que-switch__input" type="checkbox" role="switch" checked />
+        <span class="que-switch__track"><span class="que-switch__thumb"></span></span>
+        <span class="que-switch__label">Large</span>
+      </label>
+    </div>
+  </main>
+
+  <style>
+    .col { display: flex; flex-direction: column; gap: 12px; max-width: 320px; }
+  </style>
+
+  <script src="shared.js"></script>
+</body>
+</html>

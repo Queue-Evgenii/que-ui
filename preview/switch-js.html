@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Switch (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="index.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="index-js.html" variant="ghost" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <button data-mode="light">Light</button>
+      <button data-mode="dark">Dark</button>
+      <button data-mode="system">System</button>
+    </div>
+  </header>
+
+  <main style="max-width: 480px;">
+    <h2>Default (label right)</h2>
+    <div class="col">
+      <que-switch label="Off"></que-switch>
+      <que-switch label="On" checked></que-switch>
+    </div>
+
+    <h2>Label left</h2>
+    <div class="col">
+      <que-switch label="Notifications" label-position="left"></que-switch>
+      <que-switch label="Dark mode" label-position="left" checked></que-switch>
+    </div>
+
+    <h2>With hint</h2>
+    <div class="col">
+      <que-switch label="Email notifications" label-position="left" hint="Receive updates via email" checked></que-switch>
+    </div>
+
+    <h2>Disabled</h2>
+    <div class="col">
+      <que-switch label="Disabled off" disabled></que-switch>
+      <que-switch label="Disabled on" disabled checked></que-switch>
+    </div>
+
+    <h2>Events</h2>
+    <que-switch id="live-switch" label="Toggle me"></que-switch>
+    <p id="event-log" style="font-family: var(--que-font-mono); font-size: var(--que-font-size-xs); color: var(--que-color-text-muted); margin-top: 8px;">—</p>
+  </main>
+
+  <style>
+    .col { display: flex; flex-direction: column; gap: 12px; }
+  </style>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/switch.js'
+
+    const ctrl = applyTheme(createTheme())
+
+    document.querySelectorAll('.theme-toggle button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.theme-toggle button').forEach(b => b.classList.remove('active'))
+        btn.classList.add('active')
+        ctrl.setMode(btn.dataset.mode)
+      })
+    })
+
+    const sync = () => document.querySelectorAll('.theme-toggle button').forEach(b => {
+      b.classList.toggle('active', b.dataset.mode === ctrl.mode)
+    })
+    ctrl.onChange(sync)
+    sync()
+
+    const log = document.getElementById('event-log')
+    document.getElementById('live-switch').addEventListener('que-change', e => {
+      log.textContent = `que-change → checked: ${e.detail.checked}`
+    })
+  </script>
+</body>
+</html>

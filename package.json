@@ -18,6 +18,9 @@
     "./button": {
       "import": "./dist/button.js"
     },
+    "./input": {
+      "import": "./dist/input.js"
+    },
     "./tokens.css": "./dist/tokens.css",
     "./utilities.css": "./dist/utilities.css",
     "./button.css": "./dist/button.css"

@@ -6,6 +6,7 @@
   <title>que-ui — Components (CSS)</title>
   <link rel="stylesheet" href="../dist/tokens.css" />
   <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/input.css" />
   <link rel="stylesheet" href="../dist/utilities.css" />
   <link rel="stylesheet" href="shared.css" />
 </head>
@@ -108,6 +109,30 @@
       <button class="que-button" style="--que-button-padding-x: 32px; --que-button-padding-y: 12px;">Tall &amp; wide</button>
       <button class="que-button" style="--que-button-font-size: 18px; --que-button-padding-x: 24px;">Bigger text</button>
       <button class="que-button" style="--que-button-radius: var(--que-radius-full);">Pill shape</button>
+    </div>
+
+    <h2>Input</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;">
+      <div class="que-input-field" style="min-width:200px;flex:1">
+        <div class="que-input-wrap">
+          <input class="que-input" type="text" placeholder=" " />
+          <label class="que-input-label">Default</label>
+        </div>
+        <span class="que-input-hint">Helper text</span>
+      </div>
+      <div class="que-input-field" style="min-width:200px;flex:1">
+        <div class="que-input-wrap">
+          <input class="que-input que-input--intent-danger que-input--filled" type="text" value="Invalid value" placeholder=" " />
+          <label class="que-input-label">Danger</label>
+        </div>
+        <span class="que-input-error">This field is required</span>
+      </div>
+      <div class="que-input-field" style="min-width:200px;flex:1">
+        <div class="que-input-wrap">
+          <input class="que-input" type="text" placeholder=" " disabled />
+          <label class="que-input-label">Disabled</label>
+        </div>
+      </div>
     </div>
 
     <h2>Spacing / Radius / Shadow</h2>

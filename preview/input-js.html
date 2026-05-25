@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Input (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="index.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="index-js.html" variant="ghost" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <button data-mode="light">Light</button>
+      <button data-mode="dark">Dark</button>
+      <button data-mode="system">System</button>
+    </div>
+  </header>
+
+  <main style="max-width: 640px;">
+    <h2>Default</h2>
+    <que-input label="Label" placeholder="Placeholder..." hint="Helper text goes here"></que-input>
+    <br />
+    <que-input label="Required" placeholder="Required field..." required></que-input>
+
+    <h2>Sizes</h2>
+    <que-input label="Small" size="sm" placeholder="Small input..."></que-input>
+    <br />
+    <que-input label="Medium" placeholder="Medium input..."></que-input>
+    <br />
+    <que-input label="Large" size="lg" placeholder="Large input..."></que-input>
+
+    <h2>Intents</h2>
+    <que-input label="Danger" intent="danger" value="Invalid value" error="This field is required"></que-input>
+    <br />
+    <que-input label="Success" intent="success" value="valid@email.com" hint="Looks good!"></que-input>
+    <br />
+    <que-input label="Warning" intent="warning" value="Weak password" hint="Consider a stronger password"></que-input>
+
+    <h2>States</h2>
+    <que-input label="Disabled" placeholder="Disabled..." disabled></que-input>
+    <br />
+    <que-input label="Readonly" value="Read only value" readonly></que-input>
+
+    <h2>Types</h2>
+    <que-input label="Password" type="password" placeholder="Password..."></que-input>
+    <br />
+    <que-input label="Number" type="number" placeholder="0"></que-input>
+    <br />
+    <que-input label="Search" type="search" placeholder="Search..."></que-input>
+
+    <h2>Events</h2>
+    <que-input id="live-input" label="Type something" placeholder="Watch events below..."></que-input>
+    <p id="event-log" style="font-family: var(--que-font-mono); font-size: var(--que-font-size-xs); color: var(--que-color-text-muted); margin-top: 8px;">—</p>
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/input.js'
+
+    const ctrl = applyTheme(createTheme())
+
+    document.querySelectorAll('.theme-toggle button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.theme-toggle button').forEach(b => b.classList.remove('active'))
+        btn.classList.add('active')
+        ctrl.setMode(btn.dataset.mode)
+      })
+    })
+
+    const sync = () => document.querySelectorAll('.theme-toggle button').forEach(b => {
+      b.classList.toggle('active', b.dataset.mode === ctrl.mode)
+    })
+    ctrl.onChange(sync)
+    sync()
+
+    const log = document.getElementById('event-log')
+    document.getElementById('live-input').addEventListener('que-input', e => {
+      log.textContent = `que-input → "${e.detail.value}"`
+    })
+  </script>
+</body>
+</html>

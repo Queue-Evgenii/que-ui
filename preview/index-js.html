@@ -110,6 +110,19 @@
       <que-button style="--que-button-radius: var(--que-radius-full);">Pill shape</que-button>
     </div>
 
+    <h2>Input</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;">
+      <div style="min-width:200px;flex:1">
+        <que-input label="Default" placeholder="Placeholder..." hint="Helper text"></que-input>
+      </div>
+      <div style="min-width:200px;flex:1">
+        <que-input label="Danger" intent="danger" value="Invalid value" error="This field is required"></que-input>
+      </div>
+      <div style="min-width:200px;flex:1">
+        <que-input label="Disabled" placeholder="Disabled..." disabled></que-input>
+      </div>
+    </div>
+
     <h2>Spacing / Radius / Shadow</h2>
     <div class="row">
       <div style="width:var(--que-space-4);height:var(--que-space-4);background:var(--que-color-primary);opacity:.5"></div>
@@ -124,6 +137,7 @@
   <script type="module">
     import { applyTheme, createTheme } from '../dist/theme.js'
     import '../dist/button.js'
+    import '../dist/input.js'
 
     const ctrl = applyTheme(createTheme())
 

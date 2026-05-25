@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Input (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/input.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .field-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; }
+    .field-row .que-input-field { min-width: 200px; flex: 1; }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="index.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="index-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <button data-mode="light" class="active">Light</button>
+      <button data-mode="dark">Dark</button>
+      <button data-mode="system">System</button>
+    </div>
+  </header>
+
+  <main>
+    <h2>Default</h2>
+    <div class="field-row">
+      <div class="que-input-field">
+        <div class="que-input-wrap">
+          <input class="que-input" type="text" placeholder=" " />
+          <label class="que-input-label">Label</label>
+        </div>
+        <span class="que-input-hint">Helper text goes here</span>
+      </div>
+      <div class="que-input-field">
+        <div class="que-input-wrap">
+          <input class="que-input" type="text" placeholder=" " />
+          <label class="que-input-label que-input-label--required">Required</label>
+        </div>
+      </div>
+    </div>
+
+    <h2>Sizes</h2>
+    <div class="field-row">
+      <div class="que-input-field">
+        <div class="que-input-wrap">
+          <input class="que-input que-input--sm" type="text" placeholder=" " />
+          <label class="que-input-label">Small</label>
+        </div>
+      </div>
+      <div class="que-input-field">
+        <div class="que-input-wrap">
+          <input class="que-input" type="text" placeholder=" " />
+          <label class="que-input-label">Medium</label>
+        </div>
+      </div>
+      <div class="que-input-field">
+        <div class="que-input-wrap">
+          <input class="que-input que-input--lg" type="text" placeholder=" " />
+          <label class="que-input-label">Large</label>
+        </div>
+      </div>
+    </div>
+
+    <h2>Intents</h2>
+    <div class="field-row">
+      <div class="que-input-field">
+        <div class="que-input-wrap">
+          <input class="que-input que-input--intent-danger que-input--filled" type="text" value="Invalid value" placeholder=" " />
+          <label class="que-input-label">Danger</label>
+        </div>
+        <span class="que-input-error">This field is required</span>
+      </div>
+      <div class="que-input-field">
+        <div class="que-input-wrap">
+          <input class="que-input que-input--intent-success que-input--filled" type="text" value="valid@email.com" placeholder=" " />
+          <label class="que-input-label">Success</label>
+        </div>
+        <span class="que-input-hint">Looks good!</span>
+      </div>
+      <div class="que-input-field">
+        <div class="que-input-wrap">
+          <input class="que-input que-input--intent-warning que-input--filled" type="text" value="Weak password" placeholder=" " />
+          <label class="que-input-label">Warning</label>
+        </div>
+        <span class="que-input-hint">Consider a stronger password</span>
+      </div>
+    </div>
+
+    <h2>States</h2>
+    <div class="field-row">
+      <div class="que-input-field">
+        <div class="que-input-wrap">
+          <input class="que-input" type="text" placeholder=" " disabled />
+          <label class="que-input-label">Disabled</label>
+        </div>
+      </div>
+      <div class="que-input-field">
+        <div class="que-input-wrap">
+          <input class="que-input que-input--filled" type="text" value="Read only value" placeholder=" " readonly />
+          <label class="que-input-label">Readonly</label>
+        </div>
+      </div>
+    </div>
+
+    <h2>Types</h2>
+    <div class="field-row">
+      <div class="que-input-field">
+        <div class="que-input-wrap">
+          <input class="que-input" type="password" placeholder=" " />
+          <label class="que-input-label">Password</label>
+        </div>
+      </div>
+      <div class="que-input-field">
+        <div class="que-input-wrap">
+          <input class="que-input" type="number" placeholder=" " />
+          <label class="que-input-label">Number</label>
+        </div>
+      </div>
+      <div class="que-input-field">
+        <div class="que-input-wrap">
+          <input class="que-input" type="search" placeholder=" " />
+          <label class="que-input-label">Search</label>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

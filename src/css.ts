@@ -1,3 +1,4 @@
 export * from './tokens'
 export { utilitiesCSS } from './utilities'
 export { buttonCSS } from './components/button/button.styles'
+export { inputCSS } from './components/input/input.styles'

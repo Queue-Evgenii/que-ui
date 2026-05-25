@@ -53,7 +53,7 @@ Legend: ✅ Done · 🚧 In Progress · ⬜ Not Started · ❌ Blocked
 |--------|-----------|-----|
 | ✅ | Button | `<que-button>` |
 | ✅ | Input | `<que-input>` |
-| ⬜ | Textarea | `<que-textarea>` |
+| ✅ | Textarea | `<que-textarea>` |
 | ⬜ | Checkbox | `<que-checkbox>` |
 | ⬜ | Switch / Toggle | `<que-switch>` |
 | ⬜ | Radio + Radio Group | `<que-radio>`, `<que-radio-group>` |

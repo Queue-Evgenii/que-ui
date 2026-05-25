@@ -9,30 +9,35 @@ Legend: ✅ Done · 🚧 In Progress · ⬜ Not Started · ❌ Blocked
 ### Infrastructure
 | Status | Task |
 |--------|------|
-| ⬜ | Project setup (TypeScript, build, test runner) |
+| ✅ | Project setup (TypeScript strict, esbuild, exports map) |
 | ⬜ | `BaseElement` class — base for all components |
 | ⬜ | CSS adoption helper (`adoptedStyleSheets`) |
-| ⬜ | Design token system (TS → CSS Custom Properties) |
+| ✅ | Design token system (TS → CSS Custom Properties) |
+| ✅ | Utility classes generated from tokens (`dist/utilities.css`) |
+| ✅ | Theme engine — `createTheme`, `applyTheme`, `ThemeController` |
+| ✅ | `cssVar` / `tokensToCSSVars` utils |
 | ⬜ | DOM utility helpers (createElement, on, off, etc.) |
 | ⬜ | Positioning algorithm (for tooltips, popovers, menus) |
 | ⬜ | Focus trap utility |
 | ⬜ | Scroll lock utility |
 | ⬜ | Event bus / custom events pattern |
 | ⬜ | Test setup (unit + browser) |
-| ⬜ | npm package config (ESM, CJS, types, exports map) |
+| ✅ | npm package config (ESM, CJS, types, exports map) |
+| ✅ | Preview (4 HTML files: CSS/JS × Components/Theme) |
+| ✅ | Build script (`npm run build` → tokens.css, utilities.css, index.js, index.cjs) |
 
 ### Design Tokens
 | Status | Category |
 |--------|----------|
-| ⬜ | Color (primary, secondary, surface, text, danger, warning, success) |
-| ⬜ | Typography (font-family, size scale, weight, line-height) |
-| ⬜ | Spacing (4px scale: space-1 … space-16) |
-| ⬜ | Border radius (sm, md, lg, full) |
-| ⬜ | Shadow (sm, md, lg) |
-| ⬜ | Motion (duration-fast, duration-normal, easing-out, easing-in-out) |
-| ⬜ | Z-index (base, dropdown, modal, toast, tooltip) |
-| ⬜ | Light theme |
-| ⬜ | Dark theme |
+| ✅ | Color (primary, secondary, surface, text, danger, warning, success) |
+| ✅ | Typography (font-family, size scale, weight, line-height) |
+| ✅ | Spacing (4px scale: space-0 … space-24) |
+| ✅ | Border radius (sm, md, lg, full) |
+| ✅ | Shadow (xs, sm, md, lg, xl, 2xl, inner) |
+| ✅ | Motion (duration × 5, easing × 5) |
+| ✅ | Z-index (hide, base, raised, dropdown, sticky, overlay, modal, toast, tooltip) |
+| ✅ | Light theme |
+| ✅ | Dark theme |
 
 ### Layout Components
 | Status | Component | Tag |

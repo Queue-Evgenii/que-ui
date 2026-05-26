@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Badge (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/badge.css" />
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="index.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="index-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Solid (default)</h2>
+    <div class="row">
+      <span class="que-badge">Neutral</span>
+      <span class="que-badge que-badge--intent-primary">Primary</span>
+      <span class="que-badge que-badge--intent-secondary">Secondary</span>
+      <span class="que-badge que-badge--intent-success">Success</span>
+      <span class="que-badge que-badge--intent-warning">Warning</span>
+      <span class="que-badge que-badge--intent-danger">Danger</span>
+    </div>
+
+    <h2>Outline</h2>
+    <div class="row">
+      <span class="que-badge que-badge--outline">Neutral</span>
+      <span class="que-badge que-badge--outline que-badge--intent-primary">Primary</span>
+      <span class="que-badge que-badge--outline que-badge--intent-secondary">Secondary</span>
+      <span class="que-badge que-badge--outline que-badge--intent-success">Success</span>
+      <span class="que-badge que-badge--outline que-badge--intent-warning">Warning</span>
+      <span class="que-badge que-badge--outline que-badge--intent-danger">Danger</span>
+    </div>
+
+    <h2>Subtle</h2>
+    <div class="row">
+      <span class="que-badge que-badge--subtle">Neutral</span>
+      <span class="que-badge que-badge--subtle que-badge--intent-primary">Primary</span>
+      <span class="que-badge que-badge--subtle que-badge--intent-secondary">Secondary</span>
+      <span class="que-badge que-badge--subtle que-badge--intent-success">Success</span>
+      <span class="que-badge que-badge--subtle que-badge--intent-warning">Warning</span>
+      <span class="que-badge que-badge--subtle que-badge--intent-danger">Danger</span>
+    </div>
+
+    <h2>Sizes</h2>
+    <div class="row" style="align-items: center;">
+      <span class="que-badge que-badge--sm que-badge--intent-primary">Small</span>
+      <span class="que-badge que-badge--intent-primary">Medium</span>
+      <span class="que-badge que-badge--lg que-badge--intent-primary">Large</span>
+    </div>
+
+    <h2>Sizes — all variants</h2>
+    <div class="row" style="align-items: center; flex-wrap: wrap; gap: 16px;">
+      <div class="row" style="align-items: center;">
+        <span class="que-badge que-badge--sm">sm</span>
+        <span class="que-badge">md</span>
+        <span class="que-badge que-badge--lg">lg</span>
+      </div>
+      <div class="row" style="align-items: center;">
+        <span class="que-badge que-badge--sm que-badge--outline">sm</span>
+        <span class="que-badge que-badge--outline">md</span>
+        <span class="que-badge que-badge--lg que-badge--outline">lg</span>
+      </div>
+      <div class="row" style="align-items: center;">
+        <span class="que-badge que-badge--sm que-badge--subtle que-badge--intent-success">sm</span>
+        <span class="que-badge que-badge--subtle que-badge--intent-success">md</span>
+        <span class="que-badge que-badge--lg que-badge--subtle que-badge--intent-success">lg</span>
+      </div>
+    </div>
+
+    <h2>Square shape</h2>
+    <div class="row" style="align-items: center;">
+      <span class="que-badge que-badge--intent-danger" style="--que-badge-radius: var(--que-radius-sm);">7</span>
+      <span class="que-badge que-badge--intent-primary" style="--que-badge-radius: var(--que-radius-md);">New</span>
+      <span class="que-badge que-badge--subtle que-badge--intent-success" style="--que-badge-radius: var(--que-radius-md);">Active</span>
+    </div>
+
+    <h2>In context</h2>
+    <div class="row" style="align-items: center;">
+      <span>Messages <span class="que-badge que-badge--sm que-badge--intent-danger">12</span></span>
+      <span>Status <span class="que-badge que-badge--sm que-badge--subtle que-badge--intent-success">Active</span></span>
+      <span>Version <span class="que-badge que-badge--sm que-badge--outline">v2.0</span></span>
+    </div>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

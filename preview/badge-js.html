@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Badge (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="index.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="index-js.html" variant="ghost" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Solid (default)</h2>
+    <div class="row">
+      <que-badge>Neutral</que-badge>
+      <que-badge intent="primary">Primary</que-badge>
+      <que-badge intent="secondary">Secondary</que-badge>
+      <que-badge intent="success">Success</que-badge>
+      <que-badge intent="warning">Warning</que-badge>
+      <que-badge intent="danger">Danger</que-badge>
+    </div>
+
+    <h2>Outline</h2>
+    <div class="row">
+      <que-badge variant="outline">Neutral</que-badge>
+      <que-badge variant="outline" intent="primary">Primary</que-badge>
+      <que-badge variant="outline" intent="secondary">Secondary</que-badge>
+      <que-badge variant="outline" intent="success">Success</que-badge>
+      <que-badge variant="outline" intent="warning">Warning</que-badge>
+      <que-badge variant="outline" intent="danger">Danger</que-badge>
+    </div>
+
+    <h2>Subtle</h2>
+    <div class="row">
+      <que-badge variant="subtle">Neutral</que-badge>
+      <que-badge variant="subtle" intent="primary">Primary</que-badge>
+      <que-badge variant="subtle" intent="secondary">Secondary</que-badge>
+      <que-badge variant="subtle" intent="success">Success</que-badge>
+      <que-badge variant="subtle" intent="warning">Warning</que-badge>
+      <que-badge variant="subtle" intent="danger">Danger</que-badge>
+    </div>
+
+    <h2>Sizes</h2>
+    <div class="row" style="align-items: center;">
+      <que-badge size="sm" intent="primary">Small</que-badge>
+      <que-badge intent="primary">Medium</que-badge>
+      <que-badge size="lg" intent="primary">Large</que-badge>
+    </div>
+
+    <h2>Sizes — all variants</h2>
+    <div class="row" style="align-items: center; flex-wrap: wrap; gap: 16px;">
+      <div class="row" style="align-items: center;">
+        <que-badge size="sm">sm</que-badge>
+        <que-badge>md</que-badge>
+        <que-badge size="lg">lg</que-badge>
+      </div>
+      <div class="row" style="align-items: center;">
+        <que-badge size="sm" variant="outline">sm</que-badge>
+        <que-badge variant="outline">md</que-badge>
+        <que-badge size="lg" variant="outline">lg</que-badge>
+      </div>
+      <div class="row" style="align-items: center;">
+        <que-badge size="sm" variant="subtle" intent="success">sm</que-badge>
+        <que-badge variant="subtle" intent="success">md</que-badge>
+        <que-badge size="lg" variant="subtle" intent="success">lg</que-badge>
+      </div>
+    </div>
+
+    <h2>Square shape</h2>
+    <div class="row" style="align-items: center;">
+      <que-badge intent="danger" style="--que-badge-radius: var(--que-radius-sm);">7</que-badge>
+      <que-badge intent="primary" style="--que-badge-radius: var(--que-radius-md);">New</que-badge>
+      <que-badge variant="subtle" intent="success" style="--que-badge-radius: var(--que-radius-md);">Active</que-badge>
+    </div>
+
+    <h2>In context</h2>
+    <div class="row" style="align-items: center;">
+      <span>Messages <que-badge size="sm" intent="danger">12</que-badge></span>
+      <span>Status <que-badge size="sm" variant="subtle" intent="success">Active</que-badge></span>
+      <span>Version <que-badge size="sm" variant="outline">v2.0</que-badge></span>
+    </div>
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/badge.js'
+
+    const ctrl = applyTheme(createTheme())
+
+    const toggle = document.getElementById('theme-toggle')
+    if (toggle) {
+      toggle.addEventListener('change', e => ctrl.setMode(e.target.value))
+      const sync = () => { const i = toggle.querySelector(`input[value="${ctrl.mode}"]`); if (i) i.checked = true }
+      ctrl.onChange(sync)
+      sync()
+    }
+  </script>
+</body>
+</html>

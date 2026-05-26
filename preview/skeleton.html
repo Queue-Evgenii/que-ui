@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Skeleton (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/skeleton.css" />
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="skeleton.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="skeleton-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Text lines</h2>
+    <div class="col" style="gap: 8px; max-width: 400px;">
+      <span class="que-skeleton que-skeleton--text"></span>
+      <span class="que-skeleton que-skeleton--text"></span>
+      <span class="que-skeleton que-skeleton--text" style="--que-skeleton-width: 70%"></span>
+    </div>
+
+    <h2>Rectangle</h2>
+    <div class="col" style="gap: 8px; max-width: 400px;">
+      <span class="que-skeleton que-skeleton--rect"></span>
+    </div>
+
+    <h2>Circle</h2>
+    <div class="row" style="gap: 12px; align-items: center;">
+      <span class="que-skeleton que-skeleton--circle" style="--que-skeleton-width:32px; --que-skeleton-height:32px;"></span>
+      <span class="que-skeleton que-skeleton--circle"></span>
+      <span class="que-skeleton que-skeleton--circle" style="--que-skeleton-width:56px; --que-skeleton-height:56px;"></span>
+      <span class="que-skeleton que-skeleton--circle" style="--que-skeleton-width:80px; --que-skeleton-height:80px;"></span>
+    </div>
+
+    <h2>Custom size</h2>
+    <div class="col" style="gap: 8px;">
+      <span class="que-skeleton" style="--que-skeleton-width:200px; --que-skeleton-height:12px;"></span>
+      <span class="que-skeleton" style="--que-skeleton-width:300px; --que-skeleton-height:40px; --que-skeleton-radius: var(--que-radius-lg);"></span>
+    </div>
+
+    <h2>Card placeholder</h2>
+    <div style="max-width: 320px; display: flex; flex-direction: column; gap: 12px; padding: 16px; border: 1px solid var(--que-color-border); border-radius: var(--que-radius-lg);">
+      <span class="que-skeleton que-skeleton--rect" style="--que-skeleton-height: 160px;"></span>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span class="que-skeleton que-skeleton--circle"></span>
+        <div style="flex:1; display:flex; flex-direction:column; gap:6px;">
+          <span class="que-skeleton que-skeleton--text"></span>
+          <span class="que-skeleton que-skeleton--text" style="--que-skeleton-width:60%"></span>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <span class="que-skeleton que-skeleton--text"></span>
+        <span class="que-skeleton que-skeleton--text"></span>
+        <span class="que-skeleton que-skeleton--text" style="--que-skeleton-width:80%"></span>
+      </div>
+    </div>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

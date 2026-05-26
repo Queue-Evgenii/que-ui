@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Skeleton (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="skeleton.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="skeleton-js.html" variant="ghost" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Text lines</h2>
+    <div class="col" style="gap: 8px; max-width: 400px;">
+      <que-skeleton></que-skeleton>
+      <que-skeleton></que-skeleton>
+      <que-skeleton width="70%"></que-skeleton>
+    </div>
+
+    <h2>Rectangle</h2>
+    <div style="max-width: 400px;">
+      <que-skeleton variant="rect"></que-skeleton>
+    </div>
+
+    <h2>Circle</h2>
+    <div class="row" style="gap: 12px; align-items: center;">
+      <que-skeleton variant="circle" width="32px" height="32px"></que-skeleton>
+      <que-skeleton variant="circle"></que-skeleton>
+      <que-skeleton variant="circle" width="56px" height="56px"></que-skeleton>
+      <que-skeleton variant="circle" width="80px" height="80px"></que-skeleton>
+    </div>
+
+    <h2>Custom size</h2>
+    <div class="col" style="gap: 8px;">
+      <que-skeleton width="200px" height="12px"></que-skeleton>
+      <que-skeleton width="300px" height="40px" radius="var(--que-radius-lg)"></que-skeleton>
+    </div>
+
+    <h2>Card placeholder</h2>
+    <div style="max-width: 320px; display: flex; flex-direction: column; gap: 12px; padding: 16px; border: 1px solid var(--que-color-border); border-radius: var(--que-radius-lg);">
+      <que-skeleton variant="rect" height="160px"></que-skeleton>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <que-skeleton variant="circle"></que-skeleton>
+        <div style="flex:1; display:flex; flex-direction:column; gap:6px;">
+          <que-skeleton></que-skeleton>
+          <que-skeleton width="60%"></que-skeleton>
+        </div>
+      </div>
+      <div class="col" style="gap: 6px;">
+        <que-skeleton></que-skeleton>
+        <que-skeleton></que-skeleton>
+        <que-skeleton width="80%"></que-skeleton>
+      </div>
+    </div>
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/skeleton.js'
+
+    const ctrl = applyTheme(createTheme())
+
+    const toggle = document.getElementById('theme-toggle')
+    if (toggle) {
+      toggle.addEventListener('change', e => ctrl.setMode(e.target.value))
+      const sync = () => { const i = toggle.querySelector(`input[value="${ctrl.mode}"]`); if (i) i.checked = true }
+      ctrl.onChange(sync)
+      sync()
+    }
+  </script>
+</body>
+</html>

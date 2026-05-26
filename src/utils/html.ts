@@ -3,5 +3,7 @@ export function esc(s: string): string {
 }
 
 export function sanitizeUrl(url: string): string {
-  return /^(https?:|mailto:|tel:|\/|#)/i.test(url.trim()) ? url : '#'
+  const t = url.trim()
+  // block javascript: and data: but allow relative paths, absolute paths, anchors, and standard schemes
+  return /^(javascript:|data:)/i.test(t) ? '#' : t
 }

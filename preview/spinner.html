@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Spinner (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/spinner.css" />
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="index.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="index-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Default (primary)</h2>
+    <div class="row">
+      <span class="que-spinner" role="status" aria-label="Loading"></span>
+    </div>
+
+    <h2>Sizes</h2>
+    <div class="row" style="align-items: center;">
+      <span class="que-spinner que-spinner--sm" role="status" aria-label="Loading"></span>
+      <span class="que-spinner" role="status" aria-label="Loading"></span>
+      <span class="que-spinner que-spinner--lg" role="status" aria-label="Loading"></span>
+      <span class="que-spinner que-spinner--xl" role="status" aria-label="Loading"></span>
+    </div>
+
+    <h2>Intents</h2>
+    <div class="row" style="align-items: center;">
+      <span class="que-spinner" role="status" aria-label="Loading"></span>
+      <span class="que-spinner que-spinner--intent-secondary" role="status" aria-label="Loading"></span>
+      <span class="que-spinner que-spinner--intent-success" role="status" aria-label="Loading"></span>
+      <span class="que-spinner que-spinner--intent-warning" role="status" aria-label="Loading"></span>
+      <span class="que-spinner que-spinner--intent-danger" role="status" aria-label="Loading"></span>
+      <span class="que-spinner que-spinner--intent-neutral" role="status" aria-label="Loading"></span>
+    </div>
+
+    <h2>Custom color &amp; size</h2>
+    <div class="row" style="align-items: center;">
+      <span class="que-spinner" style="--que-spinner-color: hotpink;" role="status" aria-label="Loading"></span>
+      <span class="que-spinner" style="--que-spinner-size: 40px; --que-spinner-thickness: 4px; --que-spinner-color: var(--que-color-success);" role="status" aria-label="Loading"></span>
+    </div>
+
+    <h2>Speed</h2>
+    <div class="row" style="align-items: center;">
+      <span class="que-spinner" style="--que-spinner-speed: 2s;" role="status" aria-label="Loading"></span>
+      <span class="que-spinner" role="status" aria-label="Loading"></span>
+      <span class="que-spinner" style="--que-spinner-speed: 0.4s;" role="status" aria-label="Loading"></span>
+      <span class="que-spinner" style="--que-spinner-speed: 0.2s;" role="status" aria-label="Loading"></span>
+    </div>
+
+    <h2>In context — button loading</h2>
+    <div class="row">
+      <button class="que-button que-button--intent-primary" disabled style="display:flex;align-items:center;gap:8px;">
+        <span class="que-spinner que-spinner--sm" style="--que-spinner-color:#fff;--que-spinner-track-color:rgba(255,255,255,0.3);" role="status" aria-label="Loading"></span>
+        Saving…
+      </button>
+      <button class="que-button que-button--outline" disabled style="display:flex;align-items:center;gap:8px;">
+        <span class="que-spinner que-spinner--sm" role="status" aria-label="Loading"></span>
+        Loading
+      </button>
+    </div>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

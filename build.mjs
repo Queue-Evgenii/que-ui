@@ -10,7 +10,7 @@ mkdirSync('dist', { recursive: true })
 
 // Bundle CSS-only exports into a temp file to extract values (no DOM/HTMLElement)
 await build({ entryPoints: ['src/css.ts'], bundle: true, format: 'esm', outfile: TMP })
-const { defaultTokens, defaultDarkTokens, utilitiesCSS, buttonCSS, inputCSS, textareaCSS, checkboxCSS, switchCSS, radioCSS, segmentedCSS, selectCSS, sliderCSS, badgeCSS } = await import(pathToFileURL(TMP).href)
+const { defaultTokens, defaultDarkTokens, utilitiesCSS, buttonCSS, inputCSS, textareaCSS, checkboxCSS, switchCSS, radioCSS, segmentedCSS, selectCSS, sliderCSS, badgeCSS, spinnerCSS, alertCSS } = await import(pathToFileURL(TMP).href)
 import('fs').then(fs => fs.unlinkSync(TMP))
 
 function toCSSVars(tokens) {
@@ -66,6 +66,12 @@ console.log('dist/slider.css')
 writeFileSync('dist/badge.css', badgeCSS.trim())
 console.log('dist/badge.css')
 
+writeFileSync('dist/spinner.css', spinnerCSS.trim())
+console.log('dist/spinner.css')
+
+writeFileSync('dist/alert.css', alertCSS.trim())
+console.log('dist/alert.css')
+
 const sharedConfig = { bundle: true, sourcemap: true }
 
 // Full library
@@ -109,5 +115,11 @@ console.log('dist/slider.js')
 
 await build({ ...sharedConfig, entryPoints: ['src/components/badge/badge.ts'], format: 'esm', outfile: 'dist/badge.js' })
 console.log('dist/badge.js')
+
+await build({ ...sharedConfig, entryPoints: ['src/components/spinner/spinner.ts'], format: 'esm', outfile: 'dist/spinner.js' })
+console.log('dist/spinner.js')
+
+await build({ ...sharedConfig, entryPoints: ['src/components/alert/alert.ts'], format: 'esm', outfile: 'dist/alert.js' })
+console.log('dist/alert.js')
 
 console.log('\nBuild complete.')

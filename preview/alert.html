@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Alert (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/alert.css" />
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="index.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="index-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Intents — Subtle (default)</h2>
+    <div class="col" style="gap:8px;">
+      <div class="que-alert que-alert--intent-info" role="alert">
+        <span class="que-alert__icon"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-7-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM9 9a.75.75 0 0 0 0 1.5h.253a.25.25 0 0 1 .244.304l-.459 2.066A1.75 1.75 0 0 0 10.747 15H11a.75.75 0 0 0 0-1.5h-.253a.25.25 0 0 1-.244-.304l.459-2.066A1.75 1.75 0 0 0 9.253 9H9Z" clip-rule="evenodd"/></svg></span>
+        <span class="que-alert__body"><strong class="que-alert__title">Info</strong><span class="que-alert__desc">This is an informational message.</span></span>
+      </div>
+      <div class="que-alert que-alert--intent-success" role="alert">
+        <span class="que-alert__icon"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd"/></svg></span>
+        <span class="que-alert__body"><strong class="que-alert__title">Success</strong><span class="que-alert__desc">Your changes have been saved successfully.</span></span>
+      </div>
+      <div class="que-alert que-alert--intent-warning" role="alert">
+        <span class="que-alert__icon"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495ZM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5Zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clip-rule="evenodd"/></svg></span>
+        <span class="que-alert__body"><strong class="que-alert__title">Warning</strong><span class="que-alert__desc">Please review before continuing.</span></span>
+      </div>
+      <div class="que-alert que-alert--intent-danger" role="alert">
+        <span class="que-alert__icon"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM8.28 7.22a.75.75 0 0 0-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 1 0 1.06 1.06L10 11.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L11.06 10l1.72-1.72a.75.75 0 0 0-1.06-1.06L10 8.94 8.28 7.22Z" clip-rule="evenodd"/></svg></span>
+        <span class="que-alert__body"><strong class="que-alert__title">Error</strong><span class="que-alert__desc">Something went wrong. Please try again.</span></span>
+      </div>
+    </div>
+
+    <h2>Outline variant</h2>
+    <div class="col" style="gap:8px;">
+      <div class="que-alert que-alert--outline que-alert--intent-info" role="alert">
+        <span class="que-alert__icon"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-7-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM9 9a.75.75 0 0 0 0 1.5h.253a.25.25 0 0 1 .244.304l-.459 2.066A1.75 1.75 0 0 0 10.747 15H11a.75.75 0 0 0 0-1.5h-.253a.25.25 0 0 1-.244-.304l.459-2.066A1.75 1.75 0 0 0 9.253 9H9Z" clip-rule="evenodd"/></svg></span>
+        <span class="que-alert__body"><strong class="que-alert__title">Info</strong><span class="que-alert__desc">This is an informational message.</span></span>
+      </div>
+      <div class="que-alert que-alert--outline que-alert--intent-success" role="alert">
+        <span class="que-alert__icon"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd"/></svg></span>
+        <span class="que-alert__body"><strong class="que-alert__title">Success</strong><span class="que-alert__desc">Your changes have been saved successfully.</span></span>
+      </div>
+      <div class="que-alert que-alert--outline que-alert--intent-warning" role="alert">
+        <span class="que-alert__icon"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495ZM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5Zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clip-rule="evenodd"/></svg></span>
+        <span class="que-alert__body"><strong class="que-alert__title">Warning</strong><span class="que-alert__desc">Please review before continuing.</span></span>
+      </div>
+      <div class="que-alert que-alert--outline que-alert--intent-danger" role="alert">
+        <span class="que-alert__icon"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM8.28 7.22a.75.75 0 0 0-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 1 0 1.06 1.06L10 11.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L11.06 10l1.72-1.72a.75.75 0 0 0-1.06-1.06L10 8.94 8.28 7.22Z" clip-rule="evenodd"/></svg></span>
+        <span class="que-alert__body"><strong class="que-alert__title">Error</strong><span class="que-alert__desc">Something went wrong. Please try again.</span></span>
+      </div>
+    </div>
+
+    <h2>Solid variant</h2>
+    <div class="col" style="gap:8px;">
+      <div class="que-alert que-alert--solid que-alert--intent-info" role="alert">
+        <span class="que-alert__icon"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-7-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM9 9a.75.75 0 0 0 0 1.5h.253a.25.25 0 0 1 .244.304l-.459 2.066A1.75 1.75 0 0 0 10.747 15H11a.75.75 0 0 0 0-1.5h-.253a.25.25 0 0 1-.244-.304l.459-2.066A1.75 1.75 0 0 0 9.253 9H9Z" clip-rule="evenodd"/></svg></span>
+        <span class="que-alert__body"><strong class="que-alert__title">Info</strong><span class="que-alert__desc">This is an informational message.</span></span>
+      </div>
+      <div class="que-alert que-alert--solid que-alert--intent-success" role="alert">
+        <span class="que-alert__icon"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd"/></svg></span>
+        <span class="que-alert__body"><strong class="que-alert__title">Success</strong><span class="que-alert__desc">Your changes have been saved successfully.</span></span>
+      </div>
+      <div class="que-alert que-alert--solid que-alert--intent-warning" role="alert">
+        <span class="que-alert__icon"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495ZM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5Zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clip-rule="evenodd"/></svg></span>
+        <span class="que-alert__body"><strong class="que-alert__title">Warning</strong><span class="que-alert__desc">Please review before continuing.</span></span>
+      </div>
+      <div class="que-alert que-alert--solid que-alert--intent-danger" role="alert">
+        <span class="que-alert__icon"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM8.28 7.22a.75.75 0 0 0-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 1 0 1.06 1.06L10 11.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L11.06 10l1.72-1.72a.75.75 0 0 0-1.06-1.06L10 8.94 8.28 7.22Z" clip-rule="evenodd"/></svg></span>
+        <span class="que-alert__body"><strong class="que-alert__title">Error</strong><span class="que-alert__desc">Something went wrong. Please try again.</span></span>
+      </div>
+    </div>
+
+    <h2>Sizes</h2>
+    <div class="col" style="gap:8px;">
+      <div class="que-alert que-alert--sm que-alert--intent-info" role="alert">
+        <span class="que-alert__icon"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-7-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM9 9a.75.75 0 0 0 0 1.5h.253a.25.25 0 0 1 .244.304l-.459 2.066A1.75 1.75 0 0 0 10.747 15H11a.75.75 0 0 0 0-1.5h-.253a.25.25 0 0 1-.244-.304l.459-2.066A1.75 1.75 0 0 0 9.253 9H9Z" clip-rule="evenodd"/></svg></span>
+        <span class="que-alert__body"><strong class="que-alert__title">Small</strong><span class="que-alert__desc">Compact alert for tight layouts.</span></span>
+      </div>
+      <div class="que-alert que-alert--intent-success" role="alert">
+        <span class="que-alert__icon"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd"/></svg></span>
+        <span class="que-alert__body"><strong class="que-alert__title">Medium (default)</strong><span class="que-alert__desc">Standard alert size.</span></span>
+      </div>
+      <div class="que-alert que-alert--lg que-alert--intent-warning" role="alert">
+        <span class="que-alert__icon"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495ZM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5Zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clip-rule="evenodd"/></svg></span>
+        <span class="que-alert__body"><strong class="que-alert__title">Large</strong><span class="que-alert__desc">Larger alert for prominent messages.</span></span>
+      </div>
+    </div>
+
+    <h2>Title only / Description only</h2>
+    <div class="col" style="gap:8px;">
+      <div class="que-alert que-alert--intent-info" role="alert">
+        <span class="que-alert__icon"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-7-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM9 9a.75.75 0 0 0 0 1.5h.253a.25.25 0 0 1 .244.304l-.459 2.066A1.75 1.75 0 0 0 10.747 15H11a.75.75 0 0 0 0-1.5h-.253a.25.25 0 0 1-.244-.304l.459-2.066A1.75 1.75 0 0 0 9.253 9H9Z" clip-rule="evenodd"/></svg></span>
+        <span class="que-alert__body"><strong class="que-alert__title">Title only alert, no description below.</strong></span>
+      </div>
+      <div class="que-alert que-alert--intent-danger" role="alert">
+        <span class="que-alert__icon"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM8.28 7.22a.75.75 0 0 0-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 1 0 1.06 1.06L10 11.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L11.06 10l1.72-1.72a.75.75 0 0 0-1.06-1.06L10 8.94 8.28 7.22Z" clip-rule="evenodd"/></svg></span>
+        <span class="que-alert__body"><span class="que-alert__desc">Description-only alert with no title, just the message text inline.</span></span>
+      </div>
+    </div>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

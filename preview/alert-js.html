@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Alert (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="index.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="index-js.html" variant="ghost" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Intents — Subtle (default)</h2>
+    <div class="col" style="gap:8px;">
+      <que-alert intent="info" title="Info">This is an informational message.</que-alert>
+      <que-alert intent="success" title="Success">Your changes have been saved successfully.</que-alert>
+      <que-alert intent="warning" title="Warning">Please review before continuing.</que-alert>
+      <que-alert intent="danger" title="Error">Something went wrong. Please try again.</que-alert>
+    </div>
+
+    <h2>Outline variant</h2>
+    <div class="col" style="gap:8px;">
+      <que-alert intent="info"    variant="outline" title="Info">This is an informational message.</que-alert>
+      <que-alert intent="success" variant="outline" title="Success">Your changes have been saved successfully.</que-alert>
+      <que-alert intent="warning" variant="outline" title="Warning">Please review before continuing.</que-alert>
+      <que-alert intent="danger"  variant="outline" title="Error">Something went wrong. Please try again.</que-alert>
+    </div>
+
+    <h2>Solid variant</h2>
+    <div class="col" style="gap:8px;">
+      <que-alert intent="info"    variant="solid" title="Info">This is an informational message.</que-alert>
+      <que-alert intent="success" variant="solid" title="Success">Your changes have been saved successfully.</que-alert>
+      <que-alert intent="warning" variant="solid" title="Warning">Please review before continuing.</que-alert>
+      <que-alert intent="danger"  variant="solid" title="Error">Something went wrong. Please try again.</que-alert>
+    </div>
+
+    <h2>Sizes</h2>
+    <div class="col" style="gap:8px;">
+      <que-alert intent="info"    size="sm" title="Small">Compact alert for tight layouts.</que-alert>
+      <que-alert intent="success"           title="Medium (default)">Standard alert size.</que-alert>
+      <que-alert intent="warning" size="lg" title="Large">Larger alert for prominent messages.</que-alert>
+    </div>
+
+    <h2>Title only / Description only</h2>
+    <div class="col" style="gap:8px;">
+      <que-alert intent="info"   title="Title only alert, no description below."></que-alert>
+      <que-alert intent="danger">Description-only alert with no title, just the message text inline.</que-alert>
+    </div>
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/alert.js'
+
+    const ctrl = applyTheme(createTheme())
+
+    const toggle = document.getElementById('theme-toggle')
+    if (toggle) {
+      toggle.addEventListener('change', e => ctrl.setMode(e.target.value))
+      const sync = () => { const i = toggle.querySelector(`input[value="${ctrl.mode}"]`); if (i) i.checked = true }
+      ctrl.onChange(sync)
+      sync()
+    }
+  </script>
+</body>
+</html>

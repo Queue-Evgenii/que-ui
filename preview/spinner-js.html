@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Spinner (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="index.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="index-js.html" variant="ghost" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Default (primary)</h2>
+    <div class="row">
+      <que-spinner></que-spinner>
+    </div>
+
+    <h2>Sizes</h2>
+    <div class="row" style="align-items: center;">
+      <que-spinner size="sm"></que-spinner>
+      <que-spinner></que-spinner>
+      <que-spinner size="lg"></que-spinner>
+      <que-spinner size="xl"></que-spinner>
+    </div>
+
+    <h2>Intents</h2>
+    <div class="row" style="align-items: center;">
+      <que-spinner intent="primary"></que-spinner>
+      <que-spinner intent="secondary"></que-spinner>
+      <que-spinner intent="success"></que-spinner>
+      <que-spinner intent="warning"></que-spinner>
+      <que-spinner intent="danger"></que-spinner>
+      <que-spinner intent="neutral"></que-spinner>
+    </div>
+
+    <h2>Custom color &amp; size</h2>
+    <div class="row" style="align-items: center;">
+      <que-spinner style="--que-spinner-color: hotpink;"></que-spinner>
+      <que-spinner style="--que-spinner-size: 40px; --que-spinner-thickness: 4px; --que-spinner-color: var(--que-color-success);"></que-spinner>
+    </div>
+
+    <h2>Speed</h2>
+    <div class="row" style="align-items: center;">
+      <que-spinner speed="2s"></que-spinner>
+      <que-spinner></que-spinner>
+      <que-spinner speed="0.4s"></que-spinner>
+      <que-spinner style="--que-spinner-speed: 0.2s;"></que-spinner>
+    </div>
+
+    <h2>In context — button loading</h2>
+    <div class="row" style="align-items: center;">
+      <que-button intent="primary" disabled style="display:flex;align-items:center;gap:8px;">
+        <que-spinner size="sm" style="--que-spinner-color:#fff;--que-spinner-track-color:rgba(255,255,255,0.3);"></que-spinner>
+        Saving…
+      </que-button>
+      <que-button variant="outline" disabled style="display:flex;align-items:center;gap:8px;">
+        <que-spinner size="sm"></que-spinner>
+        Loading
+      </que-button>
+    </div>
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/spinner.js'
+
+    const ctrl = applyTheme(createTheme())
+
+    const toggle = document.getElementById('theme-toggle')
+    if (toggle) {
+      toggle.addEventListener('change', e => ctrl.setMode(e.target.value))
+      const sync = () => { const i = toggle.querySelector(`input[value="${ctrl.mode}"]`); if (i) i.checked = true }
+      ctrl.onChange(sync)
+      sync()
+    }
+  </script>
+</body>
+</html>

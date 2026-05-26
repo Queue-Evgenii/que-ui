@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Progress (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="progress.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="progress-js.html" variant="ghost" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Default (primary)</h2>
+    <div class="col" style="gap: 8px;">
+      <que-progress value="0"></que-progress>
+      <que-progress value="25"></que-progress>
+      <que-progress value="60"></que-progress>
+      <que-progress value="100"></que-progress>
+    </div>
+
+    <h2>Intents</h2>
+    <div class="col" style="gap: 8px;">
+      <que-progress value="70" intent="primary"></que-progress>
+      <que-progress value="70" intent="secondary"></que-progress>
+      <que-progress value="70" intent="success"></que-progress>
+      <que-progress value="70" intent="warning"></que-progress>
+      <que-progress value="70" intent="danger"></que-progress>
+      <que-progress value="70" intent="neutral"></que-progress>
+    </div>
+
+    <h2>Sizes</h2>
+    <div class="col" style="gap: 10px;">
+      <que-progress value="60" size="sm"></que-progress>
+      <que-progress value="60"></que-progress>
+      <que-progress value="60" size="lg"></que-progress>
+      <que-progress value="60" size="xl"></que-progress>
+    </div>
+
+    <h2>Indeterminate</h2>
+    <div class="col" style="gap: 8px;">
+      <que-progress indeterminate></que-progress>
+      <que-progress indeterminate intent="success"></que-progress>
+    </div>
+
+    <h2>Custom</h2>
+    <div class="col" style="gap: 8px;">
+      <que-progress value="45" style="--que-progress-color: hotpink;"></que-progress>
+      <que-progress value="80" style="--que-progress-height: 20px; --que-progress-color: var(--que-color-secondary); --que-progress-radius: var(--que-radius-sm);"></que-progress>
+    </div>
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/progress.js'
+
+    const ctrl = applyTheme(createTheme())
+
+    const toggle = document.getElementById('theme-toggle')
+    if (toggle) {
+      toggle.addEventListener('change', e => ctrl.setMode(e.target.value))
+      const sync = () => { const i = toggle.querySelector(`input[value="${ctrl.mode}"]`); if (i) i.checked = true }
+      ctrl.onChange(sync)
+      sync()
+    }
+  </script>
+</body>
+</html>

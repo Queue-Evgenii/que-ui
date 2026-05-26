@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Progress (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/progress.css" />
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="progress.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="progress-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Default (primary)</h2>
+    <div class="col" style="gap: 8px;">
+      <div class="que-progress" role="progressbar" aria-valuenow="0"   aria-valuemin="0" aria-valuemax="100"><div class="que-progress__bar" style="width:0%"></div></div>
+      <div class="que-progress" role="progressbar" aria-valuenow="25"  aria-valuemin="0" aria-valuemax="100"><div class="que-progress__bar" style="width:25%"></div></div>
+      <div class="que-progress" role="progressbar" aria-valuenow="60"  aria-valuemin="0" aria-valuemax="100"><div class="que-progress__bar" style="width:60%"></div></div>
+      <div class="que-progress" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><div class="que-progress__bar" style="width:100%"></div></div>
+    </div>
+
+    <h2>Intents</h2>
+    <div class="col" style="gap: 8px;">
+      <div class="que-progress que-progress--intent-primary"   role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><div class="que-progress__bar" style="width:70%"></div></div>
+      <div class="que-progress que-progress--intent-secondary" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><div class="que-progress__bar" style="width:70%"></div></div>
+      <div class="que-progress que-progress--intent-success"   role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><div class="que-progress__bar" style="width:70%"></div></div>
+      <div class="que-progress que-progress--intent-warning"   role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><div class="que-progress__bar" style="width:70%"></div></div>
+      <div class="que-progress que-progress--intent-danger"    role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><div class="que-progress__bar" style="width:70%"></div></div>
+      <div class="que-progress que-progress--intent-neutral"   role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><div class="que-progress__bar" style="width:70%"></div></div>
+    </div>
+
+    <h2>Sizes</h2>
+    <div class="col" style="gap: 10px; justify-content: center;">
+      <div class="que-progress que-progress--sm" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"><div class="que-progress__bar" style="width:60%"></div></div>
+      <div class="que-progress"                  role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"><div class="que-progress__bar" style="width:60%"></div></div>
+      <div class="que-progress que-progress--lg" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"><div class="que-progress__bar" style="width:60%"></div></div>
+      <div class="que-progress que-progress--xl" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"><div class="que-progress__bar" style="width:60%"></div></div>
+    </div>
+
+    <h2>Indeterminate</h2>
+    <div class="col" style="gap: 8px;">
+      <div class="que-progress que-progress--indeterminate" role="progressbar" aria-label="Loading"><div class="que-progress__bar"></div></div>
+      <div class="que-progress que-progress--indeterminate que-progress--intent-success" role="progressbar" aria-label="Loading"><div class="que-progress__bar"></div></div>
+    </div>
+
+    <h2>Custom</h2>
+    <div class="col" style="gap: 8px;">
+      <div class="que-progress" style="--que-progress-color: hotpink;" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"><div class="que-progress__bar" style="width:45%"></div></div>
+      <div class="que-progress" style="--que-progress-height: 20px; --que-progress-color: var(--que-color-secondary); --que-progress-radius: var(--que-radius-sm);" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><div class="que-progress__bar" style="width:80%"></div></div>
+    </div>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

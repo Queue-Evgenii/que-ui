@@ -74,8 +74,8 @@ Legend: ✅ Done · 🚧 In Progress · ⬜ Not Started · ❌ Blocked
 | ✅ | Alert | `<que-alert>` |
 | ✅ | Badge | `<que-badge>` |
 | ✅ | Spinner | `<que-spinner>` |
-| ⬜ | Progress (linear) | `<que-progress>` |
-| ⬜ | Progress (circular) | `<que-progress type="circular">` |
+| ✅ | Progress (linear) | `<que-progress>` |
+| ✅ | Progress (circular) | `<que-progress type="circular">` |
 | ⬜ | Skeleton | `<que-skeleton>` |
 | ⬜ | Empty State | `<que-empty>` |
 

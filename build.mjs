@@ -10,7 +10,7 @@ mkdirSync('dist', { recursive: true })
 
 // Bundle CSS-only exports into a temp file to extract values (no DOM/HTMLElement)
 await build({ entryPoints: ['src/css.ts'], bundle: true, format: 'esm', outfile: TMP })
-const { defaultTokens, defaultDarkTokens, utilitiesCSS, buttonCSS, inputCSS, textareaCSS, checkboxCSS, switchCSS, radioCSS, segmentedCSS, selectCSS } = await import(pathToFileURL(TMP).href)
+const { defaultTokens, defaultDarkTokens, utilitiesCSS, buttonCSS, inputCSS, textareaCSS, checkboxCSS, switchCSS, radioCSS, segmentedCSS, selectCSS, sliderCSS } = await import(pathToFileURL(TMP).href)
 import('fs').then(fs => fs.unlinkSync(TMP))
 
 function toCSSVars(tokens) {
@@ -60,6 +60,9 @@ console.log('dist/segmented.css')
 writeFileSync('dist/select.css', selectCSS.trim())
 console.log('dist/select.css')
 
+writeFileSync('dist/slider.css', sliderCSS.trim())
+console.log('dist/slider.css')
+
 const sharedConfig = { bundle: true, sourcemap: true }
 
 // Full library
@@ -97,5 +100,8 @@ console.log('dist/segmented.js')
 
 await build({ ...sharedConfig, entryPoints: ['src/components/select/select.ts'], format: 'esm', outfile: 'dist/select.js' })
 console.log('dist/select.js')
+
+await build({ ...sharedConfig, entryPoints: ['src/components/slider/slider.ts'], format: 'esm', outfile: 'dist/slider.js' })
+console.log('dist/slider.js')
 
 console.log('\nBuild complete.')

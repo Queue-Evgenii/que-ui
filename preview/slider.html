@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Slider (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/slider.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .col { display: flex; flex-direction: column; gap: 24px; max-width: 480px; }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="index.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="index-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Default</h2>
+    <div class="col">
+      <div class="que-slider-field">
+        <div class="que-slider-header">
+          <label class="que-slider-label">Volume</label>
+          <output class="que-slider-output">40</output>
+        </div>
+        <input class="que-slider" type="range" min="0" max="100" value="40" style="--pct: 40%" />
+        <span class="que-input-hint">Drag to adjust volume</span>
+      </div>
+
+      <div class="que-slider-field">
+        <div class="que-slider-header">
+          <label class="que-slider-label que-slider-label--required">Required</label>
+        </div>
+        <input class="que-slider" type="range" min="0" max="100" value="70" style="--pct: 70%" />
+      </div>
+    </div>
+
+    <h2>Intents</h2>
+    <div class="col">
+      <div class="que-slider-field">
+        <div class="que-slider-header">
+          <label class="que-slider-label">Danger</label>
+          <output class="que-slider-output">90</output>
+        </div>
+        <input class="que-slider que-slider--intent-danger" type="range" min="0" max="100" value="90" style="--pct: 90%" />
+        <span class="que-input-error">Value too high</span>
+      </div>
+
+      <div class="que-slider-field">
+        <div class="que-slider-header">
+          <label class="que-slider-label">Success</label>
+          <output class="que-slider-output">55</output>
+        </div>
+        <input class="que-slider que-slider--intent-success" type="range" min="0" max="100" value="55" style="--pct: 55%" />
+        <span class="que-input-hint">Looks good!</span>
+      </div>
+
+      <div class="que-slider-field">
+        <div class="que-slider-header">
+          <label class="que-slider-label">Warning</label>
+          <output class="que-slider-output">75</output>
+        </div>
+        <input class="que-slider que-slider--intent-warning" type="range" min="0" max="100" value="75" style="--pct: 75%" />
+        <span class="que-input-hint">Approaching limit</span>
+      </div>
+    </div>
+
+    <h2>Steps</h2>
+    <div class="col">
+      <div class="que-slider-field">
+        <div class="que-slider-header">
+          <label class="que-slider-label">Step 10</label>
+          <output class="que-slider-output">50</output>
+        </div>
+        <input class="que-slider" type="range" min="0" max="100" step="10" value="50" style="--pct: 50%" />
+      </div>
+    </div>
+
+    <h2>Disabled</h2>
+    <div class="col">
+      <div class="que-slider-field">
+        <div class="que-slider-header">
+          <label class="que-slider-label">Disabled</label>
+        </div>
+        <input class="que-slider" type="range" min="0" max="100" value="30" style="--pct: 30%" disabled />
+      </div>
+    </div>
+
+    <h2>Custom color</h2>
+    <div class="col">
+      <div class="que-slider-field">
+        <div class="que-slider-header">
+          <label class="que-slider-label">Custom</label>
+          <output class="que-slider-output">60</output>
+        </div>
+        <input class="que-slider" type="range" min="0" max="100" value="60" style="--pct: 60%; --que-slider-color: var(--que-color-secondary)" />
+      </div>
+    </div>
+  </main>
+
+  <script src="shared.js"></script>
+  <script>
+    document.querySelectorAll('.que-slider').forEach(input => {
+      const field = input.closest('.que-slider-field')
+      const output = field?.querySelector('.que-slider-output')
+      const updatePct = () => {
+        const min = parseFloat(input.min) || 0
+        const max = parseFloat(input.max) || 100
+        const pct = ((input.value - min) / (max - min)) * 100
+        input.style.setProperty('--pct', pct + '%')
+        if (output) output.textContent = input.value
+      }
+      input.addEventListener('input', updatePct)
+    })
+  </script>
+</body>
+</html>

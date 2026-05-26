@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Slider (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="index.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="index-js.html" variant="ghost" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main style="max-width: 520px;">
+    <h2>Default</h2>
+    <que-slider label="Volume" value="40" hint="Drag to adjust" show-value></que-slider>
+    <br />
+    <que-slider label="Required" value="70" required></que-slider>
+
+    <h2>Steps</h2>
+    <que-slider label="Brightness" min="0" max="100" step="10" value="50" show-value></que-slider>
+
+    <h2>Custom range</h2>
+    <que-slider label="Price" min="100" max="1000" step="50" value="400" show-value hint="Set your budget"></que-slider>
+
+    <h2>Intents</h2>
+    <que-slider label="Danger" intent="danger" value="90" show-value error="Value too high"></que-slider>
+    <br />
+    <que-slider label="Success" intent="success" value="55" show-value hint="Looks good!"></que-slider>
+    <br />
+    <que-slider label="Warning" intent="warning" value="75" show-value hint="Approaching limit"></que-slider>
+
+    <h2>Disabled</h2>
+    <que-slider label="Disabled" value="30" disabled></que-slider>
+
+    <h2>Events</h2>
+    <que-slider id="live-slider" label="Drag me" value="50" show-value></que-slider>
+    <p id="event-log" style="font-family: var(--que-font-mono); font-size: var(--que-font-size-xs); color: var(--que-color-text-muted); margin-top: 8px;">—</p>
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/slider.js'
+
+    const ctrl = applyTheme(createTheme())
+
+    const toggle = document.getElementById('theme-toggle')
+    if (toggle) {
+      toggle.addEventListener('change', e => ctrl.setMode(e.target.value))
+      const sync = () => { const i = toggle.querySelector(`input[value="${ctrl.mode}"]`); if (i) i.checked = true }
+      ctrl.onChange(sync)
+      sync()
+    }
+
+    const log = document.getElementById('event-log')
+    document.getElementById('live-slider').addEventListener('que-input', e => {
+      log.textContent = `que-input → value: ${e.detail.value}`
+    })
+  </script>
+</body>
+</html>

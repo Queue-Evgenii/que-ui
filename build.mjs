@@ -10,7 +10,7 @@ mkdirSync('dist', { recursive: true })
 
 // Bundle CSS-only exports into a temp file to extract values (no DOM/HTMLElement)
 await build({ entryPoints: ['src/css.ts'], bundle: true, format: 'esm', outfile: TMP })
-const { defaultTokens, defaultDarkTokens, utilitiesCSS, buttonCSS, inputCSS, textareaCSS, checkboxCSS, switchCSS, radioCSS, segmentedCSS, selectCSS, sliderCSS, badgeCSS, spinnerCSS, alertCSS, progressCSS, skeletonCSS } = await import(pathToFileURL(TMP).href)
+const { defaultTokens, defaultDarkTokens, utilitiesCSS, buttonCSS, inputCSS, textareaCSS, checkboxCSS, switchCSS, radioCSS, segmentedCSS, selectCSS, sliderCSS, badgeCSS, spinnerCSS, alertCSS, progressCSS, skeletonCSS, toastCSS } = await import(pathToFileURL(TMP).href)
 import('fs').then(fs => fs.unlinkSync(TMP))
 
 function toCSSVars(tokens) {
@@ -78,6 +78,9 @@ console.log('dist/progress.css')
 writeFileSync('dist/skeleton.css', skeletonCSS.trim())
 console.log('dist/skeleton.css')
 
+writeFileSync('dist/toast.css', toastCSS.trim())
+console.log('dist/toast.css')
+
 const sharedConfig = { bundle: true, sourcemap: true }
 
 // Full library
@@ -133,5 +136,8 @@ console.log('dist/progress.js')
 
 await build({ ...sharedConfig, entryPoints: ['src/components/skeleton/skeleton.ts'], format: 'esm', outfile: 'dist/skeleton.js' })
 console.log('dist/skeleton.js')
+
+await build({ ...sharedConfig, entryPoints: ['src/components/toast/toast.ts'], format: 'esm', outfile: 'dist/toast.js' })
+console.log('dist/toast.js')
 
 console.log('\nBuild complete.')

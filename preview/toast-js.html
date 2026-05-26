@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Toast (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="toast.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="toast-js.html" variant="ghost" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <que-toaster position="top-right"></que-toaster>
+
+  <main>
+    <h2>Intents</h2>
+    <div class="row">
+      <que-button id="btn-info">Info toast</que-button>
+      <que-button id="btn-success" intent="success">Success toast</que-button>
+      <que-button id="btn-warning" intent="warning">Warning toast</que-button>
+      <que-button id="btn-danger"  intent="danger">Danger toast</que-button>
+    </div>
+
+    <h2>Title only</h2>
+    <div class="row">
+      <que-button id="btn-title-only">Title only</que-button>
+    </div>
+
+    <h2>Position</h2>
+    <div class="row">
+      <que-button id="btn-top-left">Top left</que-button>
+      <que-button id="btn-top-center">Top center</que-button>
+      <que-button id="btn-top-right">Top right</que-button>
+      <que-button id="btn-bottom-left">Bottom left</que-button>
+      <que-button id="btn-bottom-center">Bottom center</que-button>
+      <que-button id="btn-bottom-right">Bottom right</que-button>
+    </div>
+
+    <h2>Custom duration</h2>
+    <div class="row">
+      <que-button id="btn-fast">Fast (1.5s)</que-button>
+      <que-button id="btn-slow">Slow (8s)</que-button>
+      <que-button id="btn-persistent">Persistent (no auto-dismiss)</que-button>
+    </div>
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import { toast, QueToaster } from '../dist/toast.js'
+
+    const ctrl = applyTheme(createTheme())
+
+    const toggle = document.getElementById('theme-toggle')
+    if (toggle) {
+      toggle.addEventListener('change', e => ctrl.setMode(e.target.value))
+      const sync = () => { const i = toggle.querySelector(`input[value="${ctrl.mode}"]`); if (i) i.checked = true }
+      ctrl.onChange(sync)
+      sync()
+    }
+
+    const toaster = document.querySelector('que-toaster')
+
+    document.getElementById('btn-info').addEventListener('click', () =>
+      toast.info('Heads up!', { description: 'This is an informational message.' }))
+
+    document.getElementById('btn-success').addEventListener('click', () =>
+      toast.success('Saved!', { description: 'Your changes have been saved successfully.' }))
+
+    document.getElementById('btn-warning').addEventListener('click', () =>
+      toast.warning('Low storage', { description: 'You are running out of storage space.' }))
+
+    document.getElementById('btn-danger').addEventListener('click', () =>
+      toast.danger('Upload failed', { description: 'Something went wrong. Please try again.' }))
+
+    document.getElementById('btn-title-only').addEventListener('click', () =>
+      toast.success('File uploaded successfully'))
+
+    const positions = ['top-left', 'top-center', 'top-right', 'bottom-left', 'bottom-center', 'bottom-right']
+    positions.forEach(pos => {
+      document.getElementById(`btn-${pos}`).addEventListener('click', () => {
+        toaster.setAttribute('position', pos)
+        toast.info(`Position: ${pos}`)
+      })
+    })
+
+    document.getElementById('btn-fast').addEventListener('click', () =>
+      toast.success('Quick!', { duration: 1500 }))
+
+    document.getElementById('btn-slow').addEventListener('click', () =>
+      toast.info('Take your time', { description: 'This will stay for 8 seconds.', duration: 8000 }))
+
+    document.getElementById('btn-persistent').addEventListener('click', () =>
+      toast.warning('Action required', { description: 'Click × to dismiss.', duration: 0 }))
+  </script>
+</body>
+</html>

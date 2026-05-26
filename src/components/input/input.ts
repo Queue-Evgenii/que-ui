@@ -70,8 +70,8 @@ export class QueInput extends BaseElement {
       value.length > 0        ? 'que-input--filled' : '',
     ].filter(Boolean).join(' ')
 
-    this.shadow.innerHTML = `
-      <style>${inputCSS}</style>
+    this.injectCSS(inputCSS)
+    this.innerHTML = `
       <div class="que-input-field">
         <div class="que-input-wrap">
           <input
@@ -93,11 +93,10 @@ export class QueInput extends BaseElement {
       </div>
     `
 
-    this.#input = this.shadow.querySelector('input')
+    this.#input = this.querySelector('input')
     this.#input?.addEventListener('input', this.#onInput)
     this.#input?.addEventListener('change', this.#onChange)
 
-    // Show real placeholder on focus via data attribute
     if (this.attr('placeholder')) {
       this.#input?.addEventListener('focus', this.#onFocus)
       this.#input?.addEventListener('blur', this.#onBlur)

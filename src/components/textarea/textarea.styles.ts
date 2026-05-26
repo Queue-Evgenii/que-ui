@@ -1,6 +1,8 @@
 export const textareaCSS = `
 /* Customizable: --que-input-padding-x, --que-input-font-size, --que-input-radius */
 
+:host { display: block; box-sizing: border-box; }
+
 /* ── FIELD WRAPPER ──────────────────────────────────────────── */
 
 .que-input-field {
@@ -14,6 +16,22 @@ export const textareaCSS = `
 .que-input-wrap {
   position: relative;
   display: block;
+  --_que-pt: 12px;
+  --_que-border-color: var(--que-color-border-strong);
+}
+
+.que-input-wrap:has(.que-textarea:hover:not(:disabled):not([readonly])),
+.que-input-wrap:has(.que-textarea:focus) {
+  --_que-border-color: var(--que-color-border-focus);
+}
+
+.que-input-wrap:has(.que-textarea--intent-danger)  { --_que-border-color: var(--que-color-danger); }
+.que-input-wrap:has(.que-textarea--intent-success) { --_que-border-color: var(--que-color-success); }
+.que-input-wrap:has(.que-textarea--intent-warning) { --_que-border-color: var(--que-color-warning); }
+
+.que-input-wrap:has(.que-textarea[readonly]:hover),
+.que-input-wrap:has(.que-textarea[readonly]:focus) {
+  --_que-border-color: var(--que-color-border-strong);
 }
 
 /* ── TEXTAREA ───────────────────────────────────────────────── */
@@ -21,9 +39,10 @@ export const textareaCSS = `
 .que-textarea {
   display: block;
   width: 100%;
+  box-sizing: border-box;
   min-height: 96px;
-  padding: 20px var(--que-input-padding-x, var(--que-space-3)) 8px;
-  border: 1px solid var(--que-color-border-strong);
+  padding: 12px var(--que-input-padding-x, var(--que-space-3)) 8px;
+  border: 1px solid var(--_que-border-color);
   border-radius: var(--que-input-radius, var(--que-radius-md));
   font-family: var(--que-font-sans);
   font-size: var(--que-input-font-size, var(--que-font-size-sm));
@@ -47,19 +66,12 @@ export const textareaCSS = `
   color: var(--que-color-text-subtle);
 }
 
-.que-textarea:hover:not(:disabled):not([readonly]) {
-  border-color: var(--que-color-border-focus);
-}
-
-.que-textarea:focus {
-  border-color: var(--que-color-border-focus);
-}
 
 /* ── FLOATING LABEL ─────────────────────────────────────────── */
 
 .que-input-label {
   position: absolute;
-  top: 14px;
+  top: 12px;
   left: calc(var(--que-input-padding-x, var(--que-space-3)) + 1px);
   font-family: var(--que-font-sans);
   font-size: var(--que-font-size-sm);
@@ -80,6 +92,13 @@ export const textareaCSS = `
   color: var(--que-color-danger);
 }
 
+/* Scope rest position to textarea only — prevents input.css transform from bleeding in.
+   top accounts for: padding-top + border (1px), aligns label with top of first text line */
+.que-textarea ~ .que-input-label {
+  top: calc(var(--_que-pt, 12px) + 1px);
+  transform: none;
+}
+
 /* Label floats when focused or has value */
 .que-textarea:focus ~ .que-input-label,
 .que-textarea:not(:placeholder-shown) ~ .que-input-label,
@@ -87,12 +106,8 @@ export const textareaCSS = `
   top: 0;
   transform: translateY(-50%);
   font-size: 11px;
-  color: var(--que-color-text-muted);
+  color: var(--_que-border-color);
   background: var(--que-color-bg);
-}
-
-.que-textarea:focus ~ .que-input-label {
-  color: var(--que-color-primary);
 }
 
 /* ── HINT / ERROR ────────────────────────────────────────────── */
@@ -114,40 +129,7 @@ export const textareaCSS = `
 }
 
 /* ── INTENTS ────────────────────────────────────────────────── */
-
-.que-textarea--intent-danger {
-  border-color: var(--que-color-danger);
-}
-.que-textarea--intent-danger:hover:not(:disabled):not([readonly]),
-.que-textarea--intent-danger:focus {
-  border-color: var(--que-color-danger);
-}
-.que-textarea--intent-danger ~ .que-input-label,
-.que-textarea--intent-danger:focus ~ .que-input-label {
-  color: var(--que-color-danger);
-}
-
-.que-textarea--intent-success {
-  border-color: var(--que-color-success);
-}
-.que-textarea--intent-success:hover:not(:disabled):not([readonly]),
-.que-textarea--intent-success:focus {
-  border-color: var(--que-color-success);
-}
-.que-textarea--intent-success:focus ~ .que-input-label {
-  color: var(--que-color-success);
-}
-
-.que-textarea--intent-warning {
-  border-color: var(--que-color-warning);
-}
-.que-textarea--intent-warning:hover:not(:disabled):not([readonly]),
-.que-textarea--intent-warning:focus {
-  border-color: var(--que-color-warning);
-}
-.que-textarea--intent-warning:focus ~ .que-input-label {
-  color: var(--que-color-warning-text);
-}
+/* Border color and floated label color are both driven by --_que-border-color on .que-input-wrap */
 
 /* ── STATES ─────────────────────────────────────────────────── */
 
@@ -165,8 +147,4 @@ export const textareaCSS = `
   cursor: default;
 }
 
-.que-textarea[readonly]:hover,
-.que-textarea[readonly]:focus {
-  border-color: var(--que-color-border-strong);
-}
 `

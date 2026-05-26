@@ -59,6 +59,7 @@ export class QueButton extends BaseElement {
     ].filter(Boolean).join(' ')
 
     const label = this.attr('label') ? `aria-label="${this.attr('label')}"` : ''
+    const slot  = this._slotHTML
 
     const inner = href
       ? `<a
@@ -67,22 +68,16 @@ export class QueButton extends BaseElement {
            ${target ? `target="${target}"` : ''}
            ${disabled ? 'aria-disabled="true" tabindex="-1"' : ''}
            ${label}
-         ><slot></slot></a>`
+         >${slot}</a>`
       : `<button
            class="${classes}"
            ${disabled ? 'disabled aria-disabled="true"' : ''}
            type="${this.attr('type') ?? 'button'}"
            ${label}
-         ><slot></slot></button>`
+         >${slot}</button>`
 
-    this.shadow.innerHTML = `
-      <style>
-        :host { display: inline-flex; }
-        :host([full]) { display: flex; width: 100%; }
-        ${buttonCSS}
-      </style>
-      ${inner}
-    `
+    this.injectCSS(buttonCSS)
+    this.innerHTML = inner
   }
 }
 

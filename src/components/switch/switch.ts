@@ -3,7 +3,7 @@ import { switchCSS } from './switch.styles'
 
 export class QueSwitch extends BaseElement {
   static observedAttributes = [
-    'label', 'label-position', 'hint',
+    'label', 'label-position', 'hint', 'error', 'intent',
     'checked', 'disabled', 'required',
     'name', 'value', 'id',
   ]
@@ -37,14 +37,19 @@ export class QueSwitch extends BaseElement {
     const label         = this.attr('label') ?? ''
     const labelPosition = this.attr('label-position') ?? 'right'
     const hint          = this.attr('hint')
+    const error         = this.attr('error')
+    const intent        = this.attr('intent')
     const checked       = this.boolAttr('checked')
     const disabled      = this.boolAttr('disabled')
     const required      = this.boolAttr('required')
+
+    const resolvedIntent = error ? 'danger' : intent
 
     const wrapperClasses = [
       'que-switch',
       labelPosition === 'left' ? 'que-switch--label-left' : '',
       disabled ? 'que-switch--disabled' : '',
+      resolvedIntent ? `que-switch--intent-${resolvedIntent}` : '',
     ].filter(Boolean).join(' ')
 
     const inputEl = `<input
@@ -66,13 +71,14 @@ export class QueSwitch extends BaseElement {
       ? `${inputEl}${labelEl}${trackEl}`
       : `${inputEl}${trackEl}${labelEl}`
 
-    this.shadow.innerHTML = `
-      <style>${switchCSS}</style>
+    this.injectCSS(switchCSS)
+    this.innerHTML = `
       <label class="${wrapperClasses}">${inner}</label>
-      ${hint ? `<span class="que-switch__hint">${hint}</span>` : ''}
+      ${error ? `<span class="que-switch__error">${error}</span>` : ''}
+      ${hint && !error ? `<span class="que-switch__hint">${hint}</span>` : ''}
     `
 
-    this.#input = this.shadow.querySelector('input')
+    this.#input = this.querySelector('input')
     this.#input?.addEventListener('change', this.#onChange)
   }
 }

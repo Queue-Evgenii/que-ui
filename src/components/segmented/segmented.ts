@@ -31,8 +31,8 @@ export class QueSegmented extends BaseElement {
     const disabled = this.boolAttr('disabled')
     const shape    = this.attr('shape') ?? 'pill'
 
-    // Read options from light-DOM <que-segment> children
-    const segments = [...this.querySelectorAll('que-segment')].map(el => ({
+    const segmentEls = [...this.querySelectorAll('que-segment')]
+    const segments = segmentEls.map(el => ({
       value:    el.getAttribute('value') ?? '',
       label:    el.textContent?.trim() ?? '',
       disabled: el.hasAttribute('disabled'),
@@ -55,12 +55,10 @@ export class QueSegmented extends BaseElement {
         </label>`
     }).join('')
 
-    this.shadow.innerHTML = `
-      <style>${segmentedCSS}</style>
-      <div class="que-segmented que-segmented--${shape}" role="group">${items}</div>
-    `
+    this.injectCSS(segmentedCSS)
+    this.innerHTML = `<div class="que-segmented que-segmented--${shape}" role="group">${items}</div>`
 
-    this.shadow.querySelectorAll('input').forEach(input => {
+    this.querySelectorAll<HTMLInputElement>('input').forEach(input => {
       input.addEventListener('change', this.#onChange)
     })
   }

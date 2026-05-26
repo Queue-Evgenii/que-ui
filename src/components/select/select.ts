@@ -52,7 +52,7 @@ export class QueSelect extends BaseElement {
 
   #updateDisplay(): void {
     if (!this.#trigger) return
-    const valueEl = this.shadow.querySelector<HTMLElement>('.que-select__value')
+    const valueEl = this.querySelector<HTMLElement>('.que-select__value')
     if (!valueEl) return
 
     const match = this.#getOptions().find(o => o.value === this.#value)
@@ -100,7 +100,7 @@ export class QueSelect extends BaseElement {
   }
 
   #updateFocus(): void {
-    const items = this.shadow.querySelectorAll<HTMLElement>('.que-select__option')
+    const items = this.querySelectorAll<HTMLElement>('.que-select__option')
     items.forEach((item, i) => {
       item.classList.toggle('que-select__option--focused', i === this.#focusedIndex)
     })
@@ -110,7 +110,7 @@ export class QueSelect extends BaseElement {
   }
 
   #clearFocus(): void {
-    this.shadow.querySelectorAll('.que-select__option--focused').forEach(el => {
+    this.querySelectorAll('.que-select__option--focused').forEach(el => {
       el.classList.remove('que-select__option--focused')
     })
   }
@@ -173,7 +173,12 @@ export class QueSelect extends BaseElement {
     const ph       = this.attr('placeholder')
 
     const resolvedIntent = error ? 'danger' : intent
+
+    // Read option data and preserve elements before innerHTML overwrite
+    this.#observer?.disconnect()
+    const optionEls = [...this.querySelectorAll('que-option')]
     const options = this.#getOptions()
+
     const match = options.find(o => o.value === this.#value)
     const isFilled = Boolean(this.#value && match)
 
@@ -199,8 +204,8 @@ export class QueSelect extends BaseElement {
       >${o.label}</li>
     `).join('')
 
-    this.shadow.innerHTML = `
-      <style>${selectCSS}</style>
+    this.injectCSS(selectCSS)
+    this.innerHTML = `
       <div class="que-select-field">
         <div class="que-select-wrap">
           <button
@@ -220,9 +225,14 @@ export class QueSelect extends BaseElement {
       </div>
     `
 
-    this.#trigger = this.shadow.querySelector('.que-select')
+    // Re-append hidden que-option elements so #getOptions() keeps working
+    optionEls.forEach(el => this.appendChild(el))
+
+    this.#trigger = this.querySelector('.que-select')
     this.#trigger?.addEventListener('click', this.#onTriggerClick)
-    this.shadow.querySelector('.que-select__list')?.addEventListener('click', this.#onOptionClick)
+    this.querySelector('.que-select__list')?.addEventListener('click', this.#onOptionClick)
+
+    this.#observer?.observe(this, { childList: true, subtree: true, characterData: true })
   }
 }
 

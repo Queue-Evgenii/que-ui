@@ -38,7 +38,7 @@ export class QueSlider extends BaseElement {
     if (!this.#input) return
     this.#input.value = String(this.#value)
     this.#input.style.setProperty('--pct', `${this.#pct()}%`)
-    const output = this.shadow.querySelector<HTMLOutputElement>('.que-slider-output')
+    const output = this.querySelector<HTMLOutputElement>('.que-slider-output')
     if (output) output.textContent = String(this.#value)
   }
 
@@ -78,8 +78,8 @@ export class QueSlider extends BaseElement {
       resolvedIntent ? `que-slider--intent-${resolvedIntent}` : '',
     ].filter(Boolean).join(' ')
 
-    this.shadow.innerHTML = `
-      <style>${sliderCSS}</style>
+    this.injectCSS(sliderCSS)
+    this.innerHTML = `
       <div class="que-slider-field">
         ${label || showValue ? `
           <div class="que-slider-header">
@@ -101,7 +101,7 @@ export class QueSlider extends BaseElement {
       </div>
     `
 
-    this.#input = this.shadow.querySelector('input')
+    this.#input = this.querySelector('input')
     this.#input?.addEventListener('input', this.#onInput)
     this.#input?.addEventListener('change', this.#onChange)
   }

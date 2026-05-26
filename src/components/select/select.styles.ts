@@ -1,4 +1,6 @@
 export const selectCSS = `
+que-option { display: none; }
+
 /* ── FIELD WRAPPER ──────────────────────────────────────────── */
 
 .que-select-field {

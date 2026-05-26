@@ -67,8 +67,8 @@ export class QueTextarea extends BaseElement {
       value.length > 0 ? 'que-textarea--filled' : '',
     ].filter(Boolean).join(' ')
 
-    this.shadow.innerHTML = `
-      <style>${textareaCSS}</style>
+    this.injectCSS(textareaCSS)
+    this.innerHTML = `
       <div class="que-input-field">
         <div class="que-input-wrap">
           <textarea
@@ -88,7 +88,7 @@ export class QueTextarea extends BaseElement {
       </div>
     `
 
-    this.#textarea = this.shadow.querySelector('textarea')
+    this.#textarea = this.querySelector('textarea')
     this.#textarea?.addEventListener('input', this.#onInput)
     this.#textarea?.addEventListener('change', this.#onChange)
 

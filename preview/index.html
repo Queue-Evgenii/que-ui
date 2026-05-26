@@ -1,14 +1,79 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>que-ui — Components (CSS)</title>
+  <title>que-ui — CSS Guide</title>
   <link rel="stylesheet" href="../dist/tokens.css" />
   <link rel="stylesheet" href="../dist/button.css" />
   <link rel="stylesheet" href="../dist/input.css" />
-  <link rel="stylesheet" href="../dist/utilities.css" />
+  <link rel="stylesheet" href="../dist/textarea.css" />
+  <link rel="stylesheet" href="../dist/checkbox.css" />
+  <link rel="stylesheet" href="../dist/switch.css" />
+  <link rel="stylesheet" href="../dist/radio.css" />
+  <link rel="stylesheet" href="../dist/segmented.css" />
+  <link rel="stylesheet" href="../dist/select.css" />
+  <link rel="stylesheet" href="../dist/slider.css" />
   <link rel="stylesheet" href="shared.css" />
+  <style>
+    main { max-width: 1000px; }
+
+    .guide-section { margin-bottom: 56px; }
+    .guide-section > h2 {
+      font-size: var(--que-font-size-lg);
+      font-weight: var(--que-font-weight-semibold);
+      color: var(--que-color-text);
+      margin: 0 0 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--que-color-border);
+    }
+
+    .demo-label {
+      font-family: var(--que-font-mono);
+      font-size: 11px;
+      font-weight: var(--que-font-weight-medium);
+      color: var(--que-color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin: 12px 0 4px;
+    }
+
+    .demo-block {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      border: 1px solid var(--que-color-border);
+      border-radius: var(--que-radius-lg);
+      overflow: hidden;
+    }
+
+    .demo-preview {
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: flex-start;
+      background: var(--que-color-bg);
+      border-right: 1px solid var(--que-color-border);
+    }
+    .demo-preview.col { flex-direction: column; }
+
+    .demo-code {
+      margin: 0;
+      padding: 14px 16px;
+      background: var(--que-color-bg-muted);
+      font-family: var(--que-font-mono);
+      font-size: 12px;
+      line-height: 1.75;
+      color: var(--que-color-text);
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    @media (max-width: 680px) {
+      .demo-block { grid-template-columns: 1fr; }
+      .demo-preview { border-right: none; border-bottom: 1px solid var(--que-color-border); }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -37,126 +102,756 @@
   </header>
 
   <main>
-    <h2>Colors</h2>
-    <div class="swatches">
-      <div class="swatch"><div class="swatch-color bg-primary"></div><div class="swatch-label">primary</div></div>
-      <div class="swatch"><div class="swatch-color bg-secondary"></div><div class="swatch-label">secondary</div></div>
-      <div class="swatch"><div class="swatch-color bg-bg"></div><div class="swatch-label">bg</div></div>
-      <div class="swatch"><div class="swatch-color bg-surface"></div><div class="swatch-label">surface</div></div>
-      <div class="swatch"><div class="swatch-color bg-text"></div><div class="swatch-label">text</div></div>
-      <div class="swatch"><div class="swatch-color bg-border"></div><div class="swatch-label">border</div></div>
-      <div class="swatch"><div class="swatch-color bg-success"></div><div class="swatch-label">success</div></div>
-      <div class="swatch"><div class="swatch-color bg-warning"></div><div class="swatch-label">warning</div></div>
-      <div class="swatch"><div class="swatch-color bg-danger"></div><div class="swatch-label">danger</div></div>
-    </div>
 
-    <h2>Typography</h2>
-    <div class="type-stack">
-      <span style="font-size:var(--que-font-size-xs)">xs — The quick brown fox</span>
-      <span style="font-size:var(--que-font-size-sm)">sm — The quick brown fox</span>
-      <span style="font-size:var(--que-font-size-md)">md — The quick brown fox</span>
-      <span style="font-size:var(--que-font-size-lg)">lg — The quick brown fox</span>
-      <span style="font-size:var(--que-font-size-xl)">xl — The quick brown fox</span>
-      <span style="font-size:var(--que-font-size-2xl)">2xl — The quick brown fox</span>
-    </div>
+    <!-- ── BUTTON ─────────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Button</h2>
 
-    <h2>Button — Solid</h2>
-    <div class="row">
-      <button class="que-button que-button--intent-primary">Primary</button>
-      <button class="que-button que-button--intent-secondary">Secondary</button>
-      <button class="que-button que-button--intent-danger">Danger</button>
-      <button class="que-button que-button--intent-success">Success</button>
-      <button class="que-button que-button--intent-warning">Warning</button>
-    </div>
-
-    <h2>Button — Outline</h2>
-    <div class="row">
-      <button class="que-button que-button--outline que-button--intent-primary">Primary</button>
-      <button class="que-button que-button--outline que-button--intent-secondary">Secondary</button>
-      <button class="que-button que-button--outline que-button--intent-danger">Danger</button>
-      <button class="que-button que-button--outline que-button--intent-success">Success</button>
-      <button class="que-button que-button--outline que-button--intent-warning">Warning</button>
-    </div>
-
-    <h2>Button — Ghost</h2>
-    <div class="row">
-      <button class="que-button que-button--ghost que-button--intent-primary">Primary</button>
-      <button class="que-button que-button--ghost que-button--intent-secondary">Secondary</button>
-      <button class="que-button que-button--ghost que-button--intent-danger">Danger</button>
-      <button class="que-button que-button--ghost que-button--intent-success">Success</button>
-      <button class="que-button que-button--ghost que-button--intent-warning">Warning</button>
-    </div>
-
-    <h2>Button — Sizes</h2>
-    <div class="row">
-      <button class="que-button que-button--sm">Small</button>
-      <button class="que-button">Medium</button>
-      <button class="que-button que-button--lg">Large</button>
-    </div>
-
-    <h2>Button — Disabled</h2>
-    <div class="row">
-      <button class="que-button que-button--intent-primary" disabled>Primary</button>
-      <button class="que-button que-button--outline que-button--intent-primary" disabled>Outline</button>
-      <button class="que-button que-button--ghost que-button--intent-primary" disabled>Ghost</button>
-      <button class="que-button que-button--intent-danger" disabled>Danger</button>
-      <button class="que-button que-button--outline que-button--intent-danger" disabled>Danger outline</button>
-    </div>
-
-    <h2>Button — Full width</h2>
-    <div style="max-width: 400px;">
-      <button class="que-button que-button--full">Full width button</button>
-    </div>
-
-    <h2>Button — As anchor</h2>
-    <div class="row">
-      <a href="#" class="que-button">Link button</a>
-      <a href="#" class="que-button que-button--outline">Outline link</a>
-      <a href="#" target="_blank" class="que-button">Opens in new tab</a>
-    </div>
-
-    <h2>Button — Custom padding &amp; font size</h2>
-    <div class="row">
-      <button class="que-button" style="--que-button-padding-x: 32px; --que-button-padding-y: 12px;">Tall &amp; wide</button>
-      <button class="que-button" style="--que-button-font-size: 18px; --que-button-padding-x: 24px;">Bigger text</button>
-      <button class="que-button" style="--que-button-radius: var(--que-radius-full);">Pill shape</button>
-    </div>
-
-    <h2>Input</h2>
-    <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;">
-      <div class="que-input-field" style="min-width:200px;flex:1">
-        <div class="que-input-wrap">
-          <input class="que-input" type="text" placeholder=" " />
-          <label class="que-input-label">Default</label>
+      <p class="demo-label">Variants</p>
+      <div class="demo-block">
+        <div class="demo-preview">
+          <button class="que-button">Default</button>
+          <button class="que-button que-button--outline">Outline</button>
+          <button class="que-button que-button--ghost">Ghost</button>
         </div>
-        <span class="que-input-hint">Helper text</span>
+        <pre class="demo-code">&lt;button class="que-button"&gt;Default&lt;/button&gt;
+&lt;button class="que-button que-button--outline"&gt;Outline&lt;/button&gt;
+&lt;button class="que-button que-button--ghost"&gt;Ghost&lt;/button&gt;</pre>
       </div>
-      <div class="que-input-field" style="min-width:200px;flex:1">
-        <div class="que-input-wrap">
-          <input class="que-input que-input--intent-danger que-input--filled" type="text" value="Invalid value" placeholder=" " />
-          <label class="que-input-label">Danger</label>
-        </div>
-        <span class="que-input-error">This field is required</span>
-      </div>
-      <div class="que-input-field" style="min-width:200px;flex:1">
-        <div class="que-input-wrap">
-          <input class="que-input" type="text" placeholder=" " disabled />
-          <label class="que-input-label">Disabled</label>
-        </div>
-      </div>
-    </div>
 
-    <h2>Spacing / Radius / Shadow</h2>
-    <div class="row">
-      <div style="width:var(--que-space-4);height:var(--que-space-4);background:var(--que-color-primary);opacity:.5"></div>
-      <div style="width:var(--que-space-8);height:var(--que-space-8);background:var(--que-color-primary);opacity:.6;border-radius:var(--que-radius-sm)"></div>
-      <div style="width:var(--que-space-12);height:var(--que-space-12);background:var(--que-color-primary);opacity:.7;border-radius:var(--que-radius-md)"></div>
-      <div style="width:var(--que-space-16);height:var(--que-space-16);background:var(--que-color-primary);opacity:.8;border-radius:var(--que-radius-lg)"></div>
-      <div style="width:var(--que-space-16);height:var(--que-space-16);background:var(--que-color-surface);box-shadow:var(--que-shadow-md);border-radius:var(--que-radius-xl)"></div>
-      <div style="width:var(--que-space-16);height:var(--que-space-16);background:var(--que-color-surface);box-shadow:var(--que-shadow-lg);border-radius:var(--que-radius-2xl)"></div>
-    </div>
+      <p class="demo-label">Intents</p>
+      <div class="demo-block">
+        <div class="demo-preview">
+          <button class="que-button que-button--intent-primary">Primary</button>
+          <button class="que-button que-button--intent-secondary">Secondary</button>
+          <button class="que-button que-button--intent-danger">Danger</button>
+          <button class="que-button que-button--intent-success">Success</button>
+          <button class="que-button que-button--intent-warning">Warning</button>
+        </div>
+        <pre class="demo-code">&lt;button class="que-button que-button--intent-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="que-button que-button--intent-secondary"&gt;Secondary&lt;/button&gt;
+&lt;button class="que-button que-button--intent-danger"&gt;Danger&lt;/button&gt;
+&lt;button class="que-button que-button--intent-success"&gt;Success&lt;/button&gt;
+&lt;button class="que-button que-button--intent-warning"&gt;Warning&lt;/button&gt;</pre>
+      </div>
+
+      <p class="demo-label">Sizes</p>
+      <div class="demo-block">
+        <div class="demo-preview">
+          <button class="que-button que-button--sm">Small</button>
+          <button class="que-button">Medium</button>
+          <button class="que-button que-button--lg">Large</button>
+        </div>
+        <pre class="demo-code">&lt;button class="que-button que-button--sm"&gt;Small&lt;/button&gt;
+&lt;button class="que-button"&gt;Medium&lt;/button&gt;
+&lt;button class="que-button que-button--lg"&gt;Large&lt;/button&gt;</pre>
+      </div>
+
+      <p class="demo-label">Disabled / Link / Full width</p>
+      <div class="demo-block">
+        <div class="demo-preview col">
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="que-button que-button--intent-primary" disabled>Disabled</button>
+            <a href="#" class="que-button que-button--outline">Link</a>
+          </div>
+          <div style="width:100%;">
+            <button class="que-button que-button--full">Full width</button>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;button class="que-button" disabled&gt;Disabled&lt;/button&gt;
+
+&lt;!-- Anchor renders as button --&gt;
+&lt;a href="/path" class="que-button"&gt;Link&lt;/a&gt;
+
+&lt;!-- Full width --&gt;
+&lt;button class="que-button que-button--full"&gt;Full&lt;/button&gt;</pre>
+      </div>
+
+      <p class="demo-label">Custom via CSS variables</p>
+      <div class="demo-block">
+        <div class="demo-preview">
+          <button class="que-button" style="--que-button-radius: var(--que-radius-full);">Pill</button>
+          <button class="que-button" style="--que-button-padding-x: 32px; --que-button-padding-y: 12px;">Tall</button>
+          <button class="que-button" style="--que-button-font-size: 18px;">Big text</button>
+        </div>
+        <pre class="demo-code">&lt;!-- Override any CSS variable inline --&gt;
+&lt;button class="que-button"
+  style="--que-button-radius: var(--que-radius-full);"&gt;
+  Pill
+&lt;/button&gt;</pre>
+      </div>
+    </section>
+
+    <!-- ── INPUT ──────────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Input</h2>
+
+      <p class="demo-label">Default — floating label</p>
+      <div class="demo-block">
+        <div class="demo-preview">
+          <div class="que-input-field" style="width:100%;">
+            <div class="que-input-wrap">
+              <input class="que-input" type="text" placeholder=" " />
+              <label class="que-input-label">Email address</label>
+            </div>
+            <span class="que-input-hint">We'll never share your email</span>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;div class="que-input-field"&gt;
+  &lt;div class="que-input-wrap"&gt;
+    &lt;input class="que-input" type="text" placeholder=" " /&gt;
+    &lt;label class="que-input-label"&gt;Email address&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;span class="que-input-hint"&gt;Helper text&lt;/span&gt;
+&lt;/div&gt;</pre>
+      </div>
+
+      <p class="demo-label">Error state</p>
+      <div class="demo-block">
+        <div class="demo-preview">
+          <div class="que-input-field" style="width:100%;">
+            <div class="que-input-wrap">
+              <input class="que-input que-input--intent-danger que-input--filled" type="text" value="bad@email" placeholder=" " />
+              <label class="que-input-label">Email address</label>
+            </div>
+            <span class="que-input-error">Invalid email address</span>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;!-- Add --intent-danger + --filled when value exists --&gt;
+&lt;div class="que-input-field"&gt;
+  &lt;div class="que-input-wrap"&gt;
+    &lt;input class="que-input que-input--intent-danger que-input--filled"
+           type="text" value="bad@email" placeholder=" " /&gt;
+    &lt;label class="que-input-label"&gt;Email address&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;span class="que-input-error"&gt;Invalid email address&lt;/span&gt;
+&lt;/div&gt;</pre>
+      </div>
+
+      <p class="demo-label">Sizes / Disabled / Readonly</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:12px;">
+          <div class="que-input-field" style="width:100%;">
+            <div class="que-input-wrap">
+              <input class="que-input que-input--sm" type="text" placeholder=" " />
+              <label class="que-input-label">Small</label>
+            </div>
+          </div>
+          <div class="que-input-field" style="width:100%;">
+            <div class="que-input-wrap">
+              <input class="que-input" type="text" placeholder=" " disabled />
+              <label class="que-input-label">Disabled</label>
+            </div>
+          </div>
+          <div class="que-input-field" style="width:100%;">
+            <div class="que-input-wrap">
+              <input class="que-input que-input--filled" type="text" value="Read only" placeholder=" " readonly />
+              <label class="que-input-label">Readonly</label>
+            </div>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;!-- Sizes: --sm, (default), --lg --&gt;
+&lt;input class="que-input que-input--sm" ... /&gt;
+
+&lt;!-- Disabled --&gt;
+&lt;input class="que-input" disabled /&gt;
+
+&lt;!-- Readonly --&gt;
+&lt;input class="que-input que-input--filled" readonly /&gt;</pre>
+      </div>
+    </section>
+
+    <!-- ── TEXTAREA ────────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Textarea</h2>
+
+      <p class="demo-label">Default</p>
+      <div class="demo-block">
+        <div class="demo-preview">
+          <div class="que-input-field" style="width:100%;">
+            <div class="que-input-wrap">
+              <textarea class="que-textarea" placeholder=" "></textarea>
+              <label class="que-input-label">Message</label>
+            </div>
+            <span class="que-input-hint">Max 500 characters</span>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;div class="que-input-field"&gt;
+  &lt;div class="que-input-wrap"&gt;
+    &lt;textarea class="que-textarea" placeholder=" "&gt;&lt;/textarea&gt;
+    &lt;label class="que-input-label"&gt;Message&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;span class="que-input-hint"&gt;Max 500 characters&lt;/span&gt;
+&lt;/div&gt;</pre>
+      </div>
+
+      <p class="demo-label">Error state</p>
+      <div class="demo-block">
+        <div class="demo-preview">
+          <div class="que-input-field" style="width:100%;">
+            <div class="que-input-wrap">
+              <textarea class="que-textarea que-textarea--intent-danger que-textarea--filled" placeholder=" ">Too short</textarea>
+              <label class="que-input-label">Message</label>
+            </div>
+            <span class="que-input-error">Minimum 20 characters</span>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;textarea class="que-textarea que-textarea--intent-danger
+                  que-textarea--filled" placeholder=" "&gt;
+  Too short
+&lt;/textarea&gt;</pre>
+      </div>
+    </section>
+
+    <!-- ── SELECT ─────────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Select</h2>
+
+      <p class="demo-label">Empty / Filled</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:16px;">
+          <div class="que-select-field" style="width:100%;">
+            <div class="que-select-wrap">
+              <button class="que-select" type="button">
+                <span class="que-select__value que-select__value--placeholder">Choose...</span>
+                <svg class="que-select__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <label class="que-select-label">Country</label>
+              <div class="que-select__dropdown" role="listbox"><ul class="que-select__list"></ul></div>
+            </div>
+          </div>
+          <div class="que-select-field" style="width:100%;">
+            <div class="que-select-wrap">
+              <button class="que-select que-select--filled" type="button">
+                <span class="que-select__value">Ukraine</span>
+                <svg class="que-select__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <label class="que-select-label">Country</label>
+              <div class="que-select__dropdown" role="listbox"><ul class="que-select__list"></ul></div>
+            </div>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;div class="que-select-field"&gt;
+  &lt;div class="que-select-wrap"&gt;
+    &lt;!-- Add --filled when value is selected --&gt;
+    &lt;button class="que-select [que-select--filled]" type="button"&gt;
+      &lt;span class="que-select__value"&gt;Ukraine&lt;/span&gt;
+      &lt;svg class="que-select__arrow" ...&gt;...&lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;label class="que-select-label"&gt;Country&lt;/label&gt;
+    &lt;div class="que-select__dropdown" role="listbox"&gt;
+      &lt;ul class="que-select__list"&gt;
+        &lt;li class="que-select__option" data-value="ua"&gt;Ukraine&lt;/li&gt;
+        &lt;li class="que-select__option" data-value="de"&gt;Germany&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+      </div>
+
+      <p class="demo-label">Open state — add --open to trigger</p>
+      <div class="demo-block">
+        <div class="demo-preview" style="padding-bottom: 160px; align-items: flex-start;">
+          <div class="que-select-field" style="width:100%;position:relative;z-index:1;">
+            <div class="que-select-wrap">
+              <button class="que-select que-select--open" type="button">
+                <span class="que-select__value"></span>
+                <svg class="que-select__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <label class="que-select-label">Status</label>
+              <div class="que-select__dropdown" role="listbox">
+                <ul class="que-select__list">
+                  <li class="que-select__option que-select__option--focused" role="option">Active</li>
+                  <li class="que-select__option" role="option">Inactive</li>
+                  <li class="que-select__option que-select__option--disabled" role="option">Archived</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;!-- Toggle --open on the trigger button via JS --&gt;
+&lt;button class="que-select que-select--open" ...&gt;
+
+&lt;!-- Option states --&gt;
+&lt;li class="que-select__option"&gt;Active&lt;/li&gt;
+&lt;li class="que-select__option que-select__option--selected"&gt;
+  Selected
+&lt;/li&gt;
+&lt;li class="que-select__option que-select__option--focused"&gt;
+  Keyboard focused
+&lt;/li&gt;
+&lt;li class="que-select__option que-select__option--disabled"&gt;
+  Disabled
+&lt;/li&gt;</pre>
+      </div>
+
+      <p class="demo-label">Error / Disabled</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:16px;">
+          <div class="que-select-field" style="width:100%;">
+            <div class="que-select-wrap">
+              <button class="que-select que-select--intent-danger" type="button">
+                <span class="que-select__value que-select__value--placeholder">Choose...</span>
+                <svg class="que-select__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <label class="que-select-label">Category</label>
+              <div class="que-select__dropdown" role="listbox"><ul class="que-select__list"></ul></div>
+            </div>
+            <span class="que-input-error">Please select a category</span>
+          </div>
+          <div class="que-select-field" style="width:100%;">
+            <div class="que-select-wrap">
+              <button class="que-select" type="button" disabled>
+                <span class="que-select__value"></span>
+                <svg class="que-select__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <label class="que-select-label">Disabled</label>
+              <div class="que-select__dropdown" role="listbox"><ul class="que-select__list"></ul></div>
+            </div>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;!-- Error --&gt;
+&lt;button class="que-select que-select--intent-danger" ...&gt;
+&lt;span class="que-input-error"&gt;Please select a category&lt;/span&gt;
+
+&lt;!-- Disabled --&gt;
+&lt;button class="que-select" type="button" disabled&gt;</pre>
+      </div>
+    </section>
+
+    <!-- ── SLIDER ─────────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Slider</h2>
+
+      <p class="demo-label">Default — with label and value output</p>
+      <div class="demo-block">
+        <div class="demo-preview" style="align-items:stretch;">
+          <div class="que-slider-field" style="width:100%;">
+            <div class="que-slider-header">
+              <label class="que-slider-label">Volume</label>
+              <output class="que-slider-output" id="s1-out">40</output>
+            </div>
+            <input class="que-slider" id="s1" type="range" min="0" max="100" value="40" style="--pct:40%" />
+            <span class="que-input-hint">Drag to adjust</span>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;div class="que-slider-field"&gt;
+  &lt;div class="que-slider-header"&gt;
+    &lt;label class="que-slider-label"&gt;Volume&lt;/label&gt;
+    &lt;output class="que-slider-output"&gt;40&lt;/output&gt;
+  &lt;/div&gt;
+  &lt;!-- --pct must be updated via JS on input event --&gt;
+  &lt;input class="que-slider" type="range"
+         min="0" max="100" value="40"
+         style="--pct: 40%" /&gt;
+  &lt;span class="que-input-hint"&gt;Drag to adjust&lt;/span&gt;
+&lt;/div&gt;</pre>
+      </div>
+
+      <p class="demo-label">Intents / Disabled</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:16px;">
+          <div class="que-slider-field" style="width:100%;">
+            <div class="que-slider-header">
+              <label class="que-slider-label">Danger</label>
+              <output class="que-slider-output">85</output>
+            </div>
+            <input class="que-slider que-slider--intent-danger" type="range" min="0" max="100" value="85" style="--pct:85%" />
+            <span class="que-input-error">Value too high</span>
+          </div>
+          <div class="que-slider-field" style="width:100%;">
+            <div class="que-slider-header">
+              <label class="que-slider-label">Disabled</label>
+            </div>
+            <input class="que-slider" type="range" min="0" max="100" value="30" style="--pct:30%" disabled />
+          </div>
+        </div>
+        <pre class="demo-code">&lt;!-- Intents: --intent-danger, --intent-success, --intent-warning --&gt;
+&lt;input class="que-slider que-slider--intent-danger"
+       type="range" style="--pct: 85%" /&gt;
+&lt;span class="que-input-error"&gt;Value too high&lt;/span&gt;
+
+&lt;!-- Disabled --&gt;
+&lt;input class="que-slider" type="range" disabled /&gt;
+
+&lt;!-- Custom color --&gt;
+&lt;input class="que-slider" type="range"
+       style="--pct: 60%; --que-slider-color: hotpink" /&gt;</pre>
+      </div>
+    </section>
+
+    <!-- ── CHECKBOX ───────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Checkbox</h2>
+
+      <p class="demo-label">Default states</p>
+      <div class="demo-block">
+        <div class="demo-preview col">
+          <label class="que-checkbox">
+            <input class="que-checkbox__input" type="checkbox" />
+            <span class="que-checkbox__control"></span>
+            <span class="que-checkbox__label">Unchecked</span>
+          </label>
+          <label class="que-checkbox">
+            <input class="que-checkbox__input" type="checkbox" checked />
+            <span class="que-checkbox__control"></span>
+            <span class="que-checkbox__label">Checked</span>
+          </label>
+          <label class="que-checkbox que-checkbox--indeterminate">
+            <input class="que-checkbox__input" type="checkbox" />
+            <span class="que-checkbox__control"></span>
+            <span class="que-checkbox__label">Indeterminate</span>
+          </label>
+        </div>
+        <pre class="demo-code">&lt;label class="que-checkbox"&gt;
+  &lt;input class="que-checkbox__input" type="checkbox" /&gt;
+  &lt;span class="que-checkbox__control"&gt;&lt;/span&gt;
+  &lt;span class="que-checkbox__label"&gt;Label&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;!-- Checked --&gt;
+&lt;input class="que-checkbox__input" type="checkbox" checked /&gt;
+
+&lt;!-- Indeterminate (add class to wrapper) --&gt;
+&lt;label class="que-checkbox que-checkbox--indeterminate"&gt;</pre>
+      </div>
+
+      <p class="demo-label">With hint / Label left / Error</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:12px;">
+          <div>
+            <label class="que-checkbox">
+              <input class="que-checkbox__input" type="checkbox" checked />
+              <span class="que-checkbox__control"></span>
+              <span class="que-checkbox__label">Enable notifications</span>
+            </label>
+            <span class="que-checkbox__hint">You'll receive email updates</span>
+          </div>
+          <label class="que-checkbox que-checkbox--label-left">
+            <input class="que-checkbox__input" type="checkbox" />
+            <span class="que-checkbox__label">Dark mode</span>
+            <span class="que-checkbox__control"></span>
+          </label>
+          <div>
+            <label class="que-checkbox que-checkbox--intent-danger">
+              <input class="que-checkbox__input" type="checkbox" />
+              <span class="que-checkbox__control"></span>
+              <span class="que-checkbox__label">Accept terms</span>
+            </label>
+            <span class="que-checkbox__error">You must accept the terms</span>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;!-- Hint --&gt;
+&lt;span class="que-checkbox__hint"&gt;Helper text&lt;/span&gt;
+
+&lt;!-- Label left: swap label + control order --&gt;
+&lt;label class="que-checkbox que-checkbox--label-left"&gt;
+  &lt;input class="que-checkbox__input" type="checkbox" /&gt;
+  &lt;span class="que-checkbox__label"&gt;Label&lt;/span&gt;
+  &lt;span class="que-checkbox__control"&gt;&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;!-- Error --&gt;
+&lt;label class="que-checkbox que-checkbox--intent-danger"&gt;
+&lt;span class="que-checkbox__error"&gt;Error text&lt;/span&gt;</pre>
+      </div>
+
+      <p class="demo-label">Disabled</p>
+      <div class="demo-block">
+        <div class="demo-preview col">
+          <label class="que-checkbox que-checkbox--disabled">
+            <input class="que-checkbox__input" type="checkbox" disabled />
+            <span class="que-checkbox__control"></span>
+            <span class="que-checkbox__label">Disabled unchecked</span>
+          </label>
+          <label class="que-checkbox que-checkbox--disabled">
+            <input class="que-checkbox__input" type="checkbox" checked disabled />
+            <span class="que-checkbox__control"></span>
+            <span class="que-checkbox__label">Disabled checked</span>
+          </label>
+        </div>
+        <pre class="demo-code">&lt;!-- Add --disabled to wrapper + disabled attr to input --&gt;
+&lt;label class="que-checkbox que-checkbox--disabled"&gt;
+  &lt;input class="que-checkbox__input" type="checkbox" disabled /&gt;
+  ...
+&lt;/label&gt;</pre>
+      </div>
+    </section>
+
+    <!-- ── SWITCH ─────────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Switch</h2>
+
+      <p class="demo-label">Default / Label positions</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:12px;">
+          <label class="que-switch">
+            <input class="que-switch__input" type="checkbox" role="switch" />
+            <span class="que-switch__track"><span class="que-switch__thumb"></span></span>
+            <span class="que-switch__label">Label right (off)</span>
+          </label>
+          <label class="que-switch">
+            <input class="que-switch__input" type="checkbox" role="switch" checked />
+            <span class="que-switch__track"><span class="que-switch__thumb"></span></span>
+            <span class="que-switch__label">Label right (on)</span>
+          </label>
+          <label class="que-switch que-switch--label-left">
+            <input class="que-switch__input" type="checkbox" role="switch" checked />
+            <span class="que-switch__label">Label left</span>
+            <span class="que-switch__track"><span class="que-switch__thumb"></span></span>
+          </label>
+        </div>
+        <pre class="demo-code">&lt;label class="que-switch"&gt;
+  &lt;input class="que-switch__input" type="checkbox" role="switch" /&gt;
+  &lt;span class="que-switch__track"&gt;
+    &lt;span class="que-switch__thumb"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="que-switch__label"&gt;Label&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;!-- Label left: swap label + track order --&gt;
+&lt;label class="que-switch que-switch--label-left"&gt;
+  &lt;input class="que-switch__input" type="checkbox" role="switch" /&gt;
+  &lt;span class="que-switch__label"&gt;Label&lt;/span&gt;
+  &lt;span class="que-switch__track"&gt;...&lt;/span&gt;
+&lt;/label&gt;</pre>
+      </div>
+
+      <p class="demo-label">Hint / Error / Disabled</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:12px;">
+          <div>
+            <label class="que-switch">
+              <input class="que-switch__input" type="checkbox" role="switch" checked />
+              <span class="que-switch__track"><span class="que-switch__thumb"></span></span>
+              <span class="que-switch__label">With hint</span>
+            </label>
+            <span class="que-switch__hint">Hint text below</span>
+          </div>
+          <div>
+            <label class="que-switch que-switch--intent-danger">
+              <input class="que-switch__input" type="checkbox" role="switch" />
+              <span class="que-switch__track"><span class="que-switch__thumb"></span></span>
+              <span class="que-switch__label">Enable 2FA</span>
+            </label>
+            <span class="que-switch__error">This setting is required</span>
+          </div>
+          <label class="que-switch que-switch--disabled">
+            <input class="que-switch__input" type="checkbox" role="switch" disabled />
+            <span class="que-switch__track"><span class="que-switch__thumb"></span></span>
+            <span class="que-switch__label">Disabled</span>
+          </label>
+        </div>
+        <pre class="demo-code">&lt;span class="que-switch__hint"&gt;Hint text&lt;/span&gt;
+
+&lt;!-- Error --&gt;
+&lt;label class="que-switch que-switch--intent-danger"&gt;
+&lt;span class="que-switch__error"&gt;Error text&lt;/span&gt;
+
+&lt;!-- Disabled --&gt;
+&lt;label class="que-switch que-switch--disabled"&gt;
+  &lt;input ... disabled /&gt;</pre>
+      </div>
+    </section>
+
+    <!-- ── RADIO ──────────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Radio</h2>
+
+      <p class="demo-label">Vertical group</p>
+      <div class="demo-block">
+        <div class="demo-preview">
+          <div class="que-radio-group">
+            <label class="que-radio">
+              <input class="que-radio__input" type="radio" name="plan-css" value="free" checked />
+              <span class="que-radio__control"></span>
+              <span class="que-radio__label">Free</span>
+            </label>
+            <label class="que-radio">
+              <input class="que-radio__input" type="radio" name="plan-css" value="pro" />
+              <span class="que-radio__control"></span>
+              <span class="que-radio__label">Pro</span>
+            </label>
+            <label class="que-radio">
+              <input class="que-radio__input" type="radio" name="plan-css" value="enterprise" />
+              <span class="que-radio__control"></span>
+              <span class="que-radio__label">Enterprise</span>
+            </label>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;div class="que-radio-group"&gt;
+  &lt;label class="que-radio"&gt;
+    &lt;input class="que-radio__input" type="radio"
+           name="group" value="a" checked /&gt;
+    &lt;span class="que-radio__control"&gt;&lt;/span&gt;
+    &lt;span class="que-radio__label"&gt;Option A&lt;/span&gt;
+  &lt;/label&gt;
+  &lt;label class="que-radio"&gt;
+    &lt;input class="que-radio__input" type="radio"
+           name="group" value="b" /&gt;
+    ...
+  &lt;/label&gt;
+&lt;/div&gt;</pre>
+      </div>
+
+      <p class="demo-label">Horizontal / Error</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:16px;">
+          <div class="que-radio-group que-radio-group--horizontal">
+            <label class="que-radio">
+              <input class="que-radio__input" type="radio" name="size-css" value="s" checked />
+              <span class="que-radio__control"></span>
+              <span class="que-radio__label">S</span>
+            </label>
+            <label class="que-radio">
+              <input class="que-radio__input" type="radio" name="size-css" value="m" />
+              <span class="que-radio__control"></span>
+              <span class="que-radio__label">M</span>
+            </label>
+            <label class="que-radio">
+              <input class="que-radio__input" type="radio" name="size-css" value="l" />
+              <span class="que-radio__control"></span>
+              <span class="que-radio__label">L</span>
+            </label>
+          </div>
+          <div>
+            <div class="que-radio-group__label">Payment method</div>
+            <div class="que-radio-group">
+              <label class="que-radio que-radio--intent-danger">
+                <input class="que-radio__input" type="radio" name="pay-css2" value="a" />
+                <span class="que-radio__control"></span>
+                <span class="que-radio__label">Credit card</span>
+              </label>
+              <label class="que-radio que-radio--intent-danger">
+                <input class="que-radio__input" type="radio" name="pay-css2" value="b" />
+                <span class="que-radio__control"></span>
+                <span class="que-radio__label">Bank transfer</span>
+              </label>
+            </div>
+            <span class="que-radio-group__error">Please select a payment method</span>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;!-- Horizontal --&gt;
+&lt;div class="que-radio-group que-radio-group--horizontal"&gt;
+
+&lt;!-- Group label --&gt;
+&lt;div class="que-radio-group__label"&gt;Label&lt;/div&gt;
+
+&lt;!-- Error: add --intent-danger to each radio --&gt;
+&lt;label class="que-radio que-radio--intent-danger"&gt;
+
+&lt;!-- Error text below group --&gt;
+&lt;span class="que-radio-group__error"&gt;Error text&lt;/span&gt;</pre>
+      </div>
+    </section>
+
+    <!-- ── SEGMENTED ──────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Segmented</h2>
+
+      <p class="demo-label">Shapes</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:12px;align-items:flex-start;">
+          <div class="que-segmented que-segmented--pill">
+            <label class="que-segmented__item">
+              <input class="que-segmented__input" type="radio" name="seg1" value="a" checked />
+              <span class="que-segmented__label">Day</span>
+            </label>
+            <label class="que-segmented__item">
+              <input class="que-segmented__input" type="radio" name="seg1" value="b" />
+              <span class="que-segmented__label">Week</span>
+            </label>
+            <label class="que-segmented__item">
+              <input class="que-segmented__input" type="radio" name="seg1" value="c" />
+              <span class="que-segmented__label">Month</span>
+            </label>
+          </div>
+          <div class="que-segmented que-segmented--rounded">
+            <label class="que-segmented__item">
+              <input class="que-segmented__input" type="radio" name="seg2" value="a" checked />
+              <span class="que-segmented__label">Day</span>
+            </label>
+            <label class="que-segmented__item">
+              <input class="que-segmented__input" type="radio" name="seg2" value="b" />
+              <span class="que-segmented__label">Week</span>
+            </label>
+            <label class="que-segmented__item">
+              <input class="que-segmented__input" type="radio" name="seg2" value="c" />
+              <span class="que-segmented__label">Month</span>
+            </label>
+          </div>
+          <div class="que-segmented que-segmented--square">
+            <label class="que-segmented__item">
+              <input class="que-segmented__input" type="radio" name="seg3" value="a" checked />
+              <span class="que-segmented__label">Day</span>
+            </label>
+            <label class="que-segmented__item">
+              <input class="que-segmented__input" type="radio" name="seg3" value="b" />
+              <span class="que-segmented__label">Week</span>
+            </label>
+            <label class="que-segmented__item">
+              <input class="que-segmented__input" type="radio" name="seg3" value="c" />
+              <span class="que-segmented__label">Month</span>
+            </label>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;!-- Shapes: --pill (default), --rounded, --square --&gt;
+&lt;div class="que-segmented que-segmented--pill"&gt;
+  &lt;label class="que-segmented__item"&gt;
+    &lt;input class="que-segmented__input" type="radio"
+           name="seg" value="a" checked /&gt;
+    &lt;span class="que-segmented__label"&gt;Option A&lt;/span&gt;
+  &lt;/label&gt;
+  &lt;label class="que-segmented__item"&gt;
+    &lt;input class="que-segmented__input" type="radio"
+           name="seg" value="b" /&gt;
+    &lt;span class="que-segmented__label"&gt;Option B&lt;/span&gt;
+  &lt;/label&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </section>
+
   </main>
 
   <script src="shared.js"></script>
+  <script>
+    // Live slider update
+    document.querySelectorAll('.que-slider').forEach(input => {
+      const field = input.closest('.que-slider-field')
+      const output = field?.querySelector('.que-slider-output')
+      input.addEventListener('input', () => {
+        const min = parseFloat(input.min) || 0
+        const max = parseFloat(input.max) || 100
+        const pct = ((input.value - min) / (max - min)) * 100
+        input.style.setProperty('--pct', pct + '%')
+        if (output) output.textContent = input.value
+      })
+    })
+    // Live select toggles
+    document.querySelectorAll('.que-select-wrap').forEach(wrap => {
+      const btn = wrap.querySelector('.que-select')
+      if (!btn || btn.disabled) return
+      btn.addEventListener('click', e => {
+        e.stopPropagation()
+        const isOpen = btn.classList.contains('que-select--open')
+        document.querySelectorAll('.que-select--open').forEach(b => b.classList.remove('que-select--open'))
+        if (!isOpen) btn.classList.add('que-select--open')
+      })
+      wrap.querySelectorAll('.que-select__option:not(.que-select__option--disabled)').forEach(opt => {
+        opt.addEventListener('click', e => {
+          e.stopPropagation()
+          const valueEl = btn.querySelector('.que-select__value')
+          if (valueEl) { valueEl.textContent = opt.textContent; valueEl.classList.remove('que-select__value--placeholder') }
+          wrap.querySelectorAll('.que-select__option').forEach(o => o.classList.remove('que-select__option--selected'))
+          opt.classList.add('que-select__option--selected')
+          btn.classList.remove('que-select--open')
+          btn.classList.add('que-select--filled')
+        })
+      })
+    })
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.que-select--open').forEach(b => b.classList.remove('que-select--open'))
+    })
+  </script>
 </body>
 </html>

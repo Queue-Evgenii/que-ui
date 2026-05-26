@@ -118,4 +118,58 @@ export const radioCSS = `
 .que-radio--label-left ~ .que-radio__hint {
   padding-left: 0;
 }
+
+/* ── GROUP ERROR ─────────────────────────────────────────────── */
+
+.que-radio-group__error {
+  font-family: var(--que-font-sans);
+  font-size: var(--que-font-size-xs);
+  color: var(--que-color-danger);
+  line-height: var(--que-line-height-normal);
+  margin-top: var(--que-space-1);
+}
+
+/* ── INTENTS (applied via group or individual radio) ─────────── */
+
+.que-radio--intent-danger .que-radio__control {
+  border-color: var(--que-color-danger);
+}
+.que-radio--intent-danger:hover .que-radio__control {
+  border-color: var(--que-color-danger);
+}
+.que-radio--intent-danger .que-radio__input:checked ~ .que-radio__control {
+  border-color: var(--que-color-danger);
+}
+.que-radio--intent-danger .que-radio__input:checked ~ .que-radio__control::after {
+  background: var(--que-color-danger);
+}
+.que-radio--intent-danger .que-radio__label {
+  color: var(--que-color-danger);
+}
+
+.que-radio--intent-success .que-radio__control {
+  border-color: var(--que-color-success);
+}
+.que-radio--intent-success:hover .que-radio__control {
+  border-color: var(--que-color-success);
+}
+.que-radio--intent-success .que-radio__input:checked ~ .que-radio__control {
+  border-color: var(--que-color-success);
+}
+.que-radio--intent-success .que-radio__input:checked ~ .que-radio__control::after {
+  background: var(--que-color-success);
+}
+
+.que-radio--intent-warning .que-radio__control {
+  border-color: var(--que-color-warning);
+}
+.que-radio--intent-warning:hover .que-radio__control {
+  border-color: var(--que-color-warning);
+}
+.que-radio--intent-warning .que-radio__input:checked ~ .que-radio__control {
+  border-color: var(--que-color-warning);
+}
+.que-radio--intent-warning .que-radio__input:checked ~ .que-radio__control::after {
+  background: var(--que-color-warning);
+}
 `

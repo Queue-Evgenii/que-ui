@@ -3,7 +3,7 @@ import { radioCSS } from './radio.styles'
 
 export class QueRadio extends BaseElement {
   static observedAttributes = [
-    'label', 'label-position', 'hint',
+    'label', 'label-position', 'hint', 'intent',
     'checked', 'disabled', 'required',
     'name', 'value', 'id',
   ]
@@ -20,7 +20,6 @@ export class QueRadio extends BaseElement {
 
   connectedCallback(): void {
     super.connectedCallback()
-    // inherit name from parent que-radio-group if not explicitly set
     if (!this.attr('name')) {
       const group = this.closest('que-radio-group')
       if (group) {
@@ -50,11 +49,13 @@ export class QueRadio extends BaseElement {
     const required      = this.boolAttr('required')
     const name          = this.attr('name') ?? ''
     const value         = this.attr('value') ?? ''
+    const intent        = this.attr('intent')
 
     const wrapperClasses = [
       'que-radio',
       labelPosition === 'left' ? 'que-radio--label-left' : '',
       disabled ? 'que-radio--disabled' : '',
+      intent ? `que-radio--intent-${intent}` : '',
     ].filter(Boolean).join(' ')
 
     const inputEl = `<input
@@ -75,24 +76,29 @@ export class QueRadio extends BaseElement {
       ? `${inputEl}${labelEl}${controlEl}`
       : `${inputEl}${controlEl}${labelEl}`
 
-    this.shadow.innerHTML = `
-      <style>${radioCSS}</style>
+    this.injectCSS(radioCSS)
+    this.innerHTML = `
       <label class="${wrapperClasses}">${inner}</label>
       ${hint ? `<span class="que-radio__hint">${hint}</span>` : ''}
     `
 
-    this.#input = this.shadow.querySelector('input')
+    this.#input = this.querySelector('input')
     this.#input?.addEventListener('change', this.#onChange)
   }
 }
 
 export class QueRadioGroup extends BaseElement {
-  static observedAttributes = ['name', 'label', 'orientation', 'value']
+  static observedAttributes = ['name', 'label', 'orientation', 'value', 'intent', 'error']
 
   connectedCallback(): void {
     super.connectedCallback()
-    // propagate name to child radios that don't have their own
     this.#propagateName()
+    this.#propagateIntent()
+  }
+
+  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void {
+    super.attributeChangedCallback(name, oldValue, newValue)
+    if (name === 'intent' || name === 'error') this.#propagateIntent()
   }
 
   #propagateName(): void {
@@ -103,22 +109,40 @@ export class QueRadioGroup extends BaseElement {
     })
   }
 
+  #propagateIntent(): void {
+    const error  = this.attr('error')
+    const intent = this.attr('intent')
+    const resolved = error ? 'danger' : intent
+    this.querySelectorAll('que-radio').forEach(radio => {
+      if (resolved) radio.setAttribute('intent', resolved)
+      else radio.removeAttribute('intent')
+    })
+  }
+
   protected render(): void {
     const label       = this.attr('label')
+    const error       = this.attr('error')
     const orientation = this.attr('orientation') ?? 'vertical'
 
-    const classes = [
+    const groupClasses = [
       'que-radio-group',
       orientation === 'horizontal' ? 'que-radio-group--horizontal' : '',
     ].filter(Boolean).join(' ')
 
-    this.shadow.innerHTML = `
-      <style>${radioCSS}</style>
+    // Preserve que-radio children before overwriting innerHTML
+    const radioChildren = [...this.children].filter(
+      el => el.tagName === 'QUE-RADIO'
+    )
+
+    this.injectCSS(radioCSS)
+    this.innerHTML = `
       ${label ? `<div class="que-radio-group__label">${label}</div>` : ''}
-      <div class="${classes}">
-        <slot></slot>
-      </div>
+      <div class="${groupClasses}"></div>
+      ${error ? `<div class="que-radio-group__error">${error}</div>` : ''}
     `
+
+    const groupEl = this.querySelector(`.que-radio-group`)
+    radioChildren.forEach(child => groupEl?.appendChild(child))
   }
 }
 

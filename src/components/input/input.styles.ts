@@ -1,6 +1,8 @@
 export const inputCSS = `
 /* Customizable: --que-input-padding-x, --que-input-font-size, --que-input-radius */
 
+:host { display: block; box-sizing: border-box; }
+
 /* ── FIELD WRAPPER ──────────────────────────────────────────── */
 
 .que-input-field {
@@ -14,6 +16,26 @@ export const inputCSS = `
 .que-input-wrap {
   position: relative;
   display: block;
+  --_que-pt: 12px;
+  --_que-border-color: var(--que-color-border-strong);
+}
+
+.que-input-wrap:has(.que-input--sm) { --_que-pt: 8px; }
+.que-input-wrap:has(.que-input--lg) { --_que-pt: 16px; }
+
+/* Border color cascade: focus/hover first, then intents override */
+.que-input-wrap:has(.que-input:hover:not(:disabled):not([readonly])),
+.que-input-wrap:has(.que-input:focus) {
+  --_que-border-color: var(--que-color-border-focus);
+}
+
+.que-input-wrap:has(.que-input--intent-danger)  { --_que-border-color: var(--que-color-danger); }
+.que-input-wrap:has(.que-input--intent-success) { --_que-border-color: var(--que-color-success); }
+.que-input-wrap:has(.que-input--intent-warning) { --_que-border-color: var(--que-color-warning); }
+
+.que-input-wrap:has(.que-input[readonly]:hover),
+.que-input-wrap:has(.que-input[readonly]:focus) {
+  --_que-border-color: var(--que-color-border-strong);
 }
 
 /* ── INPUT ──────────────────────────────────────────────────── */
@@ -21,8 +43,9 @@ export const inputCSS = `
 .que-input {
   display: block;
   width: 100%;
-  padding: 12px var(--que-input-padding-x, var(--que-space-3));
-  border: 1px solid var(--que-color-border-strong);
+  box-sizing: border-box;
+  padding: var(--_que-pt) var(--que-input-padding-x, var(--que-space-3));
+  border: 1px solid var(--_que-border-color);
   border-radius: var(--que-input-radius, var(--que-radius-md));
   font-family: var(--que-font-sans);
   font-size: var(--que-input-font-size, var(--que-font-size-sm));
@@ -45,21 +68,13 @@ export const inputCSS = `
   color: var(--que-color-text-subtle);
 }
 
-.que-input:hover:not(:disabled):not([readonly]) {
-  border-color: var(--que-color-border-focus);
-}
-
-.que-input:focus {
-  border-color: var(--que-color-border-focus);
-}
 
 /* ── FLOATING LABEL ─────────────────────────────────────────── */
 
 .que-input-label {
   position: absolute;
-  top: 50%;
+  top: var(--_que-pt);
   left: calc(var(--que-input-padding-x, var(--que-space-3)) + 1px);
-  transform: translateY(-50%);
   font-family: var(--que-font-sans);
   font-size: var(--que-font-size-sm);
   color: var(--que-color-text-subtle);
@@ -79,6 +94,13 @@ export const inputCSS = `
   color: var(--que-color-danger);
 }
 
+/* Scope rest position to input only — prevents textarea.css from overriding.
+   top accounts for: padding-top + border (1px) + half-leading ((line-height - 1) / 2 * font-size) */
+.que-input ~ .que-input-label {
+  top: calc(var(--_que-pt) + 1px + (var(--que-line-height-tight) - 1) / 2 * 1em);
+  transform: none;
+}
+
 /* Label floats when focused or has value */
 .que-input:focus ~ .que-input-label,
 .que-input:not(:placeholder-shown) ~ .que-input-label,
@@ -86,12 +108,8 @@ export const inputCSS = `
   top: 0;
   transform: translateY(-50%);
   font-size: 11px;
-  color: var(--que-color-text-muted);
+  color: var(--_que-border-color);
   background: var(--que-color-bg);
-}
-
-.que-input:focus ~ .que-input-label {
-  color: var(--que-color-primary);
 }
 
 
@@ -116,7 +134,6 @@ export const inputCSS = `
 /* ── SIZES ──────────────────────────────────────────────────── */
 
 .que-input--sm {
-  padding: 8px var(--que-input-padding-x, var(--que-space-3));
   font-size: var(--que-font-size-xs);
 }
 
@@ -131,7 +148,6 @@ export const inputCSS = `
 }
 
 .que-input--lg {
-  padding: 16px var(--que-input-padding-x, var(--que-space-3));
   font-size: var(--que-font-size-md);
 }
 
@@ -146,40 +162,7 @@ export const inputCSS = `
 }
 
 /* ── INTENTS ────────────────────────────────────────────────── */
-
-.que-input--intent-danger {
-  border-color: var(--que-color-danger);
-}
-.que-input--intent-danger:hover:not(:disabled):not([readonly]),
-.que-input--intent-danger:focus {
-  border-color: var(--que-color-danger);
-}
-.que-input--intent-danger ~ .que-input-label,
-.que-input--intent-danger:focus ~ .que-input-label {
-  color: var(--que-color-danger);
-}
-
-.que-input--intent-success {
-  border-color: var(--que-color-success);
-}
-.que-input--intent-success:hover:not(:disabled):not([readonly]),
-.que-input--intent-success:focus {
-  border-color: var(--que-color-success);
-}
-.que-input--intent-success:focus ~ .que-input-label {
-  color: var(--que-color-success);
-}
-
-.que-input--intent-warning {
-  border-color: var(--que-color-warning);
-}
-.que-input--intent-warning:hover:not(:disabled):not([readonly]),
-.que-input--intent-warning:focus {
-  border-color: var(--que-color-warning);
-}
-.que-input--intent-warning:focus ~ .que-input-label {
-  color: var(--que-color-warning-text);
-}
+/* Border color and floated label color are both driven by --_que-border-color on .que-input-wrap */
 
 /* ── STATES ─────────────────────────────────────────────────── */
 
@@ -197,8 +180,4 @@ export const inputCSS = `
   cursor: default;
 }
 
-.que-input[readonly]:hover,
-.que-input[readonly]:focus {
-  border-color: var(--que-color-border-strong);
-}
 `

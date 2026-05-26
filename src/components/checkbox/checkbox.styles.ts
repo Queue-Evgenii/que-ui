@@ -106,7 +106,7 @@ export const checkboxCSS = `
   color: var(--que-color-text);
 }
 
-/* ── HINT ───────────────────────────────────────────────────── */
+/* ── HINT / ERROR ────────────────────────────────────────────── */
 
 .que-checkbox__hint {
   display: block;
@@ -116,6 +116,60 @@ export const checkboxCSS = `
   color: var(--que-color-text-muted);
   line-height: var(--que-line-height-normal);
   padding-left: calc(var(--que-checkbox-size, 18px) + var(--que-space-2));
+}
+
+.que-checkbox__error {
+  display: block;
+  margin-top: var(--que-space-1);
+  font-family: var(--que-font-sans);
+  font-size: var(--que-font-size-xs);
+  color: var(--que-color-danger);
+  line-height: var(--que-line-height-normal);
+  padding-left: calc(var(--que-checkbox-size, 18px) + var(--que-space-2));
+}
+
+/* ── INTENTS ────────────────────────────────────────────────── */
+
+.que-checkbox--intent-danger .que-checkbox__control {
+  border-color: var(--que-color-danger);
+}
+.que-checkbox--intent-danger:hover .que-checkbox__control {
+  border-color: var(--que-color-danger);
+}
+.que-checkbox--intent-danger .que-checkbox__input:checked ~ .que-checkbox__control,
+.que-checkbox--intent-danger .que-checkbox__input:indeterminate ~ .que-checkbox__control,
+.que-checkbox--intent-danger.que-checkbox--indeterminate .que-checkbox__control {
+  background: var(--que-color-danger);
+  border-color: var(--que-color-danger);
+}
+.que-checkbox--intent-danger .que-checkbox__label {
+  color: var(--que-color-danger);
+}
+
+.que-checkbox--intent-success .que-checkbox__control {
+  border-color: var(--que-color-success);
+}
+.que-checkbox--intent-success:hover .que-checkbox__control {
+  border-color: var(--que-color-success);
+}
+.que-checkbox--intent-success .que-checkbox__input:checked ~ .que-checkbox__control,
+.que-checkbox--intent-success .que-checkbox__input:indeterminate ~ .que-checkbox__control,
+.que-checkbox--intent-success.que-checkbox--indeterminate .que-checkbox__control {
+  background: var(--que-color-success);
+  border-color: var(--que-color-success);
+}
+
+.que-checkbox--intent-warning .que-checkbox__control {
+  border-color: var(--que-color-warning);
+}
+.que-checkbox--intent-warning:hover .que-checkbox__control {
+  border-color: var(--que-color-warning);
+}
+.que-checkbox--intent-warning .que-checkbox__input:checked ~ .que-checkbox__control,
+.que-checkbox--intent-warning .que-checkbox__input:indeterminate ~ .que-checkbox__control,
+.que-checkbox--intent-warning.que-checkbox--indeterminate .que-checkbox__control {
+  background: var(--que-color-warning);
+  border-color: var(--que-color-warning);
 }
 
 `

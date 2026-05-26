@@ -3,7 +3,7 @@ import { checkboxCSS } from './checkbox.styles'
 
 export class QueCheckbox extends BaseElement {
   static observedAttributes = [
-    'label', 'label-position', 'hint',
+    'label', 'label-position', 'hint', 'error', 'intent',
     'checked', 'indeterminate', 'disabled', 'required',
     'name', 'value', 'id',
   ]
@@ -45,16 +45,21 @@ export class QueCheckbox extends BaseElement {
     const label         = this.attr('label') ?? ''
     const labelPosition = this.attr('label-position') ?? 'right'
     const hint          = this.attr('hint')
+    const error         = this.attr('error')
+    const intent        = this.attr('intent')
     const checked       = this.boolAttr('checked')
     const indeterminate = this.boolAttr('indeterminate')
     const disabled      = this.boolAttr('disabled')
     const required      = this.boolAttr('required')
+
+    const resolvedIntent = error ? 'danger' : intent
 
     const wrapperClasses = [
       'que-checkbox',
       labelPosition === 'left' ? 'que-checkbox--label-left' : '',
       indeterminate ? 'que-checkbox--indeterminate' : '',
       disabled ? 'que-checkbox--disabled' : '',
+      resolvedIntent ? `que-checkbox--intent-${resolvedIntent}` : '',
     ].filter(Boolean).join(' ')
 
     const inputEl = `<input
@@ -74,13 +79,14 @@ export class QueCheckbox extends BaseElement {
       ? `${inputEl}${labelEl}${controlEl}`
       : `${inputEl}${controlEl}${labelEl}`
 
-    this.shadow.innerHTML = `
-      <style>${checkboxCSS}</style>
+    this.injectCSS(checkboxCSS)
+    this.innerHTML = `
       <label class="${wrapperClasses}">${inner}</label>
-      ${hint ? `<span class="que-checkbox__hint">${hint}</span>` : ''}
+      ${error ? `<span class="que-checkbox__error">${error}</span>` : ''}
+      ${hint && !error ? `<span class="que-checkbox__hint">${hint}</span>` : ''}
     `
 
-    this.#input = this.shadow.querySelector('input')
+    this.#input = this.querySelector('input')
     if (this.#input && indeterminate) this.#input.indeterminate = true
     this.#input?.addEventListener('change', this.#onChange)
   }

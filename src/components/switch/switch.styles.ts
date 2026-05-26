@@ -105,4 +105,33 @@ export const switchCSS = `
 .que-switch--label-left ~ .que-switch__hint {
   padding-left: 0;
 }
+
+/* ── ERROR ──────────────────────────────────────────────────── */
+
+.que-switch__error {
+  display: block;
+  margin-top: var(--que-space-1);
+  font-family: var(--que-font-sans);
+  font-size: var(--que-font-size-xs);
+  color: var(--que-color-danger);
+  line-height: var(--que-line-height-normal);
+  padding-left: calc(var(--que-switch-width, 40px) + var(--que-space-2));
+}
+
+.que-switch--label-left ~ .que-switch__error {
+  padding-left: 0;
+}
+
+/* ── INTENTS ────────────────────────────────────────────────── */
+
+.que-switch--intent-danger .que-switch__label {
+  color: var(--que-color-danger);
+}
+.que-switch--intent-danger .que-switch__input:focus-visible ~ .que-switch__track {
+  outline-color: var(--que-color-danger);
+}
+
+.que-switch--intent-warning .que-switch__label {
+  color: var(--que-color-warning-text);
+}
 `

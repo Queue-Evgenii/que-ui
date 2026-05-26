@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Empty State (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/empty.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .demo-box {
+      border: 1px solid var(--que-color-border);
+      border-radius: var(--que-radius-lg);
+      background: var(--que-color-surface);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="empty.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="empty-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Default (inbox icon)</h2>
+    <div class="demo-box">
+      <div class="que-empty">
+        <span class="que-empty__icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 36V16a2 2 0 0 1 2-2h28a2 2 0 0 1 2 2v20a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2Z"/><path d="M8 26h8l4 4h8l4-4h8"/></svg>
+        </span>
+        <strong class="que-empty__title">Your inbox is empty</strong>
+        <span class="que-empty__desc">When you receive messages they'll appear here.</span>
+      </div>
+    </div>
+
+    <h2>With action</h2>
+    <div class="demo-box">
+      <div class="que-empty">
+        <span class="que-empty__icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M28 8H14a2 2 0 0 0-2 2v28a2 2 0 0 0 2 2h20a2 2 0 0 0 2-2V18Z"/><path d="M28 8v10h10"/><path d="M18 26h12M18 31h8"/></svg>
+        </span>
+        <strong class="que-empty__title">No files yet</strong>
+        <span class="que-empty__desc">Upload your first file to get started.</span>
+        <div class="que-empty__actions">
+          <button class="que-button que-button--intent-primary">Upload file</button>
+        </div>
+      </div>
+    </div>
+
+    <h2>No results (search icon)</h2>
+    <div class="demo-box">
+      <div class="que-empty">
+        <span class="que-empty__icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="22" cy="22" r="12"/><path d="m32 32 8 8"/><path d="M18 18h8M18 22h5"/></svg>
+        </span>
+        <strong class="que-empty__title">No results found</strong>
+        <span class="que-empty__desc">Try adjusting your search or filter to find what you're looking for.</span>
+        <div class="que-empty__actions">
+          <button class="que-button que-button--outline">Clear filters</button>
+        </div>
+      </div>
+    </div>
+
+    <h2>Sizes</h2>
+    <div class="row" style="align-items: flex-start; gap: 16px;">
+      <div class="demo-box" style="flex:1;">
+        <div class="que-empty que-empty--sm">
+          <span class="que-empty__icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 36V16a2 2 0 0 1 2-2h28a2 2 0 0 1 2 2v20a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2Z"/><path d="M8 26h8l4 4h8l4-4h8"/></svg></span>
+          <strong class="que-empty__title">Small</strong>
+          <span class="que-empty__desc">Compact for inline use.</span>
+        </div>
+      </div>
+      <div class="demo-box" style="flex:1;">
+        <div class="que-empty">
+          <span class="que-empty__icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 36V16a2 2 0 0 1 2-2h28a2 2 0 0 1 2 2v20a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2Z"/><path d="M8 26h8l4 4h8l4-4h8"/></svg></span>
+          <strong class="que-empty__title">Medium</strong>
+          <span class="que-empty__desc">Default size.</span>
+        </div>
+      </div>
+      <div class="demo-box" style="flex:1;">
+        <div class="que-empty que-empty--lg">
+          <span class="que-empty__icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 36V16a2 2 0 0 1 2-2h28a2 2 0 0 1 2 2v20a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2Z"/><path d="M8 26h8l4 4h8l4-4h8"/></svg></span>
+          <strong class="que-empty__title">Large</strong>
+          <span class="que-empty__desc">Full-page empty state.</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

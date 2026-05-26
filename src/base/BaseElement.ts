@@ -26,8 +26,10 @@ export abstract class BaseElement extends HTMLElement {
   }
 
   connectedCallback(): void {
-    this._slotHTML = this.innerHTML
-    this._connected = true
+    if (!this._connected) {
+      this._slotHTML = this.innerHTML
+      this._connected = true
+    }
     this.render()
   }
 

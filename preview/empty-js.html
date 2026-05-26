@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Empty State (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .demo-box {
+      border: 1px solid var(--que-color-border);
+      border-radius: var(--que-radius-lg);
+      background: var(--que-color-surface);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="empty.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="empty-js.html" variant="ghost" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Default (inbox icon)</h2>
+    <div class="demo-box">
+      <que-empty title="Your inbox is empty" description="When you receive messages they'll appear here."></que-empty>
+    </div>
+
+    <h2>With action</h2>
+    <div class="demo-box">
+      <que-empty icon="files" title="No files yet" description="Upload your first file to get started.">
+        <que-button intent="primary">Upload file</que-button>
+      </que-empty>
+    </div>
+
+    <h2>No results</h2>
+    <div class="demo-box">
+      <que-empty icon="search" title="No results found" description="Try adjusting your search or filter to find what you're looking for.">
+        <que-button variant="outline">Clear filters</que-button>
+      </que-empty>
+    </div>
+
+    <h2>Error</h2>
+    <div class="demo-box">
+      <que-empty icon="error" title="Something went wrong" description="An error occurred while loading data. Please try again.">
+        <que-button intent="primary">Try again</que-button>
+        <que-button variant="ghost">Go home</que-button>
+      </que-empty>
+    </div>
+
+    <h2>Sizes</h2>
+    <div class="row" style="align-items: flex-start; gap: 16px;">
+      <div class="demo-box" style="flex:1;">
+        <que-empty size="sm" title="Small" description="Compact for inline use."></que-empty>
+      </div>
+      <div class="demo-box" style="flex:1;">
+        <que-empty title="Medium" description="Default size."></que-empty>
+      </div>
+      <div class="demo-box" style="flex:1;">
+        <que-empty size="lg" title="Large" description="Full-page empty state."></que-empty>
+      </div>
+    </div>
+
+    <h2>No icon</h2>
+    <div class="demo-box">
+      <que-empty icon="none" title="No notifications" description="You're all caught up!"></que-empty>
+    </div>
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/empty.js'
+
+    const ctrl = applyTheme(createTheme())
+
+    const toggle = document.getElementById('theme-toggle')
+    if (toggle) {
+      toggle.addEventListener('change', e => ctrl.setMode(e.target.value))
+      const sync = () => { const i = toggle.querySelector(`input[value="${ctrl.mode}"]`); if (i) i.checked = true }
+      ctrl.onChange(sync)
+      sync()
+    }
+  </script>
+</body>
+</html>

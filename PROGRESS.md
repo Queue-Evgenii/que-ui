@@ -70,7 +70,7 @@ Legend: ✅ Done · 🚧 In Progress · ⬜ Not Started · ❌ Blocked
 | ⬜ | Drawer | `<que-drawer>` |
 | ⬜ | Tooltip | `<que-tooltip>` |
 | ⬜ | Popover | `<que-popover>` |
-| ⬜ | Toast | `<que-toast>` |
+| ✅ | Toast | `<que-toast>` |
 | ✅ | Alert | `<que-alert>` |
 | ✅ | Badge | `<que-badge>` |
 | ✅ | Spinner | `<que-spinner>` |

@@ -18,9 +18,10 @@ export const inputCSS = `
   display: block;
   --_que-pt: 12px;
   --_que-border-color: var(--que-color-border-strong);
+  --_que-label-float-size: 11px;
 }
 
-.que-input-wrap:has(.que-input--sm) { --_que-pt: 8px; }
+.que-input-wrap:has(.que-input--sm) { --_que-pt: 8px; --_que-label-float-size: 10px; }
 .que-input-wrap:has(.que-input--lg) { --_que-pt: 16px; }
 
 /* Border color cascade: focus/hover first, then intents override */
@@ -107,7 +108,7 @@ export const inputCSS = `
 .que-input--filled ~ .que-input-label {
   top: 0;
   transform: translateY(-50%);
-  font-size: 11px;
+  font-size: var(--_que-label-float-size);
   color: var(--_que-border-color);
   background: var(--que-color-bg);
 }
@@ -144,7 +145,7 @@ export const inputCSS = `
 .que-input--sm:focus ~ .que-input-label,
 .que-input--sm:not(:placeholder-shown) ~ .que-input-label,
 .que-input--sm.que-input--filled ~ .que-input-label {
-  font-size: 10px;
+  font-size: var(--_que-label-float-size);
 }
 
 .que-input--lg {
@@ -158,7 +159,7 @@ export const inputCSS = `
 .que-input--lg:focus ~ .que-input-label,
 .que-input--lg:not(:placeholder-shown) ~ .que-input-label,
 .que-input--lg.que-input--filled ~ .que-input-label {
-  font-size: 11px;
+  font-size: var(--_que-label-float-size);
 }
 
 /* ── INTENTS ────────────────────────────────────────────────── */

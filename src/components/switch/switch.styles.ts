@@ -11,9 +11,8 @@ export const switchCSS = `
   user-select: none;
 }
 
-.que-switch--label-left .que-switch__label {
-  flex: 1;
-}
+.que-switch--ltr .que-switch__track { order: 1; }
+.que-switch--ltr .que-switch__label { flex: 1; }
 
 .que-switch--disabled {
   opacity: 0.5;
@@ -45,7 +44,7 @@ export const switchCSS = `
 }
 
 .que-switch:hover .que-switch__track {
-  background: var(--que-color-text-muted);
+  background: var(--que-color-text-subtle);
 }
 
 .que-switch__input:checked ~ .que-switch__track {
@@ -71,8 +70,8 @@ export const switchCSS = `
   width: calc(var(--que-switch-height, 22px) - 6px);
   height: calc(var(--que-switch-height, 22px) - 6px);
   border-radius: var(--que-radius-full);
-  background: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  background: var(--que-color-primary-text);
+  box-shadow: var(--que-shadow-sm);
   transition: transform var(--que-duration-normal) var(--que-easing-out);
 }
 
@@ -102,7 +101,7 @@ export const switchCSS = `
   padding-left: calc(var(--que-switch-width, 40px) + var(--que-space-2));
 }
 
-.que-switch--label-left ~ .que-switch__hint {
+.que-switch--ltr ~ .que-switch__hint {
   padding-left: 0;
 }
 
@@ -118,20 +117,25 @@ export const switchCSS = `
   padding-left: calc(var(--que-switch-width, 40px) + var(--que-space-2));
 }
 
-.que-switch--label-left ~ .que-switch__error {
+.que-switch--ltr ~ .que-switch__error {
   padding-left: 0;
 }
 
 /* ── INTENTS ────────────────────────────────────────────────── */
 
-.que-switch--intent-danger .que-switch__label {
-  color: var(--que-color-danger);
-}
-.que-switch--intent-danger .que-switch__input:focus-visible ~ .que-switch__track {
-  outline-color: var(--que-color-danger);
-}
+.que-switch--intent-danger .que-switch__label  { color: var(--que-color-danger); }
+.que-switch--intent-success .que-switch__label { color: var(--que-color-success-text); }
+.que-switch--intent-warning .que-switch__label { color: var(--que-color-warning-text); }
 
-.que-switch--intent-warning .que-switch__label {
-  color: var(--que-color-warning-text);
-}
+.que-switch--intent-danger .que-switch__input:checked ~ .que-switch__track  { background: var(--que-color-danger); }
+.que-switch--intent-success .que-switch__input:checked ~ .que-switch__track { background: var(--que-color-success); }
+.que-switch--intent-warning .que-switch__input:checked ~ .que-switch__track { background: var(--que-color-warning); }
+
+.que-switch--intent-danger:hover .que-switch__input:checked ~ .que-switch__track  { background: var(--que-color-danger-hover); }
+.que-switch--intent-success:hover .que-switch__input:checked ~ .que-switch__track { background: var(--que-color-success-hover); }
+.que-switch--intent-warning:hover .que-switch__input:checked ~ .que-switch__track { background: var(--que-color-warning-hover); }
+
+.que-switch--intent-danger .que-switch__input:focus-visible ~ .que-switch__track  { outline-color: var(--que-color-danger); }
+.que-switch--intent-success .que-switch__input:focus-visible ~ .que-switch__track { outline-color: var(--que-color-success); }
+.que-switch--intent-warning .que-switch__input:focus-visible ~ .que-switch__track { outline-color: var(--que-color-warning); }
 `

@@ -1,8 +1,11 @@
 import { BaseElement } from '../../base/BaseElement'
 import { segmentedCSS } from './segmented.styles'
+import { esc } from '../../utils/html'
 
 export class QueSegmented extends BaseElement {
   static observedAttributes = ['name', 'value', 'disabled', 'shape']
+
+  #name = ''
 
   get value(): string {
     return this.attr('value') ?? ''
@@ -13,6 +16,7 @@ export class QueSegmented extends BaseElement {
   }
 
   connectedCallback(): void {
+    this.#name = this.attr('name') ?? this._uid
     super.connectedCallback()
   }
 
@@ -26,7 +30,7 @@ export class QueSegmented extends BaseElement {
   }
 
   protected render(): void {
-    const name     = this.attr('name') ?? `segmented-${Math.random().toString(36).slice(2, 7)}`
+    const name     = this.#name
     const value    = this.attr('value') ?? ''
     const disabled = this.boolAttr('disabled')
     const shape    = this.attr('shape') ?? 'pill'
@@ -46,12 +50,12 @@ export class QueSegmented extends BaseElement {
           <input
             class="que-segmented__input"
             type="radio"
-            name="${name}"
-            value="${seg.value}"
+            name="${esc(name)}"
+            value="${esc(seg.value)}"
             ${checked ? 'checked' : ''}
             ${itemDis ? 'disabled' : ''}
           />
-          <span class="que-segmented__label">${seg.label}</span>
+          <span class="que-segmented__label">${esc(seg.label)}</span>
         </label>`
     }).join('')
 

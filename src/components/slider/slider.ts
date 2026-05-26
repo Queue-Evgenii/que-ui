@@ -1,5 +1,6 @@
 import { BaseElement } from '../../base/BaseElement'
 import { sliderCSS } from './slider.styles'
+import { esc } from '../../utils/html'
 
 type SliderIntent = 'danger' | 'success' | 'warning'
 
@@ -21,6 +22,11 @@ export class QueSlider extends BaseElement {
   connectedCallback(): void {
     this.#value = parseFloat(this.attr('value') ?? '0')
     super.connectedCallback()
+  }
+
+  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void {
+    if (name === 'value' && newValue !== null) this.#value = parseFloat(newValue)
+    super.attributeChangedCallback(name, oldValue, newValue)
   }
 
   disconnectedCallback(): void {
@@ -83,7 +89,7 @@ export class QueSlider extends BaseElement {
       <div class="que-slider-field">
         ${label || showValue ? `
           <div class="que-slider-header">
-            ${label ? `<label class="que-slider-label${required ? ' que-slider-label--required' : ''}">${label}</label>` : ''}
+            ${label ? `<label class="que-slider-label${required ? ' que-slider-label--required' : ''}">${esc(label)}</label>` : ''}
             ${showValue ? `<output class="que-slider-output">${this.#value}</output>` : ''}
           </div>
         ` : ''}
@@ -96,8 +102,8 @@ export class QueSlider extends BaseElement {
           ${disabled ? 'disabled' : ''}
           ${required ? 'required' : ''}
         />
-        ${error ? `<span class="que-input-error">${error}</span>` : ''}
-        ${hint && !error ? `<span class="que-input-hint">${hint}</span>` : ''}
+        ${error ? `<span class="que-input-error">${esc(error)}</span>` : ''}
+        ${hint && !error ? `<span class="que-input-hint">${esc(hint)}</span>` : ''}
       </div>
     `
 

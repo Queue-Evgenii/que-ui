@@ -33,9 +33,8 @@ export const radioCSS = `
   user-select: none;
 }
 
-.que-radio--label-left .que-radio__label {
-  flex: 1;
-}
+.que-radio--ltr .que-radio__control { order: 1; }
+.que-radio--ltr .que-radio__label   { flex: 1; }
 
 .que-radio--disabled {
   opacity: 0.5;
@@ -115,7 +114,7 @@ export const radioCSS = `
   padding-left: calc(var(--que-radio-size, 18px) + var(--que-space-2));
 }
 
-.que-radio--label-left ~ .que-radio__hint {
+.que-radio--ltr ~ .que-radio__hint {
   padding-left: 0;
 }
 
@@ -159,6 +158,9 @@ export const radioCSS = `
 .que-radio--intent-success .que-radio__input:checked ~ .que-radio__control::after {
   background: var(--que-color-success);
 }
+.que-radio--intent-success .que-radio__label {
+  color: var(--que-color-success-text);
+}
 
 .que-radio--intent-warning .que-radio__control {
   border-color: var(--que-color-warning);
@@ -171,5 +173,8 @@ export const radioCSS = `
 }
 .que-radio--intent-warning .que-radio__input:checked ~ .que-radio__control::after {
   background: var(--que-color-warning);
+}
+.que-radio--intent-warning .que-radio__label {
+  color: var(--que-color-warning-text);
 }
 `

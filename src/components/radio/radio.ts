@@ -1,9 +1,10 @@
 import { BaseElement } from '../../base/BaseElement'
 import { radioCSS } from './radio.styles'
+import { esc } from '../../utils/html'
 
 export class QueRadio extends BaseElement {
   static observedAttributes = [
-    'label', 'label-position', 'hint', 'intent',
+    'label', 'direction', 'hint', 'intent',
     'checked', 'disabled', 'required',
     'name', 'value', 'id',
   ]
@@ -41,19 +42,19 @@ export class QueRadio extends BaseElement {
   }
 
   protected render(): void {
-    const label         = this.attr('label') ?? ''
-    const labelPosition = this.attr('label-position') ?? 'right'
-    const hint          = this.attr('hint')
-    const checked       = this.boolAttr('checked')
-    const disabled      = this.boolAttr('disabled')
-    const required      = this.boolAttr('required')
-    const name          = this.attr('name') ?? ''
-    const value         = this.attr('value') ?? ''
-    const intent        = this.attr('intent')
+    const label    = this.attr('label') ?? ''
+    const direction = this.attr('direction')
+    const hint     = this.attr('hint')
+    const checked  = this.boolAttr('checked')
+    const disabled = this.boolAttr('disabled')
+    const required = this.boolAttr('required')
+    const name     = this.attr('name') ?? ''
+    const value    = this.attr('value') ?? ''
+    const intent   = this.attr('intent')
 
     const wrapperClasses = [
       'que-radio',
-      labelPosition === 'left' ? 'que-radio--label-left' : '',
+      direction === 'ltr' ? 'que-radio--ltr' : '',
       disabled ? 'que-radio--disabled' : '',
       intent ? `que-radio--intent-${intent}` : '',
     ].filter(Boolean).join(' ')
@@ -61,25 +62,23 @@ export class QueRadio extends BaseElement {
     const inputEl = `<input
         class="que-radio__input"
         type="radio"
-        ${name ? `name="${name}"` : ''}
-        ${value ? `value="${value}"` : ''}
+        ${name ? `name="${esc(name)}"` : ''}
+        ${value ? `value="${esc(value)}"` : ''}
         ${checked ? 'checked' : ''}
         ${disabled ? 'disabled' : ''}
         ${required ? 'required' : ''}
-        ${this.attr('id') ? `id="${this.attr('id')}"` : ''}
+        ${this.attr('id') ? `id="${esc(this.attr('id')!)}"` : ''}
       />`
 
     const controlEl = `<span class="que-radio__control"></span>`
-    const labelEl = label ? `<span class="que-radio__label">${label}</span>` : ''
+    const labelEl = label ? `<span class="que-radio__label">${esc(label)}</span>` : ''
 
-    const inner = labelPosition === 'left'
-      ? `${inputEl}${labelEl}${controlEl}`
-      : `${inputEl}${controlEl}${labelEl}`
+    const inner = `${inputEl}${controlEl}${labelEl}`
 
     this.injectCSS(radioCSS)
     this.innerHTML = `
       <label class="${wrapperClasses}">${inner}</label>
-      ${hint ? `<span class="que-radio__hint">${hint}</span>` : ''}
+      ${hint ? `<span class="que-radio__hint">${esc(hint)}</span>` : ''}
     `
 
     this.#input = this.querySelector('input')
@@ -136,9 +135,9 @@ export class QueRadioGroup extends BaseElement {
 
     this.injectCSS(radioCSS)
     this.innerHTML = `
-      ${label ? `<div class="que-radio-group__label">${label}</div>` : ''}
+      ${label ? `<div class="que-radio-group__label">${esc(label)}</div>` : ''}
       <div class="${groupClasses}"></div>
-      ${error ? `<div class="que-radio-group__error">${error}</div>` : ''}
+      ${error ? `<div class="que-radio-group__error">${esc(error)}</div>` : ''}
     `
 
     const groupEl = this.querySelector(`.que-radio-group`)

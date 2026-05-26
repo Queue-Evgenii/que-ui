@@ -36,87 +36,87 @@ export const buttonCSS = `
 .que-button--intent-primary,
 .que-button--solid.que-button--intent-primary {
   background: var(--que-color-primary);
-  color: white;
+  color: var(--que-color-primary-text);
 }
 .que-button:hover,
 .que-button--solid:hover,
 .que-button--intent-primary:hover,
 .que-button--solid.que-button--intent-primary:hover {
   background: var(--que-color-primary-hover);
-  color: white;
+  color: var(--que-color-primary-text);
 }
 .que-button:active,
 .que-button--solid:active,
 .que-button--intent-primary:active,
 .que-button--solid.que-button--intent-primary:active {
   background: var(--que-color-primary-active);
-  color: white;
+  color: var(--que-color-primary-text);
 }
 
 .que-button--intent-secondary,
 .que-button--solid.que-button--intent-secondary {
   background: var(--que-color-secondary);
-  color: white;
+  color: var(--que-color-primary-text);
 }
 .que-button--intent-secondary:hover,
 .que-button--solid.que-button--intent-secondary:hover {
   background: var(--que-color-secondary-hover);
-  color: white;
+  color: var(--que-color-primary-text);
 }
 .que-button--intent-secondary:active,
 .que-button--solid.que-button--intent-secondary:active {
   background: var(--que-color-secondary-active);
-  color: white;
+  color: var(--que-color-primary-text);
 }
 
 .que-button--intent-danger,
 .que-button--solid.que-button--intent-danger {
   background: var(--que-color-danger);
-  color: white;
+  color: var(--que-color-primary-text);
 }
 .que-button--intent-danger:hover,
 .que-button--solid.que-button--intent-danger:hover {
   background: var(--que-color-danger-hover);
-  color: white;
+  color: var(--que-color-primary-text);
 }
 .que-button--intent-danger:active,
 .que-button--solid.que-button--intent-danger:active {
   background: var(--que-color-danger-hover);
-  color: white;
+  color: var(--que-color-primary-text);
   filter: brightness(0.9);
 }
 
 .que-button--intent-success,
 .que-button--solid.que-button--intent-success {
   background: var(--que-color-success);
-  color: white;
+  color: var(--que-color-primary-text);
 }
 .que-button--intent-success:hover,
 .que-button--solid.que-button--intent-success:hover {
   background: var(--que-color-success-hover);
-  color: white;
+  color: var(--que-color-primary-text);
 }
 .que-button--intent-success:active,
 .que-button--solid.que-button--intent-success:active {
   background: var(--que-color-success-hover);
-  color: white;
+  color: var(--que-color-primary-text);
   filter: brightness(0.9);
 }
 
 .que-button--intent-warning,
 .que-button--solid.que-button--intent-warning {
   background: var(--que-color-warning);
-  color: white;
+  color: var(--que-color-primary-text);
 }
 .que-button--intent-warning:hover,
 .que-button--solid.que-button--intent-warning:hover {
   background: var(--que-color-warning-hover);
-  color: white;
+  color: var(--que-color-primary-text);
 }
 .que-button--intent-warning:active,
 .que-button--solid.que-button--intent-warning:active {
   background: var(--que-color-warning-hover);
-  color: white;
+  color: var(--que-color-primary-text);
   filter: brightness(0.9);
 }
 

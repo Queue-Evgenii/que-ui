@@ -1,9 +1,10 @@
 import { BaseElement } from '../../base/BaseElement'
 import { checkboxCSS } from './checkbox.styles'
+import { esc } from '../../utils/html'
 
 export class QueCheckbox extends BaseElement {
   static observedAttributes = [
-    'label', 'label-position', 'hint', 'error', 'intent',
+    'label', 'direction', 'hint', 'error', 'intent',
     'checked', 'indeterminate', 'disabled', 'required',
     'name', 'value', 'id',
   ]
@@ -26,10 +27,6 @@ export class QueCheckbox extends BaseElement {
 
   #input: HTMLInputElement | null = null
 
-  connectedCallback(): void {
-    super.connectedCallback()
-  }
-
   disconnectedCallback(): void {
     this.#input?.removeEventListener('change', this.#onChange)
   }
@@ -43,7 +40,7 @@ export class QueCheckbox extends BaseElement {
 
   protected render(): void {
     const label         = this.attr('label') ?? ''
-    const labelPosition = this.attr('label-position') ?? 'right'
+    const direction     = this.attr('direction')
     const hint          = this.attr('hint')
     const error         = this.attr('error')
     const intent        = this.attr('intent')
@@ -56,7 +53,7 @@ export class QueCheckbox extends BaseElement {
 
     const wrapperClasses = [
       'que-checkbox',
-      labelPosition === 'left' ? 'que-checkbox--label-left' : '',
+      direction === 'ltr' ? 'que-checkbox--ltr' : '',
       indeterminate ? 'que-checkbox--indeterminate' : '',
       disabled ? 'que-checkbox--disabled' : '',
       resolvedIntent ? `que-checkbox--intent-${resolvedIntent}` : '',
@@ -68,22 +65,20 @@ export class QueCheckbox extends BaseElement {
           ${checked ? 'checked' : ''}
           ${disabled ? 'disabled' : ''}
           ${required ? 'required' : ''}
-          ${this.attr('name') ? `name="${this.attr('name')}"` : ''}
-          ${this.attr('value') ? `value="${this.attr('value')}"` : ''}
-          ${this.attr('id') ? `id="${this.attr('id')}"` : ''}
+          ${this.attr('name') ? `name="${esc(this.attr('name')!)}"` : ''}
+          ${this.attr('value') ? `value="${esc(this.attr('value')!)}"` : ''}
+          ${this.attr('id') ? `id="${esc(this.attr('id')!)}"` : ''}
         />`
     const controlEl = `<span class="que-checkbox__control"></span>`
-    const labelEl = label ? `<span class="que-checkbox__label">${label}</span>` : ''
+    const labelEl = label ? `<span class="que-checkbox__label">${esc(label)}</span>` : ''
 
-    const inner = labelPosition === 'left'
-      ? `${inputEl}${labelEl}${controlEl}`
-      : `${inputEl}${controlEl}${labelEl}`
+    const inner = `${inputEl}${controlEl}${labelEl}`
 
     this.injectCSS(checkboxCSS)
     this.innerHTML = `
       <label class="${wrapperClasses}">${inner}</label>
-      ${error ? `<span class="que-checkbox__error">${error}</span>` : ''}
-      ${hint && !error ? `<span class="que-checkbox__hint">${hint}</span>` : ''}
+      ${error ? `<span class="que-checkbox__error">${esc(error)}</span>` : ''}
+      ${hint && !error ? `<span class="que-checkbox__hint">${esc(hint)}</span>` : ''}
     `
 
     this.#input = this.querySelector('input')

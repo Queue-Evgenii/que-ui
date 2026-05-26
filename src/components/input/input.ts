@@ -1,5 +1,6 @@
 import { BaseElement } from '../../base/BaseElement'
 import { inputCSS } from './input.styles'
+import { esc } from '../../utils/html'
 
 type InputIntent = 'danger' | 'success' | 'warning'
 type InputSize   = 'sm' | 'md' | 'lg'
@@ -23,10 +24,6 @@ export class QueInput extends BaseElement {
   }
 
   #input: HTMLInputElement | null = null
-
-  connectedCallback(): void {
-    super.connectedCallback()
-  }
 
   disconnectedCallback(): void {
     this.#input?.removeEventListener('input', this.#onInput)
@@ -60,6 +57,7 @@ export class QueInput extends BaseElement {
     const readonly = this.boolAttr('readonly')
     const required = this.boolAttr('required')
     const value    = this.attr('value') ?? ''
+    const id       = this.attr('id') ?? this._uid
 
     const resolvedIntent = error ? 'danger' : intent
 
@@ -76,20 +74,20 @@ export class QueInput extends BaseElement {
         <div class="que-input-wrap">
           <input
             class="${inputClasses}"
-            type="${type}"
+            type="${esc(type)}"
+            id="${esc(id)}"
             placeholder=" "
-            ${value ? `value="${value}"` : ''}
-            ${this.attr('placeholder') ? `data-placeholder="${this.attr('placeholder')}"` : ''}
-            ${this.attr('name') ? `name="${this.attr('name')}"` : ''}
-            ${this.attr('id') ? `id="${this.attr('id')}"` : ''}
+            ${value ? `value="${esc(value)}"` : ''}
+            ${this.attr('placeholder') ? `data-placeholder="${esc(this.attr('placeholder')!)}"` : ''}
+            ${this.attr('name') ? `name="${esc(this.attr('name')!)}"` : ''}
             ${disabled ? 'disabled' : ''}
             ${readonly ? 'readonly' : ''}
             ${required ? 'required' : ''}
           />
-          ${label ? `<label class="que-input-label${required ? ' que-input-label--required' : ''}">${label}</label>` : ''}
+          ${label ? `<label class="que-input-label${required ? ' que-input-label--required' : ''}" for="${esc(id)}">${esc(label)}</label>` : ''}
         </div>
-        ${error ? `<span class="que-input-error">${error}</span>` : ''}
-        ${hint && !error ? `<span class="que-input-hint">${hint}</span>` : ''}
+        ${error ? `<span class="que-input-error">${esc(error)}</span>` : ''}
+        ${hint && !error ? `<span class="que-input-hint">${esc(hint)}</span>` : ''}
       </div>
     `
 

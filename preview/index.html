@@ -527,10 +527,10 @@
             </label>
             <span class="que-checkbox__hint">You'll receive email updates</span>
           </div>
-          <label class="que-checkbox que-checkbox--label-left">
+          <label class="que-checkbox que-checkbox--ltr">
             <input class="que-checkbox__input" type="checkbox" />
-            <span class="que-checkbox__label">Dark mode</span>
             <span class="que-checkbox__control"></span>
+            <span class="que-checkbox__label">Dark mode</span>
           </label>
           <div>
             <label class="que-checkbox que-checkbox--intent-danger">
@@ -544,11 +544,11 @@
         <pre class="demo-code">&lt;!-- Hint --&gt;
 &lt;span class="que-checkbox__hint"&gt;Helper text&lt;/span&gt;
 
-&lt;!-- Label left: swap label + control order --&gt;
-&lt;label class="que-checkbox que-checkbox--label-left"&gt;
+&lt;!-- RTL: keep DOM order, CSS flips visual --&gt;
+&lt;label class="que-checkbox que-checkbox--ltr"&gt;
   &lt;input class="que-checkbox__input" type="checkbox" /&gt;
-  &lt;span class="que-checkbox__label"&gt;Label&lt;/span&gt;
   &lt;span class="que-checkbox__control"&gt;&lt;/span&gt;
+  &lt;span class="que-checkbox__label"&gt;Label&lt;/span&gt;
 &lt;/label&gt;
 
 &lt;!-- Error --&gt;
@@ -595,10 +595,10 @@
             <span class="que-switch__track"><span class="que-switch__thumb"></span></span>
             <span class="que-switch__label">Label right (on)</span>
           </label>
-          <label class="que-switch que-switch--label-left">
+          <label class="que-switch que-switch--ltr">
             <input class="que-switch__input" type="checkbox" role="switch" checked />
-            <span class="que-switch__label">Label left</span>
             <span class="que-switch__track"><span class="que-switch__thumb"></span></span>
+            <span class="que-switch__label">RTL (track right)</span>
           </label>
         </div>
         <pre class="demo-code">&lt;label class="que-switch"&gt;
@@ -609,11 +609,11 @@
   &lt;span class="que-switch__label"&gt;Label&lt;/span&gt;
 &lt;/label&gt;
 
-&lt;!-- Label left: swap label + track order --&gt;
-&lt;label class="que-switch que-switch--label-left"&gt;
+&lt;!-- RTL: keep DOM order, CSS flips visual --&gt;
+&lt;label class="que-switch que-switch--ltr"&gt;
   &lt;input class="que-switch__input" type="checkbox" role="switch" /&gt;
-  &lt;span class="que-switch__label"&gt;Label&lt;/span&gt;
   &lt;span class="que-switch__track"&gt;...&lt;/span&gt;
+  &lt;span class="que-switch__label"&gt;Label&lt;/span&gt;
 &lt;/label&gt;</pre>
       </div>
 

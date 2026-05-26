@@ -2,12 +2,15 @@ export abstract class BaseElement extends HTMLElement {
   static observedAttributes: string[] = []
 
   private static _injected = new Set<string>()
+  private static _counter  = 0
 
   protected _slotHTML = ''
+  protected readonly _uid: string
   private _connected = false
 
   constructor() {
     super()
+    this._uid = `que-${++BaseElement._counter}`
   }
 
   protected injectCSS(css: string): void {

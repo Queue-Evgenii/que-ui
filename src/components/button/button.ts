@@ -1,5 +1,6 @@
 import { BaseElement } from '../../base/BaseElement'
 import { buttonCSS } from './button.styles'
+import { esc, sanitizeUrl } from '../../utils/html'
 
 type ButtonVariant = 'solid' | 'outline' | 'ghost'
 type ButtonIntent  = 'primary' | 'secondary' | 'danger' | 'success' | 'warning'
@@ -58,21 +59,21 @@ export class QueButton extends BaseElement {
       full                   ? 'que-button--full' : '',
     ].filter(Boolean).join(' ')
 
-    const label = this.attr('label') ? `aria-label="${this.attr('label')}"` : ''
+    const label = this.attr('label') ? `aria-label="${esc(this.attr('label')!)}"` : ''
     const slot  = this._slotHTML
 
     const inner = href
       ? `<a
            class="${classes}"
-           href="${href}"
-           ${target ? `target="${target}"` : ''}
+           href="${sanitizeUrl(href)}"
+           ${target ? `target="${esc(target)}"` : ''}
            ${disabled ? 'aria-disabled="true" tabindex="-1"' : ''}
            ${label}
          >${slot}</a>`
       : `<button
            class="${classes}"
            ${disabled ? 'disabled aria-disabled="true"' : ''}
-           type="${this.attr('type') ?? 'button'}"
+           type="${esc(this.attr('type') ?? 'button')}"
            ${label}
          >${slot}</button>`
 

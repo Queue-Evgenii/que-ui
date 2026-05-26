@@ -1,5 +1,6 @@
 import { BaseElement } from '../../base/BaseElement'
 import { selectCSS } from './select.styles'
+import { esc } from '../../utils/html'
 
 type SelectIntent = 'danger' | 'success' | 'warning'
 
@@ -181,6 +182,7 @@ export class QueSelect extends BaseElement {
 
     const match = options.find(o => o.value === this.#value)
     const isFilled = Boolean(this.#value && match)
+    const triggerId = this.attr('id') ?? this._uid
 
     const triggerClasses = [
       'que-select',
@@ -190,9 +192,9 @@ export class QueSelect extends BaseElement {
     ].filter(Boolean).join(' ')
 
     const valueHTML = isFilled
-      ? `<span class="que-select__value">${match!.label}</span>`
+      ? `<span class="que-select__value">${esc(match!.label)}</span>`
       : ph
-        ? `<span class="que-select__value que-select__value--placeholder">${ph}</span>`
+        ? `<span class="que-select__value que-select__value--placeholder">${esc(ph)}</span>`
         : `<span class="que-select__value"></span>`
 
     const optionsHTML = options.map((o, i) => `
@@ -201,7 +203,7 @@ export class QueSelect extends BaseElement {
         role="option"
         aria-selected="${o.value === this.#value}"
         data-index="${i}"
-      >${o.label}</li>
+      >${esc(o.label)}</li>
     `).join('')
 
     this.injectCSS(selectCSS)
@@ -211,17 +213,18 @@ export class QueSelect extends BaseElement {
           <button
             class="${triggerClasses}"
             type="button"
+            id="${esc(triggerId)}"
             aria-haspopup="listbox"
             aria-expanded="${this.#open}"
             ${disabled ? 'disabled' : ''}
           >${valueHTML}${CHEVRON}</button>
-          ${label ? `<label class="que-select-label${required ? ' que-select-label--required' : ''}">${label}</label>` : ''}
+          ${label ? `<label class="que-select-label${required ? ' que-select-label--required' : ''}" for="${esc(triggerId)}">${esc(label)}</label>` : ''}
           <div class="que-select__dropdown" role="listbox">
             <ul class="que-select__list">${optionsHTML}</ul>
           </div>
         </div>
-        ${error ? `<span class="que-input-error">${error}</span>` : ''}
-        ${hint && !error ? `<span class="que-input-hint">${hint}</span>` : ''}
+        ${error ? `<span class="que-input-error">${esc(error)}</span>` : ''}
+        ${hint && !error ? `<span class="que-input-hint">${esc(hint)}</span>` : ''}
       </div>
     `
 

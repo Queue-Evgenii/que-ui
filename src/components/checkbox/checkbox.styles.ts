@@ -11,9 +11,8 @@ export const checkboxCSS = `
   user-select: none;
 }
 
-.que-checkbox--label-left .que-checkbox__label {
-  flex: 1;
-}
+.que-checkbox--ltr .que-checkbox__control { order: 1; }
+.que-checkbox--ltr .que-checkbox__label   { flex: 1; }
 
 
 .que-checkbox--disabled {
@@ -158,6 +157,9 @@ export const checkboxCSS = `
   background: var(--que-color-success);
   border-color: var(--que-color-success);
 }
+.que-checkbox--intent-success .que-checkbox__label {
+  color: var(--que-color-success-text);
+}
 
 .que-checkbox--intent-warning .que-checkbox__control {
   border-color: var(--que-color-warning);
@@ -170,6 +172,9 @@ export const checkboxCSS = `
 .que-checkbox--intent-warning.que-checkbox--indeterminate .que-checkbox__control {
   background: var(--que-color-warning);
   border-color: var(--que-color-warning);
+}
+.que-checkbox--intent-warning .que-checkbox__label {
+  color: var(--que-color-warning-text);
 }
 
 `

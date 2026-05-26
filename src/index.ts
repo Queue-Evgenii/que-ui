@@ -1,6 +1,7 @@
 export * from './tokens'
 export * from './theme'
 export { cssVar, tokensToCSSVars } from './utils/css'
+export { esc, sanitizeUrl } from './utils/html'
 export { utilitiesCSS } from './utilities'
 export { buttonCSS } from './components/button/button.styles'
 export { QueButton } from './components/button/button'

@@ -372,7 +372,7 @@
       <div class="demo-block">
         <div class="demo-preview col" style="gap:12px;">
           <que-checkbox label="Enable notifications" hint="You'll receive email updates" checked></que-checkbox>
-          <que-checkbox label="Dark mode" label-position="left"></que-checkbox>
+          <que-checkbox label="Dark mode" direction="ltr"></que-checkbox>
           <que-checkbox label="Accept terms" intent="danger" error="You must accept the terms"></que-checkbox>
         </div>
         <pre class="demo-code">&lt;!-- Hint --&gt;
@@ -382,8 +382,8 @@
   checked&gt;
 &lt;/que-checkbox&gt;
 
-&lt;!-- Label left --&gt;
-&lt;que-checkbox label="Dark mode" label-position="left"&gt;
+&lt;!-- RTL --&gt;
+&lt;que-checkbox label="Dark mode" direction="ltr"&gt;
 &lt;/que-checkbox&gt;
 
 &lt;!-- Error --&gt;
@@ -416,20 +416,20 @@
         <div class="demo-preview col" style="gap:12px;">
           <que-switch label="Label right (off)"></que-switch>
           <que-switch label="Label right (on)" checked></que-switch>
-          <que-switch label="Label left" label-position="left" checked></que-switch>
+          <que-switch label="RTL (track right)" direction="ltr" checked></que-switch>
         </div>
         <pre class="demo-code">&lt;que-switch label="Notifications"&gt;&lt;/que-switch&gt;
 &lt;que-switch label="Notifications" checked&gt;&lt;/que-switch&gt;
 
-&lt;!-- Label left --&gt;
-&lt;que-switch label="Dark mode" label-position="left"&gt;
+&lt;!-- RTL --&gt;
+&lt;que-switch label="Dark mode" direction="ltr"&gt;
 &lt;/que-switch&gt;</pre>
       </div>
 
       <p class="demo-label">Hint / Error / Disabled</p>
       <div class="demo-block">
         <div class="demo-preview col" style="gap:12px;">
-          <que-switch label="Email notifications" label-position="left" hint="Receive updates via email" checked></que-switch>
+          <que-switch label="Email notifications" direction="ltr" hint="Receive updates via email" checked></que-switch>
           <que-switch label="Enable 2FA" intent="danger" error="This setting is required"></que-switch>
           <que-switch label="Disabled off" disabled></que-switch>
           <que-switch label="Disabled on" disabled checked></que-switch>
@@ -484,8 +484,8 @@
             <que-radio value="blue" label="Blue"></que-radio>
           </que-radio-group>
           <que-radio-group name="side-js" label="Side" style="max-width:220px;display:block;">
-            <que-radio value="left" label="Left" label-position="left" checked></que-radio>
-            <que-radio value="right" label="Right" label-position="left"></que-radio>
+            <que-radio value="left" label="Left" checked></que-radio>
+            <que-radio value="right" label="Right" direction="ltr"></que-radio>
           </que-radio-group>
         </div>
         <pre class="demo-code">&lt;!-- Horizontal --&gt;
@@ -494,9 +494,9 @@
   &lt;que-radio value="green" label="Green"&gt;&lt;/que-radio&gt;
 &lt;/que-radio-group&gt;
 
-&lt;!-- Label left on individual radios --&gt;
-&lt;que-radio value="left" label="Left"
-           label-position="left" checked&gt;
+&lt;!-- RTL on individual radios --&gt;
+&lt;que-radio value="right" label="Right"
+           direction="ltr"&gt;
 &lt;/que-radio&gt;</pre>
       </div>
 

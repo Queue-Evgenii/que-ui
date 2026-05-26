@@ -1,5 +1,6 @@
 import { BaseElement } from '../../base/BaseElement'
 import { textareaCSS } from './textarea.styles'
+import { esc } from '../../utils/html'
 
 type TextareaIntent = 'danger' | 'success' | 'warning'
 
@@ -22,10 +23,6 @@ export class QueTextarea extends BaseElement {
   }
 
   #textarea: HTMLTextAreaElement | null = null
-
-  connectedCallback(): void {
-    super.connectedCallback()
-  }
 
   disconnectedCallback(): void {
     this.#textarea?.removeEventListener('input', this.#onInput)
@@ -58,6 +55,7 @@ export class QueTextarea extends BaseElement {
     const required = this.boolAttr('required')
     const rows     = this.attr('rows') ?? '4'
     const value    = this.attr('value') ?? ''
+    const id       = this.attr('id') ?? this._uid
 
     const resolvedIntent = error ? 'danger' : intent
 
@@ -73,18 +71,18 @@ export class QueTextarea extends BaseElement {
         <div class="que-input-wrap">
           <textarea
             class="${classes}"
-            rows="${rows}"
+            id="${esc(id)}"
+            rows="${esc(rows)}"
             placeholder=" "
-            ${this.attr('name') ? `name="${this.attr('name')}"` : ''}
-            ${this.attr('id') ? `id="${this.attr('id')}"` : ''}
+            ${this.attr('name') ? `name="${esc(this.attr('name')!)}"` : ''}
             ${disabled ? 'disabled' : ''}
             ${readonly ? 'readonly' : ''}
             ${required ? 'required' : ''}
-          >${value}</textarea>
-          ${label ? `<label class="que-input-label${required ? ' que-input-label--required' : ''}">${label}</label>` : ''}
+          >${esc(value)}</textarea>
+          ${label ? `<label class="que-input-label${required ? ' que-input-label--required' : ''}" for="${esc(id)}">${esc(label)}</label>` : ''}
         </div>
-        ${error ? `<span class="que-input-error">${error}</span>` : ''}
-        ${hint && !error ? `<span class="que-input-hint">${hint}</span>` : ''}
+        ${error ? `<span class="que-input-error">${esc(error)}</span>` : ''}
+        ${hint && !error ? `<span class="que-input-hint">${esc(hint)}</span>` : ''}
       </div>
     `
 

@@ -18,6 +18,7 @@ export const textareaCSS = `
   display: block;
   --_que-pt: 12px;
   --_que-border-color: var(--que-color-border-strong);
+  --_que-label-float-size: 11px;
 }
 
 .que-input-wrap:has(.que-textarea:hover:not(:disabled):not([readonly])),
@@ -105,7 +106,7 @@ export const textareaCSS = `
 .que-textarea--filled ~ .que-input-label {
   top: 0;
   transform: translateY(-50%);
-  font-size: 11px;
+  font-size: var(--_que-label-float-size);
   color: var(--_que-border-color);
   background: var(--que-color-bg);
 }

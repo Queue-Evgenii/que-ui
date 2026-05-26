@@ -77,7 +77,7 @@ Legend: ✅ Done · 🚧 In Progress · ⬜ Not Started · ❌ Blocked
 | ✅ | Progress (linear) | `<que-progress>` |
 | ✅ | Progress (circular) | `<que-progress type="circular">` |
 | ✅ | Skeleton | `<que-skeleton>` |
-| ⬜ | Empty State | `<que-empty>` |
+| ✅ | Empty State | `<que-empty>` |
 
 ---
 

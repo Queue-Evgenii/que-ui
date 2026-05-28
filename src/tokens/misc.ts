@@ -39,6 +39,7 @@ export const defaultZIndex = {
   'z-base':    '0',
   'z-raised':  '10',
   'z-dropdown':'100',
+  'z-popover': '150',
   'z-sticky':  '200',
   'z-overlay': '300',
   'z-modal':   '400',

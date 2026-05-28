@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Popover (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/badge.css" />
+  <link rel="stylesheet" href="../dist/segmented.css" />
+  <link rel="stylesheet" href="../dist/popover.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .demo-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 64px 16px;
+      background: var(--que-color-bg-subtle);
+      border: 1px dashed var(--que-color-border);
+      border-radius: var(--que-radius-lg);
+    }
+    .demo-cell--wide {
+      grid-column: span 3;
+    }
+    .demo-cell--mid {
+      grid-column: span 2;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="index.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="index-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Placements (always open)</h2>
+    <div class="demo-grid">
+
+      <div class="demo-cell">
+        <div class="que-popover que-popover--placement-top que-popover--open que-popover--arrow">
+          <button class="que-button que-button--outline que-button--sm">top</button>
+          <div class="que-popover__content">Top center</div>
+        </div>
+      </div>
+
+      <div class="demo-cell">
+        <div class="que-popover que-popover--placement-top-start que-popover--open">
+          <button class="que-button que-button--outline que-button--sm">top-start</button>
+          <div class="que-popover__content">Top start</div>
+        </div>
+      </div>
+
+      <div class="demo-cell">
+        <div class="que-popover que-popover--placement-top-end que-popover--open">
+          <button class="que-button que-button--outline que-button--sm">top-end</button>
+          <div class="que-popover__content">Top end</div>
+        </div>
+      </div>
+
+      <div class="demo-cell">
+        <div class="que-popover que-popover--placement-bottom que-popover--open que-popover--arrow">
+          <button class="que-button que-button--outline que-button--sm">bottom</button>
+          <div class="que-popover__content">Bottom center</div>
+        </div>
+      </div>
+
+      <div class="demo-cell">
+        <div class="que-popover que-popover--placement-bottom-start que-popover--open">
+          <button class="que-button que-button--outline que-button--sm">bottom-start</button>
+          <div class="que-popover__content">Bottom start</div>
+        </div>
+      </div>
+
+      <div class="demo-cell">
+        <div class="que-popover que-popover--placement-bottom-end que-popover--open">
+          <button class="que-button que-button--outline que-button--sm">bottom-end</button>
+          <div class="que-popover__content">Bottom end</div>
+        </div>
+      </div>
+
+      <div class="demo-cell">
+        <div class="que-popover que-popover--placement-left que-popover--open que-popover--arrow">
+          <button class="que-button que-button--outline que-button--sm">left</button>
+          <div class="que-popover__content">Left center</div>
+        </div>
+      </div>
+
+      <div class="demo-cell">
+        <div class="que-popover que-popover--placement-right que-popover--open que-popover--arrow">
+          <button class="que-button que-button--outline que-button--sm">right</button>
+          <div class="que-popover__content">Right center</div>
+        </div>
+      </div>
+
+      <div class="demo-cell" style="gap: 32px; flex-direction: column;">
+        <div class="que-popover que-popover--placement-left-start que-popover--open">
+          <button class="que-button que-button--outline que-button--sm">left-start</button>
+          <div class="que-popover__content">Left start</div>
+        </div>
+        <div class="que-popover que-popover--placement-right-end que-popover--open">
+          <button class="que-button que-button--outline que-button--sm">right-end</button>
+          <div class="que-popover__content">Right end</div>
+        </div>
+      </div>
+
+    </div>
+
+    <h2>Rich content</h2>
+    <div class="demo-grid">
+
+      <div class="demo-cell demo-cell--mid">
+        <div class="que-popover que-popover--placement-bottom-start que-popover--open">
+          <button class="que-button que-button--intent-primary">User profile</button>
+          <div class="que-popover__content" style="min-width: 240px;">
+            <div style="display:flex; align-items:center; gap: 12px; margin-bottom: 12px;">
+              <div style="width:40px; height:40px; border-radius:50%; background: var(--que-color-primary-subtle); display:flex; align-items:center; justify-content:center; font-weight:600; color: var(--que-color-primary); font-size: 16px;">J</div>
+              <div>
+                <div style="font-weight: var(--que-font-weight-semibold); color: var(--que-color-text);">Jane Doe</div>
+                <div style="font-size: var(--que-font-size-xs); color: var(--que-color-text-muted);">jane@example.com</div>
+              </div>
+            </div>
+            <div style="border-top: 1px solid var(--que-color-border); padding-top: 10px; display:flex; gap: 8px;">
+              <button class="que-button que-button--sm que-button--outline">Profile</button>
+              <button class="que-button que-button--sm que-button--ghost">Sign out</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-cell">
+        <div class="que-popover que-popover--placement-top que-popover--open que-popover--arrow">
+          <button class="que-button que-button--ghost que-button--sm">Status info</button>
+          <div class="que-popover__content" style="max-width: 200px;">
+            <div style="display:flex; align-items:center; gap: 8px; margin-bottom: 6px;">
+              <span class="que-badge que-badge--intent-success">Active</span>
+              <span class="que-badge que-badge--subtle">v2.1.4</span>
+            </div>
+            <span style="color: var(--que-color-text-muted); font-size: var(--que-font-size-xs);">Last seen 2 minutes ago</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <h2>Custom offset</h2>
+    <div class="demo-grid">
+      <div class="demo-cell">
+        <div class="que-popover que-popover--placement-bottom que-popover--open que-popover--arrow" style="--que-popover-offset: 16px;">
+          <button class="que-button que-button--outline que-button--sm">offset: 16px</button>
+          <div class="que-popover__content">More breathing room</div>
+        </div>
+      </div>
+      <div class="demo-cell">
+        <div class="que-popover que-popover--placement-bottom que-popover--open" style="--que-popover-offset: 4px;">
+          <button class="que-button que-button--outline que-button--sm">offset: 4px</button>
+          <div class="que-popover__content">Tight spacing</div>
+        </div>
+      </div>
+      <div class="demo-cell">
+        <div class="que-popover que-popover--placement-bottom que-popover--open" style="--que-popover-min-width: 240px;">
+          <button class="que-button que-button--sm">min-width: 240px</button>
+          <div class="que-popover__content">Wider panel</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

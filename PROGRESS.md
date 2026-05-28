@@ -66,7 +66,7 @@ Legend: ✅ Done · 🚧 In Progress · ⬜ Not Started · ❌ Blocked
 
 | Status | Component | Tag |
 |--------|-----------|-----|
-| ⬜ | Modal / Dialog | `<que-modal>` |
+| ✅ | Modal / Dialog | `<que-modal>` |
 | ✅ | Drawer | `<que-drawer>` |
 | ✅ | Tooltip | `<que-tooltip>` |
 | ✅ | Popover | `<que-popover>` |

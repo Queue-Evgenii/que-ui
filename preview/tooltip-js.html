@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Tooltip (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .demo-area {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      padding: 32px;
+      background: var(--que-color-bg-subtle);
+      border: 1px dashed var(--que-color-border);
+      border-radius: var(--que-radius-lg);
+    }
+    .icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: var(--que-radius-md);
+      border: 1px solid var(--que-color-border);
+      background: var(--que-color-bg);
+      cursor: pointer;
+      color: var(--que-color-text-muted);
+      transition: background var(--que-duration-fast), color var(--que-duration-fast);
+    }
+    .icon-btn:hover { background: var(--que-color-interactive-hover); color: var(--que-color-text); }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="index.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="index-js.html" variant="ghost" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Basic (hover + focus, 400ms delay)</h2>
+    <div class="demo-area">
+      <que-tooltip content="Save document" placement="top">
+        <que-button size="sm">Save</que-button>
+      </que-tooltip>
+
+      <que-tooltip content="Delete permanently — this cannot be undone" placement="top">
+        <que-button size="sm" variant="outline">Delete</que-button>
+      </que-tooltip>
+
+      <que-tooltip content="Share with team" placement="bottom">
+        <que-button size="sm" variant="ghost">Share</que-button>
+      </que-tooltip>
+    </div>
+
+    <h2>Placements</h2>
+    <div class="demo-area">
+      <que-tooltip content="Top" placement="top">
+        <que-button size="sm" variant="outline">top ↑</que-button>
+      </que-tooltip>
+      <que-tooltip content="Bottom" placement="bottom">
+        <que-button size="sm" variant="outline">bottom ↓</que-button>
+      </que-tooltip>
+      <que-tooltip content="Left" placement="left">
+        <que-button size="sm" variant="outline">← left</que-button>
+      </que-tooltip>
+      <que-tooltip content="Right" placement="right">
+        <que-button size="sm" variant="outline">right →</que-button>
+      </que-tooltip>
+      <que-tooltip content="Top-start" placement="top-start">
+        <que-button size="sm" variant="ghost">top-start</que-button>
+      </que-tooltip>
+      <que-tooltip content="Bottom-end" placement="bottom-end">
+        <que-button size="sm" variant="ghost">bottom-end</que-button>
+      </que-tooltip>
+    </div>
+
+    <h2>Icon toolbar (instant, no delay)</h2>
+    <div class="demo-area">
+      <que-tooltip content="Bold" placement="bottom" delay="0">
+        <button class="icon-btn" aria-label="Bold">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.5 3A1.5 1.5 0 0 0 4 4.5v11A1.5 1.5 0 0 0 5.5 17H10a5 5 0 0 0 3.171-8.876A4 4 0 0 0 9.5 3H5.5zM6 8V5h3.5a2 2 0 1 1 0 4H6v-.5L6 8zm0 2h4a3 3 0 1 1 0 6H6v-6z" clip-rule="evenodd"/></svg>
+        </button>
+      </que-tooltip>
+      <que-tooltip content="Italic" placement="bottom" delay="0">
+        <button class="icon-btn" aria-label="Italic">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 2.75A.75.75 0 0 1 8.75 2h6.5a.75.75 0 0 1 0 1.5h-2.5l-3.5 13H11.75a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1 0-1.5h2.5l3.5-13H8.75A.75.75 0 0 1 8 2.75z" clip-rule="evenodd"/></svg>
+        </button>
+      </que-tooltip>
+      <que-tooltip content="Underline" placement="bottom" delay="0">
+        <button class="icon-btn" aria-label="Underline">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 3a4 4 0 0 0-4 4v5a4 4 0 0 0 8 0V7a4 4 0 0 0-4-4zM4.5 17.5h11a.75.75 0 0 1 0 1.5h-11a.75.75 0 0 1 0-1.5z" clip-rule="evenodd"/></svg>
+        </button>
+      </que-tooltip>
+      <que-tooltip content="Align left" placement="bottom" delay="0">
+        <button class="icon-btn" aria-label="Align left">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 4.75A.75.75 0 0 1 2.75 4h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 4.75zm0 5A.75.75 0 0 1 2.75 9h8.5a.75.75 0 0 1 0 1.5h-8.5A.75.75 0 0 1 2 9.75zm0 5a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z" clip-rule="evenodd"/></svg>
+        </button>
+      </que-tooltip>
+    </div>
+
+    <h2>Disabled</h2>
+    <div class="demo-area">
+      <que-tooltip content="This won't show" placement="top" disabled>
+        <que-button size="sm" variant="outline">Disabled tooltip</que-button>
+      </que-tooltip>
+    </div>
+
+    <h2>Custom color via CSS variable</h2>
+    <div class="demo-area">
+      <que-tooltip content="Brand tooltip" placement="top" style="--que-tooltip-bg: var(--que-color-primary); --que-tooltip-color: #fff;">
+        <que-button size="sm" intent="primary">Primary</que-button>
+      </que-tooltip>
+      <que-tooltip content="Something went wrong" placement="top" style="--que-tooltip-bg: var(--que-color-danger); --que-tooltip-color: #fff;">
+        <que-button size="sm" variant="outline">Danger</que-button>
+      </que-tooltip>
+    </div>
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/tooltip.js'
+
+    const ctrl = applyTheme(createTheme())
+
+    const toggle = document.getElementById('theme-toggle')
+    if (toggle) {
+      toggle.addEventListener('change', e => ctrl.setMode(e.target.value))
+      const sync = () => { const i = toggle.querySelector(`input[value="${ctrl.mode}"]`); if (i) i.checked = true }
+      ctrl.onChange(sync)
+      sync()
+    }
+  </script>
+</body>
+</html>

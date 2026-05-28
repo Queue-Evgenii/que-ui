@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Tooltip (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/segmented.css" />
+  <link rel="stylesheet" href="../dist/tooltip.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .demo-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 52px 16px;
+      background: var(--que-color-bg-subtle);
+      border: 1px dashed var(--que-color-border);
+      border-radius: var(--que-radius-lg);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="index.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="index-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Placements (hover / always open below)</h2>
+    <div class="demo-grid">
+
+      <div class="demo-cell">
+        <div class="que-tooltip que-tooltip--placement-top que-tooltip--open">
+          <button class="que-button que-button--outline que-button--sm">top</button>
+          <div class="que-tooltip__content" role="tooltip">Top center</div>
+        </div>
+      </div>
+
+      <div class="demo-cell">
+        <div class="que-tooltip que-tooltip--placement-top-start que-tooltip--open">
+          <button class="que-button que-button--outline que-button--sm">top-start</button>
+          <div class="que-tooltip__content" role="tooltip">Top start</div>
+        </div>
+      </div>
+
+      <div class="demo-cell">
+        <div class="que-tooltip que-tooltip--placement-top-end que-tooltip--open">
+          <button class="que-button que-button--outline que-button--sm">top-end</button>
+          <div class="que-tooltip__content" role="tooltip">Top end</div>
+        </div>
+      </div>
+
+      <div class="demo-cell">
+        <div class="que-tooltip que-tooltip--placement-bottom que-tooltip--open">
+          <button class="que-button que-button--outline que-button--sm">bottom</button>
+          <div class="que-tooltip__content" role="tooltip">Bottom center</div>
+        </div>
+      </div>
+
+      <div class="demo-cell">
+        <div class="que-tooltip que-tooltip--placement-bottom-start que-tooltip--open">
+          <button class="que-button que-button--outline que-button--sm">bottom-start</button>
+          <div class="que-tooltip__content" role="tooltip">Bottom start</div>
+        </div>
+      </div>
+
+      <div class="demo-cell">
+        <div class="que-tooltip que-tooltip--placement-bottom-end que-tooltip--open">
+          <button class="que-button que-button--outline que-button--sm">bottom-end</button>
+          <div class="que-tooltip__content" role="tooltip">Bottom end</div>
+        </div>
+      </div>
+
+      <div class="demo-cell">
+        <div class="que-tooltip que-tooltip--placement-left que-tooltip--open">
+          <button class="que-button que-button--outline que-button--sm">left</button>
+          <div class="que-tooltip__content" role="tooltip">Left center</div>
+        </div>
+      </div>
+
+      <div class="demo-cell">
+        <div class="que-tooltip que-tooltip--placement-right que-tooltip--open">
+          <button class="que-button que-button--outline que-button--sm">right</button>
+          <div class="que-tooltip__content" role="tooltip">Right center</div>
+        </div>
+      </div>
+
+      <div class="demo-cell" style="flex-direction: column; gap: 24px;">
+        <div class="que-tooltip que-tooltip--placement-left-start que-tooltip--open">
+          <button class="que-button que-button--outline que-button--sm">left-start</button>
+          <div class="que-tooltip__content" role="tooltip">Left start</div>
+        </div>
+        <div class="que-tooltip que-tooltip--placement-right-end que-tooltip--open">
+          <button class="que-button que-button--outline que-button--sm">right-end</button>
+          <div class="que-tooltip__content" role="tooltip">Right end</div>
+        </div>
+      </div>
+
+    </div>
+
+    <h2>CSS-only hover (no JS)</h2>
+    <div class="row" style="gap: 12px;">
+      <div class="que-tooltip que-tooltip--placement-top">
+        <button class="que-button que-button--sm">Hover me (top)</button>
+        <div class="que-tooltip__content" role="tooltip">Pure CSS, no JS needed</div>
+      </div>
+      <div class="que-tooltip que-tooltip--placement-bottom">
+        <button class="que-button que-button--sm que-button--outline">Hover (bottom)</button>
+        <div class="que-tooltip__content" role="tooltip">Triggered by :hover / :focus-within</div>
+      </div>
+      <div class="que-tooltip que-tooltip--placement-right">
+        <button class="que-button que-button--sm que-button--ghost">Hover (right) →</button>
+        <div class="que-tooltip__content" role="tooltip">Works without JavaScript</div>
+      </div>
+    </div>
+
+    <h2>Long text</h2>
+    <div class="row">
+      <div class="que-tooltip que-tooltip--placement-top que-tooltip--open">
+        <button class="que-button que-button--sm que-button--outline">Long tooltip</button>
+        <div class="que-tooltip__content" role="tooltip">This tooltip contains a longer description that wraps across multiple lines.</div>
+      </div>
+    </div>
+
+    <h2>Custom style</h2>
+    <div class="row">
+      <div class="que-tooltip que-tooltip--placement-bottom que-tooltip--open"
+           style="--que-tooltip-bg: var(--que-color-primary); --que-tooltip-color: #fff;">
+        <button class="que-button que-button--sm que-button--intent-primary">Primary</button>
+        <div class="que-tooltip__content" role="tooltip">Custom brand color</div>
+      </div>
+      <div class="que-tooltip que-tooltip--placement-bottom que-tooltip--open"
+           style="--que-tooltip-bg: var(--que-color-danger); --que-tooltip-color: #fff;">
+        <button class="que-button que-button--sm">Danger</button>
+        <div class="que-tooltip__content" role="tooltip">Danger tooltip</div>
+      </div>
+    </div>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

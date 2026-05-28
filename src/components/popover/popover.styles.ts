@@ -1,3 +1,5 @@
+import { placementCSS } from '../../base/placement-css'
+
 export const popoverCSS = `
 /* Customizable: --que-popover-bg, --que-popover-border-color, --que-popover-radius,
                  --que-popover-padding, --que-popover-offset, --que-popover-min-width,
@@ -11,7 +13,7 @@ export const popoverCSS = `
   vertical-align: middle;
 }
 
-/* ── CONTENT PANEL — visual only, NO positioning here ────── */
+/* ── CONTENT PANEL ───────────────────────────────────────── */
 
 .que-popover__content {
   position: absolute;
@@ -30,7 +32,6 @@ export const popoverCSS = `
   box-sizing: border-box;
   white-space: normal;
   word-break: break-word;
-  /* hidden state */
   opacity: 0;
   pointer-events: none;
   transition:
@@ -43,148 +44,11 @@ export const popoverCSS = `
   pointer-events: auto;
 }
 
-/* ─────────────────────────────────────────────────────────────
-   PLACEMENTS
-   Every rule sets all 4 sides explicitly (auto where unused) to
-   avoid conflicts from other placement rules at lower specificity.
-   ───────────────────────────────────────────────────────────── */
+/* ── PLACEMENTS ──────────────────────────────────────────── */
 
-/* BOTTOM CENTER — also default when no placement class present */
-.que-popover--placement-bottom > .que-popover__content {
-  top: calc(100% + var(--que-popover-offset, 8px)); bottom: auto;
-  left: 50%; right: auto;
-  transform-origin: top center;
-  transform: translateX(-50%) translateY(-6px) scale(0.96);
-}
-.que-popover--placement-bottom.que-popover--open > .que-popover__content {
-  transform: translateX(-50%) translateY(0) scale(1);
-}
+${placementCSS('popover')}
 
-/* BOTTOM START */
-.que-popover--placement-bottom-start > .que-popover__content {
-  top: calc(100% + var(--que-popover-offset, 8px)); bottom: auto;
-  left: 0; right: auto;
-  transform-origin: top left;
-  transform: translateY(-6px) scale(0.96);
-}
-.que-popover--placement-bottom-start.que-popover--open > .que-popover__content {
-  transform: translateY(0) scale(1);
-}
-
-/* BOTTOM END */
-.que-popover--placement-bottom-end > .que-popover__content {
-  top: calc(100% + var(--que-popover-offset, 8px)); bottom: auto;
-  right: 0; left: auto;
-  transform-origin: top right;
-  transform: translateY(-6px) scale(0.96);
-}
-.que-popover--placement-bottom-end.que-popover--open > .que-popover__content {
-  transform: translateY(0) scale(1);
-}
-
-/* TOP CENTER */
-.que-popover--placement-top > .que-popover__content {
-  bottom: calc(100% + var(--que-popover-offset, 8px)); top: auto;
-  left: 50%; right: auto;
-  transform-origin: bottom center;
-  transform: translateX(-50%) translateY(6px) scale(0.96);
-}
-.que-popover--placement-top.que-popover--open > .que-popover__content {
-  transform: translateX(-50%) translateY(0) scale(1);
-}
-
-/* TOP START */
-.que-popover--placement-top-start > .que-popover__content {
-  bottom: calc(100% + var(--que-popover-offset, 8px)); top: auto;
-  left: 0; right: auto;
-  transform-origin: bottom left;
-  transform: translateY(6px) scale(0.96);
-}
-.que-popover--placement-top-start.que-popover--open > .que-popover__content {
-  transform: translateY(0) scale(1);
-}
-
-/* TOP END */
-.que-popover--placement-top-end > .que-popover__content {
-  bottom: calc(100% + var(--que-popover-offset, 8px)); top: auto;
-  right: 0; left: auto;
-  transform-origin: bottom right;
-  transform: translateY(6px) scale(0.96);
-}
-.que-popover--placement-top-end.que-popover--open > .que-popover__content {
-  transform: translateY(0) scale(1);
-}
-
-/* RIGHT CENTER */
-.que-popover--placement-right > .que-popover__content {
-  left: calc(100% + var(--que-popover-offset, 8px)); right: auto;
-  top: 50%; bottom: auto;
-  transform-origin: left center;
-  transform: translateX(-6px) translateY(-50%) scale(0.96);
-}
-.que-popover--placement-right.que-popover--open > .que-popover__content {
-  transform: translateX(0) translateY(-50%) scale(1);
-}
-
-/* RIGHT START */
-.que-popover--placement-right-start > .que-popover__content {
-  left: calc(100% + var(--que-popover-offset, 8px)); right: auto;
-  top: 0; bottom: auto;
-  transform-origin: top left;
-  transform: translateX(-6px) scale(0.96);
-}
-.que-popover--placement-right-start.que-popover--open > .que-popover__content {
-  transform: translateX(0) scale(1);
-}
-
-/* RIGHT END */
-.que-popover--placement-right-end > .que-popover__content {
-  left: calc(100% + var(--que-popover-offset, 8px)); right: auto;
-  bottom: 0; top: auto;
-  transform-origin: bottom left;
-  transform: translateX(-6px) scale(0.96);
-}
-.que-popover--placement-right-end.que-popover--open > .que-popover__content {
-  transform: translateX(0) scale(1);
-}
-
-/* LEFT CENTER */
-.que-popover--placement-left > .que-popover__content {
-  right: calc(100% + var(--que-popover-offset, 8px)); left: auto;
-  top: 50%; bottom: auto;
-  transform-origin: right center;
-  transform: translateX(6px) translateY(-50%) scale(0.96);
-}
-.que-popover--placement-left.que-popover--open > .que-popover__content {
-  transform: translateX(0) translateY(-50%) scale(1);
-}
-
-/* LEFT START */
-.que-popover--placement-left-start > .que-popover__content {
-  right: calc(100% + var(--que-popover-offset, 8px)); left: auto;
-  top: 0; bottom: auto;
-  transform-origin: top right;
-  transform: translateX(6px) scale(0.96);
-}
-.que-popover--placement-left-start.que-popover--open > .que-popover__content {
-  transform: translateX(0) scale(1);
-}
-
-/* LEFT END */
-.que-popover--placement-left-end > .que-popover__content {
-  right: calc(100% + var(--que-popover-offset, 8px)); left: auto;
-  bottom: 0; top: auto;
-  transform-origin: bottom right;
-  transform: translateX(6px) scale(0.96);
-}
-.que-popover--placement-left-end.que-popover--open > .que-popover__content {
-  transform: translateX(0) scale(1);
-}
-
-/* ─────────────────────────────────────────────────────────────
-   ARROW
-   Single ::before — rotated square, box-shadow for 2 border sides.
-   ───────────────────────────────────────────────────────────── */
+/* ── ARROW ───────────────────────────────────────────────── */
 
 .que-popover--arrow > .que-popover__content::before {
   content: '';

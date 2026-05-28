@@ -68,8 +68,8 @@ Legend: ✅ Done · 🚧 In Progress · ⬜ Not Started · ❌ Blocked
 |--------|-----------|-----|
 | ⬜ | Modal / Dialog | `<que-modal>` |
 | ⬜ | Drawer | `<que-drawer>` |
-| ⬜ | Tooltip | `<que-tooltip>` |
-| ⬜ | Popover | `<que-popover>` |
+| ✅ | Tooltip | `<que-tooltip>` |
+| ✅ | Popover | `<que-popover>` |
 | ✅ | Toast | `<que-toast>` |
 | ✅ | Alert | `<que-alert>` |
 | ✅ | Badge | `<que-badge>` |

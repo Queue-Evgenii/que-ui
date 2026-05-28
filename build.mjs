@@ -10,7 +10,7 @@ mkdirSync('dist', { recursive: true })
 
 // Bundle CSS-only exports into a temp file to extract values (no DOM/HTMLElement)
 await build({ entryPoints: ['src/css.ts'], bundle: true, format: 'esm', outfile: TMP })
-const { defaultTokens, defaultDarkTokens, utilitiesCSS, buttonCSS, inputCSS, textareaCSS, checkboxCSS, switchCSS, radioCSS, segmentedCSS, selectCSS, sliderCSS, badgeCSS, spinnerCSS, alertCSS, progressCSS, skeletonCSS, toastCSS, emptyCSS, popoverCSS } = await import(pathToFileURL(TMP).href)
+const { defaultTokens, defaultDarkTokens, utilitiesCSS, buttonCSS, inputCSS, textareaCSS, checkboxCSS, switchCSS, radioCSS, segmentedCSS, selectCSS, sliderCSS, badgeCSS, spinnerCSS, alertCSS, progressCSS, skeletonCSS, toastCSS, emptyCSS, popoverCSS, tooltipCSS } = await import(pathToFileURL(TMP).href)
 import('fs').then(fs => fs.unlinkSync(TMP))
 
 function toCSSVars(tokens) {
@@ -87,6 +87,9 @@ console.log('dist/empty.css')
 writeFileSync('dist/popover.css', popoverCSS.trim())
 console.log('dist/popover.css')
 
+writeFileSync('dist/tooltip.css', tooltipCSS.trim())
+console.log('dist/tooltip.css')
+
 const sharedConfig = { bundle: true, sourcemap: true }
 
 // Full library
@@ -151,5 +154,8 @@ console.log('dist/empty.js')
 
 await build({ ...sharedConfig, entryPoints: ['src/components/popover/popover.ts'], format: 'esm', outfile: 'dist/popover.js' })
 console.log('dist/popover.js')
+
+await build({ ...sharedConfig, entryPoints: ['src/components/tooltip/tooltip.ts'], format: 'esm', outfile: 'dist/tooltip.js' })
+console.log('dist/tooltip.js')
 
 console.log('\nBuild complete.')

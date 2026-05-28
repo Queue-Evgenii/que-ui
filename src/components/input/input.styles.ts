@@ -1,3 +1,5 @@
+import { fieldFeedbackCSS } from '../../base/field-css'
+
 export const inputCSS = `
 /* Customizable: --que-input-padding-x, --que-input-font-size, --que-input-radius */
 
@@ -90,11 +92,6 @@ export const inputCSS = `
               transform var(--que-duration-slow) var(--que-easing-out);
 }
 
-.que-input-label--required::after {
-  content: ' *';
-  color: var(--que-color-danger);
-}
-
 /* Scope rest position to input only — prevents textarea.css from overriding.
    top accounts for: padding-top + border (1px) + half-leading ((line-height - 1) / 2 * font-size) */
 .que-input ~ .que-input-label {
@@ -114,23 +111,9 @@ export const inputCSS = `
 }
 
 
-/* ── HINT / ERROR ────────────────────────────────────────────── */
+/* ── LABEL REQUIRED / HINT / ERROR ──────────────────────────── */
 
-.que-input-hint {
-  font-family: var(--que-font-sans);
-  font-size: var(--que-font-size-xs);
-  color: var(--que-color-text-muted);
-  line-height: var(--que-line-height-normal);
-  padding-left: calc(var(--que-input-padding-x, var(--que-space-3)) + 1px);
-}
-
-.que-input-error {
-  font-family: var(--que-font-sans);
-  font-size: var(--que-font-size-xs);
-  color: var(--que-color-danger);
-  line-height: var(--que-line-height-normal);
-  padding-left: calc(var(--que-input-padding-x, var(--que-space-3)) + 1px);
-}
+${fieldFeedbackCSS('input', { paddingLeft: 'calc(var(--que-input-padding-x, var(--que-space-3)) + 1px)' })}
 
 /* ── SIZES ──────────────────────────────────────────────────── */
 

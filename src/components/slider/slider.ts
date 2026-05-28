@@ -101,8 +101,8 @@ export class QueSlider extends BaseElement {
           ${disabled ? 'disabled' : ''}
           ${required ? 'required' : ''}
         />
-        ${error ? `<span class="que-input-error">${esc(error)}</span>` : ''}
-        ${hint && !error ? `<span class="que-input-hint">${esc(hint)}</span>` : ''}
+        ${error ? `<span class="que-slider-error">${esc(error)}</span>` : ''}
+        ${hint && !error ? `<span class="que-slider-hint">${esc(hint)}</span>` : ''}
       </div>
     `
 

@@ -1,3 +1,5 @@
+import { fieldFeedbackCSS } from '../../base/field-css'
+
 export const selectCSS = `
 que-option { display: none; }
 
@@ -96,11 +98,6 @@ que-option { display: none; }
               transform var(--que-duration-slow) var(--que-easing-out);
 }
 
-.que-select-label--required::after {
-  content: ' *';
-  color: var(--que-color-danger);
-}
-
 .que-select--open ~ .que-select-label,
 .que-select--filled ~ .que-select-label {
   top: 0;
@@ -172,6 +169,10 @@ que-option { display: none; }
 }
 
 /* Intents are handled via --_que-border-color on .que-select-wrap */
+
+/* ── LABEL REQUIRED / HINT / ERROR ──────────────────────────── */
+
+${fieldFeedbackCSS('select', { paddingLeft: 'calc(var(--que-input-padding-x, var(--que-space-3)) + 1px)' })}
 
 /* ── DISABLED ───────────────────────────────────────────────── */
 

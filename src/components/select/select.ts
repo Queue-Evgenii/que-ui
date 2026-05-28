@@ -223,8 +223,8 @@ export class QueSelect extends BaseElement {
             <ul class="que-select__list">${optionsHTML}</ul>
           </div>
         </div>
-        ${error ? `<span class="que-input-error">${esc(error)}</span>` : ''}
-        ${hint && !error ? `<span class="que-input-hint">${esc(hint)}</span>` : ''}
+        ${error ? `<span class="que-select-error">${esc(error)}</span>` : ''}
+        ${hint && !error ? `<span class="que-select-hint">${esc(hint)}</span>` : ''}
       </div>
     `
 

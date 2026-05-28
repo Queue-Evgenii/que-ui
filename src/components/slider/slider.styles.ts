@@ -1,3 +1,5 @@
+import { fieldFeedbackCSS } from '../../base/field-css'
+
 export const sliderCSS = `
 /* Customizable: --que-slider-color, --que-slider-track-height, --que-slider-thumb-size */
 
@@ -25,11 +27,6 @@ export const sliderCSS = `
   font-weight: var(--que-font-weight-medium);
   color: var(--que-color-text);
   line-height: var(--que-line-height-tight);
-}
-
-.que-slider-label--required::after {
-  content: ' *';
-  color: var(--que-color-danger);
 }
 
 .que-slider-output {
@@ -125,6 +122,10 @@ export const sliderCSS = `
 .que-slider--intent-danger  { --que-slider-color: var(--que-color-danger); }
 .que-slider--intent-success { --que-slider-color: var(--que-color-success); }
 .que-slider--intent-warning { --que-slider-color: var(--que-color-warning); }
+
+/* ── LABEL REQUIRED / HINT / ERROR ──────────────────────────── */
+
+${fieldFeedbackCSS('slider')}
 
 /* ── DISABLED ───────────────────────────────────────────────── */
 

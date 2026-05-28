@@ -1,3 +1,5 @@
+import { intentVarCSS } from '../../base/intent-css'
+
 export const spinnerCSS = `
 /* Customizable: --que-spinner-size, --que-spinner-color, --que-spinner-track-color, --que-spinner-thickness, --que-spinner-speed */
 
@@ -38,10 +40,6 @@ export const spinnerCSS = `
 
 /* ── INTENTS ─────────────────────────────────────────────── */
 
-.que-spinner--intent-primary   { --que-spinner-color: var(--que-color-primary); }
-.que-spinner--intent-secondary { --que-spinner-color: var(--que-color-secondary); }
-.que-spinner--intent-success   { --que-spinner-color: var(--que-color-success); }
-.que-spinner--intent-warning   { --que-spinner-color: var(--que-color-warning-hover); }
-.que-spinner--intent-danger    { --que-spinner-color: var(--que-color-danger); }
-.que-spinner--intent-neutral   { --que-spinner-color: var(--que-color-text-muted); }
+${intentVarCSS('que-spinner', '--que-spinner-color', ['primary', 'secondary', 'success', 'warning', 'danger'])}
+.que-spinner--intent-neutral { --que-spinner-color: var(--que-color-text-muted); }
 `

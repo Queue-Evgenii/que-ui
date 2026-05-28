@@ -1,3 +1,5 @@
+import { intentVarCSS } from '../../base/intent-css'
+
 export const progressCSS = `
 /* Customizable: --que-progress-height, --que-progress-radius, --que-progress-track-color, --que-progress-color */
 /* Circular: --que-progress-size, --que-progress-thickness */
@@ -47,12 +49,8 @@ export const progressCSS = `
 
 /* ── INTENTS ─────────────────────────────────────────────── */
 
-.que-progress--intent-primary   { --que-progress-color: var(--que-color-primary); }
-.que-progress--intent-secondary { --que-progress-color: var(--que-color-secondary); }
-.que-progress--intent-success   { --que-progress-color: var(--que-color-success); }
-.que-progress--intent-warning   { --que-progress-color: var(--que-color-warning-hover); }
-.que-progress--intent-danger    { --que-progress-color: var(--que-color-danger); }
-.que-progress--intent-neutral   { --que-progress-color: var(--que-color-text-muted); }
+${intentVarCSS('que-progress', '--que-progress-color', ['primary', 'secondary', 'success', 'warning', 'danger'])}
+.que-progress--intent-neutral { --que-progress-color: var(--que-color-text-muted); }
 
 /* ── CIRCULAR ────────────────────────────────────────────── */
 

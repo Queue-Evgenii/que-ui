@@ -1,8 +1,9 @@
 import { BaseElement } from '../../base/BaseElement'
 import { textareaCSS } from './textarea.styles'
 import { esc } from '../../utils/html'
+import type { Intent } from '../../base/types'
 
-type TextareaIntent = 'danger' | 'success' | 'warning'
+type TextareaIntent = Extract<Intent, 'danger' | 'success' | 'warning'>
 
 export class QueTextarea extends BaseElement {
   static observedAttributes = [
@@ -59,11 +60,10 @@ export class QueTextarea extends BaseElement {
 
     const resolvedIntent = error ? 'danger' : intent
 
-    const classes = [
-      'que-textarea',
-      resolvedIntent   ? `que-textarea--intent-${resolvedIntent}` : '',
-      value.length > 0 ? 'que-textarea--filled' : '',
-    ].filter(Boolean).join(' ')
+    const classes = this.cx('que-textarea', {
+      intent: resolvedIntent,
+      flags:  { filled: value.length > 0 },
+    })
 
     this.injectCSS(textareaCSS)
     this.innerHTML = `

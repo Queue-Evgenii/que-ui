@@ -42,12 +42,10 @@ export class QueSwitch extends BaseElement {
 
     const resolvedIntent = error ? 'danger' : intent
 
-    const wrapperClasses = [
-      'que-switch',
-      direction === 'ltr' ? 'que-switch--ltr' : '',
-      disabled ? 'que-switch--disabled' : '',
-      resolvedIntent ? `que-switch--intent-${resolvedIntent}` : '',
-    ].filter(Boolean).join(' ')
+    const wrapperClasses = this.cx('que-switch', {
+      intent: resolvedIntent,
+      flags:  { ltr: direction === 'ltr', disabled },
+    })
 
     const inputEl = `<input
         class="que-switch__input"

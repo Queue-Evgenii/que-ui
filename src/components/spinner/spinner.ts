@@ -1,8 +1,9 @@
 import { BaseElement } from '../../base/BaseElement'
 import { spinnerCSS } from './spinner.styles'
+import type { Size, Intent } from '../../base/types'
 
-type SpinnerIntent = 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'neutral'
-type SpinnerSize   = 'sm' | 'md' | 'lg' | 'xl'
+type SpinnerIntent = Extract<Intent, 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'neutral'>
+type SpinnerSize   = Size
 
 export class QueSpinner extends BaseElement {
   static observedAttributes = ['intent', 'size', 'label', 'speed']
@@ -17,11 +18,10 @@ export class QueSpinner extends BaseElement {
     this.setAttribute('role', 'status')
     this.setAttribute('aria-label', label)
     if (speed) this.style.setProperty('--que-spinner-speed', speed)
-    this.className = [
-      'que-spinner',
-      size !== 'md' ? `que-spinner--${size}`          : '',
-      intent        ? `que-spinner--intent-${intent}` : '',
-    ].filter(Boolean).join(' ')
+    this.className = this.cx('que-spinner', {
+      size: size !== 'md' ? size : null,
+      intent,
+    })
   }
 }
 

@@ -1,9 +1,10 @@
 import { BaseElement } from '../../base/BaseElement'
 import { inputCSS } from './input.styles'
 import { esc } from '../../utils/html'
+import type { Size, Intent } from '../../base/types'
 
-type InputIntent = 'danger' | 'success' | 'warning'
-type InputSize   = 'sm' | 'md' | 'lg'
+type InputIntent = Extract<Intent, 'danger' | 'success' | 'warning'>
+type InputSize   = Extract<Size, 'sm' | 'md' | 'lg'>
 
 export class QueInput extends BaseElement {
   static observedAttributes = [
@@ -61,12 +62,11 @@ export class QueInput extends BaseElement {
 
     const resolvedIntent = error ? 'danger' : intent
 
-    const inputClasses = [
-      'que-input',
-      size !== 'md'           ? `que-input--${size}` : '',
-      resolvedIntent          ? `que-input--intent-${resolvedIntent}` : '',
-      value.length > 0        ? 'que-input--filled' : '',
-    ].filter(Boolean).join(' ')
+    const inputClasses = this.cx('que-input', {
+      size:   size !== 'md' ? size : null,
+      intent: resolvedIntent,
+      flags:  { filled: value.length > 0 },
+    })
 
     this.injectCSS(inputCSS)
     this.innerHTML = `

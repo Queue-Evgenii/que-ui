@@ -45,5 +45,46 @@ export abstract class BaseElement extends HTMLElement {
     return this.hasAttribute(name)
   }
 
+  /**
+   * Compose a className from a base + modifiers.
+   *
+   *   cx('que-button', {
+   *     size:    size !== 'md' ? size : null,   // → que-button--lg
+   *     variant: variant !== 'solid' ? variant : null,
+   *     intent,                                  // → que-button--intent-primary
+   *     flags: { disabled, full },               // → que-button--disabled, --full
+   *   })
+   *
+   * Skip rules:
+   *  - `size`/`variant`: falsy → skipped (caller decides default via ternary)
+   *  - `intent`: prefixed `--intent-<value>` (matches the codebase convention)
+   *  - `flags`: only keys whose value is true are emitted as `base--<key>`
+   *  - any extra string keys: `base--<value>`
+   */
+  protected cx(
+    base: string,
+    mods: {
+      size?:    string | null
+      variant?: string | null
+      intent?:  string | null
+      flags?:   Record<string, boolean | null | undefined>
+      [key: string]: string | null | undefined | Record<string, boolean | null | undefined>
+    } = {}
+  ): string {
+    const out = [base]
+    const { size, variant, intent, flags, ...rest } = mods
+    if (size)    out.push(`${base}--${size}`)
+    if (variant) out.push(`${base}--${variant}`)
+    if (intent)  out.push(`${base}--intent-${intent}`)
+    if (flags) {
+      for (const k in flags) if (flags[k]) out.push(`${base}--${k}`)
+    }
+    for (const k in rest) {
+      const v = rest[k]
+      if (typeof v === 'string' && v) out.push(`${base}--${v}`)
+    }
+    return out.join(' ')
+  }
+
   protected abstract render(): void
 }

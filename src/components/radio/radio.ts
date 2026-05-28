@@ -52,12 +52,10 @@ export class QueRadio extends BaseElement {
     const value    = this.attr('value') ?? ''
     const intent   = this.attr('intent')
 
-    const wrapperClasses = [
-      'que-radio',
-      direction === 'ltr' ? 'que-radio--ltr' : '',
-      disabled ? 'que-radio--disabled' : '',
-      intent ? `que-radio--intent-${intent}` : '',
-    ].filter(Boolean).join(' ')
+    const wrapperClasses = this.cx('que-radio', {
+      intent,
+      flags: { ltr: direction === 'ltr', disabled },
+    })
 
     const inputEl = `<input
         class="que-radio__input"
@@ -123,10 +121,9 @@ export class QueRadioGroup extends BaseElement {
     const error       = this.attr('error')
     const orientation = this.attr('orientation') ?? 'vertical'
 
-    const groupClasses = [
-      'que-radio-group',
-      orientation === 'horizontal' ? 'que-radio-group--horizontal' : '',
-    ].filter(Boolean).join(' ')
+    const groupClasses = this.cx('que-radio-group', {
+      flags: { horizontal: orientation === 'horizontal' },
+    })
 
     // Preserve que-radio children before overwriting innerHTML
     const radioChildren = [...this.children].filter(

@@ -1,8 +1,9 @@
 import { BaseElement } from '../../base/BaseElement'
 import { progressCSS } from './progress.styles'
+import type { Size, Intent } from '../../base/types'
 
-type ProgressIntent = 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'neutral'
-type ProgressSize   = 'sm' | 'md' | 'lg' | 'xl'
+type ProgressIntent = Extract<Intent, 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'neutral'>
+type ProgressSize   = Size
 type ProgressType   = 'linear' | 'circular'
 
 export class QueProgress extends BaseElement {
@@ -19,13 +20,11 @@ export class QueProgress extends BaseElement {
     const pct           = indeterminate ? 0 : Math.min(100, Math.max(0, (value / max) * 100))
 
     this.injectCSS(progressCSS)
-    this.className = [
-      'que-progress',
-      type === 'circular'  ? 'que-progress--circular'        : '',
-      size !== 'md'        ? `que-progress--${size}`          : '',
-      intent               ? `que-progress--intent-${intent}` : '',
-      indeterminate        ? 'que-progress--indeterminate'    : '',
-    ].filter(Boolean).join(' ')
+    this.className = this.cx('que-progress', {
+      size: size !== 'md' ? size : null,
+      intent,
+      flags: { circular: type === 'circular', indeterminate },
+    })
 
     this.setAttribute('role', 'progressbar')
     this.setAttribute('aria-valuemin', '0')

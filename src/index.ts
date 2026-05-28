@@ -1,5 +1,7 @@
 export * from './tokens'
 export * from './theme'
+export type { Size, Intent, Variant } from './base/types'
+export { intentVarCSS, intentSolidCSS, intentOutlineCSS, intentSubtleCSS } from './base/intent-css'
 export { cssVar, tokensToCSSVars } from './utils/css'
 export { esc, sanitizeUrl } from './utils/html'
 export { utilitiesCSS } from './utilities'

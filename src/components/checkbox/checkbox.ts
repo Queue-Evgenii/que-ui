@@ -51,13 +51,10 @@ export class QueCheckbox extends BaseElement {
 
     const resolvedIntent = error ? 'danger' : intent
 
-    const wrapperClasses = [
-      'que-checkbox',
-      direction === 'ltr' ? 'que-checkbox--ltr' : '',
-      indeterminate ? 'que-checkbox--indeterminate' : '',
-      disabled ? 'que-checkbox--disabled' : '',
-      resolvedIntent ? `que-checkbox--intent-${resolvedIntent}` : '',
-    ].filter(Boolean).join(' ')
+    const wrapperClasses = this.cx('que-checkbox', {
+      intent: resolvedIntent,
+      flags:  { ltr: direction === 'ltr', indeterminate, disabled },
+    })
 
     const inputEl = `<input
           class="que-checkbox__input"

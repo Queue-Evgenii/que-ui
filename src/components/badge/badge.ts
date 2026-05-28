@@ -1,9 +1,10 @@
 import { BaseElement } from '../../base/BaseElement'
 import { badgeCSS } from './badge.styles'
+import type { Size, Intent, Variant } from '../../base/types'
 
-type BadgeIntent  = 'primary' | 'secondary' | 'success' | 'warning' | 'danger'
-type BadgeVariant = 'solid' | 'outline' | 'subtle'
-type BadgeSize    = 'sm' | 'md' | 'lg'
+type BadgeIntent  = Extract<Intent, 'primary' | 'secondary' | 'success' | 'warning' | 'danger'>
+type BadgeVariant = Extract<Variant, 'solid' | 'outline' | 'subtle'>
+type BadgeSize    = Extract<Size, 'sm' | 'md' | 'lg'>
 
 export class QueBadge extends BaseElement {
   static observedAttributes = ['intent', 'variant', 'size']
@@ -14,12 +15,11 @@ export class QueBadge extends BaseElement {
     const size    = (this.attr('size') as BadgeSize) ?? 'md'
 
     this.injectCSS(badgeCSS)
-    this.className = [
-      'que-badge',
-      size !== 'md'       ? `que-badge--${size}`          : '',
-      variant !== 'solid' ? `que-badge--${variant}`       : '',
-      intent              ? `que-badge--intent-${intent}` : '',
-    ].filter(Boolean).join(' ')
+    this.className = this.cx('que-badge', {
+      size:    size !== 'md' ? size : null,
+      variant: variant !== 'solid' ? variant : null,
+      intent,
+    })
   }
 }
 

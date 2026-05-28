@@ -1,10 +1,11 @@
 import { BaseElement } from '../../base/BaseElement'
 import { buttonCSS } from './button.styles'
 import { esc, sanitizeUrl } from '../../utils/html'
+import type { Size, Intent, Variant } from '../../base/types'
 
-type ButtonVariant = 'solid' | 'outline' | 'ghost'
-type ButtonIntent  = 'primary' | 'secondary' | 'danger' | 'success' | 'warning'
-type ButtonSize    = 'sm' | 'md' | 'lg'
+type ButtonVariant = Extract<Variant, 'solid' | 'outline' | 'ghost'>
+type ButtonIntent  = Extract<Intent, 'primary' | 'secondary' | 'danger' | 'success' | 'warning'>
+type ButtonSize    = Extract<Size, 'sm' | 'md' | 'lg'>
 
 export class QueButton extends BaseElement {
   static observedAttributes = ['variant', 'intent', 'size', 'disabled', 'full', 'type', 'label', 'href', 'target']
@@ -50,14 +51,12 @@ export class QueButton extends BaseElement {
     const href     = this.attr('href')
     const target   = this.attr('target')
 
-    const classes = [
-      'que-button',
-      variant !== 'solid'    ? `que-button--${variant}` : '',
-      intent ? `que-button--intent-${intent}` : '',
-      size    !== 'md'       ? `que-button--${size}` : '',
-      disabled               ? 'que-button--disabled' : '',
-      full                   ? 'que-button--full' : '',
-    ].filter(Boolean).join(' ')
+    const classes = this.cx('que-button', {
+      variant: variant !== 'solid' ? variant : null,
+      size:    size !== 'md' ? size : null,
+      intent,
+      flags:   { disabled, full },
+    })
 
     const label = this.attr('label') ? `aria-label="${esc(this.attr('label')!)}"` : ''
     const slot  = this._slotHTML

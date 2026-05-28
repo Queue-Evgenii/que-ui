@@ -2,7 +2,9 @@ import { BaseElement } from '../../base/BaseElement'
 import { emptyCSS } from './empty.styles'
 import { esc } from '../../utils/html'
 
-type EmptySize = 'sm' | 'md' | 'lg'
+import type { Size } from '../../base/types'
+
+type EmptySize = Extract<Size, 'sm' | 'md' | 'lg'>
 type EmptyIcon = 'empty' | 'search' | 'files' | 'error' | 'none'
 
 const ICONS: Record<Exclude<EmptyIcon, 'none'>, string> = {
@@ -36,10 +38,9 @@ export class QueEmpty extends BaseElement {
     const size        = (this.attr('size') as EmptySize) ?? 'md'
 
     this.injectCSS(emptyCSS)
-    this.className = [
-      'que-empty',
-      size !== 'md' ? `que-empty--${size}` : '',
-    ].filter(Boolean).join(' ')
+    this.className = this.cx('que-empty', {
+      size: size !== 'md' ? size : null,
+    })
 
     // Save action children before innerHTML wipes them
     const ownClasses = ['que-empty__icon', 'que-empty__title', 'que-empty__desc', 'que-empty__actions']

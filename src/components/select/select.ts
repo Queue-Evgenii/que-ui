@@ -2,7 +2,9 @@ import { BaseElement } from '../../base/BaseElement'
 import { selectCSS } from './select.styles'
 import { esc } from '../../utils/html'
 
-type SelectIntent = 'danger' | 'success' | 'warning'
+import type { Intent } from '../../base/types'
+
+type SelectIntent = Extract<Intent, 'danger' | 'success' | 'warning'>
 
 interface SelectOption {
   value: string
@@ -184,12 +186,10 @@ export class QueSelect extends BaseElement {
     const isFilled = Boolean(this.#value && match)
     const triggerId = this.attr('id') ?? this._uid
 
-    const triggerClasses = [
-      'que-select',
-      resolvedIntent ? `que-select--intent-${resolvedIntent}` : '',
-      isFilled       ? 'que-select--filled' : '',
-      this.#open     ? 'que-select--open' : '',
-    ].filter(Boolean).join(' ')
+    const triggerClasses = this.cx('que-select', {
+      intent: resolvedIntent,
+      flags:  { filled: isFilled, open: this.#open },
+    })
 
     const valueHTML = isFilled
       ? `<span class="que-select__value">${esc(match!.label)}</span>`

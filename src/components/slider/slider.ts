@@ -2,7 +2,9 @@ import { BaseElement } from '../../base/BaseElement'
 import { sliderCSS } from './slider.styles'
 import { esc } from '../../utils/html'
 
-type SliderIntent = 'danger' | 'success' | 'warning'
+import type { Intent } from '../../base/types'
+
+type SliderIntent = Extract<Intent, 'danger' | 'success' | 'warning'>
 
 export class QueSlider extends BaseElement {
   static observedAttributes = [
@@ -79,10 +81,7 @@ export class QueSlider extends BaseElement {
     const resolvedIntent = error ? 'danger' : intent
     const pct = this.#pct()
 
-    const inputClasses = [
-      'que-slider',
-      resolvedIntent ? `que-slider--intent-${resolvedIntent}` : '',
-    ].filter(Boolean).join(' ')
+    const inputClasses = this.cx('que-slider', { intent: resolvedIntent })
 
     this.injectCSS(sliderCSS)
     this.innerHTML = `

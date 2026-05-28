@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Drawer (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .drawer-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      height: 100%;
+    }
+    .drawer-body h3 {
+      font-size: var(--que-font-size-base);
+      font-weight: var(--que-font-weight-semibold);
+      color: var(--que-color-text);
+    }
+    .drawer-body p {
+      font-size: var(--que-font-size-sm);
+      color: var(--que-color-text-muted);
+      line-height: var(--que-line-height-normal);
+    }
+    .drawer-body .spacer { flex: 1; }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: var(--que-radius-md);
+      font-size: var(--que-font-size-sm);
+      color: var(--que-color-text);
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      text-align: left;
+      width: 100%;
+      font-family: var(--que-font-sans);
+      transition: background var(--que-duration-fast);
+    }
+    .nav-item:hover { background: var(--que-color-interactive-hover); }
+    .nav-item--active {
+      background: var(--que-color-primary-subtle);
+      color: var(--que-color-primary);
+      font-weight: var(--que-font-weight-medium);
+    }
+    /* push demo */
+    .push-demo-wrap {
+      display: flex;
+      height: 280px;
+      border: 1px dashed var(--que-color-border);
+      border-radius: var(--que-radius-lg);
+      overflow: hidden;
+    }
+    .push-demo-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--que-color-bg-subtle);
+      font-size: var(--que-font-size-sm);
+      color: var(--que-color-text-muted);
+    }
+    .event-log {
+      font-family: var(--que-font-mono);
+      font-size: var(--que-font-size-xs);
+      padding: 12px 16px;
+      background: var(--que-color-bg-muted);
+      border-radius: var(--que-radius-md);
+      max-height: 80px;
+      overflow-y: auto;
+      color: var(--que-color-text-muted);
+      white-space: pre;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="index.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="index-js.html" variant="ghost" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Nav drawer -->
+    <que-drawer id="nav-drawer" placement="left">
+      <div class="drawer-body">
+        <h3>Navigation</h3>
+        <nav style="display:flex;flex-direction:column;gap:2px;">
+          <button class="nav-item nav-item--active">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" style="opacity:.7"><path fill-rule="evenodd" d="M9.293 2.293a1 1 0 0 1 1.414 0l7 7A1 1 0 0 1 17 11h-1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6H3a1 1 0 0 1-.707-1.707l7-7z" clip-rule="evenodd"/></svg>
+            Dashboard
+          </button>
+          <button class="nav-item">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" style="opacity:.7"><path d="M10 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM6 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM1.49 15.326a.78.78 0 0 1-.358-.442 3 3 0 0 1 4.308-3.516 6.484 6.484 0 0 0-1.905 3.959c-.023.222-.014.442.025.654a4.97 4.97 0 0 1-2.07-.655zM16.44 15.98a4.97 4.97 0 0 0 2.07-.654.78.78 0 0 0 .357-.442 3 3 0 0 0-4.308-3.517 6.484 6.484 0 0 1 1.907 3.96 2.32 2.32 0 0 1-.026.654zM18 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM5.304 16.19a.844.844 0 0 1-.277-.71 5 5 0 0 1 9.947 0 .843.843 0 0 1-.277.71A6.975 6.975 0 0 1 10 18a6.974 6.974 0 0 1-4.696-1.81z"/></svg>
+            Team
+          </button>
+          <button class="nav-item">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" style="opacity:.7"><path fill-rule="evenodd" d="M4 4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-5L9 4H4z" clip-rule="evenodd"/></svg>
+            Projects
+          </button>
+          <button class="nav-item">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" style="opacity:.7"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 0 1-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 0 1 .947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 0 1 2.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 0 1 2.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 0 1 .947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 0 1-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 0 1-2.287-.947zM10 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" clip-rule="evenodd"/></svg>
+            Settings
+          </button>
+          <div style="height:1px;background:var(--que-color-border);margin:4px 0;"></div>
+          <button class="nav-item" style="color:var(--que-color-danger);">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" style="opacity:.7"><path fill-rule="evenodd" d="M3 4.25A2.25 2.25 0 0 1 5.25 2h5.5A2.25 2.25 0 0 1 13 4.25v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 0-.75-.75h-5.5a.75.75 0 0 0-.75.75v11.5c0 .414.336.75.75.75h5.5a.75.75 0 0 0 .75-.75v-2a.75.75 0 0 1 1.5 0v2A2.25 2.25 0 0 1 10.75 18h-5.5A2.25 2.25 0 0 1 3 15.75V4.25z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M19 10a.75.75 0 0 0-.75-.75H8.704l1.048-1.08a.75.75 0 1 0-1.004-1.11l-2.5 2.57a.75.75 0 0 0 0 1.08l2.5 2.57a.75.75 0 1 0 1.004-1.11l-1.048-1.08H18.25A.75.75 0 0 0 19 10z" clip-rule="evenodd"/></svg>
+            Sign out
+          </button>
+        </nav>
+        <div class="spacer"></div>
+        <que-button variant="outline" size="sm" id="close-nav">Close</que-button>
+      </div>
+    </que-drawer>
+
+    <h2>Navigation drawer (left)</h2>
+    <div class="demo-row">
+      <que-button id="open-nav">Open nav</que-button>
+    </div>
+
+    <!-- Filter drawer -->
+    <que-drawer id="filter-drawer" placement="right" size="lg">
+      <div class="drawer-body">
+        <h3>Filters</h3>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <que-input label="Search" placeholder="Filter by name..."></que-input>
+          <que-select label="Status">
+            <que-option value="">All statuses</que-option>
+            <que-option value="active">Active</que-option>
+            <que-option value="inactive">Inactive</que-option>
+          </que-select>
+          <que-checkbox label="Show archived"></que-checkbox>
+          <que-checkbox label="Only my items" checked></que-checkbox>
+        </div>
+        <div class="spacer"></div>
+        <div style="display:flex;gap:8px;">
+          <que-button variant="outline" size="sm" id="close-filter" style="flex:1;">Reset</que-button>
+          <que-button intent="primary" size="sm" id="apply-filter" style="flex:1;">Apply</que-button>
+        </div>
+      </div>
+    </que-drawer>
+
+    <h2>Filter / settings drawer (right, lg)</h2>
+    <div class="demo-row">
+      <que-button variant="outline" id="open-filter">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2.628 1.601C5.028 1.206 7.49 1 10 1s4.973.206 7.372.601a.75.75 0 0 1 .628.74v2.288a2.25 2.25 0 0 1-.659 1.59l-4.682 4.683a2.25 2.25 0 0 0-.659 1.59v3.037c0 .684-.31 1.33-.844 1.757l-1.937 1.55A.75.75 0 0 1 8 18.25v-5.757a2.25 2.25 0 0 0-.659-1.591L2.659 6.22A2.25 2.25 0 0 1 2 4.629V2.34a.75.75 0 0 1 .628-.74z" clip-rule="evenodd"/></svg>
+        Filters
+      </que-button>
+    </div>
+
+    <!-- Bottom sheet -->
+    <que-drawer id="sheet-drawer" placement="bottom" size="sm">
+      <div class="drawer-body">
+        <h3>Share document</h3>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <que-button variant="outline" size="sm">Copy link</que-button>
+          <que-button variant="outline" size="sm">Send by email</que-button>
+          <que-button variant="ghost" size="sm">Export as PDF</que-button>
+        </div>
+      </div>
+    </que-drawer>
+
+    <h2>Bottom sheet (mobile pattern)</h2>
+    <div class="demo-row">
+      <que-button variant="ghost" id="open-sheet">Share ↑</que-button>
+    </div>
+
+    <!-- Push mode -->
+    <h2>Push mode</h2>
+    <div class="push-demo-wrap">
+      <que-drawer id="push-drawer" placement="left" mode="push">
+        <div class="drawer-body" style="min-width: 240px; border-right: 1px solid var(--que-color-border);">
+          <h3>Sidebar</h3>
+          <p>Pushes main content without an overlay.</p>
+        </div>
+      </que-drawer>
+      <div class="push-demo-main">Main content</div>
+    </div>
+    <div class="demo-row" style="margin-top: 12px;">
+      <que-button variant="outline" size="sm" id="toggle-push">Toggle push</que-button>
+    </div>
+
+    <h2>Events</h2>
+    <div class="event-log" id="log">– waiting –</div>
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/input.js'
+    import '../dist/select.js'
+    import '../dist/checkbox.js'
+    import '../dist/drawer.js'
+
+    const ctrl = applyTheme(createTheme())
+    const toggle = document.getElementById('theme-toggle')
+    if (toggle) {
+      toggle.addEventListener('change', e => ctrl.setMode(e.target.value))
+      const sync = () => { const i = toggle.querySelector(`input[value="${ctrl.mode}"]`); if (i) i.checked = true }
+      ctrl.onChange(sync); sync()
+    }
+
+    const navDrawer    = document.getElementById('nav-drawer')
+    const filterDrawer = document.getElementById('filter-drawer')
+    const sheetDrawer  = document.getElementById('sheet-drawer')
+    const pushDrawer   = document.getElementById('push-drawer')
+
+    document.getElementById('open-nav').addEventListener('click',    () => navDrawer.show())
+    document.getElementById('close-nav').addEventListener('click',   () => navDrawer.hide())
+    document.getElementById('open-filter').addEventListener('click', () => filterDrawer.show())
+    document.getElementById('close-filter').addEventListener('click',() => filterDrawer.hide())
+    document.getElementById('apply-filter').addEventListener('click',() => filterDrawer.hide())
+    document.getElementById('open-sheet').addEventListener('click',  () => sheetDrawer.show())
+    document.getElementById('toggle-push').addEventListener('click', () => pushDrawer.toggle())
+
+    const log   = document.getElementById('log')
+    const lines = []
+    const push  = msg => { lines.push(msg); log.textContent = lines.slice(-4).join('\n') }
+    document.querySelectorAll('que-drawer').forEach(d => {
+      const label = d.id || 'drawer'
+      d.addEventListener('que-open',  () => push(`▲ open  · ${label}`))
+      d.addEventListener('que-close', () => push(`▼ close · ${label}`))
+    })
+  </script>
+</body>
+</html>

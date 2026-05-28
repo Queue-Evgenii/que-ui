@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Drawer (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/segmented.css" />
+  <link rel="stylesheet" href="../dist/drawer.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .demo-trigger-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    /* Drawer inner padding */
+    .drawer-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      height: 100%;
+    }
+    .drawer-body p {
+      font-size: var(--que-font-size-sm);
+      color: var(--que-color-text-muted);
+      line-height: var(--que-line-height-normal);
+    }
+    .note {
+      font-size: var(--que-font-size-sm);
+      color: var(--que-color-text-muted);
+      margin-bottom: 8px;
+    }
+    /* push mode demo */
+    .push-demo {
+      display: flex;
+      height: 240px;
+      border: 1px dashed var(--que-color-border);
+      border-radius: var(--que-radius-lg);
+      overflow: hidden;
+    }
+    .push-demo__main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--que-color-bg-subtle);
+      font-size: var(--que-font-size-sm);
+      color: var(--que-color-text-muted);
+      transition: flex 260ms var(--que-easing-in-out);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="index.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="index-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <p class="note">CSS-only: toggle <code>que-drawer--open</code> manually (or use JS). Click backdrop / press button to close in demos below.</p>
+
+    <h2>Left (default) — open</h2>
+    <div class="que-drawer que-drawer--placement-left que-drawer--open" id="css-left">
+      <div class="que-drawer__backdrop"></div>
+      <div class="que-drawer__panel">
+        <div class="drawer-body">
+          <strong>Left drawer</strong>
+          <p>Default placement, md size (320px).</p>
+          <button class="que-button que-button--outline que-button--sm"
+                  onclick="document.getElementById('css-left').classList.remove('que-drawer--open')">Close</button>
+        </div>
+      </div>
+    </div>
+    <div class="demo-trigger-row">
+      <button class="que-button que-button--sm que-button--outline"
+              onclick="document.getElementById('css-left').classList.add('que-drawer--open')">Open left</button>
+    </div>
+
+    <h2>Right</h2>
+    <div class="que-drawer que-drawer--placement-right" id="css-right">
+      <div class="que-drawer__backdrop"></div>
+      <div class="que-drawer__panel">
+        <div class="drawer-body">
+          <strong>Right drawer</strong>
+          <p>Slides in from the right side.</p>
+          <button class="que-button que-button--outline que-button--sm"
+                  onclick="document.getElementById('css-right').classList.remove('que-drawer--open')">Close</button>
+        </div>
+      </div>
+    </div>
+    <div class="demo-trigger-row">
+      <button class="que-button que-button--sm que-button--outline"
+              onclick="document.getElementById('css-right').classList.add('que-drawer--open')">Open right</button>
+    </div>
+
+    <h2>Top &amp; Bottom</h2>
+    <div class="que-drawer que-drawer--placement-top" id="css-top">
+      <div class="que-drawer__backdrop"></div>
+      <div class="que-drawer__panel">
+        <div class="drawer-body">
+          <strong>Top drawer</strong>
+          <p>Great for search bars or notifications.</p>
+          <button class="que-button que-button--outline que-button--sm"
+                  onclick="document.getElementById('css-top').classList.remove('que-drawer--open')">Close</button>
+        </div>
+      </div>
+    </div>
+    <div class="que-drawer que-drawer--placement-bottom" id="css-bottom">
+      <div class="que-drawer__backdrop"></div>
+      <div class="que-drawer__panel">
+        <div class="drawer-body">
+          <strong>Bottom drawer</strong>
+          <p>Common on mobile — sheet pattern.</p>
+          <button class="que-button que-button--outline que-button--sm"
+                  onclick="document.getElementById('css-bottom').classList.remove('que-drawer--open')">Close</button>
+        </div>
+      </div>
+    </div>
+    <div class="demo-trigger-row">
+      <button class="que-button que-button--sm que-button--outline"
+              onclick="document.getElementById('css-top').classList.add('que-drawer--open')">Open top</button>
+      <button class="que-button que-button--sm que-button--outline"
+              onclick="document.getElementById('css-bottom').classList.add('que-drawer--open')">Open bottom</button>
+    </div>
+
+    <h2>Sizes</h2>
+    <div class="que-drawer que-drawer--placement-right que-drawer--sm" id="css-sm">
+      <div class="que-drawer__backdrop"></div>
+      <div class="que-drawer__panel">
+        <div class="drawer-body">
+          <strong>sm — 240px</strong>
+          <button class="que-button que-button--outline que-button--sm"
+                  onclick="document.getElementById('css-sm').classList.remove('que-drawer--open')">Close</button>
+        </div>
+      </div>
+    </div>
+    <div class="que-drawer que-drawer--placement-right que-drawer--lg" id="css-lg">
+      <div class="que-drawer__backdrop"></div>
+      <div class="que-drawer__panel">
+        <div class="drawer-body">
+          <strong>lg — 400px</strong>
+          <button class="que-button que-button--outline que-button--sm"
+                  onclick="document.getElementById('css-lg').classList.remove('que-drawer--open')">Close</button>
+        </div>
+      </div>
+    </div>
+    <div class="que-drawer que-drawer--placement-right que-drawer--xl" id="css-xl">
+      <div class="que-drawer__backdrop"></div>
+      <div class="que-drawer__panel">
+        <div class="drawer-body">
+          <strong>xl — 520px</strong>
+          <button class="que-button que-button--outline que-button--sm"
+                  onclick="document.getElementById('css-xl').classList.remove('que-drawer--open')">Close</button>
+        </div>
+      </div>
+    </div>
+    <div class="demo-trigger-row">
+      <button class="que-button que-button--sm que-button--ghost"
+              onclick="document.getElementById('css-sm').classList.add('que-drawer--open')">sm</button>
+      <button class="que-button que-button--sm que-button--ghost"
+              onclick="document.getElementById('css-lg').classList.add('que-drawer--open')">lg</button>
+      <button class="que-button que-button--sm que-button--ghost"
+              onclick="document.getElementById('css-xl').classList.add('que-drawer--open')">xl</button>
+    </div>
+
+    <h2>Push mode</h2>
+    <div class="push-demo">
+      <div class="que-drawer que-drawer--placement-left que-drawer--push" id="css-push">
+        <div class="que-drawer__panel">
+          <div class="drawer-body" style="min-width: 240px;">
+            <strong>Push panel</strong>
+            <p>Pushes main content.</p>
+          </div>
+        </div>
+      </div>
+      <div class="push-demo__main">Main content area</div>
+    </div>
+    <div class="demo-trigger-row" style="margin-top: 12px;">
+      <button class="que-button que-button--sm que-button--outline"
+              onclick="document.getElementById('css-push').classList.toggle('que-drawer--open')">Toggle push</button>
+    </div>
+  </main>
+
+  <script>
+    // Close drawers on backdrop click (CSS-only helper)
+    document.querySelectorAll('.que-drawer__backdrop').forEach(backdrop => {
+      backdrop.addEventListener('click', () => {
+        backdrop.closest('.que-drawer').classList.remove('que-drawer--open')
+      })
+    })
+  </script>
+  <script src="shared.js"></script>
+</body>
+</html>

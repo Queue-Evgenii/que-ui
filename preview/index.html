@@ -14,6 +14,17 @@
   <link rel="stylesheet" href="../dist/segmented.css" />
   <link rel="stylesheet" href="../dist/select.css" />
   <link rel="stylesheet" href="../dist/slider.css" />
+  <link rel="stylesheet" href="../dist/badge.css" />
+  <link rel="stylesheet" href="../dist/spinner.css" />
+  <link rel="stylesheet" href="../dist/alert.css" />
+  <link rel="stylesheet" href="../dist/progress.css" />
+  <link rel="stylesheet" href="../dist/skeleton.css" />
+  <link rel="stylesheet" href="../dist/empty.css" />
+  <link rel="stylesheet" href="../dist/toast.css" />
+  <link rel="stylesheet" href="../dist/tooltip.css" />
+  <link rel="stylesheet" href="../dist/popover.css" />
+  <link rel="stylesheet" href="../dist/drawer.css" />
+  <link rel="stylesheet" href="../dist/modal.css" />
   <link rel="stylesheet" href="shared.css" />
   <style>
     main { max-width: 1000px; }
@@ -811,6 +822,708 @@
       </div>
     </section>
 
+    <!-- ── BADGE ─────────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Badge</h2>
+
+      <p class="demo-label">Solid / Outline / Subtle</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:10px;">
+          <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;">
+            <span class="que-badge">Neutral</span>
+            <span class="que-badge que-badge--intent-primary">Primary</span>
+            <span class="que-badge que-badge--intent-success">Success</span>
+            <span class="que-badge que-badge--intent-warning">Warning</span>
+            <span class="que-badge que-badge--intent-danger">Danger</span>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;">
+            <span class="que-badge que-badge--outline">Neutral</span>
+            <span class="que-badge que-badge--outline que-badge--intent-primary">Primary</span>
+            <span class="que-badge que-badge--outline que-badge--intent-success">Success</span>
+            <span class="que-badge que-badge--outline que-badge--intent-danger">Danger</span>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;">
+            <span class="que-badge que-badge--subtle">Neutral</span>
+            <span class="que-badge que-badge--subtle que-badge--intent-primary">Primary</span>
+            <span class="que-badge que-badge--subtle que-badge--intent-success">Success</span>
+            <span class="que-badge que-badge--subtle que-badge--intent-warning">Warning</span>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;!-- Solid (default) --&gt;
+&lt;span class="que-badge"&gt;Neutral&lt;/span&gt;
+&lt;span class="que-badge que-badge--intent-primary"&gt;Primary&lt;/span&gt;
+&lt;span class="que-badge que-badge--intent-danger"&gt;Danger&lt;/span&gt;
+
+&lt;!-- Outline --&gt;
+&lt;span class="que-badge que-badge--outline
+             que-badge--intent-success"&gt;Success&lt;/span&gt;
+
+&lt;!-- Subtle --&gt;
+&lt;span class="que-badge que-badge--subtle
+             que-badge--intent-warning"&gt;Warning&lt;/span&gt;</pre>
+      </div>
+
+      <p class="demo-label">Sizes / In context</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:10px;">
+          <div style="display:flex;gap:8px;align-items:center;">
+            <span class="que-badge que-badge--sm que-badge--intent-primary">Small</span>
+            <span class="que-badge que-badge--intent-primary">Medium</span>
+            <span class="que-badge que-badge--lg que-badge--intent-primary">Large</span>
+          </div>
+          <div style="display:flex;gap:12px;align-items:center;font-size:var(--que-font-size-sm);">
+            <span>Messages <span class="que-badge que-badge--sm que-badge--intent-danger">12</span></span>
+            <span>Status <span class="que-badge que-badge--sm que-badge--subtle que-badge--intent-success">Active</span></span>
+            <span>Version <span class="que-badge que-badge--sm que-badge--outline">v2.0</span></span>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;!-- Sizes: --sm, (default), --lg --&gt;
+&lt;span class="que-badge que-badge--sm"&gt;Small&lt;/span&gt;
+&lt;span class="que-badge"&gt;Medium&lt;/span&gt;
+&lt;span class="que-badge que-badge--lg"&gt;Large&lt;/span&gt;
+
+&lt;!-- In context --&gt;
+&lt;span&gt;
+  Messages
+  &lt;span class="que-badge que-badge--sm
+               que-badge--intent-danger"&gt;12&lt;/span&gt;
+&lt;/span&gt;</pre>
+      </div>
+    </section>
+
+    <!-- ── SPINNER ───────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Spinner</h2>
+
+      <p class="demo-label">Sizes</p>
+      <div class="demo-block">
+        <div class="demo-preview" style="align-items:center;">
+          <span class="que-spinner que-spinner--sm" role="status" aria-label="Loading"></span>
+          <span class="que-spinner" role="status" aria-label="Loading"></span>
+          <span class="que-spinner que-spinner--lg" role="status" aria-label="Loading"></span>
+          <span class="que-spinner que-spinner--xl" role="status" aria-label="Loading"></span>
+        </div>
+        <pre class="demo-code">&lt;span class="que-spinner" role="status"
+      aria-label="Loading"&gt;&lt;/span&gt;
+
+&lt;!-- Sizes: --sm, (default), --lg, --xl --&gt;
+&lt;span class="que-spinner que-spinner--sm"
+      role="status" aria-label="Loading"&gt;&lt;/span&gt;</pre>
+      </div>
+
+      <p class="demo-label">Intents / In context</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:12px;">
+          <div style="display:flex;gap:10px;align-items:center;">
+            <span class="que-spinner" role="status" aria-label="Loading"></span>
+            <span class="que-spinner que-spinner--intent-secondary" role="status" aria-label="Loading"></span>
+            <span class="que-spinner que-spinner--intent-success" role="status" aria-label="Loading"></span>
+            <span class="que-spinner que-spinner--intent-warning" role="status" aria-label="Loading"></span>
+            <span class="que-spinner que-spinner--intent-danger" role="status" aria-label="Loading"></span>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="que-button que-button--intent-primary" disabled style="display:flex;align-items:center;gap:8px;">
+              <span class="que-spinner que-spinner--sm" style="--que-spinner-color:#fff;--que-spinner-track-color:rgba(255,255,255,0.3);" role="status" aria-label="Loading"></span>
+              Saving…
+            </button>
+            <button class="que-button que-button--outline" disabled style="display:flex;align-items:center;gap:8px;">
+              <span class="que-spinner que-spinner--sm" role="status" aria-label="Loading"></span>
+              Loading
+            </button>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;!-- Intents: --intent-secondary, --intent-success,
+              --intent-warning, --intent-danger --&gt;
+&lt;span class="que-spinner que-spinner--intent-success"&gt;&lt;/span&gt;
+
+&lt;!-- In button --&gt;
+&lt;button class="que-button que-button--intent-primary" disabled
+        style="display:flex;align-items:center;gap:8px;"&gt;
+  &lt;span class="que-spinner que-spinner--sm"
+        style="--que-spinner-color:#fff;"
+        role="status" aria-label="Loading"&gt;&lt;/span&gt;
+  Saving…
+&lt;/button&gt;</pre>
+      </div>
+    </section>
+
+    <!-- ── ALERT ─────────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Alert</h2>
+
+      <p class="demo-label">Subtle (default)</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:8px;">
+          <div class="que-alert que-alert--intent-info" role="alert">
+            <span class="que-alert__icon"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-7-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM9 9a.75.75 0 0 0 0 1.5h.253a.25.25 0 0 1 .244.304l-.459 2.066A1.75 1.75 0 0 0 10.747 15H11a.75.75 0 0 0 0-1.5h-.253a.25.25 0 0 1-.244-.304l.459-2.066A1.75 1.75 0 0 0 9.253 9H9Z" clip-rule="evenodd"/></svg></span>
+            <span class="que-alert__body"><strong class="que-alert__title">Info</strong><span class="que-alert__desc">This is an informational message.</span></span>
+          </div>
+          <div class="que-alert que-alert--intent-success" role="alert">
+            <span class="que-alert__icon"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd"/></svg></span>
+            <span class="que-alert__body"><strong class="que-alert__title">Success</strong><span class="que-alert__desc">Your changes have been saved successfully.</span></span>
+          </div>
+          <div class="que-alert que-alert--intent-warning" role="alert">
+            <span class="que-alert__icon"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495ZM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5Zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clip-rule="evenodd"/></svg></span>
+            <span class="que-alert__body"><strong class="que-alert__title">Warning</strong><span class="que-alert__desc">Please review before continuing.</span></span>
+          </div>
+          <div class="que-alert que-alert--intent-danger" role="alert">
+            <span class="que-alert__icon"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM8.28 7.22a.75.75 0 0 0-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 1 0 1.06 1.06L10 11.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L11.06 10l1.72-1.72a.75.75 0 0 0-1.06-1.06L10 8.94 8.28 7.22Z" clip-rule="evenodd"/></svg></span>
+            <span class="que-alert__body"><strong class="que-alert__title">Error</strong><span class="que-alert__desc">Something went wrong. Please try again.</span></span>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;div class="que-alert que-alert--intent-info" role="alert"&gt;
+  &lt;span class="que-alert__icon"&gt;&lt;!-- svg icon --&gt;&lt;/span&gt;
+  &lt;span class="que-alert__body"&gt;
+    &lt;strong class="que-alert__title"&gt;Info&lt;/strong&gt;
+    &lt;span class="que-alert__desc"&gt;Message text.&lt;/span&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Intents: --intent-info, --intent-success,
+              --intent-warning, --intent-danger --&gt;</pre>
+      </div>
+
+      <p class="demo-label">Outline / Solid variants</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:8px;">
+          <div class="que-alert que-alert--outline que-alert--intent-info" role="alert">
+            <span class="que-alert__icon"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-7-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM9 9a.75.75 0 0 0 0 1.5h.253a.25.25 0 0 1 .244.304l-.459 2.066A1.75 1.75 0 0 0 10.747 15H11a.75.75 0 0 0 0-1.5h-.253a.25.25 0 0 1-.244-.304l.459-2.066A1.75 1.75 0 0 0 9.253 9H9Z" clip-rule="evenodd"/></svg></span>
+            <span class="que-alert__body"><strong class="que-alert__title">Outline</strong><span class="que-alert__desc">Bordered alert style.</span></span>
+          </div>
+          <div class="que-alert que-alert--outline que-alert--intent-warning" role="alert">
+            <span class="que-alert__icon"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495ZM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5Zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clip-rule="evenodd"/></svg></span>
+            <span class="que-alert__body"><strong class="que-alert__title">Outline warning</strong><span class="que-alert__desc">Outline with intent color applied.</span></span>
+          </div>
+          <div class="que-alert que-alert--solid que-alert--intent-success" role="alert">
+            <span class="que-alert__icon"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd"/></svg></span>
+            <span class="que-alert__body"><strong class="que-alert__title">Solid</strong><span class="que-alert__desc">High-emphasis filled style.</span></span>
+          </div>
+          <div class="que-alert que-alert--solid que-alert--intent-danger" role="alert">
+            <span class="que-alert__icon"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM8.28 7.22a.75.75 0 0 0-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 1 0 1.06 1.06L10 11.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L11.06 10l1.72-1.72a.75.75 0 0 0-1.06-1.06L10 8.94 8.28 7.22Z" clip-rule="evenodd"/></svg></span>
+            <span class="que-alert__body"><strong class="que-alert__title">Solid danger</strong><span class="que-alert__desc">Inversed contrast for critical messages.</span></span>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;!-- Variants: (default subtle), --outline, --solid --&gt;
+&lt;div class="que-alert que-alert--outline
+            que-alert--intent-info" role="alert"&gt;
+  ...
+&lt;/div&gt;
+
+&lt;div class="que-alert que-alert--solid
+            que-alert--intent-danger" role="alert"&gt;
+  ...
+&lt;/div&gt;
+
+&lt;!-- Sizes: --sm, (default), --lg --&gt;
+&lt;div class="que-alert que-alert--sm ..."&gt;&lt;/div&gt;</pre>
+      </div>
+    </section>
+
+    <!-- ── PROGRESS ──────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Progress</h2>
+
+      <p class="demo-label">Values</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:8px;">
+          <div class="que-progress" role="progressbar" aria-valuenow="25"  aria-valuemin="0" aria-valuemax="100"><div class="que-progress__bar" style="width:25%"></div></div>
+          <div class="que-progress" role="progressbar" aria-valuenow="60"  aria-valuemin="0" aria-valuemax="100"><div class="que-progress__bar" style="width:60%"></div></div>
+          <div class="que-progress" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><div class="que-progress__bar" style="width:100%"></div></div>
+        </div>
+        <pre class="demo-code">&lt;div class="que-progress" role="progressbar"
+     aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"&gt;
+  &lt;div class="que-progress__bar" style="width:60%"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+      </div>
+
+      <p class="demo-label">Intents / Sizes</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:8px;">
+          <div class="que-progress que-progress--intent-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><div class="que-progress__bar" style="width:70%"></div></div>
+          <div class="que-progress que-progress--intent-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><div class="que-progress__bar" style="width:70%"></div></div>
+          <div class="que-progress que-progress--intent-danger"  role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><div class="que-progress__bar" style="width:70%"></div></div>
+          <div class="que-progress que-progress--sm" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"><div class="que-progress__bar" style="width:60%"></div></div>
+          <div class="que-progress" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"><div class="que-progress__bar" style="width:60%"></div></div>
+          <div class="que-progress que-progress--lg" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"><div class="que-progress__bar" style="width:60%"></div></div>
+          <div class="que-progress que-progress--xl" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"><div class="que-progress__bar" style="width:60%"></div></div>
+        </div>
+        <pre class="demo-code">&lt;!-- Intents: --intent-primary, --intent-success,
+              --intent-warning, --intent-danger, --intent-neutral --&gt;
+&lt;div class="que-progress que-progress--intent-success"&gt;...&lt;/div&gt;
+
+&lt;!-- Sizes: --sm, (default), --lg, --xl --&gt;
+&lt;div class="que-progress que-progress--lg"&gt;...&lt;/div&gt;</pre>
+      </div>
+
+      <p class="demo-label">Indeterminate</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:8px;">
+          <div class="que-progress que-progress--indeterminate" role="progressbar" aria-label="Loading"><div class="que-progress__bar"></div></div>
+          <div class="que-progress que-progress--indeterminate que-progress--intent-success" role="progressbar" aria-label="Loading"><div class="que-progress__bar"></div></div>
+        </div>
+        <pre class="demo-code">&lt;!-- Indeterminate (no value needed) --&gt;
+&lt;div class="que-progress que-progress--indeterminate"
+     role="progressbar" aria-label="Loading"&gt;
+  &lt;div class="que-progress__bar"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </section>
+
+    <!-- ── SKELETON ──────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Skeleton</h2>
+
+      <p class="demo-label">Text / Rectangle / Circle</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:12px;">
+          <div style="max-width:320px;width:100%;display:flex;flex-direction:column;gap:6px;">
+            <span class="que-skeleton que-skeleton--text"></span>
+            <span class="que-skeleton que-skeleton--text"></span>
+            <span class="que-skeleton que-skeleton--text" style="--que-skeleton-width:70%"></span>
+          </div>
+          <span class="que-skeleton que-skeleton--rect" style="max-width:320px;width:100%;"></span>
+          <div style="display:flex;gap:10px;align-items:center;">
+            <span class="que-skeleton que-skeleton--circle" style="--que-skeleton-width:32px;--que-skeleton-height:32px;"></span>
+            <span class="que-skeleton que-skeleton--circle"></span>
+            <span class="que-skeleton que-skeleton--circle" style="--que-skeleton-width:56px;--que-skeleton-height:56px;"></span>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;!-- Text line --&gt;
+&lt;span class="que-skeleton que-skeleton--text"&gt;&lt;/span&gt;
+&lt;!-- Partial width --&gt;
+&lt;span class="que-skeleton que-skeleton--text"
+      style="--que-skeleton-width: 70%"&gt;&lt;/span&gt;
+
+&lt;!-- Rectangle block --&gt;
+&lt;span class="que-skeleton que-skeleton--rect"&gt;&lt;/span&gt;
+
+&lt;!-- Circle (avatar) --&gt;
+&lt;span class="que-skeleton que-skeleton--circle"
+      style="--que-skeleton-width: 48px;
+             --que-skeleton-height: 48px;"&gt;&lt;/span&gt;</pre>
+      </div>
+
+      <p class="demo-label">Card placeholder</p>
+      <div class="demo-block">
+        <div class="demo-preview">
+          <div style="max-width:280px;width:100%;display:flex;flex-direction:column;gap:12px;padding:16px;border:1px solid var(--que-color-border);border-radius:var(--que-radius-lg);">
+            <span class="que-skeleton que-skeleton--rect" style="--que-skeleton-height:140px;"></span>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span class="que-skeleton que-skeleton--circle"></span>
+              <div style="flex:1;display:flex;flex-direction:column;gap:6px;">
+                <span class="que-skeleton que-skeleton--text"></span>
+                <span class="que-skeleton que-skeleton--text" style="--que-skeleton-width:60%"></span>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <span class="que-skeleton que-skeleton--text"></span>
+              <span class="que-skeleton que-skeleton--text" style="--que-skeleton-width:80%"></span>
+            </div>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;!-- Compose shapes to build any placeholder --&gt;
+&lt;div class="card"&gt;
+  &lt;span class="que-skeleton que-skeleton--rect"
+        style="--que-skeleton-height: 140px"&gt;&lt;/span&gt;
+  &lt;div style="display:flex;gap:10px;"&gt;
+    &lt;span class="que-skeleton que-skeleton--circle"&gt;&lt;/span&gt;
+    &lt;div style="flex:1;"&gt;
+      &lt;span class="que-skeleton que-skeleton--text"&gt;&lt;/span&gt;
+      &lt;span class="que-skeleton que-skeleton--text"
+            style="--que-skeleton-width: 60%"&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </section>
+
+    <!-- ── EMPTY STATE ───────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Empty State</h2>
+
+      <p class="demo-label">Default / With action</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:12px;">
+          <div style="border:1px solid var(--que-color-border);border-radius:var(--que-radius-lg);background:var(--que-color-surface);width:100%;">
+            <div class="que-empty">
+              <span class="que-empty__icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 36V16a2 2 0 0 1 2-2h28a2 2 0 0 1 2 2v20a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2Z"/><path d="M8 26h8l4 4h8l4-4h8"/></svg></span>
+              <strong class="que-empty__title">Your inbox is empty</strong>
+              <span class="que-empty__desc">When you receive messages they'll appear here.</span>
+            </div>
+          </div>
+          <div style="border:1px solid var(--que-color-border);border-radius:var(--que-radius-lg);background:var(--que-color-surface);width:100%;">
+            <div class="que-empty">
+              <span class="que-empty__icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="22" cy="22" r="12"/><path d="m32 32 8 8"/><path d="M18 18h8M18 22h5"/></svg></span>
+              <strong class="que-empty__title">No results found</strong>
+              <span class="que-empty__desc">Try adjusting your search or filter.</span>
+              <div class="que-empty__actions">
+                <button class="que-button que-button--outline">Clear filters</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;div class="que-empty"&gt;
+  &lt;span class="que-empty__icon"&gt;&lt;!-- svg icon --&gt;&lt;/span&gt;
+  &lt;strong class="que-empty__title"&gt;Title&lt;/strong&gt;
+  &lt;span class="que-empty__desc"&gt;Description text.&lt;/span&gt;
+  &lt;!-- Optional actions --&gt;
+  &lt;div class="que-empty__actions"&gt;
+    &lt;button class="que-button"&gt;Action&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Sizes: --sm, (default), --lg --&gt;
+&lt;div class="que-empty que-empty--sm"&gt;...&lt;/div&gt;</pre>
+      </div>
+    </section>
+
+    <!-- ── TOAST ─────────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Toast</h2>
+
+      <p class="demo-label">Intents</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:8px;">
+          <div class="que-toast que-toast--intent-info" role="status">
+            <span class="que-toast__icon"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-7-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM9 9a.75.75 0 0 0 0 1.5h.253a.25.25 0 0 1 .244.304l-.459 2.066A1.75 1.75 0 0 0 10.747 15H11a.75.75 0 0 0 0-1.5h-.253a.25.25 0 0 1-.244-.304l.459-2.066A1.75 1.75 0 0 0 9.253 9H9Z" clip-rule="evenodd"/></svg></span>
+            <span class="que-toast__body"><strong class="que-toast__title">Heads up!</strong><span class="que-toast__desc">This is an informational message.</span></span>
+            <button class="que-toast__close" aria-label="Dismiss">&#x2715;</button>
+          </div>
+          <div class="que-toast que-toast--intent-success" role="status">
+            <span class="que-toast__icon"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd"/></svg></span>
+            <span class="que-toast__body"><strong class="que-toast__title">Saved!</strong><span class="que-toast__desc">Your changes have been saved successfully.</span></span>
+            <button class="que-toast__close" aria-label="Dismiss">&#x2715;</button>
+          </div>
+          <div class="que-toast que-toast--intent-warning" role="status">
+            <span class="que-toast__icon"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495ZM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5Zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clip-rule="evenodd"/></svg></span>
+            <span class="que-toast__body"><strong class="que-toast__title">Low storage</strong><span class="que-toast__desc">You are running out of storage space.</span></span>
+            <button class="que-toast__close" aria-label="Dismiss">&#x2715;</button>
+          </div>
+          <div class="que-toast que-toast--intent-danger" role="status">
+            <span class="que-toast__icon"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM8.28 7.22a.75.75 0 0 0-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 1 0 1.06 1.06L10 11.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L11.06 10l1.72-1.72a.75.75 0 0 0-1.06-1.06L10 8.94 8.28 7.22Z" clip-rule="evenodd"/></svg></span>
+            <span class="que-toast__body"><strong class="que-toast__title">Upload failed</strong><span class="que-toast__desc">Something went wrong. Please try again.</span></span>
+            <button class="que-toast__close" aria-label="Dismiss">&#x2715;</button>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;div class="que-toast que-toast--intent-success"
+     role="status"&gt;
+  &lt;span class="que-toast__icon"&gt;&lt;!-- svg --&gt;&lt;/span&gt;
+  &lt;span class="que-toast__body"&gt;
+    &lt;strong class="que-toast__title"&gt;Saved!&lt;/strong&gt;
+    &lt;span class="que-toast__desc"&gt;Description.&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;button class="que-toast__close"
+          aria-label="Dismiss"&gt;&amp;#x2715;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Intents: --intent-info, --intent-success,
+              --intent-warning, --intent-danger --&gt;</pre>
+      </div>
+    </section>
+
+    <!-- ── TOOLTIP ───────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Tooltip</h2>
+
+      <p class="demo-label">CSS-only hover (no JS needed)</p>
+      <div class="demo-block">
+        <div class="demo-preview" style="gap:12px;align-items:center;flex-wrap:wrap;">
+          <div class="que-tooltip que-tooltip--placement-top">
+            <button class="que-button que-button--sm">Hover (top)</button>
+            <div class="que-tooltip__content" role="tooltip">Top tooltip</div>
+          </div>
+          <div class="que-tooltip que-tooltip--placement-bottom">
+            <button class="que-button que-button--sm que-button--outline">Hover (bottom)</button>
+            <div class="que-tooltip__content" role="tooltip">Bottom tooltip</div>
+          </div>
+          <div class="que-tooltip que-tooltip--placement-right">
+            <button class="que-button que-button--sm que-button--ghost">Hover (right) →</button>
+            <div class="que-tooltip__content" role="tooltip">Right tooltip</div>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;div class="que-tooltip que-tooltip--placement-top"&gt;
+  &lt;button class="que-button"&gt;Hover me&lt;/button&gt;
+  &lt;div class="que-tooltip__content" role="tooltip"&gt;
+    Tooltip text
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Placements: --placement-top, --placement-bottom,
+                 --placement-left, --placement-right,
+                 --placement-top-start, --placement-top-end,
+                 --placement-bottom-start, etc. --&gt;</pre>
+      </div>
+
+      <p class="demo-label">Always visible — force with --open</p>
+      <div class="demo-block">
+        <div class="demo-preview" style="gap:32px;align-items:center;padding-top:44px;padding-bottom:44px;">
+          <div class="que-tooltip que-tooltip--placement-top que-tooltip--open">
+            <button class="que-button que-button--outline que-button--sm">top</button>
+            <div class="que-tooltip__content" role="tooltip">Top center</div>
+          </div>
+          <div class="que-tooltip que-tooltip--placement-bottom que-tooltip--open">
+            <button class="que-button que-button--outline que-button--sm">bottom</button>
+            <div class="que-tooltip__content" role="tooltip">Bottom center</div>
+          </div>
+          <div class="que-tooltip que-tooltip--placement-right que-tooltip--open">
+            <button class="que-button que-button--outline que-button--sm">right →</button>
+            <div class="que-tooltip__content" role="tooltip">Right</div>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;!-- Force visible with --open (programmatic or demo) --&gt;
+&lt;div class="que-tooltip que-tooltip--placement-top
+            que-tooltip--open"&gt;
+  &lt;button&gt;Trigger&lt;/button&gt;
+  &lt;div class="que-tooltip__content" role="tooltip"&gt;
+    Always visible
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Custom color --&gt;
+&lt;div class="que-tooltip que-tooltip--placement-bottom"
+     style="--que-tooltip-bg: var(--que-color-primary);
+            --que-tooltip-color: #fff;"&gt;</pre>
+      </div>
+    </section>
+
+    <!-- ── POPOVER ───────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Popover</h2>
+
+      <p class="demo-label">Placements — always open with --open</p>
+      <div class="demo-block">
+        <div class="demo-preview" style="gap:40px;align-items:center;padding-top:60px;padding-bottom:60px;flex-wrap:wrap;">
+          <div class="que-popover que-popover--placement-top que-popover--open que-popover--arrow">
+            <button class="que-button que-button--outline que-button--sm">top</button>
+            <div class="que-popover__content">Top center</div>
+          </div>
+          <div class="que-popover que-popover--placement-bottom que-popover--open que-popover--arrow">
+            <button class="que-button que-button--sm">bottom</button>
+            <div class="que-popover__content">Bottom center</div>
+          </div>
+          <div class="que-popover que-popover--placement-right que-popover--open que-popover--arrow">
+            <button class="que-button que-button--outline que-button--sm">right →</button>
+            <div class="que-popover__content">Right</div>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;div class="que-popover que-popover--placement-bottom
+            que-popover--open que-popover--arrow"&gt;
+  &lt;button class="que-button"&gt;Trigger&lt;/button&gt;
+  &lt;div class="que-popover__content"&gt;
+    Popover content here
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Toggle --open via JS to show / hide --&gt;
+&lt;!-- Add --arrow for the caret indicator --&gt;
+&lt;!-- Placements mirror Tooltip API --&gt;</pre>
+      </div>
+
+      <p class="demo-label">Rich content</p>
+      <div class="demo-block">
+        <div class="demo-preview" style="padding-top:80px;padding-bottom:80px;">
+          <div class="que-popover que-popover--placement-bottom-start que-popover--open">
+            <button class="que-button que-button--intent-primary que-button--sm">User profile</button>
+            <div class="que-popover__content" style="min-width:200px;">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+                <div style="width:36px;height:36px;border-radius:50%;background:var(--que-color-primary-subtle);display:flex;align-items:center;justify-content:center;font-weight:600;color:var(--que-color-primary);font-size:14px;">J</div>
+                <div>
+                  <div style="font-weight:var(--que-font-weight-semibold);font-size:var(--que-font-size-sm);">Jane Doe</div>
+                  <div style="font-size:var(--que-font-size-xs);color:var(--que-color-text-muted);">jane@example.com</div>
+                </div>
+              </div>
+              <div style="border-top:1px solid var(--que-color-border);padding-top:8px;display:flex;gap:6px;">
+                <button class="que-button que-button--sm que-button--outline">Profile</button>
+                <button class="que-button que-button--sm que-button--ghost">Sign out</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;!-- Any HTML is valid inside .que-popover__content --&gt;
+&lt;div class="que-popover que-popover--placement-bottom-start
+            que-popover--open"&gt;
+  &lt;button class="que-button"&gt;User&lt;/button&gt;
+  &lt;div class="que-popover__content" style="min-width:200px;"&gt;
+    &lt;!-- avatar + name + actions --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Custom offset --&gt;
+&lt;div ... style="--que-popover-offset: 16px;"&gt;</pre>
+      </div>
+    </section>
+
+    <!-- Drawer elements for CSS demo -->
+    <div class="que-drawer que-drawer--placement-left" id="idx-drawer-left">
+      <div class="que-drawer__backdrop"></div>
+      <div class="que-drawer__panel">
+        <div style="padding:24px;display:flex;flex-direction:column;gap:12px;height:100%;">
+          <strong>Left drawer</strong>
+          <p style="font-size:var(--que-font-size-sm);color:var(--que-color-text-muted);">Default placement, md size (320px).</p>
+          <button class="que-button que-button--outline que-button--sm"
+                  onclick="document.getElementById('idx-drawer-left').classList.remove('que-drawer--open')">Close</button>
+        </div>
+      </div>
+    </div>
+    <div class="que-drawer que-drawer--placement-right" id="idx-drawer-right">
+      <div class="que-drawer__backdrop"></div>
+      <div class="que-drawer__panel">
+        <div style="padding:24px;display:flex;flex-direction:column;gap:12px;height:100%;">
+          <strong>Right drawer</strong>
+          <p style="font-size:var(--que-font-size-sm);color:var(--que-color-text-muted);">Slides in from the right.</p>
+          <button class="que-button que-button--outline que-button--sm"
+                  onclick="document.getElementById('idx-drawer-right').classList.remove('que-drawer--open')">Close</button>
+        </div>
+      </div>
+    </div>
+    <div class="que-drawer que-drawer--placement-bottom" id="idx-drawer-bottom">
+      <div class="que-drawer__backdrop"></div>
+      <div class="que-drawer__panel">
+        <div style="padding:24px;display:flex;flex-direction:column;gap:12px;">
+          <strong>Bottom sheet</strong>
+          <p style="font-size:var(--que-font-size-sm);color:var(--que-color-text-muted);">Common mobile pattern.</p>
+          <button class="que-button que-button--outline que-button--sm"
+                  onclick="document.getElementById('idx-drawer-bottom').classList.remove('que-drawer--open')">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── DRAWER ─────────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Drawer</h2>
+
+      <p class="demo-label">Placements</p>
+      <div class="demo-block">
+        <div class="demo-preview">
+          <button class="que-button que-button--sm que-button--outline"
+                  onclick="document.getElementById('idx-drawer-left').classList.add('que-drawer--open')">Left</button>
+          <button class="que-button que-button--sm que-button--outline"
+                  onclick="document.getElementById('idx-drawer-right').classList.add('que-drawer--open')">Right</button>
+          <button class="que-button que-button--sm que-button--outline"
+                  onclick="document.getElementById('idx-drawer-bottom').classList.add('que-drawer--open')">Bottom</button>
+        </div>
+        <pre class="demo-code">&lt;div class="que-drawer que-drawer--placement-right"&gt;
+  &lt;div class="que-drawer__backdrop"&gt;&lt;/div&gt;
+  &lt;div class="que-drawer__panel"&gt;
+    &lt;!-- panel content --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Add --open to show; remove to close --&gt;
+&lt;!-- Placements: --placement-left (default),
+                 --placement-right,
+                 --placement-top, --placement-bottom --&gt;</pre>
+      </div>
+
+      <p class="demo-label">Sizes / Push mode</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:8px;align-items:flex-start;">
+          <span style="font-size:var(--que-font-size-sm);color:var(--que-color-text-muted);">Sizes: <strong>sm</strong> 240px · <strong>md</strong> 320px (default) · <strong>lg</strong> 400px · <strong>xl</strong> 520px</span>
+          <span style="font-size:var(--que-font-size-sm);color:var(--que-color-text-muted);">Modes: <strong>overlay</strong> (default, with backdrop) · <strong>push</strong> (no backdrop, shifts content)</span>
+        </div>
+        <pre class="demo-code">&lt;!-- Sizes: --sm, (default md), --lg, --xl --&gt;
+&lt;div class="que-drawer que-drawer--placement-right
+            que-drawer--lg"&gt;...&lt;/div&gt;
+
+&lt;!-- Push mode — no backdrop, content shifts --&gt;
+&lt;div class="que-drawer que-drawer--placement-left
+            que-drawer--push"&gt;
+  &lt;div class="que-drawer__panel"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="main-content"&gt;...&lt;/div&gt;</pre>
+      </div>
+    </section>
+
+    <!-- Modal elements for CSS demo -->
+    <div class="que-modal" id="idx-modal-basic">
+      <div class="que-modal__backdrop"></div>
+      <div class="que-modal__panel">
+        <div class="que-modal__header">
+          <span class="que-modal__title">Confirm action</span>
+          <button class="que-modal__close"
+                  onclick="document.getElementById('idx-modal-basic').classList.remove('que-modal--open')"
+                  aria-label="Close">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"/></svg>
+          </button>
+        </div>
+        <div class="que-modal__body">
+          <p style="font-size:var(--que-font-size-sm);color:var(--que-color-text-muted);line-height:var(--que-line-height-normal);margin:0;">Are you sure you want to delete this item? This action cannot be undone.</p>
+        </div>
+        <div class="que-modal__footer">
+          <button class="que-button que-button--outline que-button--sm"
+                  onclick="document.getElementById('idx-modal-basic').classList.remove('que-modal--open')">Cancel</button>
+          <button class="que-button que-button--intent-danger que-button--sm"
+                  onclick="document.getElementById('idx-modal-basic').classList.remove('que-modal--open')">Delete</button>
+        </div>
+      </div>
+    </div>
+    <div class="que-modal que-modal--lg" id="idx-modal-lg">
+      <div class="que-modal__backdrop"></div>
+      <div class="que-modal__panel">
+        <div class="que-modal__header">
+          <span class="que-modal__title">Large modal</span>
+          <button class="que-modal__close"
+                  onclick="document.getElementById('idx-modal-lg').classList.remove('que-modal--open')"
+                  aria-label="Close">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"/></svg>
+          </button>
+        </div>
+        <div class="que-modal__body">
+          <p style="font-size:var(--que-font-size-sm);color:var(--que-color-text-muted);line-height:var(--que-line-height-normal);margin:0;">lg — max-width 720px. More room for complex content, forms, or rich layouts.</p>
+        </div>
+        <div class="que-modal__footer">
+          <button class="que-button que-button--sm que-button--outline"
+                  onclick="document.getElementById('idx-modal-lg').classList.remove('que-modal--open')">Close</button>
+          <button class="que-button que-button--sm que-button--intent-primary"
+                  onclick="document.getElementById('idx-modal-lg').classList.remove('que-modal--open')">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── MODAL ─────────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Modal</h2>
+
+      <p class="demo-label">Basic — header + body + footer</p>
+      <div class="demo-block">
+        <div class="demo-preview">
+          <button class="que-button que-button--sm que-button--outline"
+                  onclick="document.getElementById('idx-modal-basic').classList.add('que-modal--open')">Open modal</button>
+        </div>
+        <pre class="demo-code">&lt;div class="que-modal"&gt;
+  &lt;div class="que-modal__backdrop"&gt;&lt;/div&gt;
+  &lt;div class="que-modal__panel"&gt;
+    &lt;div class="que-modal__header"&gt;
+      &lt;span class="que-modal__title"&gt;Title&lt;/span&gt;
+      &lt;button class="que-modal__close" aria-label="Close"&gt;
+        &lt;!-- × icon svg --&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="que-modal__body"&gt;Content&lt;/div&gt;
+    &lt;div class="que-modal__footer"&gt;
+      &lt;button class="que-button"&gt;Cancel&lt;/button&gt;
+      &lt;button class="que-button
+              que-button--intent-primary"&gt;Confirm&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Add --open class to show; remove to hide --&gt;</pre>
+      </div>
+
+      <p class="demo-label">Sizes</p>
+      <div class="demo-block">
+        <div class="demo-preview">
+          <button class="que-button que-button--sm que-button--ghost"
+                  onclick="document.getElementById('idx-modal-lg').classList.add('que-modal--open')">Open lg modal</button>
+        </div>
+        <pre class="demo-code">&lt;!-- Sizes: --sm (400px), (default md 560px),
+            --lg (720px), --xl (900px), --full --&gt;
+&lt;div class="que-modal que-modal--sm"&gt;...&lt;/div&gt;
+&lt;div class="que-modal que-modal--lg"&gt;...&lt;/div&gt;</pre>
+      </div>
+    </section>
+
   </main>
 
   <script src="shared.js"></script>
@@ -851,6 +1564,14 @@
     })
     document.addEventListener('click', () => {
       document.querySelectorAll('.que-select--open').forEach(b => b.classList.remove('que-select--open'))
+    })
+    // Drawer backdrop close
+    document.querySelectorAll('.que-drawer__backdrop').forEach(b => {
+      b.addEventListener('click', () => b.closest('.que-drawer')?.classList.remove('que-drawer--open'))
+    })
+    // Modal backdrop close
+    document.querySelectorAll('.que-modal__backdrop').forEach(b => {
+      b.addEventListener('click', () => b.closest('.que-modal')?.classList.remove('que-modal--open'))
     })
   </script>
 </body>

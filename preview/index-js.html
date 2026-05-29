@@ -584,6 +584,596 @@
       </div>
     </section>
 
+    <!-- ── BADGE ─────────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Badge</h2>
+
+      <p class="demo-label">Solid / Outline / Subtle</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:10px;">
+          <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;">
+            <que-badge>Neutral</que-badge>
+            <que-badge intent="primary">Primary</que-badge>
+            <que-badge intent="success">Success</que-badge>
+            <que-badge intent="warning">Warning</que-badge>
+            <que-badge intent="danger">Danger</que-badge>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;">
+            <que-badge variant="outline">Neutral</que-badge>
+            <que-badge variant="outline" intent="primary">Primary</que-badge>
+            <que-badge variant="outline" intent="success">Success</que-badge>
+            <que-badge variant="outline" intent="danger">Danger</que-badge>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;">
+            <que-badge variant="subtle">Neutral</que-badge>
+            <que-badge variant="subtle" intent="primary">Primary</que-badge>
+            <que-badge variant="subtle" intent="success">Success</que-badge>
+            <que-badge variant="subtle" intent="warning">Warning</que-badge>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;que-badge&gt;Neutral&lt;/que-badge&gt;
+&lt;que-badge intent="primary"&gt;Primary&lt;/que-badge&gt;
+&lt;que-badge intent="danger"&gt;Danger&lt;/que-badge&gt;
+
+&lt;!-- Outline --&gt;
+&lt;que-badge variant="outline" intent="success"&gt;
+  Success
+&lt;/que-badge&gt;
+
+&lt;!-- Subtle --&gt;
+&lt;que-badge variant="subtle" intent="warning"&gt;
+  Warning
+&lt;/que-badge&gt;</pre>
+      </div>
+
+      <p class="demo-label">Sizes / In context</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:10px;">
+          <div style="display:flex;gap:8px;align-items:center;">
+            <que-badge size="sm" intent="primary">Small</que-badge>
+            <que-badge intent="primary">Medium</que-badge>
+            <que-badge size="lg" intent="primary">Large</que-badge>
+          </div>
+          <div style="display:flex;gap:12px;align-items:center;font-size:var(--que-font-size-sm);">
+            <span>Messages <que-badge size="sm" intent="danger">12</que-badge></span>
+            <span>Status <que-badge size="sm" variant="subtle" intent="success">Active</que-badge></span>
+            <span>Version <que-badge size="sm" variant="outline">v2.0</que-badge></span>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;!-- Sizes: size="sm", (default), size="lg" --&gt;
+&lt;que-badge size="sm"&gt;Small&lt;/que-badge&gt;
+&lt;que-badge&gt;Medium&lt;/que-badge&gt;
+&lt;que-badge size="lg"&gt;Large&lt;/que-badge&gt;
+
+&lt;!-- In context --&gt;
+&lt;span&gt;
+  Messages
+  &lt;que-badge size="sm" intent="danger"&gt;12&lt;/que-badge&gt;
+&lt;/span&gt;</pre>
+      </div>
+    </section>
+
+    <!-- ── SPINNER ───────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Spinner</h2>
+
+      <p class="demo-label">Sizes</p>
+      <div class="demo-block">
+        <div class="demo-preview" style="align-items:center;">
+          <que-spinner size="sm"></que-spinner>
+          <que-spinner></que-spinner>
+          <que-spinner size="lg"></que-spinner>
+          <que-spinner size="xl"></que-spinner>
+        </div>
+        <pre class="demo-code">&lt;que-spinner&gt;&lt;/que-spinner&gt;
+
+&lt;!-- Sizes: size="sm", (default), size="lg", size="xl" --&gt;
+&lt;que-spinner size="sm"&gt;&lt;/que-spinner&gt;</pre>
+      </div>
+
+      <p class="demo-label">Intents / In context</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:12px;">
+          <div style="display:flex;gap:10px;align-items:center;">
+            <que-spinner intent="primary"></que-spinner>
+            <que-spinner intent="secondary"></que-spinner>
+            <que-spinner intent="success"></que-spinner>
+            <que-spinner intent="warning"></que-spinner>
+            <que-spinner intent="danger"></que-spinner>
+            <que-spinner intent="neutral"></que-spinner>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <que-button intent="primary" disabled style="display:flex;align-items:center;gap:8px;">
+              <que-spinner size="sm" style="--que-spinner-color:#fff;--que-spinner-track-color:rgba(255,255,255,0.3);"></que-spinner>
+              Saving…
+            </que-button>
+            <que-button variant="outline" disabled style="display:flex;align-items:center;gap:8px;">
+              <que-spinner size="sm"></que-spinner>
+              Loading
+            </que-button>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;!-- intent: "primary" | "secondary" | "success" |
+             "warning" | "danger" | "neutral" --&gt;
+&lt;que-spinner intent="success"&gt;&lt;/que-spinner&gt;
+
+&lt;!-- In button --&gt;
+&lt;que-button intent="primary" disabled
+            style="display:flex;align-items:center;gap:8px;"&gt;
+  &lt;que-spinner size="sm"
+    style="--que-spinner-color:#fff;"&gt;&lt;/que-spinner&gt;
+  Saving…
+&lt;/que-button&gt;</pre>
+      </div>
+    </section>
+
+    <!-- ── ALERT ─────────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Alert</h2>
+
+      <p class="demo-label">Subtle (default)</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:8px;">
+          <que-alert intent="info" title="Info">This is an informational message.</que-alert>
+          <que-alert intent="success" title="Success">Your changes have been saved successfully.</que-alert>
+          <que-alert intent="warning" title="Warning">Please review before continuing.</que-alert>
+          <que-alert intent="danger" title="Error">Something went wrong. Please try again.</que-alert>
+        </div>
+        <pre class="demo-code">&lt;que-alert intent="info" title="Info"&gt;
+  Message text.
+&lt;/que-alert&gt;
+
+&lt;!-- intent: "info" | "success" | "warning" | "danger" --&gt;</pre>
+      </div>
+
+      <p class="demo-label">Outline / Solid variants</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:8px;">
+          <que-alert intent="info"    variant="outline" title="Outline info">Bordered alert style.</que-alert>
+          <que-alert intent="warning" variant="outline" title="Outline warning">Outline with intent color applied.</que-alert>
+          <que-alert intent="success" variant="solid"   title="Solid">High-emphasis filled style.</que-alert>
+          <que-alert intent="danger"  variant="solid"   title="Solid danger">Inversed contrast for critical messages.</que-alert>
+        </div>
+        <pre class="demo-code">&lt;!-- variant: (default subtle) | "outline" | "solid" --&gt;
+&lt;que-alert intent="info" variant="outline"
+           title="Outline"&gt;...&lt;/que-alert&gt;
+
+&lt;que-alert intent="danger" variant="solid"
+           title="Solid"&gt;...&lt;/que-alert&gt;
+
+&lt;!-- size: "sm" | (default) | "lg" --&gt;
+&lt;que-alert intent="info" size="sm" title="Small"&gt;
+  Compact alert.
+&lt;/que-alert&gt;</pre>
+      </div>
+    </section>
+
+    <!-- ── PROGRESS ──────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Progress</h2>
+
+      <p class="demo-label">Values</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:8px;">
+          <que-progress value="25"></que-progress>
+          <que-progress value="60"></que-progress>
+          <que-progress value="100"></que-progress>
+        </div>
+        <pre class="demo-code">&lt;que-progress value="60"&gt;&lt;/que-progress&gt;</pre>
+      </div>
+
+      <p class="demo-label">Intents / Sizes</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:8px;">
+          <que-progress value="70" intent="success"></que-progress>
+          <que-progress value="70" intent="warning"></que-progress>
+          <que-progress value="70" intent="danger"></que-progress>
+          <que-progress value="60" size="sm"></que-progress>
+          <que-progress value="60"></que-progress>
+          <que-progress value="60" size="lg"></que-progress>
+          <que-progress value="60" size="xl"></que-progress>
+        </div>
+        <pre class="demo-code">&lt;!-- intent: "primary" | "success" | "warning" |
+             "danger" | "secondary" | "neutral" --&gt;
+&lt;que-progress value="70" intent="success"&gt;&lt;/que-progress&gt;
+
+&lt;!-- size: "sm" | (default) | "lg" | "xl" --&gt;
+&lt;que-progress value="60" size="lg"&gt;&lt;/que-progress&gt;</pre>
+      </div>
+
+      <p class="demo-label">Indeterminate</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:8px;">
+          <que-progress indeterminate></que-progress>
+          <que-progress indeterminate intent="success"></que-progress>
+        </div>
+        <pre class="demo-code">&lt;!-- No value needed for indeterminate --&gt;
+&lt;que-progress indeterminate&gt;&lt;/que-progress&gt;
+&lt;que-progress indeterminate intent="success"&gt;&lt;/que-progress&gt;</pre>
+      </div>
+    </section>
+
+    <!-- ── SKELETON ──────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Skeleton</h2>
+
+      <p class="demo-label">Text / Rectangle / Circle</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:12px;">
+          <div style="max-width:320px;width:100%;display:flex;flex-direction:column;gap:6px;">
+            <que-skeleton></que-skeleton>
+            <que-skeleton></que-skeleton>
+            <que-skeleton width="70%"></que-skeleton>
+          </div>
+          <div style="max-width:320px;width:100%;">
+            <que-skeleton variant="rect"></que-skeleton>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;">
+            <que-skeleton variant="circle" width="32px" height="32px"></que-skeleton>
+            <que-skeleton variant="circle"></que-skeleton>
+            <que-skeleton variant="circle" width="56px" height="56px"></que-skeleton>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;!-- Text line (default) --&gt;
+&lt;que-skeleton&gt;&lt;/que-skeleton&gt;
+&lt;que-skeleton width="70%"&gt;&lt;/que-skeleton&gt;
+
+&lt;!-- Rectangle block --&gt;
+&lt;que-skeleton variant="rect"&gt;&lt;/que-skeleton&gt;
+&lt;que-skeleton variant="rect" height="160px"&gt;&lt;/que-skeleton&gt;
+
+&lt;!-- Circle (avatar) --&gt;
+&lt;que-skeleton variant="circle"
+              width="48px" height="48px"&gt;&lt;/que-skeleton&gt;</pre>
+      </div>
+
+      <p class="demo-label">Card placeholder</p>
+      <div class="demo-block">
+        <div class="demo-preview">
+          <div style="max-width:280px;width:100%;display:flex;flex-direction:column;gap:12px;padding:16px;border:1px solid var(--que-color-border);border-radius:var(--que-radius-lg);">
+            <que-skeleton variant="rect" height="140px"></que-skeleton>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <que-skeleton variant="circle"></que-skeleton>
+              <div style="flex:1;display:flex;flex-direction:column;gap:6px;">
+                <que-skeleton></que-skeleton>
+                <que-skeleton width="60%"></que-skeleton>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <que-skeleton></que-skeleton>
+              <que-skeleton width="80%"></que-skeleton>
+            </div>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;!-- Compose to build any placeholder layout --&gt;
+&lt;div class="card"&gt;
+  &lt;que-skeleton variant="rect" height="140px"&gt;&lt;/que-skeleton&gt;
+  &lt;div style="display:flex;gap:10px;"&gt;
+    &lt;que-skeleton variant="circle"&gt;&lt;/que-skeleton&gt;
+    &lt;div style="flex:1;"&gt;
+      &lt;que-skeleton&gt;&lt;/que-skeleton&gt;
+      &lt;que-skeleton width="60%"&gt;&lt;/que-skeleton&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </section>
+
+    <!-- ── EMPTY STATE ───────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Empty State</h2>
+
+      <p class="demo-label">Default / With action</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:12px;">
+          <div style="border:1px solid var(--que-color-border);border-radius:var(--que-radius-lg);background:var(--que-color-surface);width:100%;">
+            <que-empty title="Your inbox is empty" description="When you receive messages they'll appear here."></que-empty>
+          </div>
+          <div style="border:1px solid var(--que-color-border);border-radius:var(--que-radius-lg);background:var(--que-color-surface);width:100%;">
+            <que-empty icon="search" title="No results found" description="Try adjusting your search or filter.">
+              <que-button variant="outline">Clear filters</que-button>
+            </que-empty>
+          </div>
+        </div>
+        <pre class="demo-code">&lt;que-empty
+  title="Your inbox is empty"
+  description="When you receive messages..."&gt;
+&lt;/que-empty&gt;
+
+&lt;!-- With action slot --&gt;
+&lt;que-empty icon="search" title="No results found"
+           description="Try adjusting..."&gt;
+  &lt;que-button variant="outline"&gt;Clear filters&lt;/que-button&gt;
+&lt;/que-empty&gt;
+
+&lt;!-- icon: "inbox" (default) | "files" | "search" |
+           "error" | "none" --&gt;
+&lt;!-- size: "sm" | (default) | "lg" --&gt;</pre>
+      </div>
+    </section>
+
+    <!-- ── TOAST ─────────────────────────────────────────────── -->
+    <que-toaster position="top-right"></que-toaster>
+
+    <section class="guide-section">
+      <h2>Toast</h2>
+
+      <p class="demo-label">Intents</p>
+      <div class="demo-block">
+        <div class="demo-preview">
+          <que-button id="idx-toast-info">Info</que-button>
+          <que-button id="idx-toast-success" intent="success">Success</que-button>
+          <que-button id="idx-toast-warning" intent="warning">Warning</que-button>
+          <que-button id="idx-toast-danger"  intent="danger">Danger</que-button>
+        </div>
+        <pre class="demo-code">&lt;!-- Place once per page --&gt;
+&lt;que-toaster position="top-right"&gt;&lt;/que-toaster&gt;
+
+&lt;!-- Trigger from JS --&gt;
+import { toast } from '../dist/toast.js'
+
+toast.info('Heads up!', { description: 'Info message.' })
+toast.success('Saved!')
+toast.warning('Low storage', { description: '...' })
+toast.danger('Upload failed', { description: '...' })</pre>
+      </div>
+
+      <p class="demo-label">Duration / Persistent</p>
+      <div class="demo-block">
+        <div class="demo-preview">
+          <que-button id="idx-toast-fast">Fast (1.5s)</que-button>
+          <que-button id="idx-toast-persist" variant="outline">Persistent (×)</que-button>
+        </div>
+        <pre class="demo-code">&lt;!-- Custom duration (ms), 0 = persistent --&gt;
+toast.success('Quick!', { duration: 1500 })
+toast.warning('Action required', {
+  description: 'Click × to dismiss.',
+  duration: 0
+})</pre>
+      </div>
+    </section>
+
+    <!-- ── TOOLTIP ───────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Tooltip</h2>
+
+      <p class="demo-label">Basic — hover + focus, 400ms delay</p>
+      <div class="demo-block">
+        <div class="demo-preview" style="gap:12px;align-items:center;flex-wrap:wrap;">
+          <que-tooltip content="Save document" placement="top">
+            <que-button size="sm">Save</que-button>
+          </que-tooltip>
+          <que-tooltip content="Delete permanently — this cannot be undone" placement="top">
+            <que-button size="sm" variant="outline">Delete</que-button>
+          </que-tooltip>
+          <que-tooltip content="Share with team" placement="bottom">
+            <que-button size="sm" variant="ghost">Share</que-button>
+          </que-tooltip>
+        </div>
+        <pre class="demo-code">&lt;que-tooltip content="Save document" placement="top"&gt;
+  &lt;que-button&gt;Save&lt;/que-button&gt;
+&lt;/que-tooltip&gt;
+
+&lt;!-- placement: "top" | "bottom" | "left" | "right" |
+               "top-start" | "top-end" |
+               "bottom-start" | "bottom-end" | etc. --&gt;</pre>
+      </div>
+
+      <p class="demo-label">All placements / Instant (delay="0")</p>
+      <div class="demo-block">
+        <div class="demo-preview" style="gap:10px;align-items:center;flex-wrap:wrap;">
+          <que-tooltip content="Top" placement="top"><que-button size="sm" variant="outline">top ↑</que-button></que-tooltip>
+          <que-tooltip content="Bottom" placement="bottom"><que-button size="sm" variant="outline">bottom ↓</que-button></que-tooltip>
+          <que-tooltip content="Left" placement="left"><que-button size="sm" variant="outline">← left</que-button></que-tooltip>
+          <que-tooltip content="Right" placement="right"><que-button size="sm" variant="outline">right →</que-button></que-tooltip>
+          <que-tooltip content="Top-start" placement="top-start" delay="0"><que-button size="sm" variant="ghost">top-start (instant)</que-button></que-tooltip>
+        </div>
+        <pre class="demo-code">&lt;!-- Instant tooltip (no delay) --&gt;
+&lt;que-tooltip content="Bold" placement="bottom" delay="0"&gt;
+  &lt;button&gt;B&lt;/button&gt;
+&lt;/que-tooltip&gt;
+
+&lt;!-- Custom color --&gt;
+&lt;que-tooltip content="Custom"
+  style="--que-tooltip-bg: var(--que-color-primary);
+         --que-tooltip-color: #fff;"&gt;
+  &lt;que-button&gt;Trigger&lt;/que-button&gt;
+&lt;/que-tooltip&gt;</pre>
+      </div>
+    </section>
+
+    <!-- ── POPOVER ───────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Popover</h2>
+
+      <p class="demo-label">Click trigger</p>
+      <div class="demo-block">
+        <div class="demo-preview" style="gap:10px;align-items:center;padding:32px 20px;flex-wrap:wrap;">
+          <que-popover placement="bottom" arrow>
+            <que-button>Open popover</que-button>
+            <div class="que-popover__content">Click outside or press ESC to close</div>
+          </que-popover>
+
+          <que-popover placement="bottom-start">
+            <que-button variant="outline">
+              Actions
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </que-button>
+            <div class="que-popover__content" style="min-width:160px;padding:4px 0;">
+              <button style="display:flex;width:100%;padding:8px 12px;font-size:var(--que-font-size-sm);background:none;border:none;cursor:pointer;text-align:left;font-family:var(--que-font-sans);color:var(--que-color-text);border-radius:var(--que-radius-md);">Edit</button>
+              <button style="display:flex;width:100%;padding:8px 12px;font-size:var(--que-font-size-sm);background:none;border:none;cursor:pointer;text-align:left;font-family:var(--que-font-sans);color:var(--que-color-danger);border-radius:var(--que-radius-md);">Delete</button>
+            </div>
+          </que-popover>
+        </div>
+        <pre class="demo-code">&lt;que-popover placement="bottom" arrow&gt;
+  &lt;que-button&gt;Trigger&lt;/que-button&gt;
+  &lt;div class="que-popover__content"&gt;
+    Popover content here
+  &lt;/div&gt;
+&lt;/que-popover&gt;
+
+&lt;!-- trigger: "click" (default) | "hover" | "manual" --&gt;
+&lt;!-- arrow — adds caret indicator --&gt;</pre>
+      </div>
+
+      <p class="demo-label">Hover trigger / Manual control</p>
+      <div class="demo-block">
+        <div class="demo-preview" style="gap:10px;align-items:center;flex-wrap:wrap;padding:32px 20px;">
+          <que-popover placement="top" trigger="hover" arrow>
+            <que-button variant="outline" size="sm">Hover me</que-button>
+            <div class="que-popover__content">Appears on hover or focus</div>
+          </que-popover>
+          <que-button id="idx-pop-open" variant="ghost" size="sm">Open</que-button>
+          <que-button id="idx-pop-close" variant="ghost" size="sm">Close</que-button>
+          <que-popover id="idx-pop-manual" placement="right" trigger="manual">
+            <que-button variant="outline" size="sm" disabled>Controlled</que-button>
+            <div class="que-popover__content">I'm controlled externally</div>
+          </que-popover>
+        </div>
+        <pre class="demo-code">&lt;!-- Hover trigger --&gt;
+&lt;que-popover placement="top" trigger="hover" arrow&gt;
+  &lt;que-button&gt;Hover me&lt;/que-button&gt;
+  &lt;div class="que-popover__content"&gt;...&lt;/div&gt;
+&lt;/que-popover&gt;
+
+&lt;!-- Manual control via JS --&gt;
+&lt;que-popover id="pop" trigger="manual"&gt;...&lt;/que-popover&gt;
+
+document.getElementById('pop').show()
+document.getElementById('pop').hide()
+document.getElementById('pop').toggle()</pre>
+      </div>
+    </section>
+
+    <!-- Drawer elements for JS demo -->
+    <que-drawer id="idx-js-drawer-left" placement="left">
+      <div style="padding:24px;display:flex;flex-direction:column;gap:12px;height:100%;">
+        <strong>Left drawer</strong>
+        <p style="font-size:var(--que-font-size-sm);color:var(--que-color-text-muted);">Default placement, md size (320px).</p>
+        <que-button variant="outline" size="sm" id="idx-js-drawer-left-close">Close</que-button>
+      </div>
+    </que-drawer>
+    <que-drawer id="idx-js-drawer-right" placement="right">
+      <div style="padding:24px;display:flex;flex-direction:column;gap:12px;height:100%;">
+        <strong>Right drawer</strong>
+        <p style="font-size:var(--que-font-size-sm);color:var(--que-color-text-muted);">Slides in from the right.</p>
+        <que-button variant="outline" size="sm" id="idx-js-drawer-right-close">Close</que-button>
+      </div>
+    </que-drawer>
+    <que-drawer id="idx-js-drawer-bottom" placement="bottom">
+      <div style="padding:24px;display:flex;flex-direction:column;gap:12px;">
+        <strong>Bottom sheet</strong>
+        <p style="font-size:var(--que-font-size-sm);color:var(--que-color-text-muted);">Common mobile pattern.</p>
+        <que-button variant="outline" size="sm" id="idx-js-drawer-bottom-close">Close</que-button>
+      </div>
+    </que-drawer>
+
+    <!-- ── DRAWER ─────────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Drawer</h2>
+
+      <p class="demo-label">Placements</p>
+      <div class="demo-block">
+        <div class="demo-preview">
+          <que-button variant="outline" size="sm" id="idx-js-open-left">Left</que-button>
+          <que-button variant="outline" size="sm" id="idx-js-open-right">Right</que-button>
+          <que-button variant="outline" size="sm" id="idx-js-open-bottom">Bottom</que-button>
+        </div>
+        <pre class="demo-code">&lt;que-drawer id="my-drawer" placement="right"&gt;
+  &lt;!-- panel content --&gt;
+&lt;/que-drawer&gt;
+
+&lt;!-- placement: "left" (default) | "right" |
+                "top" | "bottom" --&gt;
+
+&lt;!-- JS API --&gt;
+const drawer = document.getElementById('my-drawer')
+drawer.show()
+drawer.hide()
+drawer.toggle()</pre>
+      </div>
+
+      <p class="demo-label">Sizes / Push mode</p>
+      <div class="demo-block">
+        <div class="demo-preview col" style="gap:8px;align-items:flex-start;">
+          <span style="font-size:var(--que-font-size-sm);color:var(--que-color-text-muted);">Sizes: <strong>sm</strong> 240px · <strong>md</strong> 320px (default) · <strong>lg</strong> 400px · <strong>xl</strong> 520px</span>
+          <span style="font-size:var(--que-font-size-sm);color:var(--que-color-text-muted);">Modes: <strong>overlay</strong> (default, with backdrop) · <strong>push</strong> (no backdrop, shifts content)</span>
+        </div>
+        <pre class="demo-code">&lt;!-- size attribute --&gt;
+&lt;que-drawer placement="right" size="lg"&gt;...&lt;/que-drawer&gt;
+
+&lt;!-- Push mode --&gt;
+&lt;que-drawer placement="left" mode="push"&gt;
+  &lt;!-- sidebar content --&gt;
+&lt;/que-drawer&gt;
+&lt;div class="main-content"&gt;...&lt;/div&gt;</pre>
+      </div>
+    </section>
+
+    <!-- Modal elements for JS demo -->
+    <que-modal id="idx-js-modal-basic" title="Confirm action" size="sm">
+      <que-modal-body>
+        <p style="font-size:var(--que-font-size-sm);color:var(--que-color-text-muted);line-height:var(--que-line-height-normal);margin:0;">Are you sure you want to delete this item? This action cannot be undone.</p>
+      </que-modal-body>
+      <que-modal-footer>
+        <que-button id="idx-js-modal-cancel" variant="outline" size="sm">Cancel</que-button>
+        <que-button id="idx-js-modal-ok" intent="danger" size="sm">Delete</que-button>
+      </que-modal-footer>
+    </que-modal>
+    <que-modal id="idx-js-modal-lg" title="Large modal" size="lg">
+      <que-modal-body>
+        <p style="font-size:var(--que-font-size-sm);color:var(--que-color-text-muted);line-height:var(--que-line-height-normal);margin:0;">lg — max-width 720px. More room for complex content, forms, or rich layouts.</p>
+      </que-modal-body>
+      <que-modal-footer>
+        <que-button id="idx-js-modal-lg-close" variant="outline" size="sm">Close</que-button>
+        <que-button id="idx-js-modal-lg-save" intent="primary" size="sm">Save</que-button>
+      </que-modal-footer>
+    </que-modal>
+
+    <!-- ── MODAL ─────────────────────────────────────────────── -->
+    <section class="guide-section">
+      <h2>Modal</h2>
+
+      <p class="demo-label">Basic — title + body + footer</p>
+      <div class="demo-block">
+        <div class="demo-preview">
+          <que-button variant="outline" size="sm" id="idx-js-open-modal">Open modal</que-button>
+        </div>
+        <pre class="demo-code">&lt;que-modal id="my-modal" title="Confirm action"&gt;
+  &lt;que-modal-body&gt;
+    &lt;p&gt;Are you sure?&lt;/p&gt;
+  &lt;/que-modal-body&gt;
+  &lt;que-modal-footer&gt;
+    &lt;que-button variant="outline"&gt;Cancel&lt;/que-button&gt;
+    &lt;que-button intent="danger"&gt;Delete&lt;/que-button&gt;
+  &lt;/que-modal-footer&gt;
+&lt;/que-modal&gt;
+
+&lt;!-- JS API --&gt;
+document.getElementById('my-modal').show()
+document.getElementById('my-modal').hide()</pre>
+      </div>
+
+      <p class="demo-label">Sizes / Persistent / Draggable</p>
+      <div class="demo-block">
+        <div class="demo-preview">
+          <que-button variant="ghost" size="sm" id="idx-js-open-modal-lg">Open lg</que-button>
+        </div>
+        <pre class="demo-code">&lt;!-- size: "sm" | "md" (default) | "lg" | "xl" | "full" --&gt;
+&lt;que-modal title="Large" size="lg"&gt;...&lt;/que-modal&gt;
+
+&lt;!-- Persistent — won't close on backdrop/ESC --&gt;
+&lt;que-modal title="Terms" persistent no-close-btn&gt;
+  ...
+&lt;/que-modal&gt;
+
+&lt;!-- Draggable (no backdrop) --&gt;
+&lt;que-modal title="Window" draggable no-backdrop&gt;
+  ...
+&lt;/que-modal&gt;</pre>
+      </div>
+    </section>
+
   </main>
 
   <script type="module">
@@ -596,6 +1186,17 @@
     import '../dist/checkbox.js'
     import '../dist/switch.js'
     import '../dist/radio.js'
+    import '../dist/badge.js'
+    import '../dist/spinner.js'
+    import '../dist/alert.js'
+    import '../dist/progress.js'
+    import '../dist/skeleton.js'
+    import '../dist/empty.js'
+    import { toast, QueToaster } from '../dist/toast.js'
+    import '../dist/tooltip.js'
+    import '../dist/popover.js'
+    import '../dist/drawer.js'
+    import '../dist/modal.js'
 
     const ctrl = applyTheme(createTheme())
 
@@ -606,6 +1207,40 @@
       ctrl.onChange(sync)
       sync()
     }
+
+    // ── Toast ──────────────────────────────────────────────────
+    document.getElementById('idx-toast-info')   ?.addEventListener('click', () => toast.info('Heads up!',   { description: 'This is an informational message.' }))
+    document.getElementById('idx-toast-success')?.addEventListener('click', () => toast.success('Saved!',   { description: 'Your changes have been saved successfully.' }))
+    document.getElementById('idx-toast-warning')?.addEventListener('click', () => toast.warning('Low storage', { description: 'You are running out of storage space.' }))
+    document.getElementById('idx-toast-danger') ?.addEventListener('click', () => toast.danger('Upload failed', { description: 'Something went wrong. Please try again.' }))
+    document.getElementById('idx-toast-fast')   ?.addEventListener('click', () => toast.success('Quick!', { duration: 1500 }))
+    document.getElementById('idx-toast-persist')?.addEventListener('click', () => toast.warning('Action required', { description: 'Click × to dismiss.', duration: 0 }))
+
+    // ── Popover manual ─────────────────────────────────────────
+    const idxPopManual = document.getElementById('idx-pop-manual')
+    document.getElementById('idx-pop-open') ?.addEventListener('click', () => idxPopManual?.show())
+    document.getElementById('idx-pop-close')?.addEventListener('click', () => idxPopManual?.hide())
+
+    // ── Drawer ─────────────────────────────────────────────────
+    const idxDrawerLeft   = document.getElementById('idx-js-drawer-left')
+    const idxDrawerRight  = document.getElementById('idx-js-drawer-right')
+    const idxDrawerBottom = document.getElementById('idx-js-drawer-bottom')
+    document.getElementById('idx-js-open-left')  ?.addEventListener('click', () => idxDrawerLeft?.show())
+    document.getElementById('idx-js-open-right') ?.addEventListener('click', () => idxDrawerRight?.show())
+    document.getElementById('idx-js-open-bottom')?.addEventListener('click', () => idxDrawerBottom?.show())
+    document.getElementById('idx-js-drawer-left-close')  ?.addEventListener('click', () => idxDrawerLeft?.hide())
+    document.getElementById('idx-js-drawer-right-close') ?.addEventListener('click', () => idxDrawerRight?.hide())
+    document.getElementById('idx-js-drawer-bottom-close')?.addEventListener('click', () => idxDrawerBottom?.hide())
+
+    // ── Modal ──────────────────────────────────────────────────
+    const idxModalBasic = document.getElementById('idx-js-modal-basic')
+    const idxModalLg    = document.getElementById('idx-js-modal-lg')
+    document.getElementById('idx-js-open-modal')   ?.addEventListener('click', () => idxModalBasic?.show())
+    document.getElementById('idx-js-modal-cancel') ?.addEventListener('click', () => idxModalBasic?.hide())
+    document.getElementById('idx-js-modal-ok')     ?.addEventListener('click', () => idxModalBasic?.hide())
+    document.getElementById('idx-js-open-modal-lg')?.addEventListener('click', () => idxModalLg?.show())
+    document.getElementById('idx-js-modal-lg-close')?.addEventListener('click', () => idxModalLg?.hide())
+    document.getElementById('idx-js-modal-lg-save') ?.addEventListener('click', () => idxModalLg?.hide())
   </script>
 </body>
 </html>

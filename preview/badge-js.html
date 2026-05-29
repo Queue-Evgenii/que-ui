@@ -89,7 +89,38 @@
       </div>
     </div>
 
-    <h2>Square shape</h2>
+    <h2>Rect shape</h2>
+    <div class="row" style="align-items: center;">
+      <que-badge shape="rect">Neutral</que-badge>
+      <que-badge shape="rect" intent="primary">Primary</que-badge>
+      <que-badge shape="rect" variant="subtle" intent="success">Success</que-badge>
+      <que-badge shape="rect" variant="outline" intent="warning">Warning</que-badge>
+      <que-badge shape="rect" intent="danger">Danger</que-badge>
+    </div>
+
+    <h2>Dismissible</h2>
+    <div class="row" id="dismiss-demo">
+      <que-badge shape="rect" intent="primary"  dismissible>Design</que-badge>
+      <que-badge shape="rect" variant="subtle"  intent="success" dismissible>Development</que-badge>
+      <que-badge shape="rect" variant="outline" intent="warning" dismissible>Review</que-badge>
+      <que-badge intent="danger" dismissible>Critical</que-badge>
+    </div>
+
+    <h2>Disabled</h2>
+    <div class="row">
+      <que-badge shape="rect" intent="primary" dismissible disabled>Disabled</que-badge>
+    </div>
+
+    <h2>Clickable (hover)</h2>
+    <div class="row" style="align-items:center;">
+      <que-badge clickable intent="primary">Primary</que-badge>
+      <que-badge clickable variant="subtle" intent="success">Success</que-badge>
+      <que-badge clickable variant="outline" intent="warning">Warning</que-badge>
+      <que-badge shape="rect" clickable intent="primary">Rect</que-badge>
+      <que-badge shape="rect" clickable variant="subtle" intent="secondary">Filter</que-badge>
+    </div>
+
+    <h2>Custom radius</h2>
     <div class="row" style="align-items: center;">
       <que-badge intent="danger" style="--que-badge-radius: var(--que-radius-sm);">7</que-badge>
       <que-badge intent="primary" style="--que-badge-radius: var(--que-radius-md);">New</que-badge>
@@ -110,6 +141,8 @@
     import '../dist/badge.js'
 
     const ctrl = applyTheme(createTheme())
+
+    document.getElementById('dismiss-demo').addEventListener('que-dismiss', e => e.target.remove())
 
     const toggle = document.getElementById('theme-toggle')
     if (toggle) {

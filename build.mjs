@@ -114,6 +114,7 @@ console.log('dist/view.css')
 writeFileSync('dist/avatar.css', avatarCSS.trim())
 console.log('dist/avatar.css')
 
+
 const sharedConfig = { bundle: true, sourcemap: true }
 
 // Full library

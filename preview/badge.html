@@ -92,7 +92,53 @@
       </div>
     </div>
 
-    <h2>Square shape</h2>
+    <h2>Rect shape</h2>
+    <div class="row" style="align-items: center;">
+      <span class="que-badge que-badge--rect">Neutral</span>
+      <span class="que-badge que-badge--rect que-badge--intent-primary">Primary</span>
+      <span class="que-badge que-badge--rect que-badge--subtle que-badge--intent-success">Success</span>
+      <span class="que-badge que-badge--rect que-badge--outline que-badge--intent-warning">Warning</span>
+      <span class="que-badge que-badge--rect que-badge--intent-danger">Danger</span>
+    </div>
+
+    <h2>Dismissible</h2>
+    <div class="row" id="dismiss-demo">
+      <span class="que-badge que-badge--rect que-badge--intent-primary">
+        <span class="que-badge__label">Design</span>
+        <button class="que-badge__dismiss" aria-label="Remove"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M1.5 1.5 5 5m0 0 3.5 3.5M5 5 8.5 1.5M5 5 1.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+      </span>
+      <span class="que-badge que-badge--rect que-badge--subtle que-badge--intent-success">
+        <span class="que-badge__label">Development</span>
+        <button class="que-badge__dismiss" aria-label="Remove"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M1.5 1.5 5 5m0 0 3.5 3.5M5 5 8.5 1.5M5 5 1.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+      </span>
+      <span class="que-badge que-badge--rect que-badge--outline que-badge--intent-warning">
+        <span class="que-badge__label">Review</span>
+        <button class="que-badge__dismiss" aria-label="Remove"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M1.5 1.5 5 5m0 0 3.5 3.5M5 5 8.5 1.5M5 5 1.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+      </span>
+      <span class="que-badge que-badge--intent-danger">
+        <span class="que-badge__label">Critical</span>
+        <button class="que-badge__dismiss" aria-label="Remove"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M1.5 1.5 5 5m0 0 3.5 3.5M5 5 8.5 1.5M5 5 1.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+      </span>
+    </div>
+
+    <h2>Disabled</h2>
+    <div class="row" style="align-items:center;">
+      <span class="que-badge que-badge--rect que-badge--disabled que-badge--intent-primary">
+        <span class="que-badge__label">Disabled</span>
+        <button class="que-badge__dismiss" aria-label="Remove" tabindex="-1"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M1.5 1.5 5 5m0 0 3.5 3.5M5 5 8.5 1.5M5 5 1.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+      </span>
+    </div>
+
+    <h2>Clickable (hover)</h2>
+    <div class="row" style="align-items:center;">
+      <span class="que-badge que-badge--clickable que-badge--intent-primary">Primary</span>
+      <span class="que-badge que-badge--clickable que-badge--subtle que-badge--intent-success">Success</span>
+      <span class="que-badge que-badge--clickable que-badge--outline que-badge--intent-warning">Warning</span>
+      <span class="que-badge que-badge--rect que-badge--clickable que-badge--intent-primary">Rect</span>
+      <span class="que-badge que-badge--rect que-badge--clickable que-badge--subtle que-badge--intent-secondary">Filter</span>
+    </div>
+
+    <h2>Custom radius</h2>
     <div class="row" style="align-items: center;">
       <span class="que-badge que-badge--intent-danger" style="--que-badge-radius: var(--que-radius-sm);">7</span>
       <span class="que-badge que-badge--intent-primary" style="--que-badge-radius: var(--que-radius-md);">New</span>
@@ -107,6 +153,12 @@
     </div>
   </main>
 
+  <script>
+    document.getElementById('dismiss-demo').addEventListener('click', e => {
+      const btn = e.target.closest('.que-badge__dismiss')
+      if (btn) btn.closest('.que-badge')?.remove()
+    })
+  </script>
   <script src="shared.js"></script>
 </body>
 </html>

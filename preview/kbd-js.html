@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Kbd (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .shortcut { display: inline-flex; align-items: center; gap: 4px; }
+    .shortcut-sep { font-size: var(--que-font-size-xs); color: var(--que-color-text-muted); }
+    .combo-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .combo-label { font-size: var(--que-font-size-sm); color: var(--que-color-text-muted); min-width: 160px; }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="kbd.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="kbd-js.html" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Default</h2>
+    <div class="row" style="align-items:center;gap:8px;">
+      <que-kbd>⌘</que-kbd>
+      <que-kbd>Ctrl</que-kbd>
+      <que-kbd>Shift</que-kbd>
+      <que-kbd>Alt</que-kbd>
+      <que-kbd>⌥</que-kbd>
+      <que-kbd>↑</que-kbd>
+      <que-kbd>↓</que-kbd>
+      <que-kbd>Enter</que-kbd>
+      <que-kbd>Esc</que-kbd>
+      <que-kbd>Tab</que-kbd>
+    </div>
+
+    <h2>Sizes</h2>
+    <div class="row" style="align-items:center;gap:12px;">
+      <div class="shortcut">
+        <que-kbd size="sm">⌘</que-kbd>
+        <que-kbd size="sm">K</que-kbd>
+        <span class="shortcut-sep" style="font-size:10px;">sm</span>
+      </div>
+      <div class="shortcut">
+        <que-kbd>⌘</que-kbd>
+        <que-kbd>K</que-kbd>
+        <span class="shortcut-sep">md</span>
+      </div>
+      <div class="shortcut">
+        <que-kbd size="lg">⌘</que-kbd>
+        <que-kbd size="lg">K</que-kbd>
+        <span class="shortcut-sep">lg</span>
+      </div>
+    </div>
+
+    <h2>Combinations</h2>
+    <div class="col" style="gap:12px;">
+      <div class="combo-row">
+        <span class="combo-label">Command palette</span>
+        <div class="shortcut">
+          <que-kbd>⌘</que-kbd>
+          <span class="shortcut-sep">+</span>
+          <que-kbd>K</que-kbd>
+        </div>
+      </div>
+      <div class="combo-row">
+        <span class="combo-label">Save</span>
+        <div class="shortcut">
+          <que-kbd>Ctrl</que-kbd>
+          <span class="shortcut-sep">+</span>
+          <que-kbd>S</que-kbd>
+        </div>
+      </div>
+      <div class="combo-row">
+        <span class="combo-label">Find & Replace</span>
+        <div class="shortcut">
+          <que-kbd>Ctrl</que-kbd>
+          <span class="shortcut-sep">+</span>
+          <que-kbd>Shift</que-kbd>
+          <span class="shortcut-sep">+</span>
+          <que-kbd>H</que-kbd>
+        </div>
+      </div>
+    </div>
+
+    <h2>In context</h2>
+    <p style="font-size:var(--que-font-size-sm);color:var(--que-color-text);line-height:var(--que-line-height-normal);">
+      Press <que-kbd>⌘</que-kbd> <que-kbd>K</que-kbd> to open the command palette,
+      or <que-kbd>Esc</que-kbd> to close it.
+    </p>
+    <p style="font-size:var(--que-font-size-sm);color:var(--que-color-text);line-height:var(--que-line-height-normal);">
+      Use <que-kbd>↑</que-kbd> <que-kbd>↓</que-kbd> to navigate,
+      <que-kbd>Enter</que-kbd> to select.
+    </p>
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/kbd.js'
+
+    const ctrl = applyTheme(createTheme())
+    const toggle = document.getElementById('theme-toggle')
+    if (toggle) {
+      toggle.addEventListener('change', e => ctrl.setMode(e.target.value))
+      const sync = () => { const i = toggle.querySelector(`input[value="${ctrl.mode}"]`); if (i) i.checked = true }
+      ctrl.onChange(sync)
+      sync()
+    }
+  </script>
+</body>
+</html>

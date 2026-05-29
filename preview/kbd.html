@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Kbd (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/kbd.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .shortcut { display: inline-flex; align-items: center; gap: 4px; }
+    .shortcut-sep { font-size: var(--que-font-size-xs); color: var(--que-color-text-muted); }
+    .combo-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .combo-label { font-size: var(--que-font-size-sm); color: var(--que-color-text-muted); min-width: 160px; }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="kbd.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="kbd-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Default</h2>
+    <div class="row" style="align-items:center;gap:8px;">
+      <kbd class="que-kbd">⌘</kbd>
+      <kbd class="que-kbd">Ctrl</kbd>
+      <kbd class="que-kbd">Shift</kbd>
+      <kbd class="que-kbd">Alt</kbd>
+      <kbd class="que-kbd">⌥</kbd>
+      <kbd class="que-kbd">↑</kbd>
+      <kbd class="que-kbd">↓</kbd>
+      <kbd class="que-kbd">Enter</kbd>
+      <kbd class="que-kbd">Esc</kbd>
+      <kbd class="que-kbd">Tab</kbd>
+    </div>
+
+    <h2>Sizes</h2>
+    <div class="row" style="align-items:center;gap:12px;">
+      <div class="shortcut">
+        <kbd class="que-kbd que-kbd--sm">⌘</kbd>
+        <kbd class="que-kbd que-kbd--sm">K</kbd>
+        <span class="shortcut-sep" style="font-size:10px;">sm</span>
+      </div>
+      <div class="shortcut">
+        <kbd class="que-kbd">⌘</kbd>
+        <kbd class="que-kbd">K</kbd>
+        <span class="shortcut-sep">md</span>
+      </div>
+      <div class="shortcut">
+        <kbd class="que-kbd que-kbd--lg">⌘</kbd>
+        <kbd class="que-kbd que-kbd--lg">K</kbd>
+        <span class="shortcut-sep">lg</span>
+      </div>
+    </div>
+
+    <h2>Combinations</h2>
+    <div class="col" style="gap:12px;">
+      <div class="combo-row">
+        <span class="combo-label">Command palette</span>
+        <div class="shortcut">
+          <kbd class="que-kbd">⌘</kbd>
+          <span class="shortcut-sep">+</span>
+          <kbd class="que-kbd">K</kbd>
+        </div>
+      </div>
+      <div class="combo-row">
+        <span class="combo-label">Save</span>
+        <div class="shortcut">
+          <kbd class="que-kbd">Ctrl</kbd>
+          <span class="shortcut-sep">+</span>
+          <kbd class="que-kbd">S</kbd>
+        </div>
+      </div>
+      <div class="combo-row">
+        <span class="combo-label">Find & Replace</span>
+        <div class="shortcut">
+          <kbd class="que-kbd">Ctrl</kbd>
+          <span class="shortcut-sep">+</span>
+          <kbd class="que-kbd">Shift</kbd>
+          <span class="shortcut-sep">+</span>
+          <kbd class="que-kbd">H</kbd>
+        </div>
+      </div>
+      <div class="combo-row">
+        <span class="combo-label">Format document</span>
+        <div class="shortcut">
+          <kbd class="que-kbd">Shift</kbd>
+          <span class="shortcut-sep">+</span>
+          <kbd class="que-kbd">Alt</kbd>
+          <span class="shortcut-sep">+</span>
+          <kbd class="que-kbd">F</kbd>
+        </div>
+      </div>
+    </div>
+
+    <h2>In context</h2>
+    <p style="font-size:var(--que-font-size-sm);color:var(--que-color-text);line-height:var(--que-line-height-normal);">
+      Press <kbd class="que-kbd">⌘</kbd> <kbd class="que-kbd">K</kbd> to open the command palette,
+      or <kbd class="que-kbd">Esc</kbd> to close it.
+    </p>
+    <p style="font-size:var(--que-font-size-sm);color:var(--que-color-text);line-height:var(--que-line-height-normal);">
+      Use <kbd class="que-kbd">↑</kbd> <kbd class="que-kbd">↓</kbd> to navigate,
+      <kbd class="que-kbd">Enter</kbd> to select.
+    </p>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

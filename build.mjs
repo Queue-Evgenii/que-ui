@@ -10,7 +10,7 @@ mkdirSync('dist', { recursive: true })
 
 // Bundle CSS-only exports into a temp file to extract values (no DOM/HTMLElement)
 await build({ entryPoints: ['src/css.ts'], bundle: true, format: 'esm', outfile: TMP })
-const { defaultTokens, defaultDarkTokens, utilitiesCSS, buttonCSS, inputCSS, textareaCSS, checkboxCSS, switchCSS, radioCSS, segmentedCSS, selectCSS, sliderCSS, badgeCSS, spinnerCSS, alertCSS, progressCSS, skeletonCSS, toastCSS, emptyCSS, popoverCSS, tooltipCSS, drawerCSS, modalCSS, dividerCSS, spacerCSS, stackCSS, gridCSS, viewCSS, avatarCSS, cardCSS } = await import(pathToFileURL(TMP).href)
+const { defaultTokens, defaultDarkTokens, utilitiesCSS, buttonCSS, inputCSS, textareaCSS, checkboxCSS, switchCSS, radioCSS, segmentedCSS, selectCSS, sliderCSS, badgeCSS, spinnerCSS, alertCSS, progressCSS, skeletonCSS, toastCSS, emptyCSS, popoverCSS, tooltipCSS, drawerCSS, modalCSS, dividerCSS, spacerCSS, stackCSS, gridCSS, viewCSS, avatarCSS, cardCSS, kbdCSS, statCSS } = await import(pathToFileURL(TMP).href)
 import('fs').then(fs => fs.unlinkSync(TMP))
 
 function toCSSVars(tokens) {
@@ -117,6 +117,12 @@ console.log('dist/avatar.css')
 writeFileSync('dist/card.css', cardCSS.trim())
 console.log('dist/card.css')
 
+writeFileSync('dist/kbd.css', kbdCSS.trim())
+console.log('dist/kbd.css')
+
+writeFileSync('dist/stat.css', statCSS.trim())
+console.log('dist/stat.css')
+
 
 const sharedConfig = { bundle: true, sourcemap: true }
 
@@ -162,6 +168,8 @@ const componentEntries = {
   view:      'src/components/view/view.ts',
   avatar:    'src/components/avatar/avatar.ts',
   card:      'src/components/card/card.ts',
+  kbd:       'src/components/kbd/kbd.ts',
+  stat:      'src/components/stat/stat.ts',
 }
 
 await build({

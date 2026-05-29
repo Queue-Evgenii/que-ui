@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Stat (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="stat.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="stat-js.html" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Default</h2>
+    <div class="row" style="gap:32px;align-items:flex-start;flex-wrap:wrap;">
+      <que-stat label="Total Revenue"  value="$45,231"></que-stat>
+      <que-stat label="New Users"      value="2,350"   delta="+12.5%" trend="up"></que-stat>
+      <que-stat label="Bounce Rate"    value="24.8%"   delta="−3.1%"  trend="down"></que-stat>
+      <que-stat label="Uptime"         value="99.9%"   delta="No change"></que-stat>
+    </div>
+
+    <h2>Sizes</h2>
+    <div class="row" style="gap:32px;align-items:flex-end;flex-wrap:wrap;">
+      <que-stat label="Small"           value="1,234" delta="+8%" trend="up" size="sm"></que-stat>
+      <que-stat label="Medium (default)" value="1,234" delta="+8%" trend="up"></que-stat>
+      <que-stat label="Large"           value="1,234" delta="+8%" trend="up" size="lg"></que-stat>
+    </div>
+
+    <h2>In cards</h2>
+    <div class="stat-grid">
+      <que-card variant="elevated">
+        <que-card-body>
+          <que-stat label="Total Revenue" value="$45,231"></que-stat>
+        </que-card-body>
+      </que-card>
+      <que-card variant="elevated">
+        <que-card-body>
+          <que-stat label="New Users" value="2,350" delta="+12.5% this month" trend="up"></que-stat>
+        </que-card-body>
+      </que-card>
+      <que-card variant="elevated">
+        <que-card-body>
+          <que-stat label="Bounce Rate" value="24.8%" delta="−3.1% vs last week" trend="down"></que-stat>
+        </que-card-body>
+      </que-card>
+      <que-card variant="elevated">
+        <que-card-body>
+          <que-stat label="Uptime" value="99.9%" delta="Last 30 days"></que-stat>
+        </que-card-body>
+      </que-card>
+    </div>
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/card.js'
+    import '../dist/stat.js'
+
+    const ctrl = applyTheme(createTheme())
+    const toggle = document.getElementById('theme-toggle')
+    if (toggle) {
+      toggle.addEventListener('change', e => ctrl.setMode(e.target.value))
+      const sync = () => { const i = toggle.querySelector(`input[value="${ctrl.mode}"]`); if (i) i.checked = true }
+      ctrl.onChange(sync)
+      sync()
+    }
+  </script>
+</body>
+</html>

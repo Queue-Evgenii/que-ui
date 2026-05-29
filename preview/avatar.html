@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Avatar (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/avatar.css" />
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="avatar.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="avatar-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Image</h2>
+    <div class="row" style="align-items:center;gap:12px;">
+      <div class="que-avatar">
+        <img class="que-avatar__img" src="https://i.pravatar.cc/80?img=1" alt="Alice" />
+      </div>
+      <div class="que-avatar que-avatar--lg">
+        <img class="que-avatar__img" src="https://i.pravatar.cc/80?img=2" alt="Bob" />
+      </div>
+      <div class="que-avatar que-avatar--xl">
+        <img class="que-avatar__img" src="https://i.pravatar.cc/80?img=3" alt="Carol" />
+      </div>
+    </div>
+
+    <h2>Initials — auto colour</h2>
+    <div class="row" style="align-items:center;gap:10px;">
+      <div class="que-avatar que-avatar--color-0"><span class="que-avatar__initials">AB</span></div>
+      <div class="que-avatar que-avatar--color-1"><span class="que-avatar__initials">CD</span></div>
+      <div class="que-avatar que-avatar--color-2"><span class="que-avatar__initials">EF</span></div>
+      <div class="que-avatar que-avatar--color-3"><span class="que-avatar__initials">GH</span></div>
+      <div class="que-avatar que-avatar--color-4"><span class="que-avatar__initials">IJ</span></div>
+      <div class="que-avatar que-avatar--color-5"><span class="que-avatar__initials">KL</span></div>
+      <div class="que-avatar que-avatar--color-6"><span class="que-avatar__initials">MN</span></div>
+      <div class="que-avatar que-avatar--color-7"><span class="que-avatar__initials">OP</span></div>
+    </div>
+
+    <h2>Sizes</h2>
+    <div class="row" style="align-items:center;gap:12px;">
+      <div class="que-avatar que-avatar--sm que-avatar--color-0"><span class="que-avatar__initials">sm</span></div>
+      <div class="que-avatar que-avatar--color-0"><span class="que-avatar__initials">md</span></div>
+      <div class="que-avatar que-avatar--lg que-avatar--color-0"><span class="que-avatar__initials">lg</span></div>
+      <div class="que-avatar que-avatar--xl que-avatar--color-0"><span class="que-avatar__initials">xl</span></div>
+    </div>
+
+    <h2>Square shape</h2>
+    <div class="row" style="align-items:center;gap:10px;">
+      <div class="que-avatar que-avatar--square que-avatar--color-2"><span class="que-avatar__initials">JD</span></div>
+      <div class="que-avatar que-avatar--square que-avatar--lg">
+        <img class="que-avatar__img" src="https://i.pravatar.cc/80?img=5" alt="User" />
+      </div>
+    </div>
+
+    <h2>Status indicator</h2>
+    <div class="row" style="align-items:center;gap:12px;">
+      <div class="que-avatar que-avatar--color-6 que-avatar--status-online">
+        <span class="que-avatar__initials">ON</span>
+        <span class="que-avatar__status"></span>
+      </div>
+      <div class="que-avatar que-avatar--color-3 que-avatar--status-busy">
+        <span class="que-avatar__initials">BS</span>
+        <span class="que-avatar__status"></span>
+      </div>
+      <div class="que-avatar que-avatar--color-2 que-avatar--status-away">
+        <span class="que-avatar__initials">AW</span>
+        <span class="que-avatar__status"></span>
+      </div>
+      <div class="que-avatar que-avatar--color-7 que-avatar--status-offline">
+        <span class="que-avatar__initials">OF</span>
+        <span class="que-avatar__status"></span>
+      </div>
+    </div>
+
+    <h2>Avatar group</h2>
+    <div style="display:flex;">
+      <div class="que-avatar que-avatar--color-0" style="margin-right:-10px;outline:2px solid var(--que-color-bg);z-index:3;"><span class="que-avatar__initials">AB</span></div>
+      <div class="que-avatar que-avatar--color-4" style="margin-right:-10px;outline:2px solid var(--que-color-bg);z-index:2;"><span class="que-avatar__initials">CD</span></div>
+      <div class="que-avatar que-avatar--color-1" style="margin-right:-10px;outline:2px solid var(--que-color-bg);z-index:1;"><span class="que-avatar__initials">EF</span></div>
+      <div class="que-avatar" style="outline:2px solid var(--que-color-bg);background:var(--que-color-bg-muted);"><span class="que-avatar__initials" style="font-size:12px;">+5</span></div>
+    </div>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

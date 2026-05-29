@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Avatar (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="avatar.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="avatar-js.html" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Image</h2>
+    <div class="row" style="align-items:center;gap:12px;">
+      <que-avatar src="https://i.pravatar.cc/80?img=1" name="Alice"></que-avatar>
+      <que-avatar src="https://i.pravatar.cc/80?img=2" name="Bob" size="lg"></que-avatar>
+      <que-avatar src="https://i.pravatar.cc/80?img=3" name="Carol" size="xl"></que-avatar>
+    </div>
+
+    <h2>Initials — auto colour from name</h2>
+    <div class="row" style="align-items:center;gap:10px;">
+      <que-avatar name="Alice Brown"></que-avatar>
+      <que-avatar name="Charlie Davis"></que-avatar>
+      <que-avatar name="Emma Fox"></que-avatar>
+      <que-avatar name="George Hill"></que-avatar>
+      <que-avatar name="Ivan Johnson"></que-avatar>
+      <que-avatar name="Kate Lee"></que-avatar>
+      <que-avatar name="Mike Nash"></que-avatar>
+      <que-avatar name="Olivia Park"></que-avatar>
+    </div>
+
+    <h2>Sizes</h2>
+    <div class="row" style="align-items:center;gap:12px;">
+      <que-avatar name="Small" size="sm"></que-avatar>
+      <que-avatar name="Medium"></que-avatar>
+      <que-avatar name="Large" size="lg"></que-avatar>
+      <que-avatar name="Extra Large" size="xl"></que-avatar>
+    </div>
+
+    <h2>Square shape</h2>
+    <div class="row" style="align-items:center;gap:10px;">
+      <que-avatar name="Jane Doe" shape="square"></que-avatar>
+      <que-avatar src="https://i.pravatar.cc/80?img=5" name="User" shape="square" size="lg"></que-avatar>
+    </div>
+
+    <h2>Status indicator</h2>
+    <div class="row" style="align-items:center;gap:12px;">
+      <que-avatar name="Online User"  status="online"></que-avatar>
+      <que-avatar name="Busy Person"  status="busy"></que-avatar>
+      <que-avatar name="Away Now"     status="away"></que-avatar>
+      <que-avatar name="Offline Now"  status="offline"></que-avatar>
+    </div>
+
+    <h2>Avatar group</h2>
+    <div style="display:flex;">
+      <que-avatar name="Alice Brown"   style="margin-right:-10px;outline:2px solid var(--que-color-bg);z-index:3;"></que-avatar>
+      <que-avatar name="Charlie Davis" style="margin-right:-10px;outline:2px solid var(--que-color-bg);z-index:2;"></que-avatar>
+      <que-avatar name="Emma Fox"      style="margin-right:-10px;outline:2px solid var(--que-color-bg);z-index:1;"></que-avatar>
+      <que-avatar name="+5"            style="outline:2px solid var(--que-color-bg);"></que-avatar>
+    </div>
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/avatar.js'
+
+    const ctrl = applyTheme(createTheme())
+    const toggle = document.getElementById('theme-toggle')
+    if (toggle) {
+      toggle.addEventListener('change', e => ctrl.setMode(e.target.value))
+      const sync = () => { const i = toggle.querySelector(`input[value="${ctrl.mode}"]`); if (i) i.checked = true }
+      ctrl.onChange(sync)
+      sync()
+    }
+  </script>
+</body>
+</html>

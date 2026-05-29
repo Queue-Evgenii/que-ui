@@ -36,6 +36,63 @@
     "./segmented": {
       "import": "./dist/segmented.js"
     },
+    "./select": {
+      "import": "./dist/select.js"
+    },
+    "./slider": {
+      "import": "./dist/slider.js"
+    },
+    "./badge": {
+      "import": "./dist/badge.js"
+    },
+    "./spinner": {
+      "import": "./dist/spinner.js"
+    },
+    "./alert": {
+      "import": "./dist/alert.js"
+    },
+    "./progress": {
+      "import": "./dist/progress.js"
+    },
+    "./skeleton": {
+      "import": "./dist/skeleton.js"
+    },
+    "./toast": {
+      "import": "./dist/toast.js"
+    },
+    "./empty": {
+      "import": "./dist/empty.js"
+    },
+    "./popover": {
+      "import": "./dist/popover.js"
+    },
+    "./tooltip": {
+      "import": "./dist/tooltip.js"
+    },
+    "./drawer": {
+      "import": "./dist/drawer.js"
+    },
+    "./modal": {
+      "import": "./dist/modal.js"
+    },
+    "./divider": {
+      "import": "./dist/divider.js"
+    },
+    "./spacer": {
+      "import": "./dist/spacer.js"
+    },
+    "./stack": {
+      "import": "./dist/stack.js"
+    },
+    "./grid": {
+      "import": "./dist/grid.js"
+    },
+    "./view": {
+      "import": "./dist/view.js"
+    },
+    "./avatar": {
+      "import": "./dist/avatar.js"
+    },
     "./tokens.css": "./dist/tokens.css",
     "./utilities.css": "./dist/utilities.css",
     "./button.css": "./dist/button.css",
@@ -44,10 +101,29 @@
     "./checkbox.css": "./dist/checkbox.css",
     "./switch.css": "./dist/switch.css",
     "./radio.css": "./dist/radio.css",
-    "./segmented.css": "./dist/segmented.css"
+    "./segmented.css": "./dist/segmented.css",
+    "./select.css": "./dist/select.css",
+    "./slider.css": "./dist/slider.css",
+    "./badge.css": "./dist/badge.css",
+    "./spinner.css": "./dist/spinner.css",
+    "./alert.css": "./dist/alert.css",
+    "./progress.css": "./dist/progress.css",
+    "./skeleton.css": "./dist/skeleton.css",
+    "./toast.css": "./dist/toast.css",
+    "./empty.css": "./dist/empty.css",
+    "./popover.css": "./dist/popover.css",
+    "./tooltip.css": "./dist/tooltip.css",
+    "./drawer.css": "./dist/drawer.css",
+    "./modal.css": "./dist/modal.css",
+    "./divider.css": "./dist/divider.css",
+    "./spacer.css": "./dist/spacer.css",
+    "./stack.css": "./dist/stack.css",
+    "./grid.css": "./dist/grid.css",
+    "./view.css": "./dist/view.css",
+    "./avatar.css": "./dist/avatar.css"
   },
   "files": ["dist"],
-  "sideEffects": ["dist/*.css", "dist/button.js", "dist/input.js", "dist/textarea.js", "dist/checkbox.js", "dist/switch.js", "dist/radio.js", "dist/segmented.js", "dist/index.js", "dist/index.cjs"],
+  "sideEffects": ["dist/*.css", "dist/chunks/*.js", "dist/button.js", "dist/input.js", "dist/textarea.js", "dist/checkbox.js", "dist/switch.js", "dist/radio.js", "dist/segmented.js", "dist/select.js", "dist/slider.js", "dist/badge.js", "dist/spinner.js", "dist/alert.js", "dist/progress.js", "dist/skeleton.js", "dist/toast.js", "dist/empty.js", "dist/popover.js", "dist/tooltip.js", "dist/drawer.js", "dist/modal.js", "dist/divider.js", "dist/spacer.js", "dist/stack.js", "dist/grid.js", "dist/view.js", "dist/avatar.js", "dist/index.js", "dist/index.cjs"],
   "scripts": {
     "build": "tsc --noEmit && node build.mjs",
     "typecheck": "tsc --noEmit",

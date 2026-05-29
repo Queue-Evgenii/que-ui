@@ -1,12 +1,8 @@
 import { BaseElement } from '../../base/BaseElement'
 import { tooltipCSS } from './tooltip.styles'
-import type { Size } from '../../base/types'
+import type { Size, Placement } from '../../base/types'
 
-type TooltipPlacement =
-  | 'top'    | 'top-start'    | 'top-end'
-  | 'bottom' | 'bottom-start' | 'bottom-end'
-  | 'right'  | 'right-start'  | 'right-end'
-  | 'left'   | 'left-start'   | 'left-end'
+type TooltipPlacement = Placement
 
 export class QueTooltip extends BaseElement {
   static observedAttributes = ['content', 'placement', 'delay', 'offset', 'disabled']

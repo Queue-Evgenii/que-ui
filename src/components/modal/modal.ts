@@ -1,9 +1,10 @@
 import { BaseElement } from '../../base/BaseElement'
 import { modalCSS } from './modal.styles'
 import { esc } from '../../utils/html'
-import type { Size } from '../../base/types'
+import type { Size, Placement } from '../../base/types'
 
-type ModalSize = Extract<Size, 'sm' | 'md' | 'lg' | 'xl'> | 'full'
+type ModalSize     = Extract<Size, 'sm' | 'md' | 'lg' | 'xl'> | 'full'
+type ModalPosition = Extract<Placement, 'top' | 'bottom' | 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end'>
 
 const FOCUSABLE = [
   'a[href]', 'button:not([disabled])', 'textarea:not([disabled])',
@@ -44,7 +45,7 @@ customElements.define('que-modal-footer', QueModalFooter)
 // ── QueModal ────────────────────────────────────────────────
 export class QueModal extends BaseElement {
   static observedAttributes = [
-    'title', 'size', 'open', 'draggable',
+    'title', 'size', 'position', 'open', 'draggable',
     'no-backdrop', 'no-close-btn', 'persistent',
   ]
 
@@ -132,12 +133,14 @@ export class QueModal extends BaseElement {
 
   protected render(): void {
     const size       = (this.attr('size') as ModalSize) ?? 'md'
+    const position   = this.attr('position') as ModalPosition | null
     const draggable  = this.boolAttr('draggable')
     const noBackdrop = this.boolAttr('no-backdrop')
     const persistent = this.boolAttr('persistent')
 
     this.className = this.cx('que-modal', {
-      size: size !== 'md' ? size : null,
+      size:     size !== 'md' ? size : null,
+      position: position ? `position-${position}` : null,
       flags: {
         open:         this.#open,
         draggable,
@@ -291,13 +294,18 @@ export class QueModal extends BaseElement {
     const touch = 'touches' in e ? e.touches[0]! : e
     const panel = this.#panel!
 
-    // First drag: compute absolute position from current centered state
+    // First drag: snap from CSS-centered position to absolute coords.
+    // Disable transition first — without this the browser animates
+    // translate(-50%,-50%) → none and the panel visually jerks.
     if (!this.#pos) {
       const rect = panel.getBoundingClientRect()
       this.#pos = { x: rect.left, y: rect.top }
-      panel.style.left      = `${rect.left}px`
-      panel.style.top       = `${rect.top}px`
-      panel.style.transform = 'none'
+      panel.style.transition = 'none'
+      panel.style.left       = `${rect.left}px`
+      panel.style.top        = `${rect.top}px`
+      panel.style.transform  = 'none'
+      void panel.offsetWidth  // force reflow before restoring transitions
+      panel.style.transition = ''
     }
 
     this.#dragOffset = {

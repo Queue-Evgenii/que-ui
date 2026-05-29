@@ -1,6 +1,7 @@
 export const modalCSS = `
 /* Customizable: --que-modal-max-width, --que-modal-max-height,
-                 --que-modal-bg, --que-modal-radius, --que-modal-padding */
+                 --que-modal-bg, --que-modal-radius, --que-modal-padding,
+                 --que-modal-offset (gap from viewport edge for positioned variants) */
 
 /* ── SHAKE (persistent rejection) ───────────────────────── */
 
@@ -95,6 +96,65 @@ export const modalCSS = `
 .que-modal--full {
   --que-modal-max-width:  calc(100vw - 32px);
   --que-modal-max-height: calc(100vh - 32px);
+}
+
+/* ── POSITIONS ───────────────────────────────────────────── */
+
+.que-modal--position-top > .que-modal__panel {
+  top: var(--que-modal-offset, 24px);
+  transform: translate(-50%, 0) scale(0.96);
+}
+.que-modal--position-top.que-modal--open > .que-modal__panel {
+  transform: translate(-50%, 0) scale(1);
+}
+
+.que-modal--position-bottom > .que-modal__panel {
+  top: auto;
+  bottom: var(--que-modal-offset, 24px);
+  transform: translate(-50%, 0) scale(0.96);
+}
+.que-modal--position-bottom.que-modal--open > .que-modal__panel {
+  transform: translate(-50%, 0) scale(1);
+}
+
+.que-modal--position-top-start > .que-modal__panel {
+  top: var(--que-modal-offset, 24px);
+  left: var(--que-modal-offset, 24px);
+  transform: scale(0.96);
+}
+.que-modal--position-top-start.que-modal--open > .que-modal__panel {
+  transform: scale(1);
+}
+
+.que-modal--position-top-end > .que-modal__panel {
+  top: var(--que-modal-offset, 24px);
+  left: auto;
+  right: var(--que-modal-offset, 24px);
+  transform: scale(0.96);
+}
+.que-modal--position-top-end.que-modal--open > .que-modal__panel {
+  transform: scale(1);
+}
+
+.que-modal--position-bottom-start > .que-modal__panel {
+  top: auto;
+  bottom: var(--que-modal-offset, 24px);
+  left: var(--que-modal-offset, 24px);
+  transform: scale(0.96);
+}
+.que-modal--position-bottom-start.que-modal--open > .que-modal__panel {
+  transform: scale(1);
+}
+
+.que-modal--position-bottom-end > .que-modal__panel {
+  top: auto;
+  bottom: var(--que-modal-offset, 24px);
+  left: auto;
+  right: var(--que-modal-offset, 24px);
+  transform: scale(0.96);
+}
+.que-modal--position-bottom-end.que-modal--open > .que-modal__panel {
+  transform: scale(1);
 }
 
 /* ── HEADER ──────────────────────────────────────────────── */

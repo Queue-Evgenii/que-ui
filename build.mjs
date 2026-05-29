@@ -120,84 +120,50 @@ console.log('dist/index.js')
 await build({ ...sharedConfig, entryPoints: ['src/index.ts'], format: 'cjs', outfile: 'dist/index.cjs' })
 console.log('dist/index.cjs')
 
-// Theme-only bundle
+// Theme-only bundle (standalone — no shared chunk needed)
 await build({ ...sharedConfig, entryPoints: ['src/theme.ts'], format: 'esm', outfile: 'dist/theme.js' })
 console.log('dist/theme.js')
 
-// Per-component bundles
-await build({ ...sharedConfig, entryPoints: ['src/components/button/button.ts'], format: 'esm', outfile: 'dist/button.js' })
-console.log('dist/button.js')
+// Per-component bundles — all built in one pass with code splitting.
+// esbuild extracts shared code (BaseElement, utils, base helpers) into
+// dist/chunks/ so the browser downloads it once and caches it.
+const componentEntries = {
+  button:    'src/components/button/button.ts',
+  input:     'src/components/input/input.ts',
+  textarea:  'src/components/textarea/textarea.ts',
+  checkbox:  'src/components/checkbox/checkbox.ts',
+  switch:    'src/components/switch/switch.ts',
+  radio:     'src/components/radio/radio.ts',
+  segmented: 'src/components/segmented/segmented.ts',
+  select:    'src/components/select/select.ts',
+  slider:    'src/components/slider/slider.ts',
+  badge:     'src/components/badge/badge.ts',
+  spinner:   'src/components/spinner/spinner.ts',
+  alert:     'src/components/alert/alert.ts',
+  progress:  'src/components/progress/progress.ts',
+  skeleton:  'src/components/skeleton/skeleton.ts',
+  toast:     'src/components/toast/toast.ts',
+  empty:     'src/components/empty/empty.ts',
+  popover:   'src/components/popover/popover.ts',
+  tooltip:   'src/components/tooltip/tooltip.ts',
+  drawer:    'src/components/drawer/drawer.ts',
+  modal:     'src/components/modal/modal.ts',
+  divider:   'src/components/divider/divider.ts',
+  spacer:    'src/components/spacer/spacer.ts',
+  stack:     'src/components/stack/stack.ts',
+  grid:      'src/components/grid/grid.ts',
+  view:      'src/components/view/view.ts',
+}
 
-await build({ ...sharedConfig, entryPoints: ['src/components/input/input.ts'], format: 'esm', outfile: 'dist/input.js' })
-console.log('dist/input.js')
-
-await build({ ...sharedConfig, entryPoints: ['src/components/textarea/textarea.ts'], format: 'esm', outfile: 'dist/textarea.js' })
-console.log('dist/textarea.js')
-
-await build({ ...sharedConfig, entryPoints: ['src/components/checkbox/checkbox.ts'], format: 'esm', outfile: 'dist/checkbox.js' })
-console.log('dist/checkbox.js')
-
-await build({ ...sharedConfig, entryPoints: ['src/components/switch/switch.ts'], format: 'esm', outfile: 'dist/switch.js' })
-console.log('dist/switch.js')
-
-await build({ ...sharedConfig, entryPoints: ['src/components/radio/radio.ts'], format: 'esm', outfile: 'dist/radio.js' })
-console.log('dist/radio.js')
-
-await build({ ...sharedConfig, entryPoints: ['src/components/segmented/segmented.ts'], format: 'esm', outfile: 'dist/segmented.js' })
-console.log('dist/segmented.js')
-
-await build({ ...sharedConfig, entryPoints: ['src/components/select/select.ts'], format: 'esm', outfile: 'dist/select.js' })
-console.log('dist/select.js')
-
-await build({ ...sharedConfig, entryPoints: ['src/components/slider/slider.ts'], format: 'esm', outfile: 'dist/slider.js' })
-console.log('dist/slider.js')
-
-await build({ ...sharedConfig, entryPoints: ['src/components/badge/badge.ts'], format: 'esm', outfile: 'dist/badge.js' })
-console.log('dist/badge.js')
-
-await build({ ...sharedConfig, entryPoints: ['src/components/spinner/spinner.ts'], format: 'esm', outfile: 'dist/spinner.js' })
-console.log('dist/spinner.js')
-
-await build({ ...sharedConfig, entryPoints: ['src/components/alert/alert.ts'], format: 'esm', outfile: 'dist/alert.js' })
-console.log('dist/alert.js')
-
-await build({ ...sharedConfig, entryPoints: ['src/components/progress/progress.ts'], format: 'esm', outfile: 'dist/progress.js' })
-console.log('dist/progress.js')
-
-await build({ ...sharedConfig, entryPoints: ['src/components/skeleton/skeleton.ts'], format: 'esm', outfile: 'dist/skeleton.js' })
-console.log('dist/skeleton.js')
-
-await build({ ...sharedConfig, entryPoints: ['src/components/toast/toast.ts'], format: 'esm', outfile: 'dist/toast.js' })
-console.log('dist/toast.js')
-
-await build({ ...sharedConfig, entryPoints: ['src/components/empty/empty.ts'], format: 'esm', outfile: 'dist/empty.js' })
-console.log('dist/empty.js')
-
-await build({ ...sharedConfig, entryPoints: ['src/components/popover/popover.ts'], format: 'esm', outfile: 'dist/popover.js' })
-console.log('dist/popover.js')
-
-await build({ ...sharedConfig, entryPoints: ['src/components/tooltip/tooltip.ts'], format: 'esm', outfile: 'dist/tooltip.js' })
-console.log('dist/tooltip.js')
-
-await build({ ...sharedConfig, entryPoints: ['src/components/drawer/drawer.ts'], format: 'esm', outfile: 'dist/drawer.js' })
-console.log('dist/drawer.js')
-
-await build({ ...sharedConfig, entryPoints: ['src/components/modal/modal.ts'], format: 'esm', outfile: 'dist/modal.js' })
-console.log('dist/modal.js')
-
-await build({ ...sharedConfig, entryPoints: ['src/components/divider/divider.ts'], format: 'esm', outfile: 'dist/divider.js' })
-console.log('dist/divider.js')
-
-await build({ ...sharedConfig, entryPoints: ['src/components/spacer/spacer.ts'], format: 'esm', outfile: 'dist/spacer.js' })
-console.log('dist/spacer.js')
-
-await build({ ...sharedConfig, entryPoints: ['src/components/stack/stack.ts'], format: 'esm', outfile: 'dist/stack.js' })
-console.log('dist/stack.js')
-
-await build({ ...sharedConfig, entryPoints: ['src/components/grid/grid.ts'], format: 'esm', outfile: 'dist/grid.js' })
-console.log('dist/grid.js')
-
-await build({ ...sharedConfig, entryPoints: ['src/components/view/view.ts'], format: 'esm', outfile: 'dist/view.js' })
-console.log('dist/view.js')
+await build({
+  entryPoints: componentEntries,
+  bundle: true,
+  splitting: true,
+  format: 'esm',
+  outdir: 'dist',
+  chunkNames: 'chunks/[name]-[hash]',
+  sourcemap: true,
+})
+Object.keys(componentEntries).forEach(name => console.log(`dist/${name}.js`))
 
 console.log('\nBuild complete.')

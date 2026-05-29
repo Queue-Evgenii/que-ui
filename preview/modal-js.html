@@ -164,6 +164,42 @@
       <que-button id="open-overlap" intent="primary">Open both windows</que-button>
     </div>
 
+    <!-- ── Positions ── -->
+    <que-modal id="m-pos-top"          title='position="top"'          position="top"          size="sm">
+      <que-modal-body><p class="body-text">Прикреплён к верхнему краю по центру.</p></que-modal-body>
+      <que-modal-footer><que-button id="m-pos-top-close"          variant="outline" size="sm">Close</que-button></que-modal-footer>
+    </que-modal>
+    <que-modal id="m-pos-bottom"       title='position="bottom"'       position="bottom"       size="sm">
+      <que-modal-body><p class="body-text">Прикреплён к нижнему краю по центру.</p></que-modal-body>
+      <que-modal-footer><que-button id="m-pos-bottom-close"       variant="outline" size="sm">Close</que-button></que-modal-footer>
+    </que-modal>
+    <que-modal id="m-pos-top-start"    title='position="top-start"'    position="top-start"    size="sm">
+      <que-modal-body><p class="body-text">Верхний левый угол.</p></que-modal-body>
+      <que-modal-footer><que-button id="m-pos-top-start-close"    variant="outline" size="sm">Close</que-button></que-modal-footer>
+    </que-modal>
+    <que-modal id="m-pos-top-end"      title='position="top-end"'      position="top-end"      size="sm">
+      <que-modal-body><p class="body-text">Верхний правый угол.</p></que-modal-body>
+      <que-modal-footer><que-button id="m-pos-top-end-close"      variant="outline" size="sm">Close</que-button></que-modal-footer>
+    </que-modal>
+    <que-modal id="m-pos-bottom-start" title='position="bottom-start"' position="bottom-start" size="sm">
+      <que-modal-body><p class="body-text">Нижний левый угол.</p></que-modal-body>
+      <que-modal-footer><que-button id="m-pos-bottom-start-close" variant="outline" size="sm">Close</que-button></que-modal-footer>
+    </que-modal>
+    <que-modal id="m-pos-bottom-end"   title='position="bottom-end"'   position="bottom-end"   size="sm">
+      <que-modal-body><p class="body-text">Нижний правый угол.</p></que-modal-body>
+      <que-modal-footer><que-button id="m-pos-bottom-end-close"   variant="outline" size="sm">Close</que-button></que-modal-footer>
+    </que-modal>
+
+    <h2>Positions</h2>
+    <div class="demo-row">
+      <que-button id="open-pos-top"          variant="ghost" size="sm">top</que-button>
+      <que-button id="open-pos-bottom"       variant="ghost" size="sm">bottom</que-button>
+      <que-button id="open-pos-top-start"    variant="ghost" size="sm">top-start</que-button>
+      <que-button id="open-pos-top-end"      variant="ghost" size="sm">top-end</que-button>
+      <que-button id="open-pos-bottom-start" variant="ghost" size="sm">bottom-start</que-button>
+      <que-button id="open-pos-bottom-end"   variant="ghost" size="sm">bottom-end</que-button>
+    </div>
+
     <h2>Events</h2>
     <div class="event-log" id="log">– waiting –</div>
 
@@ -172,9 +208,6 @@
   <script type="module">
     import { applyTheme, createTheme } from '../dist/theme.js'
     import '../dist/button.js'
-    import '../dist/input.js'
-    import '../dist/select.js'
-    import '../dist/checkbox.js'
     import '../dist/modal.js'
 
     const ctrl = applyTheme(createTheme())
@@ -219,6 +252,15 @@
     })
     document.getElementById('m-over1-close').addEventListener('click', () => mOver1.hide())
     document.getElementById('m-over2-close').addEventListener('click', () => mOver2.hide())
+
+    // positions
+    const positions = ['top', 'bottom', 'top-start', 'top-end', 'bottom-start', 'bottom-end']
+    positions.forEach(pos => {
+      const id = pos.replace(/-/g, '-')
+      const modal = document.getElementById(`m-pos-${id}`)
+      document.getElementById(`open-pos-${id}`)      ?.addEventListener('click', () => modal?.show())
+      document.getElementById(`m-pos-${id}-close`)   ?.addEventListener('click', () => modal?.hide())
+    })
 
     // event log
     const log = document.getElementById('log')

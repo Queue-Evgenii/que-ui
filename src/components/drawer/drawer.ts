@@ -1,8 +1,8 @@
 import { BaseElement } from '../../base/BaseElement'
 import { drawerCSS } from './drawer.styles'
-import type { Size } from '../../base/types'
+import type { Size, Placement } from '../../base/types'
 
-type DrawerPlacement = 'left' | 'right' | 'top' | 'bottom'
+type DrawerPlacement = Extract<Placement, 'left' | 'right' | 'top' | 'bottom'>
 type DrawerMode      = 'overlay' | 'push'
 type DrawerSize      = Extract<Size, 'sm' | 'md' | 'lg' | 'xl'> | 'full' | (string & {})
 

@@ -1,11 +1,8 @@
 import { BaseElement } from '../../base/BaseElement'
 import { popoverCSS } from './popover.styles'
+import type { Placement } from '../../base/types'
 
-type PopoverPlacement =
-  | 'top'    | 'top-start'    | 'top-end'
-  | 'bottom' | 'bottom-start' | 'bottom-end'
-  | 'right'  | 'right-start'  | 'right-end'
-  | 'left'   | 'left-start'   | 'left-end'
+type PopoverPlacement = Placement
 
 type PopoverTrigger = 'click' | 'hover' | 'manual'
 

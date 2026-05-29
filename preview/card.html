@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Card (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/badge.css" />
+  <link rel="stylesheet" href="../dist/avatar.css" />
+  <link rel="stylesheet" href="../dist/card.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .cards { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; }
+    .cards > * { flex: 1 1 280px; max-width: 340px; }
+    .muted { font-size: var(--que-font-size-xs); color: var(--que-color-text-muted); }
+    .title { font-size: var(--que-font-size-base); font-weight: var(--que-font-weight-semibold); color: var(--que-color-text); }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="card.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="card-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Variants</h2>
+    <div class="cards">
+      <!-- Default -->
+      <div class="que-card">
+        <div class="que-card__header">
+          <span class="title">Default</span>
+          <span class="que-badge que-badge--subtle que-badge--intent-primary">New</span>
+        </div>
+        <div class="que-card__body">Bordered card, default background. Works for most layouts.</div>
+        <div class="que-card__footer">
+          <button class="que-button que-button--sm que-button--outline">Cancel</button>
+          <button class="que-button que-button--sm que-button--intent-primary">Confirm</button>
+        </div>
+      </div>
+
+      <!-- Elevated -->
+      <div class="que-card que-card--elevated">
+        <div class="que-card__header">
+          <span class="title">Elevated</span>
+        </div>
+        <div class="que-card__body">No border, shadow instead. Great for content cards on coloured backgrounds.</div>
+        <div class="que-card__footer">
+          <button class="que-button que-button--sm que-button--ghost">Learn more →</button>
+        </div>
+      </div>
+
+      <!-- Flat -->
+      <div class="que-card que-card--flat">
+        <div class="que-card__header">
+          <span class="title">Flat</span>
+        </div>
+        <div class="que-card__body">Subtle background, no border, no shadow. Use for secondary information areas.</div>
+      </div>
+    </div>
+
+    <h2>With media</h2>
+    <div class="cards">
+      <div class="que-card" style="max-width:320px;">
+        <div class="que-card__media" style="height:180px;background:linear-gradient(135deg,var(--que-color-primary-subtle),var(--que-color-secondary-subtle));"></div>
+        <div class="que-card__header">
+          <span class="title">Article title</span>
+        </div>
+        <div class="que-card__body">
+          <p style="margin:0 0 12px;">A short description of the article or content that lives inside this card.</p>
+          <div style="display:flex;gap:6px;">
+            <span class="que-badge que-badge--rect que-badge--subtle que-badge--intent-primary">Design</span>
+            <span class="que-badge que-badge--rect que-badge--subtle que-badge--intent-success">UX</span>
+          </div>
+        </div>
+        <div class="que-card__footer">
+          <div style="display:flex;align-items:center;gap:8px;flex:1;">
+            <div class="que-avatar que-avatar--sm que-avatar--color-4"><span class="que-avatar__initials">JD</span></div>
+            <span class="muted">Jane Doe · 5 min read</span>
+          </div>
+          <button class="que-button que-button--sm que-button--ghost">Read →</button>
+        </div>
+      </div>
+    </div>
+
+    <h2>Padding sizes</h2>
+    <div class="cards">
+      <div class="que-card que-card--padding-sm">
+        <div class="que-card__header"><span class="title">Small padding</span></div>
+        <div class="que-card__body">Compact layout, padding-sm.</div>
+      </div>
+      <div class="que-card">
+        <div class="que-card__header"><span class="title">Medium (default)</span></div>
+        <div class="que-card__body">Standard spacing, padding-md.</div>
+      </div>
+      <div class="que-card que-card--padding-lg">
+        <div class="que-card__header"><span class="title">Large padding</span></div>
+        <div class="que-card__body">Spacious layout, padding-lg.</div>
+      </div>
+    </div>
+
+    <h2>Body only</h2>
+    <div class="cards">
+      <div class="que-card">
+        <div class="que-card__body">A card with just a body — no header or footer needed.</div>
+      </div>
+      <div class="que-card que-card--elevated">
+        <div class="que-card__body" style="text-align:center;padding:32px 24px;">
+          <div style="font-size:32px;margin-bottom:8px;">✦</div>
+          <div class="title" style="margin-bottom:6px;">Pro plan</div>
+          <div class="muted">Everything you need to ship faster.</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

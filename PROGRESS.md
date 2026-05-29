@@ -101,7 +101,7 @@ Legend: ✅ Done · 🚧 In Progress · ⬜ Not Started · ❌ Blocked
 | ✅ | Avatar | `<que-avatar>` |
 | ⬜ | Image | `<que-image>` |
 | ⬜ | Icon | `<que-icon>` |
-| ⬜ | Card | `<que-card>` |
+| ✅ | Card | `<que-card>` |
 | ⬜ | Table | `<que-table>` |
 | ⬜ | List (virtualized) | `<que-list>` |
 | ⬜ | Timeline | `<que-timeline>` |

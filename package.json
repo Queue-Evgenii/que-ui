@@ -93,6 +93,9 @@
     "./avatar": {
       "import": "./dist/avatar.js"
     },
+    "./card": {
+      "import": "./dist/card.js"
+    },
     "./tokens.css": "./dist/tokens.css",
     "./utilities.css": "./dist/utilities.css",
     "./button.css": "./dist/button.css",
@@ -120,10 +123,11 @@
     "./stack.css": "./dist/stack.css",
     "./grid.css": "./dist/grid.css",
     "./view.css": "./dist/view.css",
-    "./avatar.css": "./dist/avatar.css"
+    "./avatar.css": "./dist/avatar.css",
+    "./card.css": "./dist/card.css"
   },
   "files": ["dist"],
-  "sideEffects": ["dist/*.css", "dist/chunks/*.js", "dist/button.js", "dist/input.js", "dist/textarea.js", "dist/checkbox.js", "dist/switch.js", "dist/radio.js", "dist/segmented.js", "dist/select.js", "dist/slider.js", "dist/badge.js", "dist/spinner.js", "dist/alert.js", "dist/progress.js", "dist/skeleton.js", "dist/toast.js", "dist/empty.js", "dist/popover.js", "dist/tooltip.js", "dist/drawer.js", "dist/modal.js", "dist/divider.js", "dist/spacer.js", "dist/stack.js", "dist/grid.js", "dist/view.js", "dist/avatar.js", "dist/index.js", "dist/index.cjs"],
+  "sideEffects": ["dist/*.css", "dist/chunks/*.js", "dist/button.js", "dist/input.js", "dist/textarea.js", "dist/checkbox.js", "dist/switch.js", "dist/radio.js", "dist/segmented.js", "dist/select.js", "dist/slider.js", "dist/badge.js", "dist/spinner.js", "dist/alert.js", "dist/progress.js", "dist/skeleton.js", "dist/toast.js", "dist/empty.js", "dist/popover.js", "dist/tooltip.js", "dist/drawer.js", "dist/modal.js", "dist/divider.js", "dist/spacer.js", "dist/stack.js", "dist/grid.js", "dist/view.js", "dist/avatar.js", "dist/card.js", "dist/index.js", "dist/index.cjs"],
   "scripts": {
     "build": "tsc --noEmit && node build.mjs",
     "typecheck": "tsc --noEmit",

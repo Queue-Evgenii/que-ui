@@ -98,10 +98,9 @@ Legend: ✅ Done · 🚧 In Progress · ⬜ Not Started · ❌ Blocked
 ### Data Display
 | Status | Component | Tag |
 |--------|-----------|-----|
-| ⬜ | Avatar | `<que-avatar>` |
+| ✅ | Avatar | `<que-avatar>` |
 | ⬜ | Image | `<que-image>` |
 | ⬜ | Icon | `<que-icon>` |
-| ⬜ | Tag / Chip | `<que-tag>` |
 | ⬜ | Card | `<que-card>` |
 | ⬜ | Table | `<que-table>` |
 | ⬜ | List (virtualized) | `<que-list>` |

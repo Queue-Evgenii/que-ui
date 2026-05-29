@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Divider (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/segmented.css" />
+  <link rel="stylesheet" href="../dist/divider.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .demo-box {
+      padding: 24px;
+      border: 1px solid var(--que-color-border);
+      border-radius: var(--que-radius-lg);
+      background: var(--que-color-bg);
+    }
+    .demo-text {
+      font-size: var(--que-font-size-sm);
+      color: var(--que-color-text-muted);
+      margin: 0;
+    }
+    .vertical-demo {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 24px;
+      border: 1px solid var(--que-color-border);
+      border-radius: var(--que-radius-lg);
+      background: var(--que-color-bg);
+      height: 48px;
+    }
+    .vertical-demo span {
+      font-size: var(--que-font-size-sm);
+      color: var(--que-color-text-muted);
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="index.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="index-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <h2>Basic</h2>
+    <div class="demo-box col">
+      <p class="demo-text">Above the divider</p>
+      <div class="que-divider"></div>
+      <p class="demo-text">Below the divider</p>
+    </div>
+
+    <h2>With label</h2>
+    <div class="demo-box col" style="gap: 16px;">
+      <div class="que-divider que-divider--has-label">
+        <span class="que-divider__label">OR</span>
+      </div>
+      <div class="que-divider que-divider--has-label">
+        <span class="que-divider__label">Continue with</span>
+      </div>
+      <div class="que-divider que-divider--has-label">
+        <span class="que-divider__label">Section title</span>
+      </div>
+    </div>
+
+    <h2>Label alignment</h2>
+    <div class="demo-box col" style="gap: 16px;">
+      <div class="que-divider que-divider--has-label que-divider--label-left">
+        <span class="que-divider__label">Left</span>
+      </div>
+      <div class="que-divider que-divider--has-label">
+        <span class="que-divider__label">Center (default)</span>
+      </div>
+      <div class="que-divider que-divider--has-label que-divider--label-right">
+        <span class="que-divider__label">Right</span>
+      </div>
+    </div>
+
+    <h2>Variants</h2>
+    <div class="demo-box col" style="gap: 16px;">
+      <div class="que-divider que-divider--has-label">
+        <span class="que-divider__label">solid</span>
+      </div>
+      <div class="que-divider que-divider--dashed que-divider--has-label">
+        <span class="que-divider__label">dashed</span>
+      </div>
+      <div class="que-divider que-divider--dotted que-divider--has-label">
+        <span class="que-divider__label">dotted</span>
+      </div>
+    </div>
+
+    <h2>Vertical (in flex container)</h2>
+    <div class="vertical-demo">
+      <span>Home</span>
+      <div class="que-divider que-divider--vertical"></div>
+      <span>Products</span>
+      <div class="que-divider que-divider--vertical"></div>
+      <span>About</span>
+      <div class="que-divider que-divider--vertical"></div>
+      <span>Contact</span>
+    </div>
+
+    <h2>Custom color &amp; thickness</h2>
+    <div class="demo-box col" style="gap: 16px;">
+      <div class="que-divider que-divider--has-label"
+           style="--que-divider-color: var(--que-color-primary); --que-divider-thickness: 2px;">
+        <span class="que-divider__label" style="color: var(--que-color-primary);">Primary</span>
+      </div>
+      <div class="que-divider que-divider--dashed"
+           style="--que-divider-color: var(--que-color-danger);"></div>
+    </div>
+
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

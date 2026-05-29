@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Grid (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/segmented.css" />
+  <link rel="stylesheet" href="../dist/grid.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .demo-box { padding: 20px; border: 1px solid var(--que-color-border); border-radius: var(--que-radius-lg); background: var(--que-color-bg); }
+    .cell {
+      padding: 16px;
+      border-radius: var(--que-radius-md);
+      background: var(--que-color-primary-subtle);
+      color: var(--que-color-primary);
+      font-size: var(--que-font-size-sm);
+      font-weight: var(--que-font-weight-medium);
+      text-align: center;
+    }
+    .cell--tall { padding: 32px 16px; }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="grid.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="grid-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="light" checked /><span class="que-segmented__label">Light</span></label>
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="dark" /><span class="que-segmented__label">Dark</span></label>
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="system" /><span class="que-segmented__label">System</span></label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <h2>Fixed columns</h2>
+    <div class="demo-box col" style="gap:16px;">
+      <div class="que-grid que-grid--cols-2 que-grid--gap-md">
+        <div class="cell">1</div><div class="cell">2</div>
+        <div class="cell">3</div><div class="cell">4</div>
+      </div>
+      <div class="que-grid que-grid--cols-3 que-grid--gap-md">
+        <div class="cell">1</div><div class="cell">2</div><div class="cell">3</div>
+        <div class="cell">4</div><div class="cell">5</div><div class="cell">6</div>
+      </div>
+      <div class="que-grid que-grid--cols-4 que-grid--gap-md">
+        <div class="cell">1</div><div class="cell">2</div><div class="cell">3</div><div class="cell">4</div>
+      </div>
+    </div>
+
+    <h2>Auto-fill (responsive)</h2>
+    <p style="font-size:var(--que-font-size-sm);color:var(--que-color-text-muted);margin-bottom:8px;">Resize window to see auto-fill in action.</p>
+    <div class="demo-box">
+      <div class="que-grid que-grid--auto-fill que-grid--gap-md" style="--que-grid-min-col-width: 160px;">
+        <div class="cell">Alpha</div><div class="cell">Beta</div><div class="cell">Gamma</div>
+        <div class="cell">Delta</div><div class="cell">Epsilon</div><div class="cell">Zeta</div>
+      </div>
+    </div>
+
+    <h2>Different gap-x / gap-y</h2>
+    <div class="demo-box">
+      <div class="que-grid que-grid--cols-3"
+           style="--que-grid-gap-x: var(--que-space-8); --que-grid-gap-y: var(--que-space-2);">
+        <div class="cell">1</div><div class="cell">2</div><div class="cell">3</div>
+        <div class="cell">4</div><div class="cell">5</div><div class="cell">6</div>
+      </div>
+    </div>
+
+    <h2>Column span (inline style)</h2>
+    <div class="demo-box">
+      <div class="que-grid que-grid--cols-3 que-grid--gap-md">
+        <div class="cell" style="grid-column: span 2;">Span 2</div>
+        <div class="cell">1</div>
+        <div class="cell">1</div>
+        <div class="cell" style="grid-column: span 3;">Span 3 (full row)</div>
+      </div>
+    </div>
+
+    <h2>Gap sizes</h2>
+    <div class="demo-box col" style="gap:12px;">
+      <div class="que-grid que-grid--cols-4 que-grid--gap-xs">
+        <div class="cell">xs</div><div class="cell">xs</div><div class="cell">xs</div><div class="cell">xs</div>
+      </div>
+      <div class="que-grid que-grid--cols-4 que-grid--gap-md">
+        <div class="cell">md</div><div class="cell">md</div><div class="cell">md</div><div class="cell">md</div>
+      </div>
+      <div class="que-grid que-grid--cols-4 que-grid--gap-xl">
+        <div class="cell">xl</div><div class="cell">xl</div><div class="cell">xl</div><div class="cell">xl</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

@@ -10,7 +10,7 @@ mkdirSync('dist', { recursive: true })
 
 // Bundle CSS-only exports into a temp file to extract values (no DOM/HTMLElement)
 await build({ entryPoints: ['src/css.ts'], bundle: true, format: 'esm', outfile: TMP })
-const { defaultTokens, defaultDarkTokens, utilitiesCSS, buttonCSS, inputCSS, textareaCSS, checkboxCSS, switchCSS, radioCSS, segmentedCSS, selectCSS, sliderCSS, badgeCSS, spinnerCSS, alertCSS, progressCSS, skeletonCSS, toastCSS, emptyCSS, popoverCSS, tooltipCSS, drawerCSS, modalCSS } = await import(pathToFileURL(TMP).href)
+const { defaultTokens, defaultDarkTokens, utilitiesCSS, buttonCSS, inputCSS, textareaCSS, checkboxCSS, switchCSS, radioCSS, segmentedCSS, selectCSS, sliderCSS, badgeCSS, spinnerCSS, alertCSS, progressCSS, skeletonCSS, toastCSS, emptyCSS, popoverCSS, tooltipCSS, drawerCSS, modalCSS, dividerCSS, spacerCSS, stackCSS, gridCSS, viewCSS } = await import(pathToFileURL(TMP).href)
 import('fs').then(fs => fs.unlinkSync(TMP))
 
 function toCSSVars(tokens) {
@@ -96,6 +96,21 @@ console.log('dist/drawer.css')
 writeFileSync('dist/modal.css', modalCSS.trim())
 console.log('dist/modal.css')
 
+writeFileSync('dist/divider.css', dividerCSS.trim())
+console.log('dist/divider.css')
+
+writeFileSync('dist/spacer.css', spacerCSS.trim())
+console.log('dist/spacer.css')
+
+writeFileSync('dist/stack.css', stackCSS.trim())
+console.log('dist/stack.css')
+
+writeFileSync('dist/grid.css', gridCSS.trim())
+console.log('dist/grid.css')
+
+writeFileSync('dist/view.css', viewCSS.trim())
+console.log('dist/view.css')
+
 const sharedConfig = { bundle: true, sourcemap: true }
 
 // Full library
@@ -169,5 +184,20 @@ console.log('dist/drawer.js')
 
 await build({ ...sharedConfig, entryPoints: ['src/components/modal/modal.ts'], format: 'esm', outfile: 'dist/modal.js' })
 console.log('dist/modal.js')
+
+await build({ ...sharedConfig, entryPoints: ['src/components/divider/divider.ts'], format: 'esm', outfile: 'dist/divider.js' })
+console.log('dist/divider.js')
+
+await build({ ...sharedConfig, entryPoints: ['src/components/spacer/spacer.ts'], format: 'esm', outfile: 'dist/spacer.js' })
+console.log('dist/spacer.js')
+
+await build({ ...sharedConfig, entryPoints: ['src/components/stack/stack.ts'], format: 'esm', outfile: 'dist/stack.js' })
+console.log('dist/stack.js')
+
+await build({ ...sharedConfig, entryPoints: ['src/components/grid/grid.ts'], format: 'esm', outfile: 'dist/grid.js' })
+console.log('dist/grid.js')
+
+await build({ ...sharedConfig, entryPoints: ['src/components/view/view.ts'], format: 'esm', outfile: 'dist/view.js' })
+console.log('dist/view.js')
 
 console.log('\nBuild complete.')

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — View (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    main { max-width: none; padding: 0; }
+    .section { border-bottom: 1px solid var(--que-color-border); padding: 32px 0; }
+    .section:last-child { border-bottom: none; }
+    .label { font-size: var(--que-font-size-xs); color: var(--que-color-text-muted); margin-bottom: 8px; }
+    .box {
+      background: var(--que-color-primary-subtle);
+      border: 1px dashed var(--que-color-primary);
+      border-radius: var(--que-radius-md);
+      padding: 20px;
+      text-align: center;
+      font-size: var(--que-font-size-sm);
+      color: var(--que-color-primary);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="view.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="view-js.html" variant="ghost" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="light" checked /><span class="que-segmented__label">Light</span></label>
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="dark" /><span class="que-segmented__label">Dark</span></label>
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="system" /><span class="que-segmented__label">System</span></label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="section">
+      <que-view>
+        <p class="label">Default (xl — 1280px)</p>
+        <div class="box">max-width: 1280px · centered · padding-x: 16px</div>
+      </que-view>
+    </div>
+
+    <div class="section">
+      <que-view size="sm">
+        <p class="label">size="sm" — 640px</p>
+        <div class="box">Forms, articles, login pages</div>
+      </que-view>
+    </div>
+
+    <div class="section">
+      <que-view size="md">
+        <p class="label">size="md" — 768px</p>
+        <div class="box">Blog posts, docs</div>
+      </que-view>
+    </div>
+
+    <div class="section">
+      <que-view size="lg">
+        <p class="label">size="lg" — 1024px</p>
+        <div class="box">App dashboards</div>
+      </que-view>
+    </div>
+
+    <div class="section" style="background: var(--que-color-bg-subtle);">
+      <que-view pad-y>
+        <p class="label">pad-y — vertical padding</p>
+        <div class="box">Section with automatic top + bottom padding</div>
+      </que-view>
+    </div>
+
+    <div class="section">
+      <que-view max-width="900" padding-x="40">
+        <p class="label">max-width="900" padding-x="40"</p>
+        <div class="box">Custom numeric values (px added automatically)</div>
+      </que-view>
+    </div>
+
+    <div class="section">
+      <que-view size="full" no-padding>
+        <p class="label">size="full" no-padding — edge-to-edge</p>
+        <div class="box">Full width, no horizontal padding</div>
+      </que-view>
+    </div>
+
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/view.js'
+
+    const ctrl = applyTheme(createTheme())
+    const toggle = document.getElementById('theme-toggle')
+    if (toggle) {
+      toggle.addEventListener('change', e => ctrl.setMode(e.target.value))
+      const sync = () => { const i = toggle.querySelector(`input[value="${ctrl.mode}"]`); if (i) i.checked = true }
+      ctrl.onChange(sync); sync()
+    }
+  </script>
+</body>
+</html>

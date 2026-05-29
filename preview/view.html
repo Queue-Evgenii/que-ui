@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — View (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/segmented.css" />
+  <link rel="stylesheet" href="../dist/view.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    /* Override shared.css main padding so View fills edge-to-edge */
+    main { max-width: none; padding: 0; }
+    .section { border-bottom: 1px solid var(--que-color-border); padding: 32px 0; }
+    .section:last-child { border-bottom: none; }
+    .label {
+      font-size: var(--que-font-size-xs);
+      color: var(--que-color-text-muted);
+      margin-bottom: 8px;
+    }
+    .box {
+      background: var(--que-color-primary-subtle);
+      border: 1px dashed var(--que-color-primary);
+      border-radius: var(--que-radius-md);
+      padding: 20px;
+      text-align: center;
+      font-size: var(--que-font-size-sm);
+      color: var(--que-color-primary);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="view.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="view-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="light" checked /><span class="que-segmented__label">Light</span></label>
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="dark" /><span class="que-segmented__label">Dark</span></label>
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="system" /><span class="que-segmented__label">System</span></label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="section">
+      <div class="que-view">
+        <p class="label">Default (xl — 1280px, auto-centered)</p>
+        <div class="box">max-width: 1280px · margin: 0 auto · padding-x: 16px</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="que-view que-view--sm">
+        <p class="label">sm — 640px</p>
+        <div class="box">Narrow content column (articles, forms)</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="que-view que-view--md">
+        <p class="label">md — 768px</p>
+        <div class="box">Blog posts, documentation</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="que-view que-view--lg">
+        <p class="label">lg — 1024px</p>
+        <div class="box">Dashboard, app shell</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="que-view que-view--2xl">
+        <p class="label">2xl — 1536px</p>
+        <div class="box">Wide data-heavy pages</div>
+      </div>
+    </div>
+
+    <div class="section" style="background: var(--que-color-bg-subtle);">
+      <div class="que-view que-view--pad-y">
+        <p class="label">pad-y — vertical padding added</p>
+        <div class="box">Section with top + bottom padding (var(--que-space-8))</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="que-view" style="--que-view-max-width: 900px; --que-view-padding-x: 32px;">
+        <p class="label">Custom via CSS variables</p>
+        <div class="box">--que-view-max-width: 900px · --que-view-padding-x: 32px</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

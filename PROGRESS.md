@@ -42,11 +42,11 @@ Legend: ✅ Done · 🚧 In Progress · ⬜ Not Started · ❌ Blocked
 ### Layout Components
 | Status | Component | Tag |
 |--------|-----------|-----|
-| ⬜ | View | `<que-view>` |
-| ⬜ | Stack | `<que-stack>` |
-| ⬜ | Grid | `<que-grid>` |
-| ⬜ | Divider | `<que-divider>` |
-| ⬜ | Spacer | `<que-spacer>` |
+| ✅ | View | `<que-view>` |
+| ✅ | Stack | `<que-stack>` |
+| ✅ | Grid | `<que-grid>` |
+| ✅ | Divider | `<que-divider>` |
+| ✅ | Spacer | `<que-spacer>` |
 
 ### Form Controls (Core)
 | Status | Component | Tag |

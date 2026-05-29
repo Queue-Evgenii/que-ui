@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Divider (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .demo-box {
+      padding: 24px;
+      border: 1px solid var(--que-color-border);
+      border-radius: var(--que-radius-lg);
+      background: var(--que-color-bg);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .demo-text {
+      font-size: var(--que-font-size-sm);
+      color: var(--que-color-text-muted);
+      margin: 0;
+    }
+    .vertical-demo {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 20px;
+      border: 1px solid var(--que-color-border);
+      border-radius: var(--que-radius-lg);
+      background: var(--que-color-bg);
+      height: 48px;
+      box-sizing: border-box;
+    }
+    .vertical-demo span {
+      font-size: var(--que-font-size-sm);
+      color: var(--que-color-text-muted);
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="index.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="index-js.html" variant="ghost" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <h2>Basic</h2>
+    <div class="demo-box">
+      <p class="demo-text">Content above</p>
+      <que-divider></que-divider>
+      <p class="demo-text">Content below</p>
+    </div>
+
+    <h2>With label</h2>
+    <div class="demo-box" style="gap:16px;">
+      <que-divider label="OR"></que-divider>
+      <que-divider label="Continue with"></que-divider>
+      <que-divider label="Section"></que-divider>
+    </div>
+
+    <h2>Label alignment</h2>
+    <div class="demo-box" style="gap:16px;">
+      <que-divider label="Left"   label-align="left"></que-divider>
+      <que-divider label="Center"></que-divider>
+      <que-divider label="Right"  label-align="right"></que-divider>
+    </div>
+
+    <h2>Variants</h2>
+    <div class="demo-box" style="gap:16px;">
+      <que-divider label="solid"></que-divider>
+      <que-divider label="dashed" variant="dashed"></que-divider>
+      <que-divider label="dotted" variant="dotted"></que-divider>
+    </div>
+
+    <h2>Vertical</h2>
+    <div class="vertical-demo">
+      <span>Home</span>
+      <que-divider orientation="vertical"></que-divider>
+      <span>Products</span>
+      <que-divider orientation="vertical"></que-divider>
+      <span>About</span>
+      <que-divider orientation="vertical"></que-divider>
+      <span>Contact</span>
+    </div>
+
+    <h2>Spacing (built-in margin)</h2>
+    <div class="demo-box" style="padding: 8px 24px;">
+      <p class="demo-text">sm spacing</p>
+      <que-divider spacing="sm"></que-divider>
+      <p class="demo-text">md spacing</p>
+      <que-divider spacing="md"></que-divider>
+      <p class="demo-text">lg spacing</p>
+      <que-divider spacing="lg"></que-divider>
+      <p class="demo-text">end</p>
+    </div>
+
+    <h2>Custom color via CSS variable</h2>
+    <div class="demo-box" style="gap:16px;">
+      <que-divider label="Primary" style="--que-divider-color: var(--que-color-primary); --que-divider-thickness: 2px;"></que-divider>
+      <que-divider variant="dashed" style="--que-divider-color: var(--que-color-danger);"></que-divider>
+    </div>
+
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/divider.js'
+
+    const ctrl = applyTheme(createTheme())
+    const toggle = document.getElementById('theme-toggle')
+    if (toggle) {
+      toggle.addEventListener('change', e => ctrl.setMode(e.target.value))
+      const sync = () => { const i = toggle.querySelector(`input[value="${ctrl.mode}"]`); if (i) i.checked = true }
+      ctrl.onChange(sync); sync()
+    }
+  </script>
+</body>
+</html>

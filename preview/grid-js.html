@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Grid (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .demo-box { padding: 20px; border: 1px solid var(--que-color-border); border-radius: var(--que-radius-lg); background: var(--que-color-bg); }
+    .cell {
+      padding: 16px;
+      border-radius: var(--que-radius-md);
+      background: var(--que-color-primary-subtle);
+      color: var(--que-color-primary);
+      font-size: var(--que-font-size-sm);
+      font-weight: var(--que-font-weight-medium);
+      text-align: center;
+    }
+    .card {
+      padding: 16px;
+      border: 1px solid var(--que-color-border);
+      border-radius: var(--que-radius-lg);
+      background: var(--que-color-surface-raised);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .card-title { font-weight: var(--que-font-weight-semibold); font-size: var(--que-font-size-sm); }
+    .card-desc  { font-size: var(--que-font-size-xs); color: var(--que-color-text-muted); line-height: var(--que-line-height-normal); }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="grid.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="grid-js.html" variant="ghost" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="light" checked /><span class="que-segmented__label">Light</span></label>
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="dark" /><span class="que-segmented__label">Dark</span></label>
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="system" /><span class="que-segmented__label">System</span></label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <h2>Fixed cols</h2>
+    <div class="demo-box col" style="gap:16px;">
+      <que-grid cols="2" gap="md">
+        <div class="cell">1</div><div class="cell">2</div>
+        <div class="cell">3</div><div class="cell">4</div>
+      </que-grid>
+      <que-grid cols="3" gap="md">
+        <div class="cell">1</div><div class="cell">2</div><div class="cell">3</div>
+        <div class="cell">4</div><div class="cell">5</div><div class="cell">6</div>
+      </que-grid>
+    </div>
+
+    <h2>Auto-fill (responsive, resize window)</h2>
+    <div class="demo-box">
+      <que-grid cols="auto-fill" gap="md" min-col-width="180">
+        <div class="cell">Alpha</div><div class="cell">Beta</div><div class="cell">Gamma</div>
+        <div class="cell">Delta</div><div class="cell">Epsilon</div><div class="cell">Zeta</div>
+      </que-grid>
+    </div>
+
+    <h2>Auto-fit (empty tracks collapse)</h2>
+    <div class="demo-box">
+      <que-grid cols="auto-fit" gap="md" min-col-width="180">
+        <div class="cell">Only</div><div class="cell">Three</div><div class="cell">Items</div>
+      </que-grid>
+    </div>
+
+    <h2>Separate gap-x / gap-y</h2>
+    <div class="demo-box">
+      <que-grid cols="3" gap-x="xl" gap-y="sm">
+        <div class="cell">1</div><div class="cell">2</div><div class="cell">3</div>
+        <div class="cell">4</div><div class="cell">5</div><div class="cell">6</div>
+      </que-grid>
+    </div>
+
+    <h2>Custom gap (px)</h2>
+    <div class="demo-box">
+      <que-grid cols="4" gap="20">
+        <div class="cell">1</div><div class="cell">2</div>
+        <div class="cell">3</div><div class="cell">4</div>
+      </que-grid>
+    </div>
+
+    <h2>Real-world — card grid</h2>
+    <que-grid cols="auto-fill" gap="lg" min-col-width="220">
+      <div class="card">
+        <div class="card-title">Getting started</div>
+        <div class="card-desc">Learn how to install and configure the library in your project.</div>
+        <que-button size="sm" variant="ghost" style="margin-top:auto;">Read more →</que-button>
+      </div>
+      <div class="card">
+        <div class="card-title">Components</div>
+        <div class="card-desc">Explore all available components with live examples and API docs.</div>
+        <que-button size="sm" variant="ghost" style="margin-top:auto;">Read more →</que-button>
+      </div>
+      <div class="card">
+        <div class="card-title">Theming</div>
+        <div class="card-desc">Customize colors, typography, and spacing using CSS tokens.</div>
+        <que-button size="sm" variant="ghost" style="margin-top:auto;">Read more →</que-button>
+      </div>
+      <div class="card">
+        <div class="card-title">Layout</div>
+        <div class="card-desc">Stack, Grid, Divider, Spacer — building blocks for any layout.</div>
+        <que-button size="sm" variant="ghost" style="margin-top:auto;">Read more →</que-button>
+      </div>
+    </que-grid>
+
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/grid.js'
+
+    const ctrl = applyTheme(createTheme())
+    const toggle = document.getElementById('theme-toggle')
+    if (toggle) {
+      toggle.addEventListener('change', e => ctrl.setMode(e.target.value))
+      const sync = () => { const i = toggle.querySelector(`input[value="${ctrl.mode}"]`); if (i) i.checked = true }
+      ctrl.onChange(sync); sync()
+    }
+  </script>
+</body>
+</html>

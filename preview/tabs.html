@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Tabs (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/tabs.css" />
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="tabs.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="tabs-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Line (default)</h2>
+    <div class="que-tabs que-tabs--line" data-tabs>
+      <div class="que-tabs__list" role="tablist">
+        <button class="que-tabs__tab" role="tab" aria-selected="true"  tabindex="0"  data-value="overview">Overview</button>
+        <button class="que-tabs__tab" role="tab" aria-selected="false" tabindex="-1" data-value="analytics">Analytics</button>
+        <button class="que-tabs__tab" role="tab" aria-selected="false" tabindex="-1" data-value="reports">Reports</button>
+        <button class="que-tabs__tab" role="tab" aria-selected="false" tabindex="-1" data-value="settings" disabled>Settings</button>
+      </div>
+      <div class="que-tabs__panels">
+        <div class="que-tabs__panel que-tabs__panel--active" data-value="overview">Overview panel content.</div>
+        <div class="que-tabs__panel" data-value="analytics">Analytics panel content.</div>
+        <div class="que-tabs__panel" data-value="reports">Reports panel content.</div>
+        <div class="que-tabs__panel" data-value="settings">Settings panel content.</div>
+      </div>
+    </div>
+
+    <h2>Pills</h2>
+    <div class="que-tabs que-tabs--pills" data-tabs>
+      <div class="que-tabs__list" role="tablist">
+        <button class="que-tabs__tab" role="tab" aria-selected="true"  tabindex="0"  data-value="day">Day</button>
+        <button class="que-tabs__tab" role="tab" aria-selected="false" tabindex="-1" data-value="week">Week</button>
+        <button class="que-tabs__tab" role="tab" aria-selected="false" tabindex="-1" data-value="month">Month</button>
+        <button class="que-tabs__tab" role="tab" aria-selected="false" tabindex="-1" data-value="year">Year</button>
+      </div>
+      <div class="que-tabs__panels">
+        <div class="que-tabs__panel que-tabs__panel--active" data-value="day">Day view content.</div>
+        <div class="que-tabs__panel" data-value="week">Week view content.</div>
+        <div class="que-tabs__panel" data-value="month">Month view content.</div>
+        <div class="que-tabs__panel" data-value="year">Year view content.</div>
+      </div>
+    </div>
+
+    <h2>Enclosed</h2>
+    <div class="que-tabs que-tabs--enclosed" data-tabs>
+      <div class="que-tabs__list" role="tablist">
+        <button class="que-tabs__tab" role="tab" aria-selected="true"  tabindex="0"  data-value="code">Code</button>
+        <button class="que-tabs__tab" role="tab" aria-selected="false" tabindex="-1" data-value="preview">Preview</button>
+        <button class="que-tabs__tab" role="tab" aria-selected="false" tabindex="-1" data-value="console">Console</button>
+      </div>
+      <div class="que-tabs__panels">
+        <div class="que-tabs__panel que-tabs__panel--active" data-value="code">Code panel content.</div>
+        <div class="que-tabs__panel" data-value="preview">Preview panel content.</div>
+        <div class="que-tabs__panel" data-value="console">Console panel content.</div>
+      </div>
+    </div>
+
+    <h2>Sizes</h2>
+    <div class="col" style="gap:24px;">
+      <div class="que-tabs que-tabs--line que-tabs--sm" data-tabs>
+        <div class="que-tabs__list" role="tablist">
+          <button class="que-tabs__tab" role="tab" aria-selected="true"  tabindex="0"  data-value="a">Small A</button>
+          <button class="que-tabs__tab" role="tab" aria-selected="false" tabindex="-1" data-value="b">Small B</button>
+          <button class="que-tabs__tab" role="tab" aria-selected="false" tabindex="-1" data-value="c">Small C</button>
+        </div>
+        <div class="que-tabs__panels">
+          <div class="que-tabs__panel que-tabs__panel--active" data-value="a">Panel A (sm)</div>
+          <div class="que-tabs__panel" data-value="b">Panel B (sm)</div>
+          <div class="que-tabs__panel" data-value="c">Panel C (sm)</div>
+        </div>
+      </div>
+      <div class="que-tabs que-tabs--line que-tabs--lg" data-tabs>
+        <div class="que-tabs__list" role="tablist">
+          <button class="que-tabs__tab" role="tab" aria-selected="true"  tabindex="0"  data-value="a">Large A</button>
+          <button class="que-tabs__tab" role="tab" aria-selected="false" tabindex="-1" data-value="b">Large B</button>
+          <button class="que-tabs__tab" role="tab" aria-selected="false" tabindex="-1" data-value="c">Large C</button>
+        </div>
+        <div class="que-tabs__panels">
+          <div class="que-tabs__panel que-tabs__panel--active" data-value="a">Panel A (lg)</div>
+          <div class="que-tabs__panel" data-value="b">Panel B (lg)</div>
+          <div class="que-tabs__panel" data-value="c">Panel C (lg)</div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Vertical</h2>
+    <div class="que-tabs que-tabs--line que-tabs--vertical" style="height:140px;" data-tabs>
+      <div class="que-tabs__list" role="tablist" aria-orientation="vertical">
+        <button class="que-tabs__tab" role="tab" aria-selected="true"  tabindex="0"  data-value="account">Account</button>
+        <button class="que-tabs__tab" role="tab" aria-selected="false" tabindex="-1" data-value="security">Security</button>
+        <button class="que-tabs__tab" role="tab" aria-selected="false" tabindex="-1" data-value="notifications">Notifications</button>
+      </div>
+      <div class="que-tabs__panels">
+        <div class="que-tabs__panel que-tabs__panel--active" data-value="account">Account settings.</div>
+        <div class="que-tabs__panel" data-value="security">Security settings.</div>
+        <div class="que-tabs__panel" data-value="notifications">Notification preferences.</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.querySelectorAll('[data-tabs]').forEach(tabs => {
+      tabs.addEventListener('click', e => {
+        const btn = e.target.closest('.que-tabs__tab')
+        if (!btn || btn.disabled) return
+        const value = btn.dataset.value
+        tabs.querySelectorAll('.que-tabs__tab').forEach(t => {
+          const active = t.dataset.value === value
+          t.setAttribute('aria-selected', active)
+          t.setAttribute('tabindex', active ? '0' : '-1')
+        })
+        tabs.querySelectorAll('.que-tabs__panel').forEach(p => {
+          p.classList.toggle('que-tabs__panel--active', p.dataset.value === value)
+        })
+      })
+    })
+  </script>
+  <script src="shared.js"></script>
+</body>
+</html>

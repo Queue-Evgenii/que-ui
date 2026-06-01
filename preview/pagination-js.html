@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Pagination (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="pagination.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="pagination-js.html" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Default — page 3 of 20</h2>
+    <que-pagination page="3" total="20"></que-pagination>
+
+    <h2>Outline — page 5 of 20</h2>
+    <que-pagination page="5" total="20" variant="outline"></que-pagination>
+
+    <h2>Ghost — page 1 of 10</h2>
+    <que-pagination page="1" total="10" variant="ghost"></que-pagination>
+
+    <h2>Using page-size (50 items, 10 per page → 5 pages)</h2>
+    <que-pagination page="2" total="50" page-size="10"></que-pagination>
+
+    <h2>More siblings (siblings="2")</h2>
+    <que-pagination page="7" total="20" siblings="2" variant="outline"></que-pagination>
+
+    <h2>Sizes</h2>
+    <div class="col" style="gap:12px;align-items:flex-start;">
+      <que-pagination page="2" total="10" size="sm"></que-pagination>
+      <que-pagination page="2" total="10"></que-pagination>
+      <que-pagination page="2" total="10" size="lg"></que-pagination>
+    </div>
+
+    <h2>Interactive</h2>
+    <que-pagination id="live" page="1" total="20" variant="outline"></que-pagination>
+    <div style="margin-top:8px;font-family:var(--que-font-mono);font-size:var(--que-font-size-xs);color:var(--que-color-text-muted);" id="log">Click a page</div>
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/pagination.js'
+
+    const ctrl = applyTheme(createTheme())
+    const toggle = document.getElementById('theme-toggle')
+    if (toggle) {
+      toggle.addEventListener('change', e => ctrl.setMode(e.target.value))
+      const sync = () => { const i = toggle.querySelector(`input[value="${ctrl.mode}"]`); if (i) i.checked = true }
+      ctrl.onChange(sync)
+      sync()
+    }
+
+    document.getElementById('live').addEventListener('que-change', e => {
+      document.getElementById('log').textContent = `que-change → page: ${e.detail.page}`
+    })
+  </script>
+</body>
+</html>

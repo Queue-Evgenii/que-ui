@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Breadcrumb (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/breadcrumb.css" />
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="breadcrumb.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="breadcrumb-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Chevron (default)</h2>
+    <nav aria-label="Breadcrumb">
+      <ol class="que-breadcrumb" role="list">
+        <li class="que-breadcrumb__item">
+          <a class="que-breadcrumb__link" href="#">Home</a>
+          <span class="que-breadcrumb__sep" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m4 2 4 4-4 4"/></svg></span>
+        </li>
+        <li class="que-breadcrumb__item">
+          <a class="que-breadcrumb__link" href="#">Components</a>
+          <span class="que-breadcrumb__sep" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m4 2 4 4-4 4"/></svg></span>
+        </li>
+        <li class="que-breadcrumb__item" aria-current="page">
+          <span class="que-breadcrumb__current">Breadcrumb</span>
+        </li>
+      </ol>
+    </nav>
+
+    <h2>Slash</h2>
+    <nav aria-label="Breadcrumb">
+      <ol class="que-breadcrumb" role="list">
+        <li class="que-breadcrumb__item">
+          <a class="que-breadcrumb__link" href="#">Home</a>
+          <span class="que-breadcrumb__sep" aria-hidden="true">/</span>
+        </li>
+        <li class="que-breadcrumb__item">
+          <a class="que-breadcrumb__link" href="#">Dashboard</a>
+          <span class="que-breadcrumb__sep" aria-hidden="true">/</span>
+        </li>
+        <li class="que-breadcrumb__item">
+          <a class="que-breadcrumb__link" href="#">Settings</a>
+          <span class="que-breadcrumb__sep" aria-hidden="true">/</span>
+        </li>
+        <li class="que-breadcrumb__item" aria-current="page">
+          <span class="que-breadcrumb__current">Profile</span>
+        </li>
+      </ol>
+    </nav>
+
+    <h2>Dot</h2>
+    <nav aria-label="Breadcrumb">
+      <ol class="que-breadcrumb" role="list">
+        <li class="que-breadcrumb__item">
+          <a class="que-breadcrumb__link" href="#">Store</a>
+          <span class="que-breadcrumb__sep" aria-hidden="true">·</span>
+        </li>
+        <li class="que-breadcrumb__item">
+          <a class="que-breadcrumb__link" href="#">Electronics</a>
+          <span class="que-breadcrumb__sep" aria-hidden="true">·</span>
+        </li>
+        <li class="que-breadcrumb__item" aria-current="page">
+          <span class="que-breadcrumb__current">Laptops</span>
+        </li>
+      </ol>
+    </nav>
+
+    <h2>Sizes</h2>
+    <div class="col" style="gap:12px;">
+      <nav aria-label="Breadcrumb sm">
+        <ol class="que-breadcrumb que-breadcrumb--sm" role="list">
+          <li class="que-breadcrumb__item"><a class="que-breadcrumb__link" href="#">Home</a><span class="que-breadcrumb__sep" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m4 2 4 4-4 4"/></svg></span></li>
+          <li class="que-breadcrumb__item"><a class="que-breadcrumb__link" href="#">Section</a><span class="que-breadcrumb__sep" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m4 2 4 4-4 4"/></svg></span></li>
+          <li class="que-breadcrumb__item" aria-current="page"><span class="que-breadcrumb__current">Page (sm)</span></li>
+        </ol>
+      </nav>
+      <nav aria-label="Breadcrumb md">
+        <ol class="que-breadcrumb" role="list">
+          <li class="que-breadcrumb__item"><a class="que-breadcrumb__link" href="#">Home</a><span class="que-breadcrumb__sep" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m4 2 4 4-4 4"/></svg></span></li>
+          <li class="que-breadcrumb__item"><a class="que-breadcrumb__link" href="#">Section</a><span class="que-breadcrumb__sep" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m4 2 4 4-4 4"/></svg></span></li>
+          <li class="que-breadcrumb__item" aria-current="page"><span class="que-breadcrumb__current">Page (md)</span></li>
+        </ol>
+      </nav>
+      <nav aria-label="Breadcrumb lg">
+        <ol class="que-breadcrumb que-breadcrumb--lg" role="list">
+          <li class="que-breadcrumb__item"><a class="que-breadcrumb__link" href="#">Home</a><span class="que-breadcrumb__sep" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m4 2 4 4-4 4"/></svg></span></li>
+          <li class="que-breadcrumb__item"><a class="que-breadcrumb__link" href="#">Section</a><span class="que-breadcrumb__sep" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m4 2 4 4-4 4"/></svg></span></li>
+          <li class="que-breadcrumb__item" aria-current="page"><span class="que-breadcrumb__current">Page (lg)</span></li>
+        </ol>
+      </nav>
+    </div>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

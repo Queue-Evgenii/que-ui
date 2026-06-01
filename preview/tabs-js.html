@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Tabs (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="tabs.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="tabs-js.html" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Line (default)</h2>
+    <que-tabs>
+      <que-tab value="overview">Overview</que-tab>
+      <que-tab value="analytics">Analytics</que-tab>
+      <que-tab value="reports">Reports</que-tab>
+      <que-tab value="settings" disabled>Settings</que-tab>
+      <que-tab-panel value="overview" label="Overview">Overview panel — summary metrics and quick stats.</que-tab-panel>
+      <que-tab-panel value="analytics" label="Analytics">Analytics panel — charts and trends.</que-tab-panel>
+      <que-tab-panel value="reports" label="Reports">Reports panel — downloadable exports.</que-tab-panel>
+      <que-tab-panel value="settings" label="Settings">Settings panel — disabled tab above.</que-tab-panel>
+    </que-tabs>
+
+    <h2>Pills</h2>
+    <que-tabs variant="pills">
+      <que-tab value="day">Day</que-tab>
+      <que-tab value="week">Week</que-tab>
+      <que-tab value="month">Month</que-tab>
+      <que-tab value="year">Year</que-tab>
+      <que-tab-panel value="day"   label="Day">Day view content.</que-tab-panel>
+      <que-tab-panel value="week"  label="Week">Week view content.</que-tab-panel>
+      <que-tab-panel value="month" label="Month">Month view content.</que-tab-panel>
+      <que-tab-panel value="year"  label="Year">Year view content.</que-tab-panel>
+    </que-tabs>
+
+    <h2>Enclosed</h2>
+    <que-tabs variant="enclosed">
+      <que-tab value="code">Code</que-tab>
+      <que-tab value="preview">Preview</que-tab>
+      <que-tab value="console">Console</que-tab>
+      <que-tab-panel value="code"    label="Code">Code panel.</que-tab-panel>
+      <que-tab-panel value="preview" label="Preview">Preview panel.</que-tab-panel>
+      <que-tab-panel value="console" label="Console">Console panel.</que-tab-panel>
+    </que-tabs>
+
+    <h2>Sizes</h2>
+    <que-tabs size="sm">
+      <que-tab value="a">Small A</que-tab>
+      <que-tab value="b">Small B</que-tab>
+      <que-tab value="c">Small C</que-tab>
+      <que-tab-panel value="a" label="Small A">Panel A (sm)</que-tab-panel>
+      <que-tab-panel value="b" label="Small B">Panel B (sm)</que-tab-panel>
+      <que-tab-panel value="c" label="Small C">Panel C (sm)</que-tab-panel>
+    </que-tabs>
+
+    <h2>Vertical</h2>
+    <que-tabs orientation="vertical" style="height:140px;">
+      <que-tab value="account">Account</que-tab>
+      <que-tab value="security">Security</que-tab>
+      <que-tab value="notifications">Notifications</que-tab>
+      <que-tab-panel value="account"       label="Account">Account settings.</que-tab-panel>
+      <que-tab-panel value="security"      label="Security">Security settings.</que-tab-panel>
+      <que-tab-panel value="notifications" label="Notifications">Notification preferences.</que-tab-panel>
+    </que-tabs>
+
+    <h2>Events</h2>
+    <que-tabs id="event-tabs">
+      <que-tab value="one">One</que-tab>
+      <que-tab value="two">Two</que-tab>
+      <que-tab value="three">Three</que-tab>
+      <que-tab-panel value="one"   label="One">Content one.</que-tab-panel>
+      <que-tab-panel value="two"   label="Two">Content two.</que-tab-panel>
+      <que-tab-panel value="three" label="Three">Content three.</que-tab-panel>
+    </que-tabs>
+    <div style="margin-top:8px;font-family:var(--que-font-mono);font-size:var(--que-font-size-xs);color:var(--que-color-text-muted);" id="log">– waiting –</div>
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/tabs.js'
+
+    const ctrl = applyTheme(createTheme())
+    const toggle = document.getElementById('theme-toggle')
+    if (toggle) {
+      toggle.addEventListener('change', e => ctrl.setMode(e.target.value))
+      const sync = () => { const i = toggle.querySelector(`input[value="${ctrl.mode}"]`); if (i) i.checked = true }
+      ctrl.onChange(sync)
+      sync()
+    }
+
+    document.getElementById('event-tabs').addEventListener('que-change', e => {
+      document.getElementById('log').textContent = `que-change → value: "${e.detail.value}"`
+    })
+  </script>
+</body>
+</html>

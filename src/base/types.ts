@@ -8,6 +8,8 @@ export type Size    = 'sm' | 'md' | 'lg' | 'xl'
 export type Intent  = 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'neutral'
 export type Variant = 'solid' | 'outline' | 'subtle' | 'ghost'
 
+export type Orientation = 'horizontal' | 'vertical'
+
 /** All 12 standard placement values (trigger-relative and viewport-anchored). */
 export type Placement =
   | 'top'    | 'top-start'    | 'top-end'

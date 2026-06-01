@@ -1,6 +1,7 @@
 import { BaseElement } from '../../base/BaseElement'
 import { dividerCSS } from './divider.styles'
 import { esc } from '../../utils/html'
+import type { Orientation } from '../../base/types'
 
 type DividerVariant   = 'solid' | 'dashed' | 'dotted'
 type DividerLabelAlign = 'left' | 'center' | 'right'
@@ -11,7 +12,8 @@ export class QueDivider extends BaseElement {
 
   protected render(): void {
     const label      = this.attr('label')
-    const vertical   = this.attr('orientation') === 'vertical'
+    const orientation = (this.attr('orientation') as Orientation) ?? 'horizontal'
+    const vertical    = orientation === 'vertical'
     const variant    = (this.attr('variant') as DividerVariant) ?? 'solid'
     const labelAlign = (this.attr('label-align') as DividerLabelAlign) ?? 'center'
     const spacing    = this.attr('spacing') as DividerSpacing | null

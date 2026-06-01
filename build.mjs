@@ -10,7 +10,7 @@ mkdirSync('dist', { recursive: true })
 
 // Bundle CSS-only exports into a temp file to extract values (no DOM/HTMLElement)
 await build({ entryPoints: ['src/css.ts'], bundle: true, format: 'esm', outfile: TMP })
-const { defaultTokens, defaultDarkTokens, utilitiesCSS, buttonCSS, inputCSS, textareaCSS, checkboxCSS, switchCSS, radioCSS, segmentedCSS, selectCSS, sliderCSS, badgeCSS, spinnerCSS, alertCSS, progressCSS, skeletonCSS, toastCSS, emptyCSS, popoverCSS, tooltipCSS, drawerCSS, modalCSS, dividerCSS, spacerCSS, stackCSS, gridCSS, viewCSS, avatarCSS, cardCSS, kbdCSS, statCSS } = await import(pathToFileURL(TMP).href)
+const { defaultTokens, defaultDarkTokens, utilitiesCSS, buttonCSS, inputCSS, textareaCSS, checkboxCSS, switchCSS, radioCSS, segmentedCSS, selectCSS, sliderCSS, badgeCSS, spinnerCSS, alertCSS, progressCSS, skeletonCSS, toastCSS, emptyCSS, popoverCSS, tooltipCSS, drawerCSS, modalCSS, dividerCSS, spacerCSS, stackCSS, gridCSS, viewCSS, avatarCSS, cardCSS, kbdCSS, statCSS, tabsCSS, breadcrumbCSS, paginationCSS, stepperCSS } = await import(pathToFileURL(TMP).href)
 import('fs').then(fs => fs.unlinkSync(TMP))
 
 function toCSSVars(tokens) {
@@ -123,6 +123,18 @@ console.log('dist/kbd.css')
 writeFileSync('dist/stat.css', statCSS.trim())
 console.log('dist/stat.css')
 
+writeFileSync('dist/tabs.css', tabsCSS.trim())
+console.log('dist/tabs.css')
+
+writeFileSync('dist/breadcrumb.css', breadcrumbCSS.trim())
+console.log('dist/breadcrumb.css')
+
+writeFileSync('dist/pagination.css', paginationCSS.trim())
+console.log('dist/pagination.css')
+
+writeFileSync('dist/stepper.css', stepperCSS.trim())
+console.log('dist/stepper.css')
+
 
 const sharedConfig = { bundle: true, sourcemap: true }
 
@@ -170,6 +182,10 @@ const componentEntries = {
   card:      'src/components/card/card.ts',
   kbd:       'src/components/kbd/kbd.ts',
   stat:      'src/components/stat/stat.ts',
+  tabs:       'src/components/tabs/tabs.ts',
+  breadcrumb:  'src/components/breadcrumb/breadcrumb.ts',
+  pagination:  'src/components/pagination/pagination.ts',
+  stepper:     'src/components/stepper/stepper.ts',
 }
 
 await build({

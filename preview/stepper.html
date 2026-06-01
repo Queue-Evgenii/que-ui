@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Stepper (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/stepper.css" />
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="stepper.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="stepper-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Horizontal — step 2 active</h2>
+    <div class="que-stepper" style="padding-bottom:48px;">
+      <div class="que-step que-step--complete">
+        <div class="que-step__icon-col">
+          <div class="que-step__icon"><svg class="que-step__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4 4 6-6"/></svg></div>
+          <div class="que-step__connector"></div>
+        </div>
+        <div class="que-step__content">
+          <div class="que-step__label">Account</div>
+          <div class="que-step__description">Create your account</div>
+        </div>
+      </div>
+      <div class="que-step que-step--current" aria-current="step">
+        <div class="que-step__icon-col">
+          <div class="que-step__icon">2</div>
+          <div class="que-step__connector"></div>
+        </div>
+        <div class="que-step__content">
+          <div class="que-step__label">Profile</div>
+          <div class="que-step__description">Fill in your details</div>
+        </div>
+      </div>
+      <div class="que-step que-step--upcoming">
+        <div class="que-step__icon-col">
+          <div class="que-step__icon">3</div>
+          <div class="que-step__connector"></div>
+        </div>
+        <div class="que-step__content">
+          <div class="que-step__label">Payment</div>
+          <div class="que-step__description">Enter card details</div>
+        </div>
+      </div>
+      <div class="que-step que-step--upcoming">
+        <div class="que-step__icon-col">
+          <div class="que-step__icon">4</div>
+        </div>
+        <div class="que-step__content">
+          <div class="que-step__label">Confirm</div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Vertical</h2>
+    <div class="que-stepper que-stepper--vertical" style="max-width:320px;">
+      <div class="que-step que-step--complete">
+        <div class="que-step__icon-col">
+          <div class="que-step__icon"><svg class="que-step__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4 4 6-6"/></svg></div>
+          <div class="que-step__connector"></div>
+        </div>
+        <div class="que-step__content">
+          <div class="que-step__label">Order placed</div>
+          <div class="que-step__description">We received your order on May 28</div>
+        </div>
+      </div>
+      <div class="que-step que-step--complete">
+        <div class="que-step__icon-col">
+          <div class="que-step__icon"><svg class="que-step__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4 4 6-6"/></svg></div>
+          <div class="que-step__connector"></div>
+        </div>
+        <div class="que-step__content">
+          <div class="que-step__label">Processing</div>
+          <div class="que-step__description">Your order is being prepared</div>
+        </div>
+      </div>
+      <div class="que-step que-step--current" aria-current="step">
+        <div class="que-step__icon-col">
+          <div class="que-step__icon">3</div>
+          <div class="que-step__connector"></div>
+        </div>
+        <div class="que-step__content">
+          <div class="que-step__label">Shipped</div>
+          <div class="que-step__description">Your package is on its way</div>
+        </div>
+      </div>
+      <div class="que-step que-step--upcoming">
+        <div class="que-step__icon-col">
+          <div class="que-step__icon">4</div>
+        </div>
+        <div class="que-step__content">
+          <div class="que-step__label">Delivered</div>
+          <div class="que-step__description">Expected June 2</div>
+        </div>
+      </div>
+    </div>
+
+    <h2>With error</h2>
+    <div class="que-stepper que-stepper--vertical" style="max-width:320px;">
+      <div class="que-step que-step--complete">
+        <div class="que-step__icon-col">
+          <div class="que-step__icon"><svg class="que-step__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4 4 6-6"/></svg></div>
+          <div class="que-step__connector"></div>
+        </div>
+        <div class="que-step__content"><div class="que-step__label">Upload</div></div>
+      </div>
+      <div class="que-step que-step--error" aria-current="step">
+        <div class="que-step__icon-col">
+          <div class="que-step__icon"><svg class="que-step__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 2l10 10M12 2 2 12"/></svg></div>
+          <div class="que-step__connector"></div>
+        </div>
+        <div class="que-step__content">
+          <div class="que-step__label">Validation</div>
+          <div class="que-step__description">File format not supported</div>
+        </div>
+      </div>
+      <div class="que-step que-step--upcoming">
+        <div class="que-step__icon-col"><div class="que-step__icon">3</div></div>
+        <div class="que-step__content"><div class="que-step__label">Process</div></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Stepper (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="stepper.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="stepper-js.html" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Horizontal — auto status from step</h2>
+    <que-stepper step="2" style="padding-bottom:48px;">
+      <que-step label="Account"  description="Create your account"></que-step>
+      <que-step label="Profile"  description="Fill in your details"></que-step>
+      <que-step label="Payment"  description="Enter card details"></que-step>
+      <que-step label="Confirm"></que-step>
+    </que-stepper>
+
+    <h2>Vertical — order tracking</h2>
+    <que-stepper step="3" orientation="vertical" style="max-width:320px;">
+      <que-step label="Order placed"  description="We received your order on May 28"></que-step>
+      <que-step label="Processing"    description="Your order is being prepared"></que-step>
+      <que-step label="Shipped"       description="Your package is on its way"></que-step>
+      <que-step label="Delivered"     description="Expected June 2"></que-step>
+    </que-stepper>
+
+    <h2>With explicit status (error)</h2>
+    <que-stepper orientation="vertical" style="max-width:320px;">
+      <que-step label="Upload"     status="complete"></que-step>
+      <que-step label="Validation" status="error" description="File format not supported"></que-step>
+      <que-step label="Process"    status="upcoming"></que-step>
+    </que-stepper>
+
+    <h2>Interactive</h2>
+    <que-stepper id="live-stepper" step="1" style="padding-bottom:48px;">
+      <que-step label="Step 1" description="First step"></que-step>
+      <que-step label="Step 2" description="Second step"></que-step>
+      <que-step label="Step 3" description="Third step"></que-step>
+    </que-stepper>
+    <div class="row" style="margin-top:8px;gap:8px;">
+      <que-button id="btn-prev" variant="outline" size="sm" disabled>← Prev</que-button>
+      <que-button id="btn-next" intent="primary" size="sm">Next →</que-button>
+    </div>
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/stepper.js'
+
+    const ctrl = applyTheme(createTheme())
+    const toggle = document.getElementById('theme-toggle')
+    if (toggle) {
+      toggle.addEventListener('change', e => ctrl.setMode(e.target.value))
+      const sync = () => { const i = toggle.querySelector(`input[value="${ctrl.mode}"]`); if (i) i.checked = true }
+      ctrl.onChange(sync)
+      sync()
+    }
+
+    const stepper  = document.getElementById('live-stepper')
+    const btnPrev  = document.getElementById('btn-prev')
+    const btnNext  = document.getElementById('btn-next')
+    const total    = 3
+
+    function syncButtons() {
+      const step = parseInt(stepper.getAttribute('step'))
+      btnPrev.toggleAttribute('disabled', step <= 1)
+      btnNext.toggleAttribute('disabled', step >= total)
+      btnNext.textContent = step >= total ? '✓ Done' : 'Next →'
+    }
+
+    btnPrev.addEventListener('click', () => {
+      const step = parseInt(stepper.getAttribute('step'))
+      if (step > 1) stepper.setAttribute('step', step - 1)
+      syncButtons()
+    })
+    btnNext.addEventListener('click', () => {
+      const step = parseInt(stepper.getAttribute('step'))
+      if (step < total) stepper.setAttribute('step', step + 1)
+      syncButtons()
+    })
+  </script>
+</body>
+</html>

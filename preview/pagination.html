@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Pagination (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/pagination.css" />
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="pagination.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="pagination-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Default (solid)</h2>
+    <nav class="que-pagination" aria-label="Pagination">
+      <button class="que-pagination__item" aria-label="Previous page"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 2-5 5 5 5"/></svg></button>
+      <button class="que-pagination__item" aria-label="Page 1">1</button>
+      <button class="que-pagination__item" aria-label="Page 2">2</button>
+      <button class="que-pagination__item" aria-current="page" aria-label="Page 3">3</button>
+      <button class="que-pagination__item" aria-label="Page 4">4</button>
+      <button class="que-pagination__item" aria-label="Page 5">5</button>
+      <span class="que-pagination__item que-pagination__ellipsis" aria-hidden="true">…</span>
+      <button class="que-pagination__item" aria-label="Page 20">20</button>
+      <button class="que-pagination__item" aria-label="Next page"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 2 5 5-5 5"/></svg></button>
+    </nav>
+
+    <h2>Outline</h2>
+    <nav class="que-pagination que-pagination--outline" aria-label="Pagination">
+      <button class="que-pagination__item" aria-label="Previous page"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 2-5 5 5 5"/></svg></button>
+      <button class="que-pagination__item" aria-label="Page 1">1</button>
+      <span class="que-pagination__item que-pagination__ellipsis" aria-hidden="true">…</span>
+      <button class="que-pagination__item" aria-label="Page 4">4</button>
+      <button class="que-pagination__item" aria-current="page" aria-label="Page 5">5</button>
+      <button class="que-pagination__item" aria-label="Page 6">6</button>
+      <span class="que-pagination__item que-pagination__ellipsis" aria-hidden="true">…</span>
+      <button class="que-pagination__item" aria-label="Page 20">20</button>
+      <button class="que-pagination__item" aria-label="Next page"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 2 5 5-5 5"/></svg></button>
+    </nav>
+
+    <h2>Ghost</h2>
+    <nav class="que-pagination que-pagination--ghost" aria-label="Pagination">
+      <button class="que-pagination__item" aria-label="Previous page" disabled><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 2-5 5 5 5"/></svg></button>
+      <button class="que-pagination__item" aria-current="page" aria-label="Page 1">1</button>
+      <button class="que-pagination__item" aria-label="Page 2">2</button>
+      <button class="que-pagination__item" aria-label="Page 3">3</button>
+      <span class="que-pagination__item que-pagination__ellipsis" aria-hidden="true">…</span>
+      <button class="que-pagination__item" aria-label="Page 10">10</button>
+      <button class="que-pagination__item" aria-label="Next page"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 2 5 5-5 5"/></svg></button>
+    </nav>
+
+    <h2>Sizes</h2>
+    <div class="col" style="gap:12px;align-items:flex-start;">
+      <nav class="que-pagination que-pagination--sm" aria-label="Pagination">
+        <button class="que-pagination__item" aria-label="Previous page" disabled><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 2-5 5 5 5"/></svg></button>
+        <button class="que-pagination__item" aria-current="page">1</button>
+        <button class="que-pagination__item">2</button>
+        <button class="que-pagination__item">3</button>
+        <button class="que-pagination__item" aria-label="Next page"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 2 5 5-5 5"/></svg></button>
+      </nav>
+      <nav class="que-pagination" aria-label="Pagination">
+        <button class="que-pagination__item" aria-label="Previous page" disabled><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 2-5 5 5 5"/></svg></button>
+        <button class="que-pagination__item" aria-current="page">1</button>
+        <button class="que-pagination__item">2</button>
+        <button class="que-pagination__item">3</button>
+        <button class="que-pagination__item" aria-label="Next page"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 2 5 5-5 5"/></svg></button>
+      </nav>
+      <nav class="que-pagination que-pagination--lg" aria-label="Pagination">
+        <button class="que-pagination__item" aria-label="Previous page" disabled><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 2-5 5 5 5"/></svg></button>
+        <button class="que-pagination__item" aria-current="page">1</button>
+        <button class="que-pagination__item">2</button>
+        <button class="que-pagination__item">3</button>
+        <button class="que-pagination__item" aria-label="Next page"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 2 5 5-5 5"/></svg></button>
+      </nav>
+    </div>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

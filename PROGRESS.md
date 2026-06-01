@@ -86,10 +86,10 @@ Legend: ✅ Done · 🚧 In Progress · ⬜ Not Started · ❌ Blocked
 ### Navigation
 | Status | Component | Tag |
 |--------|-----------|-----|
-| ⬜ | Tabs | `<que-tabs>` |
-| ⬜ | Breadcrumb | `<que-breadcrumb>` |
-| ⬜ | Pagination | `<que-pagination>` |
-| ⬜ | Stepper | `<que-stepper>` |
+| ✅ | Tabs | `<que-tabs>` |
+| ✅ | Breadcrumb | `<que-breadcrumb>` |
+| ✅ | Pagination | `<que-pagination>` |
+| ✅ | Stepper | `<que-stepper>` |
 | ⬜ | Menu (dropdown) | `<que-menu>` |
 | ⬜ | Context Menu | `<que-context-menu>` |
 | ⬜ | Navbar | `<que-navbar>` |
@@ -105,7 +105,7 @@ Legend: ✅ Done · 🚧 In Progress · ⬜ Not Started · ❌ Blocked
 | ⬜ | Table | `<que-table>` |
 | ⬜ | List (virtualized) | `<que-list>` |
 | ⬜ | Timeline | `<que-timeline>` |
-| ⬜ | Stat | `<que-stat>` |
+| ✅ | Stat | `<que-stat>` |
 
 ### Typography
 | Status | Component | Tag |

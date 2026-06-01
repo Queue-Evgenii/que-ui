@@ -1,6 +1,7 @@
 import { BaseElement } from '../../base/BaseElement'
 import { radioCSS } from './radio.styles'
 import { esc } from '../../utils/html'
+import type { Orientation } from '../../base/types'
 
 export class QueRadio extends BaseElement {
   static observedAttributes = [
@@ -119,7 +120,7 @@ export class QueRadioGroup extends BaseElement {
   protected render(): void {
     const label       = this.attr('label')
     const error       = this.attr('error')
-    const orientation = this.attr('orientation') ?? 'vertical'
+    const orientation = (this.attr('orientation') as Orientation) ?? 'vertical'
 
     const groupClasses = this.cx('que-radio-group', {
       flags: { horizontal: orientation === 'horizontal' },

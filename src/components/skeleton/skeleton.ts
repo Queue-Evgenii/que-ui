@@ -14,10 +14,7 @@ export class QueSkeleton extends BaseElement {
 
     this.injectCSS(skeletonCSS)
     this.setAttribute('aria-hidden', 'true')
-    this.className = [
-      'que-skeleton',
-      `que-skeleton--${variant}`,
-    ].join(' ')
+    this.className = this.cx('que-skeleton', { variant })
 
     if (width)  this.style.setProperty('--que-skeleton-width',  width)
     if (height) this.style.setProperty('--que-skeleton-height', height)

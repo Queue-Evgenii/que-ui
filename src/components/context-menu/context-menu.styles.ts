@@ -5,6 +5,13 @@ export const contextMenuCSS = `
   display: contents;
 }
 
+/* Slot-children are a data source only — hidden from regular layout */
+.que-context-menu > que-menu-item,
+.que-context-menu > que-menu-divider,
+.que-context-menu > que-menu-group {
+  display: none;
+}
+
 /* The floating panel is appended to <body> */
 .que-context-menu__panel {
   position: fixed;
@@ -22,8 +29,8 @@ export const contextMenuCSS = `
   transform: scale(0.96);
   transform-origin: top left;
   transition:
-    opacity var(--que-duration-fast) var(--que-ease-out),
-    transform var(--que-duration-fast) var(--que-ease-out),
+    opacity var(--que-duration-fast) var(--que-easing-out),
+    transform var(--que-duration-fast) var(--que-easing-out),
     visibility 0s var(--que-duration-fast);
   visibility: hidden;
   pointer-events: none;
@@ -35,7 +42,7 @@ export const contextMenuCSS = `
   visibility: visible;
   pointer-events: auto;
   transition:
-    opacity var(--que-duration-fast) var(--que-ease-out),
-    transform var(--que-duration-fast) var(--que-ease-out);
+    opacity var(--que-duration-fast) var(--que-easing-out),
+    transform var(--que-duration-fast) var(--que-easing-out);
 }
 `

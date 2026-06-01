@@ -23,7 +23,7 @@ export const modalCSS = `
   background: var(--que-color-overlay);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 220ms var(--que-easing-out);
+  transition: opacity var(--que-duration-normal) var(--que-easing-out);
 }
 
 .que-modal--open > .que-modal__backdrop {
@@ -43,9 +43,9 @@ export const modalCSS = `
   left: 50%;
   top: 50%;
   z-index: var(--que-z-modal, 400);
-  width: calc(100% - 48px);
+  width: calc(100% - var(--que-space-12));
   max-width: var(--que-modal-max-width, 560px);
-  max-height: var(--que-modal-max-height, calc(100vh - 48px));
+  max-height: var(--que-modal-max-height, calc(100vh - var(--que-space-12)));
   display: flex;
   flex-direction: column;
   background: var(--que-modal-bg, var(--que-color-surface-raised));
@@ -59,8 +59,8 @@ export const modalCSS = `
   pointer-events: none;
   transform: translate(-50%, -50%) scale(0.96);
   transition:
-    opacity 220ms var(--que-easing-out),
-    transform 220ms var(--que-easing-out);
+    opacity var(--que-duration-normal) var(--que-easing-out),
+    transform var(--que-duration-normal) var(--que-easing-out);
 }
 
 .que-modal--open > .que-modal__panel {
@@ -85,7 +85,7 @@ export const modalCSS = `
 
 /* shake class added/removed via JS */
 .que-modal__panel--shake {
-  animation: que-modal-shake 360ms var(--que-easing-in-out);
+  animation: que-modal-shake var(--que-duration-slow) var(--que-easing-in-out);
 }
 
 /* ── SIZES ───────────────────────────────────────────────── */
@@ -94,8 +94,8 @@ export const modalCSS = `
 .que-modal--lg { --que-modal-max-width: 720px; }
 .que-modal--xl { --que-modal-max-width: 900px; }
 .que-modal--full {
-  --que-modal-max-width:  calc(100vw - 32px);
-  --que-modal-max-height: calc(100vh - 32px);
+  --que-modal-max-width:  calc(100vw - var(--que-space-8));
+  --que-modal-max-height: calc(100vh - var(--que-space-8));
 }
 
 /* ── POSITIONS ───────────────────────────────────────────── */
@@ -163,9 +163,9 @@ export const modalCSS = `
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: var(--que-space-3);
   padding: var(--que-modal-padding, 20px 24px);
-  padding-bottom: 16px;
+  padding-bottom: var(--que-space-4);
   border-bottom: 1px solid var(--que-color-border);
   flex-shrink: 0;
 }
@@ -185,8 +185,8 @@ export const modalCSS = `
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 28px;
-  height: 28px;
+  width: var(--que-space-7);
+  height: var(--que-space-7);
   border: none;
   border-radius: var(--que-radius-md);
   background: transparent;
@@ -205,20 +205,7 @@ export const modalCSS = `
 
 /* ── BODY ────────────────────────────────────────────────── */
 
-que-modal-body {
-  display: block;
-  padding: var(--que-modal-padding, 20px 24px);
-  overflow-y: auto;
-  flex: 1;
-  min-height: 0;
-  font-family: var(--que-font-sans);
-  font-size: var(--que-font-size-sm);
-  color: var(--que-color-text);
-  line-height: var(--que-line-height-normal);
-  box-sizing: border-box;
-}
-
-/* CSS-only fallback class */
+que-modal-body,
 .que-modal__body {
   display: block;
   padding: var(--que-modal-padding, 20px 24px);
@@ -234,23 +221,13 @@ que-modal-body {
 
 /* ── FOOTER ──────────────────────────────────────────────── */
 
-que-modal-footer {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 8px;
-  padding: 16px 24px;
-  border-top: 1px solid var(--que-color-border);
-  flex-shrink: 0;
-  box-sizing: border-box;
-}
-
+que-modal-footer,
 .que-modal__footer {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 8px;
-  padding: 16px 24px;
+  gap: var(--que-space-2);
+  padding: var(--que-space-4) var(--que-space-6);
   border-top: 1px solid var(--que-color-border);
   flex-shrink: 0;
   box-sizing: border-box;

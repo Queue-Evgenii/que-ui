@@ -108,7 +108,7 @@ export const timelineCSS = `
 .que-timeline-item--active .que-timeline-item__dot {
   background: var(--que-color-primary);
   border-color: var(--que-color-primary);
-  color: var(--que-color-primary-on-solid, #fff);
+  color: var(--que-color-primary-text);
 }
 
 .que-timeline-item--error .que-timeline-item__dot {

@@ -66,7 +66,7 @@ export const paginationCSS = `
 }
 .que-pagination--outline .que-pagination__item[aria-current="page"] {
   background: var(--que-color-primary);
-  color: var(--que-color-primary-text, #fff);
+  color: var(--que-color-primary-text);
   border-color: var(--que-color-primary);
 }
 

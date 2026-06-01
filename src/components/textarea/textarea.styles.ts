@@ -1,13 +1,14 @@
 import { fieldFeedbackCSS } from '../../base/field-css'
 
 export const textareaCSS = `
-/* Customizable: --que-input-padding-x, --que-input-font-size, --que-input-radius */
+/* Customizable: --que-textarea-padding-x, --que-textarea-font-size, --que-textarea-radius
+   (fall through to --que-input-* if not set) */
 
-:host { display: block; box-sizing: border-box; }
+que-textarea { display: block; box-sizing: border-box; }
 
 /* ── FIELD WRAPPER ──────────────────────────────────────────── */
 
-.que-input-field {
+.que-textarea-field {
   display: flex;
   flex-direction: column;
   gap: var(--que-space-1);
@@ -15,7 +16,7 @@ export const textareaCSS = `
 
 /* ── FLOATING LABEL WRAPPER ─────────────────────────────────── */
 
-.que-input-wrap {
+.que-textarea-wrap {
   position: relative;
   display: block;
   --_que-pt: 12px;
@@ -23,17 +24,20 @@ export const textareaCSS = `
   --_que-label-float-size: 11px;
 }
 
-.que-input-wrap:has(.que-textarea:hover:not(:disabled):not([readonly])),
-.que-input-wrap:has(.que-textarea:focus) {
+.que-textarea-wrap:has(.que-textarea--sm) { --_que-pt: 8px;  --_que-label-float-size: 10px; }
+.que-textarea-wrap:has(.que-textarea--lg) { --_que-pt: 16px; }
+
+.que-textarea-wrap:has(.que-textarea:hover:not(:disabled):not([readonly])),
+.que-textarea-wrap:has(.que-textarea:focus) {
   --_que-border-color: var(--que-color-border-focus);
 }
 
-.que-input-wrap:has(.que-textarea--intent-danger)  { --_que-border-color: var(--que-color-danger); }
-.que-input-wrap:has(.que-textarea--intent-success) { --_que-border-color: var(--que-color-success); }
-.que-input-wrap:has(.que-textarea--intent-warning) { --_que-border-color: var(--que-color-warning); }
+.que-textarea-wrap:has(.que-textarea--intent-danger)  { --_que-border-color: var(--que-color-danger); }
+.que-textarea-wrap:has(.que-textarea--intent-success) { --_que-border-color: var(--que-color-success); }
+.que-textarea-wrap:has(.que-textarea--intent-warning) { --_que-border-color: var(--que-color-warning); }
 
-.que-input-wrap:has(.que-textarea[readonly]:hover),
-.que-input-wrap:has(.que-textarea[readonly]:focus) {
+.que-textarea-wrap:has(.que-textarea[readonly]:hover),
+.que-textarea-wrap:has(.que-textarea[readonly]:focus) {
   --_que-border-color: var(--que-color-border-strong);
 }
 
@@ -44,11 +48,11 @@ export const textareaCSS = `
   width: 100%;
   box-sizing: border-box;
   min-height: 96px;
-  padding: 12px var(--que-input-padding-x, var(--que-space-3)) 8px;
+  padding: var(--_que-pt) var(--que-textarea-padding-x, var(--que-input-padding-x, var(--que-space-3))) 8px;
   border: 1px solid var(--_que-border-color);
-  border-radius: var(--que-input-radius, var(--que-radius-md));
+  border-radius: var(--que-textarea-radius, var(--que-input-radius, var(--que-radius-md)));
   font-family: var(--que-font-sans);
-  font-size: var(--que-input-font-size, var(--que-font-size-sm));
+  font-size: var(--que-textarea-font-size, var(--que-input-font-size, var(--que-font-size-sm)));
   font-weight: var(--que-font-weight-normal);
   line-height: var(--que-line-height-normal);
   color: var(--que-color-text);
@@ -72,10 +76,10 @@ export const textareaCSS = `
 
 /* ── FLOATING LABEL ─────────────────────────────────────────── */
 
-.que-input-label {
+.que-textarea-label {
   position: absolute;
-  top: 12px;
-  left: calc(var(--que-input-padding-x, var(--que-space-3)) + 1px);
+  top: calc(var(--_que-pt) + 1px);
+  left: calc(var(--que-textarea-padding-x, var(--que-input-padding-x, var(--que-space-3))) + 1px);
   font-family: var(--que-font-sans);
   font-size: var(--que-font-size-sm);
   color: var(--que-color-text-subtle);
@@ -90,17 +94,10 @@ export const textareaCSS = `
               transform var(--que-duration-slow) var(--que-easing-out);
 }
 
-/* Scope rest position to textarea only — prevents input.css transform from bleeding in.
-   top accounts for: padding-top + border (1px), aligns label with top of first text line */
-.que-textarea ~ .que-input-label {
-  top: calc(var(--_que-pt, 12px) + 1px);
-  transform: none;
-}
-
 /* Label floats when focused or has value */
-.que-textarea:focus ~ .que-input-label,
-.que-textarea:not(:placeholder-shown) ~ .que-input-label,
-.que-textarea--filled ~ .que-input-label {
+.que-textarea:focus ~ .que-textarea-label,
+.que-textarea:not(:placeholder-shown) ~ .que-textarea-label,
+.que-textarea--filled ~ .que-textarea-label {
   top: 0;
   transform: translateY(-50%);
   font-size: var(--_que-label-float-size);
@@ -108,12 +105,42 @@ export const textareaCSS = `
   background: var(--que-color-bg);
 }
 
+/* ── SIZES ─────────────────────────────────────────────────── */
+
+.que-textarea--sm {
+  font-size: var(--que-font-size-xs);
+}
+
+.que-textarea--sm ~ .que-textarea-label {
+  font-size: var(--que-font-size-xs);
+}
+
+.que-textarea--sm:focus ~ .que-textarea-label,
+.que-textarea--sm:not(:placeholder-shown) ~ .que-textarea-label,
+.que-textarea--sm.que-textarea--filled ~ .que-textarea-label {
+  font-size: var(--_que-label-float-size);
+}
+
+.que-textarea--lg {
+  font-size: var(--que-font-size-md);
+}
+
+.que-textarea--lg ~ .que-textarea-label {
+  font-size: var(--que-font-size-md);
+}
+
+.que-textarea--lg:focus ~ .que-textarea-label,
+.que-textarea--lg:not(:placeholder-shown) ~ .que-textarea-label,
+.que-textarea--lg.que-textarea--filled ~ .que-textarea-label {
+  font-size: var(--_que-label-float-size);
+}
+
 /* ── LABEL REQUIRED / HINT / ERROR ──────────────────────────── */
 
-${fieldFeedbackCSS('input', { paddingLeft: 'calc(var(--que-input-padding-x, var(--que-space-3)) + 1px)' })}
+${fieldFeedbackCSS('textarea', { paddingLeft: 'calc(var(--que-textarea-padding-x, var(--que-input-padding-x, var(--que-space-3))) + 1px)' })}
 
 /* ── INTENTS ────────────────────────────────────────────────── */
-/* Border color and floated label color are both driven by --_que-border-color on .que-input-wrap */
+/* Border color and floated label color are both driven by --_que-border-color on .que-textarea-wrap */
 
 /* ── STATES ─────────────────────────────────────────────────── */
 
@@ -123,7 +150,7 @@ ${fieldFeedbackCSS('input', { paddingLeft: 'calc(var(--que-input-padding-x, var(
   background: var(--que-color-disabled-bg);
 }
 
-.que-textarea:disabled ~ .que-input-label {
+.que-textarea:disabled ~ .que-textarea-label {
   opacity: 0.5;
 }
 

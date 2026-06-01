@@ -35,8 +35,8 @@ export const popoverCSS = `
   opacity: 0;
   pointer-events: none;
   transition:
-    opacity 150ms var(--que-easing-out),
-    transform 150ms var(--que-easing-out);
+    opacity var(--que-duration-fast) var(--que-easing-out),
+    transform var(--que-duration-fast) var(--que-easing-out);
 }
 
 .que-popover--open > .que-popover__content {

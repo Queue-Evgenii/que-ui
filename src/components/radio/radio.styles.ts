@@ -102,7 +102,7 @@ export const radioCSS = `
   color: var(--que-color-text);
 }
 
-/* ── HINT ───────────────────────────────────────────────────── */
+/* ── HINT / ERROR ────────────────────────────────────────────── */
 
 .que-radio__hint {
   display: block;
@@ -115,6 +115,20 @@ export const radioCSS = `
 }
 
 .que-radio--ltr ~ .que-radio__hint {
+  padding-left: 0;
+}
+
+.que-radio__error {
+  display: block;
+  margin-top: var(--que-space-1);
+  font-family: var(--que-font-sans);
+  font-size: var(--que-font-size-xs);
+  color: var(--que-color-danger);
+  line-height: var(--que-line-height-normal);
+  padding-left: calc(var(--que-radio-size, 18px) + var(--que-space-2));
+}
+
+.que-radio--ltr ~ .que-radio__error {
   padding-left: 0;
 }
 

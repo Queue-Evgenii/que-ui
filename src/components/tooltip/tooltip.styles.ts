@@ -36,8 +36,8 @@ export const tooltipCSS = `
   /* hidden */
   opacity: 0;
   transition:
-    opacity 100ms var(--que-easing-out),
-    transform 100ms var(--que-easing-out);
+    opacity var(--que-duration-fast) var(--que-easing-out),
+    transform var(--que-duration-fast) var(--que-easing-out);
 }
 
 /* JS open */

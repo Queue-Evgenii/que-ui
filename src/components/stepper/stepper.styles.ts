@@ -130,7 +130,7 @@ export const stepperCSS = `
 .que-step--complete .que-step__icon {
   background: var(--que-color-primary);
   border-color: var(--que-color-primary);
-  color: #fff;
+  color: var(--que-color-primary-text);
 }
 .que-step--complete .que-step__connector {
   background: var(--que-color-primary);

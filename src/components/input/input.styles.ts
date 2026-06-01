@@ -3,7 +3,7 @@ import { fieldFeedbackCSS } from '../../base/field-css'
 export const inputCSS = `
 /* Customizable: --que-input-padding-x, --que-input-font-size, --que-input-radius */
 
-:host { display: block; box-sizing: border-box; }
+que-input { display: block; box-sizing: border-box; }
 
 /* ── FIELD WRAPPER ──────────────────────────────────────────── */
 
@@ -92,8 +92,7 @@ export const inputCSS = `
               transform var(--que-duration-slow) var(--que-easing-out);
 }
 
-/* Scope rest position to input only — prevents textarea.css from overriding.
-   top accounts for: padding-top + border (1px) + half-leading ((line-height - 1) / 2 * font-size) */
+/* Offset for line-height: padding-top + border (1px) + half-leading ((line-height - 1) / 2 * font-size) */
 .que-input ~ .que-input-label {
   top: calc(var(--_que-pt) + 1px + (var(--que-line-height-tight) - 1) / 2 * 1em);
   transform: none;

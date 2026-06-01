@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="shared.css" />
   <style>
     .field-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; }
-    .field-row .que-input-field { min-width: 240px; flex: 1; }
+    .field-row .que-textarea-field { min-width: 240px; flex: 1; }
   </style>
 </head>
 <body>
@@ -42,58 +42,80 @@
   <main>
     <h2>Default</h2>
     <div class="field-row">
-      <div class="que-input-field">
-        <div class="que-input-wrap">
+      <div class="que-textarea-field">
+        <div class="que-textarea-wrap">
           <textarea class="que-textarea" placeholder=" "></textarea>
-          <label class="que-input-label">Label</label>
+          <label class="que-textarea-label">Label</label>
         </div>
-        <span class="que-input-hint">Helper text goes here</span>
+        <span class="que-textarea-hint">Helper text goes here</span>
       </div>
-      <div class="que-input-field">
-        <div class="que-input-wrap">
+      <div class="que-textarea-field">
+        <div class="que-textarea-wrap">
           <textarea class="que-textarea" placeholder=" "></textarea>
-          <label class="que-input-label que-input-label--required">Required</label>
+          <label class="que-textarea-label que-textarea-label--required">Required</label>
         </div>
       </div>
     </div>
 
     <h2>Intents</h2>
     <div class="field-row">
-      <div class="que-input-field">
-        <div class="que-input-wrap">
+      <div class="que-textarea-field">
+        <div class="que-textarea-wrap">
           <textarea class="que-textarea que-textarea--intent-danger que-textarea--filled" placeholder=" ">Invalid content here</textarea>
-          <label class="que-input-label">Danger</label>
+          <label class="que-textarea-label">Danger</label>
         </div>
-        <span class="que-input-error">This field is required</span>
+        <span class="que-textarea-error">This field is required</span>
       </div>
-      <div class="que-input-field">
-        <div class="que-input-wrap">
+      <div class="que-textarea-field">
+        <div class="que-textarea-wrap">
           <textarea class="que-textarea que-textarea--intent-success que-textarea--filled" placeholder=" ">Valid content here</textarea>
-          <label class="que-input-label">Success</label>
+          <label class="que-textarea-label">Success</label>
         </div>
-        <span class="que-input-hint">Looks good!</span>
+        <span class="que-textarea-hint">Looks good!</span>
       </div>
-      <div class="que-input-field">
-        <div class="que-input-wrap">
+      <div class="que-textarea-field">
+        <div class="que-textarea-wrap">
           <textarea class="que-textarea que-textarea--intent-warning que-textarea--filled" placeholder=" ">Content needs review</textarea>
-          <label class="que-input-label">Warning</label>
+          <label class="que-textarea-label">Warning</label>
         </div>
-        <span class="que-input-hint">Please review your content</span>
+        <span class="que-textarea-hint">Please review your content</span>
+      </div>
+    </div>
+
+    <h2>Sizes</h2>
+    <div class="field-row">
+      <div class="que-textarea-field">
+        <div class="que-textarea-wrap">
+          <textarea class="que-textarea que-textarea--sm" placeholder=" "></textarea>
+          <label class="que-textarea-label">Small</label>
+        </div>
+      </div>
+      <div class="que-textarea-field">
+        <div class="que-textarea-wrap">
+          <textarea class="que-textarea" placeholder=" "></textarea>
+          <label class="que-textarea-label">Medium (default)</label>
+        </div>
+      </div>
+      <div class="que-textarea-field">
+        <div class="que-textarea-wrap">
+          <textarea class="que-textarea que-textarea--lg" placeholder=" "></textarea>
+          <label class="que-textarea-label">Large</label>
+        </div>
       </div>
     </div>
 
     <h2>States</h2>
     <div class="field-row">
-      <div class="que-input-field">
-        <div class="que-input-wrap">
+      <div class="que-textarea-field">
+        <div class="que-textarea-wrap">
           <textarea class="que-textarea" placeholder=" " disabled></textarea>
-          <label class="que-input-label">Disabled</label>
+          <label class="que-textarea-label">Disabled</label>
         </div>
       </div>
-      <div class="que-input-field">
-        <div class="que-input-wrap">
+      <div class="que-textarea-field">
+        <div class="que-textarea-wrap">
           <textarea class="que-textarea que-textarea--filled" placeholder=" " readonly>Read only content</textarea>
-          <label class="que-input-label">Readonly</label>
+          <label class="que-textarea-label">Readonly</label>
         </div>
       </div>
     </div>

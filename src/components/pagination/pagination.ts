@@ -70,8 +70,8 @@ export class QuePagination extends BaseElement {
 
     const pages = buildPages(current, total, siblings)
 
-    const btn = (label: string, page: number, extra = '') =>
-      `<button class="que-pagination__item${extra}" data-page="${page}" aria-label="Page ${page}">${label}</button>`
+    const btn = (label: string, page: number, isCurrent = false) =>
+      `<button class="que-pagination__item" data-page="${page}" aria-label="Page ${page}"${isCurrent ? ' aria-current="page"' : ''}>${label}</button>`
 
     const navBtn = (icon: string, page: number, label: string, dis: boolean) =>
       `<button class="que-pagination__item" data-page="${page}" aria-label="${label}"${dis ? ' disabled' : ''}>${icon}</button>`
@@ -79,7 +79,7 @@ export class QuePagination extends BaseElement {
     const items = pages.map(p =>
       p === '…'
         ? `<span class="que-pagination__item que-pagination__ellipsis" aria-hidden="true">…</span>`
-        : btn(String(p), p, p === current ? ' aria-current="page"' : '')
+        : btn(String(p), p, p === current)
     ).join('')
 
     this.innerHTML =

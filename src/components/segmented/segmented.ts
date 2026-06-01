@@ -35,7 +35,9 @@ export class QueSegmented extends BaseElement {
     const disabled = this.boolAttr('disabled')
     const shape    = this.attr('shape') ?? 'pill'
 
-    const segmentEls = [...this.querySelectorAll('que-segment')]
+    const tmp = document.createElement('div')
+    tmp.innerHTML = this._slotHTML
+    const segmentEls = [...tmp.querySelectorAll('que-segment')]
     const segments = segmentEls.map(el => ({
       value:    el.getAttribute('value') ?? '',
       label:    el.textContent?.trim() ?? '',
@@ -60,7 +62,9 @@ export class QueSegmented extends BaseElement {
     }).join('')
 
     this.injectCSS(segmentedCSS)
-    this.innerHTML = `<div class="que-segmented que-segmented--${shape}" role="group">${items}</div>`
+    this.className = this.cx('que-segmented', { shape })
+    this.setAttribute('role', 'group')
+    this.innerHTML = items
 
     this.querySelectorAll<HTMLInputElement>('input').forEach(input => {
       input.addEventListener('change', this.#onChange)

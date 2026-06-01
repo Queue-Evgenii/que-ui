@@ -33,7 +33,7 @@ que-card-header,
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: var(--que-space-3);
   padding: var(--que-card-padding, 20px 24px);
   padding-bottom: 0;
   flex-shrink: 0;
@@ -62,7 +62,7 @@ que-card-footer,
 .que-card__footer {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--que-space-2);
   padding: var(--que-card-padding, 20px 24px);
   padding-top: 0;
   flex-shrink: 0;
@@ -74,12 +74,12 @@ que-card-footer,
 
 que-card-header + que-card-body,
 .que-card__header + .que-card__body {
-  padding-top: 16px;
+  padding-top: var(--que-space-4);
 }
 
 que-card-body + que-card-footer,
 .que-card__body + .que-card__footer {
-  padding-top: 16px;
+  padding-top: var(--que-space-4);
   border-top: 1px solid var(--que-color-border);
   margin-top: auto;
 }

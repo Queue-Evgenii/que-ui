@@ -161,9 +161,9 @@ export class QueMenu extends BaseElement {
   protected render(): void {
     const placement = (this.attr('placement') as MenuPlacement) ?? 'bottom-start'
 
-    // Read children from live DOM before wiping
+    // Detach trigger before wiping innerHTML so it survives as a live element
     const triggerEl = this.querySelector('[slot="trigger"]') as HTMLElement | null
-    const triggerHTML = triggerEl?.outerHTML ?? ''
+    if (triggerEl) triggerEl.remove()
 
     const itemEls = Array.from(this.querySelectorAll<HTMLElement>(
       'que-menu-item, que-menu-divider, que-menu-group'
@@ -175,18 +175,23 @@ export class QueMenu extends BaseElement {
     this.setAttribute('role', 'presentation')
 
     this.innerHTML = `
-      <div class="que-menu__trigger">${triggerHTML}</div>
+      <div class="que-menu__trigger"></div>
       <div class="que-menu__panel que-menu__panel--${esc(placement)}"
            role="menu" tabindex="-1" aria-hidden="${this.#open ? 'false' : 'true'}">
         ${itemsHTML}
       </div>
     `
 
+    // Re-attach the live element — avoids re-parsing outerHTML which would create
+    // a new element with _slotHTML = already-rendered HTML → nested <button> bug
+    const triggerWrap = this.querySelector<HTMLElement>('.que-menu__trigger')!
+    if (triggerEl) triggerWrap.appendChild(triggerEl)
+
     this.#panel = this.querySelector('.que-menu__panel')
     if (this.#open) this.#syncPanel()
 
     // Trigger click handler
-    this.querySelector('.que-menu__trigger')?.addEventListener('click', (e) => {
+    triggerWrap.addEventListener('click', (e) => {
       e.stopPropagation()
       this.toggle()
     })

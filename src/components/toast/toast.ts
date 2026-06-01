@@ -20,7 +20,7 @@ export class QueToaster extends BaseElement {
   protected render(): void {
     const position = (this.attr('position') as ToastPosition) ?? 'top-right'
     this.injectCSS(toastCSS)
-    this.className = `que-toaster que-toaster--${position}`
+    this.className = this.cx('que-toaster', { flags: { [position]: true } })
   }
 }
 

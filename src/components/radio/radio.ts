@@ -5,7 +5,7 @@ import type { Orientation } from '../../base/types'
 
 export class QueRadio extends BaseElement {
   static observedAttributes = [
-    'label', 'direction', 'hint', 'intent',
+    'label', 'direction', 'hint', 'error', 'intent',
     'checked', 'disabled', 'required',
     'name', 'value', 'id',
   ]
@@ -43,18 +43,21 @@ export class QueRadio extends BaseElement {
   }
 
   protected render(): void {
-    const label    = this.attr('label') ?? ''
+    const label     = this.attr('label') ?? ''
     const direction = this.attr('direction')
-    const hint     = this.attr('hint')
-    const checked  = this.boolAttr('checked')
-    const disabled = this.boolAttr('disabled')
-    const required = this.boolAttr('required')
-    const name     = this.attr('name') ?? ''
-    const value    = this.attr('value') ?? ''
-    const intent   = this.attr('intent')
+    const hint      = this.attr('hint')
+    const error     = this.attr('error')
+    const checked   = this.boolAttr('checked')
+    const disabled  = this.boolAttr('disabled')
+    const required  = this.boolAttr('required')
+    const name      = this.attr('name') ?? ''
+    const value     = this.attr('value') ?? ''
+    const intent    = this.attr('intent')
+
+    const resolvedIntent = error ? 'danger' : intent
 
     const wrapperClasses = this.cx('que-radio', {
-      intent,
+      intent: resolvedIntent,
       flags: { ltr: direction === 'ltr', disabled },
     })
 
@@ -77,7 +80,8 @@ export class QueRadio extends BaseElement {
     this.injectCSS(radioCSS)
     this.innerHTML = `
       <label class="${wrapperClasses}">${inner}</label>
-      ${hint ? `<span class="que-radio__hint">${esc(hint)}</span>` : ''}
+      ${error ? `<span class="que-radio__error">${esc(error)}</span>` : ''}
+      ${hint && !error ? `<span class="que-radio__hint">${esc(hint)}</span>` : ''}
     `
 
     this.#input = this.querySelector('input')

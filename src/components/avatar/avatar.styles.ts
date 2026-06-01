@@ -89,7 +89,7 @@ export const avatarCSS = `
 .que-avatar--xl .que-avatar__status { width: 18px; height: 18px; }
 
 .que-avatar--status-online  .que-avatar__status { background: var(--que-color-success); }
-.que-avatar--status-offline .que-avatar__status { background: var(--que-color-text-disabled, #9ca3af); }
+.que-avatar--status-offline .que-avatar__status { background: var(--que-color-text-disabled); }
 .que-avatar--status-busy    .que-avatar__status { background: var(--que-color-danger); }
 .que-avatar--status-away    .que-avatar__status { background: var(--que-color-warning); }
 `

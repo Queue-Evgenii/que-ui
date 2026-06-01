@@ -1,15 +1,16 @@
 import { BaseElement } from '../../base/BaseElement'
 import { textareaCSS } from './textarea.styles'
 import { esc } from '../../utils/html'
-import type { Intent } from '../../base/types'
+import type { Intent, Size } from '../../base/types'
 
 type TextareaIntent = Extract<Intent, 'danger' | 'success' | 'warning'>
+type TextareaSize   = Extract<Size, 'sm' | 'md' | 'lg'>
 
 export class QueTextarea extends BaseElement {
   static observedAttributes = [
     'placeholder', 'value', 'name', 'id', 'rows',
     'disabled', 'readonly', 'required',
-    'intent', 'label', 'hint', 'error',
+    'size', 'intent', 'label', 'hint', 'error',
   ]
 
   get value(): string {
@@ -47,6 +48,7 @@ export class QueTextarea extends BaseElement {
   }
 
   protected render(): void {
+    const size     = (this.attr('size') as TextareaSize) ?? 'md'
     const intent   = (this.attr('intent') as TextareaIntent) ?? null
     const label    = this.attr('label')
     const hint     = this.attr('hint')
@@ -61,28 +63,30 @@ export class QueTextarea extends BaseElement {
     const resolvedIntent = error ? 'danger' : intent
 
     const classes = this.cx('que-textarea', {
+      size:   size !== 'md' ? size : null,
       intent: resolvedIntent,
       flags:  { filled: value.length > 0 },
     })
 
     this.injectCSS(textareaCSS)
     this.innerHTML = `
-      <div class="que-input-field">
-        <div class="que-input-wrap">
+      <div class="que-textarea-field">
+        <div class="que-textarea-wrap">
           <textarea
             class="${classes}"
             id="${esc(id)}"
             rows="${esc(rows)}"
             placeholder=" "
+            ${this.attr('placeholder') ? `data-placeholder="${esc(this.attr('placeholder')!)}"` : ''}
             ${this.attr('name') ? `name="${esc(this.attr('name')!)}"` : ''}
             ${disabled ? 'disabled' : ''}
             ${readonly ? 'readonly' : ''}
             ${required ? 'required' : ''}
           >${esc(value)}</textarea>
-          ${label ? `<label class="que-input-label${required ? ' que-input-label--required' : ''}" for="${esc(id)}">${esc(label)}</label>` : ''}
+          ${label ? `<label class="que-textarea-label${required ? ' que-textarea-label--required' : ''}" for="${esc(id)}">${esc(label)}</label>` : ''}
         </div>
-        ${error ? `<span class="que-input-error">${esc(error)}</span>` : ''}
-        ${hint && !error ? `<span class="que-input-hint">${esc(hint)}</span>` : ''}
+        ${error ? `<span class="que-textarea-error">${esc(error)}</span>` : ''}
+        ${hint && !error ? `<span class="que-textarea-hint">${esc(hint)}</span>` : ''}
       </div>
     `
 
@@ -97,7 +101,7 @@ export class QueTextarea extends BaseElement {
   }
 
   #onFocus = (): void => {
-    const ph = this.attr('placeholder')
+    const ph = this.#textarea?.dataset.placeholder
     if (ph && this.#textarea) this.#textarea.placeholder = ph
   }
 

@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>que-ui â€" Menu (JS)</title>
+  <title>que-ui — Menu (JS)</title>
   <link rel="stylesheet" href="shared.css" />
 </head>
 <body>
@@ -30,7 +30,7 @@
       <div class="col" style="gap:6px;">
         <span style="font-size:11px;color:var(--que-color-text-muted);">Basic</span>
         <que-menu id="menu-basic">
-          <que-button slot="trigger" variant="outline" size="sm">Actions â–¾</que-button>
+          <que-button slot="trigger" variant="outline" size="sm">Actions ▾</que-button>
           <que-menu-item value="edit">Edit</que-menu-item>
           <que-menu-item value="duplicate">Duplicate</que-menu-item>
           <que-menu-item value="archive">Archive</que-menu-item>
@@ -42,20 +42,20 @@
       <div class="col" style="gap:6px;">
         <span style="font-size:11px;color:var(--que-color-text-muted);">With shortcuts + disabled</span>
         <que-menu id="menu-shortcuts">
-          <que-button slot="trigger" size="sm">File â–¾</que-button>
-          <que-menu-item value="new"    shortcut="âŒ˜N">New file</que-menu-item>
-          <que-menu-item value="open"   shortcut="âŒ˜O">Openâ€¦</que-menu-item>
-          <que-menu-item value="save"   shortcut="âŒ˜S">Save</que-menu-item>
-          <que-menu-item value="saveas" shortcut="âŒ˜â‡§S" disabled>Save Asâ€¦ (disabled)</que-menu-item>
+          <que-button slot="trigger" size="sm">File ▾</que-button>
+          <que-menu-item value="new"    shortcut="⌘N">New file</que-menu-item>
+          <que-menu-item value="open"   shortcut="⌘O">Open…</que-menu-item>
+          <que-menu-item value="save"   shortcut="⌘S">Save</que-menu-item>
+          <que-menu-item value="saveas" shortcut="⌘⇧S" disabled>Save As… (disabled)</que-menu-item>
           <que-menu-divider></que-menu-divider>
-          <que-menu-item value="close"  shortcut="âŒ˜W">Close window</que-menu-item>
+          <que-menu-item value="close"  shortcut="⌘W">Close window</que-menu-item>
         </que-menu>
       </div>
 
       <div class="col" style="gap:6px;">
         <span style="font-size:11px;color:var(--que-color-text-muted);">bottom-end placement</span>
         <que-menu placement="bottom-end">
-          <que-button slot="trigger" variant="ghost" size="sm">Â·Â·Â·</que-button>
+          <que-button slot="trigger" variant="ghost" size="sm">···</que-button>
           <que-menu-group label="Sharing"></que-menu-group>
           <que-menu-item value="share-link">Copy link</que-menu-item>
           <que-menu-item value="share-email">Share via email</que-menu-item>
@@ -72,16 +72,16 @@
       <que-context-menu id="ctx-menu" style="display:block;padding:40px;text-align:center;">
         <p style="margin:0;font-size:var(--que-font-size-sm);color:var(--que-color-text-muted);">Right-click anywhere in this area</p>
 
-        <que-menu-item value="cut"    shortcut="âŒ˜X">Cut</que-menu-item>
-        <que-menu-item value="copy"   shortcut="âŒ˜C">Copy</que-menu-item>
-        <que-menu-item value="paste"  shortcut="âŒ˜V">Paste</que-menu-item>
+        <que-menu-item value="cut"        shortcut="⌘X">Cut</que-menu-item>
+        <que-menu-item value="copy"       shortcut="⌘C">Copy</que-menu-item>
+        <que-menu-item value="paste"      shortcut="⌘V">Paste</que-menu-item>
         <que-menu-divider></que-menu-divider>
-        <que-menu-item value="select-all" shortcut="âŒ˜A">Select All</que-menu-item>
+        <que-menu-item value="select-all" shortcut="⌘A">Select All</que-menu-item>
         <que-menu-divider></que-menu-divider>
         <que-menu-item value="inspect">Inspect element</que-menu-item>
       </que-context-menu>
     </div>
-    <p id="menu-log" style="font-size:var(--que-font-size-sm);color:var(--que-color-text-muted);margin-top:12px;">Selected: â€"</p>
+    <p id="menu-log" style="font-size:var(--que-font-size-sm);color:var(--que-color-text-muted);margin-top:12px;">Selected: —</p>
   </main>
 
   <script type="module">
@@ -104,4 +104,3 @@
   </script>
 </body>
 </html>
-

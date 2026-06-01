@@ -83,8 +83,8 @@ export const badgeCSS = `
   line-height: 1;
   transition: opacity var(--que-duration-fast), background var(--que-duration-fast);
 }
-.que-badge__dismiss:hover  { opacity: 1; background: rgba(0,0,0,0.1); }
-.que-badge__dismiss:active { background: rgba(0,0,0,0.18); }
+.que-badge__dismiss:hover  { opacity: 1; background: var(--que-color-interactive-hover); }
+.que-badge__dismiss:active { background: var(--que-color-interactive-active); }
 
 .que-badge--sm .que-badge__dismiss { width: 12px; height: 12px; }
 .que-badge--lg .que-badge__dismiss { width: 16px; height: 16px; }

@@ -11,7 +11,7 @@ export const drawerCSS = `
   background: var(--que-color-overlay);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 260ms var(--que-easing-in-out);
+  transition: opacity var(--que-duration-slow) var(--que-easing-in-out);
 }
 
 .que-drawer--open > .que-drawer__backdrop {
@@ -33,7 +33,7 @@ export const drawerCSS = `
   background: var(--que-drawer-bg, var(--que-color-surface-raised));
   overflow: hidden auto;
   will-change: transform;
-  transition: transform 260ms var(--que-easing-in-out);
+  transition: transform var(--que-duration-slow) var(--que-easing-in-out);
 }
 
 /* ── PLACEMENTS ──────────────────────────────────────────── */
@@ -118,8 +118,8 @@ export const drawerCSS = `
   z-index: auto;       /* reset base z-index to avoid stacking context above backdrop */
   will-change: auto;   /* reset will-change — also creates stacking context */
   flex-shrink: 0;
-  transition: width 260ms var(--que-easing-in-out),
-              height 260ms var(--que-easing-in-out);
+  transition: width var(--que-duration-slow) var(--que-easing-in-out),
+              height var(--que-duration-slow) var(--que-easing-in-out);
   transform: none;
   box-shadow: none;
 }

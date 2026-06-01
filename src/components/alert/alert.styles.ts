@@ -98,7 +98,7 @@ export const alertCSS = `
 /* ── SOLID VARIANT ───────────────────────────────────────── */
 
 .que-alert--solid.que-alert--intent-info    { background: var(--que-color-primary);      border-color: transparent; color: var(--que-color-primary-text); }
-.que-alert--solid.que-alert--intent-success { background: var(--que-color-success);      border-color: transparent; color: #fff; }
-.que-alert--solid.que-alert--intent-warning { background: var(--que-color-warning-hover); border-color: transparent; color: #fff; }
-.que-alert--solid.que-alert--intent-danger  { background: var(--que-color-danger);       border-color: transparent; color: #fff; }
+.que-alert--solid.que-alert--intent-success { background: var(--que-color-success);      border-color: transparent; color: var(--que-color-primary-text); }
+.que-alert--solid.que-alert--intent-warning { background: var(--que-color-warning-hover); border-color: transparent; color: var(--que-color-primary-text); }
+.que-alert--solid.que-alert--intent-danger  { background: var(--que-color-danger);       border-color: transparent; color: var(--que-color-primary-text); }
 `

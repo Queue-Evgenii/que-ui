@@ -114,7 +114,7 @@ que-option { display: none; }
   top: calc(100% + 4px);
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: var(--que-z-dropdown);
   background: var(--que-color-bg);
   border: 1px solid var(--que-color-border-strong);
   border-radius: var(--que-input-radius, var(--que-radius-md));

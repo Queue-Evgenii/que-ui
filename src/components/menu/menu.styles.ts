@@ -94,7 +94,7 @@ export const menuCSS = `
 
 .que-menu-item--intent-danger:hover,
 .que-menu-item--intent-danger.que-menu-item--focused {
-  background: var(--que-color-danger-subtle, rgba(239,68,68,0.08));
+  background: var(--que-color-danger-subtle);
 }
 
 .que-menu-item--disabled {

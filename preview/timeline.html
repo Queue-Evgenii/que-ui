@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Timeline (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/timeline.css" />
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="index.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="index-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html"         class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="light" checked /><span class="que-segmented__label">Light</span></label>
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="dark" /><span class="que-segmented__label">Dark</span></label>
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="system" /><span class="que-segmented__label">System</span></label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Status variants</h2>
+    <div style="max-width:480px;">
+      <div class="que-timeline" role="list">
+
+        <!-- done -->
+        <div class="que-timeline-item que-timeline-item--done" role="listitem">
+          <div class="que-timeline-item__indicator">
+            <div class="que-timeline-item__dot">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 7 4 4 6-6"/></svg>
+            </div>
+            <div class="que-timeline-item__line" aria-hidden="true"></div>
+          </div>
+          <div class="que-timeline-item__body">
+            <div class="que-timeline-item__header">
+              <span class="que-timeline-item__label">Order placed</span>
+              <span class="que-timeline-item__date">Jun 1</span>
+            </div>
+            <div class="que-timeline-item__content">Your order #1042 has been confirmed and payment received.</div>
+          </div>
+        </div>
+
+        <!-- done -->
+        <div class="que-timeline-item que-timeline-item--done" role="listitem">
+          <div class="que-timeline-item__indicator">
+            <div class="que-timeline-item__dot">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 7 4 4 6-6"/></svg>
+            </div>
+            <div class="que-timeline-item__line" aria-hidden="true"></div>
+          </div>
+          <div class="que-timeline-item__body">
+            <div class="que-timeline-item__header">
+              <span class="que-timeline-item__label">Processing</span>
+              <span class="que-timeline-item__date">Jun 2</span>
+            </div>
+            <div class="que-timeline-item__content">Items are being prepared for shipment.</div>
+          </div>
+        </div>
+
+        <!-- active -->
+        <div class="que-timeline-item que-timeline-item--active" role="listitem">
+          <div class="que-timeline-item__indicator">
+            <div class="que-timeline-item__dot">
+              <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><circle cx="5" cy="5" r="4" fill="currentColor"/></svg>
+            </div>
+            <div class="que-timeline-item__line" aria-hidden="true"></div>
+          </div>
+          <div class="que-timeline-item__body">
+            <div class="que-timeline-item__header">
+              <span class="que-timeline-item__label">Shipped</span>
+              <span class="que-timeline-item__date">Jun 3</span>
+            </div>
+            <div class="que-timeline-item__content">Package is on its way — tracking: UA1234567890.</div>
+          </div>
+        </div>
+
+        <!-- pending -->
+        <div class="que-timeline-item" role="listitem">
+          <div class="que-timeline-item__indicator">
+            <div class="que-timeline-item__dot"></div>
+            <div class="que-timeline-item__line" aria-hidden="true"></div>
+          </div>
+          <div class="que-timeline-item__body">
+            <div class="que-timeline-item__header">
+              <span class="que-timeline-item__label">Out for delivery</span>
+              <span class="que-timeline-item__date">Jun 4</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- pending (last) -->
+        <div class="que-timeline-item" role="listitem">
+          <div class="que-timeline-item__indicator">
+            <div class="que-timeline-item__dot"></div>
+            <div class="que-timeline-item__line" aria-hidden="true"></div>
+          </div>
+          <div class="que-timeline-item__body">
+            <div class="que-timeline-item__header">
+              <span class="que-timeline-item__label">Delivered</span>
+              <span class="que-timeline-item__date">Jun 5</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <h2>With error state</h2>
+    <div style="max-width:480px;">
+      <div class="que-timeline" role="list">
+
+        <div class="que-timeline-item que-timeline-item--done" role="listitem">
+          <div class="que-timeline-item__indicator">
+            <div class="que-timeline-item__dot"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4 4 6-6"/></svg></div>
+            <div class="que-timeline-item__line"></div>
+          </div>
+          <div class="que-timeline-item__body">
+            <div class="que-timeline-item__header">
+              <span class="que-timeline-item__label">Submitted</span>
+              <span class="que-timeline-item__date">May 10</span>
+            </div>
+            <div class="que-timeline-item__content">Application received.</div>
+          </div>
+        </div>
+
+        <div class="que-timeline-item que-timeline-item--done" role="listitem">
+          <div class="que-timeline-item__indicator">
+            <div class="que-timeline-item__dot"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4 4 6-6"/></svg></div>
+            <div class="que-timeline-item__line"></div>
+          </div>
+          <div class="que-timeline-item__body">
+            <div class="que-timeline-item__header">
+              <span class="que-timeline-item__label">Under review</span>
+              <span class="que-timeline-item__date">May 12</span>
+            </div>
+            <div class="que-timeline-item__content">Being reviewed by our team.</div>
+          </div>
+        </div>
+
+        <div class="que-timeline-item que-timeline-item--error" role="listitem">
+          <div class="que-timeline-item__indicator">
+            <div class="que-timeline-item__dot">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 2l10 10M12 2 2 12"/></svg>
+            </div>
+            <div class="que-timeline-item__line"></div>
+          </div>
+          <div class="que-timeline-item__body">
+            <div class="que-timeline-item__header">
+              <span class="que-timeline-item__label">Verification failed</span>
+              <span class="que-timeline-item__date">May 15</span>
+            </div>
+            <div class="que-timeline-item__content">Additional documents required. Please upload ID.</div>
+          </div>
+        </div>
+
+        <div class="que-timeline-item" role="listitem">
+          <div class="que-timeline-item__indicator">
+            <div class="que-timeline-item__dot"></div>
+            <div class="que-timeline-item__line"></div>
+          </div>
+          <div class="que-timeline-item__body">
+            <div class="que-timeline-item__header">
+              <span class="que-timeline-item__label">Approved</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <h2>Minimal (no content)</h2>
+    <div style="max-width:360px;">
+      <div class="que-timeline" role="list">
+
+        <div class="que-timeline-item que-timeline-item--done" role="listitem">
+          <div class="que-timeline-item__indicator">
+            <div class="que-timeline-item__dot"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 7 4 4 6-6"/></svg></div>
+            <div class="que-timeline-item__line" aria-hidden="true"></div>
+          </div>
+          <div class="que-timeline-item__body">
+            <div class="que-timeline-item__header">
+              <span class="que-timeline-item__label">Created account</span>
+              <span class="que-timeline-item__date">Jan 1</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="que-timeline-item que-timeline-item--done" role="listitem">
+          <div class="que-timeline-item__indicator">
+            <div class="que-timeline-item__dot"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 7 4 4 6-6"/></svg></div>
+            <div class="que-timeline-item__line" aria-hidden="true"></div>
+          </div>
+          <div class="que-timeline-item__body">
+            <div class="que-timeline-item__header">
+              <span class="que-timeline-item__label">Completed profile</span>
+              <span class="que-timeline-item__date">Jan 3</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="que-timeline-item que-timeline-item--done" role="listitem">
+          <div class="que-timeline-item__indicator">
+            <div class="que-timeline-item__dot"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 7 4 4 6-6"/></svg></div>
+            <div class="que-timeline-item__line" aria-hidden="true"></div>
+          </div>
+          <div class="que-timeline-item__body">
+            <div class="que-timeline-item__header">
+              <span class="que-timeline-item__label">First purchase</span>
+              <span class="que-timeline-item__date">Jan 8</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="que-timeline-item que-timeline-item--active" role="listitem">
+          <div class="que-timeline-item__indicator">
+            <div class="que-timeline-item__dot"><svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><circle cx="5" cy="5" r="4" fill="currentColor"/></svg></div>
+            <div class="que-timeline-item__line" aria-hidden="true"></div>
+          </div>
+          <div class="que-timeline-item__body">
+            <div class="que-timeline-item__header">
+              <span class="que-timeline-item__label">Subscribed to Pro</span>
+              <span class="que-timeline-item__date">Feb 1</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="que-timeline-item" role="listitem">
+          <div class="que-timeline-item__indicator">
+            <div class="que-timeline-item__dot"></div>
+            <div class="que-timeline-item__line" aria-hidden="true"></div>
+          </div>
+          <div class="que-timeline-item__body">
+            <div class="que-timeline-item__header">
+              <span class="que-timeline-item__label">Next renewal</span>
+              <span class="que-timeline-item__date">Mar 1</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

@@ -10,7 +10,7 @@ mkdirSync('dist', { recursive: true })
 
 // Bundle CSS-only exports into a temp file to extract values (no DOM/HTMLElement)
 await build({ entryPoints: ['src/css.ts'], bundle: true, format: 'esm', outfile: TMP })
-const { defaultTokens, defaultDarkTokens, utilitiesCSS, buttonCSS, inputCSS, textareaCSS, checkboxCSS, switchCSS, radioCSS, segmentedCSS, selectCSS, sliderCSS, badgeCSS, spinnerCSS, alertCSS, progressCSS, skeletonCSS, toastCSS, emptyCSS, popoverCSS, tooltipCSS, drawerCSS, modalCSS, dividerCSS, spacerCSS, stackCSS, gridCSS, viewCSS, avatarCSS, cardCSS, kbdCSS, statCSS, tabsCSS, breadcrumbCSS, paginationCSS, stepperCSS, typographyCSS } = await import(pathToFileURL(TMP).href)
+const { defaultTokens, defaultDarkTokens, utilitiesCSS, buttonCSS, inputCSS, textareaCSS, checkboxCSS, switchCSS, radioCSS, segmentedCSS, selectCSS, sliderCSS, badgeCSS, spinnerCSS, alertCSS, progressCSS, skeletonCSS, toastCSS, emptyCSS, popoverCSS, tooltipCSS, drawerCSS, modalCSS, dividerCSS, spacerCSS, stackCSS, gridCSS, viewCSS, avatarCSS, cardCSS, kbdCSS, statCSS, tabsCSS, breadcrumbCSS, paginationCSS, stepperCSS, typographyCSS, iconCSS, imageCSS, navbarCSS, sidebarCSS, timelineCSS, tableCSS, menuCSS, contextMenuCSS } = await import(pathToFileURL(TMP).href)
 import('fs').then(fs => fs.unlinkSync(TMP))
 
 function toCSSVars(tokens) {
@@ -138,6 +138,30 @@ console.log('dist/stepper.css')
 writeFileSync('dist/typography.css', typographyCSS.trim())
 console.log('dist/typography.css')
 
+writeFileSync('dist/icon.css', iconCSS.trim())
+console.log('dist/icon.css')
+
+writeFileSync('dist/image.css', imageCSS.trim())
+console.log('dist/image.css')
+
+writeFileSync('dist/navbar.css', navbarCSS.trim())
+console.log('dist/navbar.css')
+
+writeFileSync('dist/sidebar.css', sidebarCSS.trim())
+console.log('dist/sidebar.css')
+
+writeFileSync('dist/timeline.css', timelineCSS.trim())
+console.log('dist/timeline.css')
+
+writeFileSync('dist/table.css', tableCSS.trim())
+console.log('dist/table.css')
+
+writeFileSync('dist/menu.css', menuCSS.trim())
+console.log('dist/menu.css')
+
+writeFileSync('dist/context-menu.css', contextMenuCSS.trim())
+console.log('dist/context-menu.css')
+
 
 const sharedConfig = { bundle: true, sourcemap: true }
 
@@ -189,7 +213,15 @@ const componentEntries = {
   breadcrumb:  'src/components/breadcrumb/breadcrumb.ts',
   pagination:  'src/components/pagination/pagination.ts',
   stepper:     'src/components/stepper/stepper.ts',
-  typography:  'src/components/typography/typography.ts',
+  typography:     'src/components/typography/typography.ts',
+  icon:           'src/components/icon/icon.ts',
+  image:          'src/components/image/image.ts',
+  navbar:         'src/components/navbar/navbar.ts',
+  sidebar:        'src/components/sidebar/sidebar.ts',
+  timeline:       'src/components/timeline/timeline.ts',
+  table:          'src/components/table/table.ts',
+  menu:           'src/components/menu/menu.ts',
+  'context-menu': 'src/components/context-menu/context-menu.ts',
 }
 
 await build({

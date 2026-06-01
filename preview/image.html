@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Image (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/image.css" />
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="index.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="index-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html"      class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="light" checked /><span class="que-segmented__label">Light</span></label>
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="dark" /><span class="que-segmented__label">Dark</span></label>
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="system" /><span class="que-segmented__label">System</span></label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Aspect ratio + object-fit</h2>
+    <div class="row" style="align-items:flex-start;gap:16px;flex-wrap:wrap;">
+      <div class="col" style="gap:4px;">
+        <code style="font-size:10px;color:var(--que-color-text-muted);">cover (default)</code>
+        <div class="que-image" style="--que-image-width:160px;--que-image-height:120px;--que-image-radius:var(--que-radius-md);">
+          <img class="que-image__img" src="https://picsum.photos/seed/a/400/300" alt="Photo" />
+        </div>
+      </div>
+      <div class="col" style="gap:4px;">
+        <code style="font-size:10px;color:var(--que-color-text-muted);">contain</code>
+        <div class="que-image" style="--que-image-width:160px;--que-image-height:120px;--que-image-fit:contain;--que-image-radius:var(--que-radius-md);">
+          <img class="que-image__img" src="https://picsum.photos/seed/b/400/300" alt="Photo" />
+        </div>
+      </div>
+      <div class="col" style="gap:4px;">
+        <code style="font-size:10px;color:var(--que-color-text-muted);">16/9 aspect</code>
+        <div class="que-image" style="--que-image-width:200px;--que-image-aspect:16/9;--que-image-radius:var(--que-radius-lg);">
+          <img class="que-image__img" src="https://picsum.photos/seed/c/800/450" alt="Photo" />
+        </div>
+      </div>
+      <div class="col" style="gap:4px;">
+        <code style="font-size:10px;color:var(--que-color-text-muted);">1/1 + radius-full</code>
+        <div class="que-image" style="--que-image-width:100px;--que-image-aspect:1/1;--que-image-radius:var(--que-radius-full);">
+          <img class="que-image__img" src="https://picsum.photos/seed/d/300/300" alt="Photo" />
+        </div>
+      </div>
+    </div>
+
+    <h2>Border radius variants</h2>
+    <div class="row" style="align-items:flex-end;gap:12px;flex-wrap:wrap;">
+      <div class="que-image" style="--que-image-width:100px;--que-image-height:80px;--que-image-radius:0;"><img class="que-image__img" src="https://picsum.photos/seed/e/200/160" alt="" /></div>
+      <div class="que-image" style="--que-image-width:100px;--que-image-height:80px;--que-image-radius:var(--que-radius-sm);"><img class="que-image__img" src="https://picsum.photos/seed/f/200/160" alt="" /></div>
+      <div class="que-image" style="--que-image-width:100px;--que-image-height:80px;--que-image-radius:var(--que-radius-md);"><img class="que-image__img" src="https://picsum.photos/seed/g/200/160" alt="" /></div>
+      <div class="que-image" style="--que-image-width:100px;--que-image-height:80px;--que-image-radius:var(--que-radius-lg);"><img class="que-image__img" src="https://picsum.photos/seed/h/200/160" alt="" /></div>
+      <div class="que-image" style="--que-image-width:80px;--que-image-height:80px;--que-image-radius:var(--que-radius-full);"><img class="que-image__img" src="https://picsum.photos/seed/i/200/200" alt="" /></div>
+    </div>
+
+    <h2>Fallback</h2>
+    <div class="row" style="align-items:flex-start;gap:16px;flex-wrap:wrap;">
+      <div class="col" style="gap:4px;">
+        <code style="font-size:10px;color:var(--que-color-text-muted);">empty (no src)</code>
+        <div class="que-image" style="--que-image-width:120px;--que-image-height:100px;--que-image-radius:var(--que-radius-md);">
+          <div class="que-image__fallback"></div>
+        </div>
+      </div>
+      <div class="col" style="gap:4px;">
+        <code style="font-size:10px;color:var(--que-color-text-muted);">bad src → default icon</code>
+        <div class="que-image que-image--errored" style="--que-image-width:120px;--que-image-height:100px;--que-image-radius:var(--que-radius-md);">
+          <div class="que-image__fallback"></div>
+        </div>
+      </div>
+      <div class="col" style="gap:4px;">
+        <code style="font-size:10px;color:var(--que-color-text-muted);">bad src → custom slot</code>
+        <div class="que-image que-image--errored" style="--que-image-width:120px;--que-image-height:100px;--que-image-radius:var(--que-radius-md);">
+          <div class="que-image__fallback" style="flex-direction:column;gap:4px;">
+            <span style="font-size:20px;">🖼️</span>
+            <span style="font-size:11px;color:var(--que-color-text-muted);">No image</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Lazy loading</h2>
+    <div class="que-image" style="--que-image-width:360px;--que-image-aspect:3/2;--que-image-radius:var(--que-radius-lg);">
+      <img class="que-image__img" src="https://picsum.photos/seed/lazy/720/480" alt="Lazy" loading="lazy" />
+    </div>
+    <p style="font-size:var(--que-font-size-sm);color:var(--que-color-text-muted);margin-top:8px;">Uses native <code>loading="lazy"</code> — loads when in viewport.</p>
+
+    <h2>Zoom / Lightbox</h2>
+    <p style="font-size:var(--que-font-size-sm);color:var(--que-color-text-muted);">Add <code>que-image--zoom</code> — click image to open. Zoom in/out, rotate, scroll wheel, keyboard (+/-/←/→/0/Esc).</p>
+    <div class="row" style="align-items:flex-start;gap:16px;flex-wrap:wrap;">
+      <div class="que-image que-image--zoom" style="--que-image-width:200px;--que-image-aspect:4/3;--que-image-radius:var(--que-radius-md);" data-zoom>
+        <img class="que-image__img" src="https://picsum.photos/seed/zoom1/400/300" alt="Mountain" />
+      </div>
+      <div class="que-image que-image--zoom" style="--que-image-width:200px;--que-image-aspect:4/3;--que-image-radius:var(--que-radius-md);" data-zoom>
+        <img class="que-image__img" src="https://picsum.photos/seed/zoom2/400/300" alt="City" />
+      </div>
+      <div class="que-image que-image--zoom" style="--que-image-width:200px;--que-image-aspect:4/3;--que-image-radius:var(--que-radius-md);" data-zoom>
+        <img class="que-image__img" src="https://picsum.photos/seed/zoom3/400/300" alt="Forest" />
+      </div>
+    </div>
+  </main>
+
+  <script src="shared.js"></script>
+  <script>
+    var SVG_ZOOM_IN   = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>'
+    var SVG_ZOOM_OUT  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>'
+    var SVG_ROT_L     = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>'
+    var SVG_ROT_R     = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>'
+    var SVG_RESET     = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.51 9a9 9 0 0 1 14.85-3.36L21 8M21 3v5h-5"/><path d="M20.49 15a9 9 0 0 1-14.85 3.36L3 16m0 5v-5h5"/></svg>'
+    var SVG_CLOSE     = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'
+
+    function openLightbox(src, alt) {
+      var scale = 1, rotation = 0
+
+      var overlay = document.createElement('div')
+      overlay.className = 'que-image-lightbox'
+      overlay.setAttribute('role', 'dialog')
+      overlay.setAttribute('aria-modal', 'true')
+
+      var img = document.createElement('img')
+      img.className = 'que-image-lightbox__img'
+      img.src = src
+      img.alt = alt
+      img.draggable = false
+
+      function applyTransform() {
+        img.style.transform = 'scale(' + scale + ') rotate(' + rotation + 'deg)'
+      }
+
+      var toolbar = document.createElement('div')
+      toolbar.className = 'que-image-lightbox__toolbar'
+
+      function makeBtn(svg, title, action) {
+        var b = document.createElement('button')
+        b.className = 'que-image-lightbox__btn'
+        b.type = 'button'
+        b.title = title
+        b.innerHTML = svg
+        b.addEventListener('click', function(e) { e.stopPropagation(); action() })
+        return b
+      }
+
+      toolbar.appendChild(makeBtn(SVG_ZOOM_IN,  'Zoom in',      function() { scale = Math.min(scale * 1.25, 10); applyTransform() }))
+      toolbar.appendChild(makeBtn(SVG_ZOOM_OUT, 'Zoom out',     function() { scale = Math.max(scale / 1.25, 0.1); applyTransform() }))
+      toolbar.appendChild(makeBtn(SVG_ROT_L,    'Rotate left',  function() { rotation -= 90; applyTransform() }))
+      toolbar.appendChild(makeBtn(SVG_ROT_R,    'Rotate right', function() { rotation += 90; applyTransform() }))
+      toolbar.appendChild(makeBtn(SVG_RESET,    'Reset',        function() { scale = 1; rotation = 0; applyTransform() }))
+      toolbar.appendChild(makeBtn(SVG_CLOSE,    'Close',        close))
+
+      function close() {
+        overlay.classList.remove('que-image-lightbox--visible')
+        var tid = setTimeout(function() { overlay.remove() }, 250)
+        overlay.addEventListener('transitionend', function() { clearTimeout(tid); overlay.remove() }, { once: true })
+        document.removeEventListener('keydown', onKey)
+        overlay.removeEventListener('wheel', onWheel)
+      }
+
+      function onKey(e) {
+        if (e.key === 'Escape')                      close()
+        else if (e.key === '+' || e.key === '=')     { scale = Math.min(scale * 1.25, 10); applyTransform() }
+        else if (e.key === '-')                      { scale = Math.max(scale / 1.25, 0.1); applyTransform() }
+        else if (e.key === 'ArrowLeft')              { rotation -= 90; applyTransform() }
+        else if (e.key === 'ArrowRight')             { rotation += 90; applyTransform() }
+        else if (e.key === '0')                      { scale = 1; rotation = 0; applyTransform() }
+      }
+
+      function onWheel(e) {
+        e.preventDefault()
+        var factor = e.deltaY < 0 ? 1.1 : 0.9
+        scale = Math.min(Math.max(scale * factor, 0.1), 10)
+        applyTransform()
+      }
+
+      overlay.addEventListener('click', function(e) { if (e.target === overlay) close() })
+      overlay.addEventListener('wheel', onWheel, { passive: false })
+      document.addEventListener('keydown', onKey)
+
+      overlay.appendChild(img)
+      overlay.appendChild(toolbar)
+      document.body.appendChild(overlay)
+
+      requestAnimationFrame(function() { requestAnimationFrame(function() {
+        overlay.classList.add('que-image-lightbox--visible')
+      }) })
+    }
+
+    document.querySelectorAll('[data-zoom] .que-image__img').forEach(function(img) {
+      img.addEventListener('click', function() { openLightbox(img.src, img.alt) })
+    })
+  </script>
+</body>
+</html>

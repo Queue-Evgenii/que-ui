@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui â€" Table (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="index.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="index-js.html" variant="ghost" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="light" checked /><span class="que-segmented__label">Light</span></label>
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="dark" /><span class="que-segmented__label">Dark</span></label>
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="system" /><span class="que-segmented__label">System</span></label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Default</h2>
+    <que-table>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Joined</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Alice Johnson</td><td>Engineer</td><td>Active</td><td>Jan 2023</td></tr>
+          <tr><td>Bob Smith</td><td>Designer</td><td>Active</td><td>Mar 2023</td></tr>
+          <tr><td>Carol White</td><td>Manager</td><td>On leave</td><td>Sep 2022</td></tr>
+          <tr><td>David Brown</td><td>Engineer</td><td>Inactive</td><td>Jun 2023</td></tr>
+        </tbody>
+      </table>
+    </que-table>
+
+    <h2>Striped + Hoverable</h2>
+    <que-table striped hoverable>
+      <table>
+        <thead>
+          <tr>
+            <th data-sortable>Product</th>
+            <th data-sortable>Price</th>
+            <th data-sortable>Stock</th>
+            <th>Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Wireless Mouse</td><td>$29.99</td><td>142</td><td>Accessories</td></tr>
+          <tr><td>Mechanical Keyboard</td><td>$89.00</td><td>58</td><td>Accessories</td></tr>
+          <tr><td>USB-C Hub</td><td>$45.50</td><td>203</td><td>Adapters</td></tr>
+          <tr><td>Monitor Stand</td><td>$34.99</td><td>76</td><td>Furniture</td></tr>
+          <tr><td>Webcam HD</td><td>$69.00</td><td>31</td><td>Peripherals</td></tr>
+        </tbody>
+      </table>
+    </que-table>
+    <p style="font-size:var(--que-font-size-sm);color:var(--que-color-text-muted);">
+      Click column headers marked with â†'â†“ to sort.
+    </p>
+
+    <h2>Compact + Borderless</h2>
+    <que-table size="sm" borderless>
+      <table>
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Value</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>font-size-sm</td><td>14px</td><td>typography</td></tr>
+          <tr><td>space-4</td><td>16px</td><td>spacing</td></tr>
+          <tr><td>radius-md</td><td>6px</td><td>border</td></tr>
+          <tr><td>duration-fast</td><td>100ms</td><td>motion</td></tr>
+        </tbody>
+      </table>
+    </que-table>
+    <h2>Large</h2>
+    <que-table size="lg">
+      <table>
+        <thead>
+          <tr><th>Country</th><th>Capital</th><th>Population</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Ukraine</td><td>Kyiv</td><td>43.5M</td></tr>
+          <tr><td>Germany</td><td>Berlin</td><td>83.2M</td></tr>
+          <tr><td>France</td><td>Paris</td><td>67.7M</td></tr>
+        </tbody>
+      </table>
+    </que-table>
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/table.js'
+    const ctrl = applyTheme(createTheme())
+    const toggle = document.getElementById('theme-toggle')
+    if (toggle) {
+      toggle.addEventListener('change', e => ctrl.setMode(e.target.value))
+      const sync = () => { const i = toggle.querySelector(`input[value="${ctrl.mode}"]`); if (i) i.checked = true }
+      ctrl.onChange(sync); sync()
+    }
+  </script>
+</body>
+</html>
+

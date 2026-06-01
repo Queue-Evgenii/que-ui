@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui â€" Navbar (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    /* Override shared.css header for this demo */
+    .demo-frame {
+      border: 1px solid var(--que-color-border);
+      border-radius: var(--que-radius-lg);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .demo-body {
+      padding: 24px;
+      height: 80px;
+      background: var(--que-color-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--que-font-size-sm);
+      color: var(--que-color-text-muted);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="index.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="index-js.html" variant="ghost" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="light" checked /><span class="que-segmented__label">Light</span></label>
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="dark" /><span class="que-segmented__label">Dark</span></label>
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="system" /><span class="que-segmented__label">System</span></label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Solid (default)</h2>
+    <div class="demo-frame">
+      <que-navbar>
+        <que-navbar-brand>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--que-color-primary)" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          que-ui
+        </que-navbar-brand>
+        <que-navbar-section>
+          <que-button variant="ghost" size="sm">Home</que-button>
+          <que-button variant="ghost" size="sm">Docs</que-button>
+          <que-button variant="ghost" size="sm">Components</que-button>
+        </que-navbar-section>
+        <que-navbar-section align="end">
+          <que-button size="sm" variant="outline">Log in</que-button>
+          <que-button size="sm" intent="primary">Sign up</que-button>
+        </que-navbar-section>
+      </que-navbar>
+      <div class="demo-body">Page content</div>
+    </div>
+
+    <h2>Blur variant</h2>
+    <div class="demo-frame">
+      <que-navbar variant="blur">
+        <que-navbar-brand>AppName</que-navbar-brand>
+        <que-navbar-section align="end">
+          <que-button size="sm" variant="ghost">Settings</que-button>
+          <que-button size="sm">Dashboard</que-button>
+        </que-navbar-section>
+      </que-navbar>
+      <div class="demo-body" style="background:linear-gradient(135deg,var(--que-color-primary-subtle),var(--que-color-bg-subtle));">Background content</div>
+    </div>
+
+    <h2>Transparent variant</h2>
+    <div class="demo-frame">
+      <div style="background:linear-gradient(135deg,var(--que-color-primary),var(--que-color-primary-hover));position:relative;">
+        <que-navbar variant="transparent" style="--que-color-text:white;--que-color-border:rgba(255,255,255,0.15);">
+          <que-navbar-brand style="color:white;">Brand</que-navbar-brand>
+          <que-navbar-section align="end">
+            <que-button size="sm" style="color:white;border-color:rgba(255,255,255,0.5);" variant="outline">Menu</que-button>
+          </que-navbar-section>
+        </que-navbar>
+        <div class="demo-body" style="background:transparent;color:white;">Hero section</div>
+      </div>
+    </div>
+
+    <h2>Custom height</h2>
+    <div class="demo-frame">
+      <que-navbar style="--que-navbar-height:44px;">
+        <que-navbar-brand>Compact nav</que-navbar-brand>
+        <que-navbar-section align="end">
+          <que-button size="sm" variant="ghost">Link</que-button>
+        </que-navbar-section>
+      </que-navbar>
+    </div>
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/navbar.js'
+    const ctrl = applyTheme(createTheme())
+    const toggle = document.getElementById('theme-toggle')
+    if (toggle) {
+      toggle.addEventListener('change', e => ctrl.setMode(e.target.value))
+      const sync = () => { const i = toggle.querySelector(`input[value="${ctrl.mode}"]`); if (i) i.checked = true }
+      ctrl.onChange(sync); sync()
+    }
+  </script>
+</body>
+</html>
+

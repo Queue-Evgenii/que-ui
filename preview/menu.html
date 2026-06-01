@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Menu (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/menu.css" />
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="index.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="index-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html"     class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="light" checked /><span class="que-segmented__label">Light</span></label>
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="dark" /><span class="que-segmented__label">Dark</span></label>
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="system" /><span class="que-segmented__label">System</span></label>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding-bottom:200px;">
+    <h2>Dropdown Menu</h2>
+    <div class="row" style="align-items:flex-start;gap:24px;flex-wrap:wrap;padding-top:8px;">
+
+      <div class="col" style="gap:6px;">
+        <span style="font-size:11px;color:var(--que-color-text-muted);">Basic</span>
+        <div class="que-menu" id="menu-basic">
+          <button class="que-button que-button--outline que-button--sm">Actions ▾</button>
+          <div class="que-menu__panel que-menu__panel--bottom-start">
+            <button class="que-menu-item"><span class="que-menu-item__label">Edit</span></button>
+            <button class="que-menu-item"><span class="que-menu-item__label">Duplicate</span></button>
+            <button class="que-menu-item"><span class="que-menu-item__label">Archive</span></button>
+            <div class="que-menu-divider" role="separator"></div>
+            <button class="que-menu-item que-menu-item--intent-danger"><span class="que-menu-item__label">Delete</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col" style="gap:6px;">
+        <span style="font-size:11px;color:var(--que-color-text-muted);">With shortcuts + disabled</span>
+        <div class="que-menu" id="menu-shortcuts">
+          <button class="que-button que-button--sm">File ▾</button>
+          <div class="que-menu__panel que-menu__panel--bottom-start">
+            <button class="que-menu-item"><span class="que-menu-item__label">New file</span><span class="que-menu-item__shortcut">⌘N</span></button>
+            <button class="que-menu-item"><span class="que-menu-item__label">Open…</span><span class="que-menu-item__shortcut">⌘O</span></button>
+            <button class="que-menu-item"><span class="que-menu-item__label">Save</span><span class="que-menu-item__shortcut">⌘S</span></button>
+            <button class="que-menu-item que-menu-item--disabled" aria-disabled="true"><span class="que-menu-item__label">Save As… (disabled)</span><span class="que-menu-item__shortcut">⌘⇧S</span></button>
+            <div class="que-menu-divider" role="separator"></div>
+            <button class="que-menu-item"><span class="que-menu-item__label">Close window</span><span class="que-menu-item__shortcut">⌘W</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col" style="gap:6px;">
+        <span style="font-size:11px;color:var(--que-color-text-muted);">bottom-end placement</span>
+        <div class="que-menu" id="menu-dots">
+          <button class="que-button que-button--ghost que-button--sm">···</button>
+          <div class="que-menu__panel que-menu__panel--bottom-end">
+            <div class="que-menu-group" role="group" aria-label="Sharing">Sharing</div>
+            <button class="que-menu-item"><span class="que-menu-item__label">Copy link</span></button>
+            <button class="que-menu-item"><span class="que-menu-item__label">Share via email</span></button>
+            <div class="que-menu-divider" role="separator"></div>
+            <div class="que-menu-group" role="group" aria-label="Danger zone">Danger zone</div>
+            <button class="que-menu-item que-menu-item--intent-danger"><span class="que-menu-item__label">Delete permanently</span></button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <h2>Context Menu</h2>
+    <div style="position:relative;border:2px dashed var(--que-color-border);border-radius:var(--que-radius-lg);max-width:480px;" id="ctx-area">
+      <div style="padding:40px;text-align:center;">
+        <p style="margin:0;font-size:var(--que-font-size-sm);color:var(--que-color-text-muted);">Right-click anywhere in this area</p>
+      </div>
+      <div class="que-menu__panel" id="ctx-panel" style="position:fixed;">
+        <button class="que-menu-item"><span class="que-menu-item__label">Cut</span><span class="que-menu-item__shortcut">⌘X</span></button>
+        <button class="que-menu-item"><span class="que-menu-item__label">Copy</span><span class="que-menu-item__shortcut">⌘C</span></button>
+        <button class="que-menu-item"><span class="que-menu-item__label">Paste</span><span class="que-menu-item__shortcut">⌘V</span></button>
+        <div class="que-menu-divider" role="separator"></div>
+        <button class="que-menu-item"><span class="que-menu-item__label">Select All</span><span class="que-menu-item__shortcut">⌘A</span></button>
+        <div class="que-menu-divider" role="separator"></div>
+        <button class="que-menu-item"><span class="que-menu-item__label">Inspect element</span></button>
+      </div>
+    </div>
+    <p id="menu-log" style="font-size:var(--que-font-size-sm);color:var(--que-color-text-muted);margin-top:12px;">Selected: —</p>
+  </main>
+
+  <script src="shared.js"></script>
+  <script>
+    // Dropdown open/close
+    document.querySelectorAll('.que-menu').forEach(menu => {
+      const btn = menu.querySelector(':scope > .que-button')
+      const panel = menu.querySelector('.que-menu__panel')
+      btn?.addEventListener('click', e => {
+        e.stopPropagation()
+        const isOpen = panel.classList.contains('que-menu__panel--open')
+        document.querySelectorAll('.que-menu__panel--open').forEach(p => p.classList.remove('que-menu__panel--open'))
+        if (!isOpen) panel.classList.add('que-menu__panel--open')
+      })
+      panel?.querySelectorAll('.que-menu-item:not(.que-menu-item--disabled)').forEach(item => {
+        item.addEventListener('click', () => {
+          const log = document.getElementById('menu-log')
+          if (log) log.textContent = 'Selected: ' + item.querySelector('.que-menu-item__label')?.textContent
+          panel.classList.remove('que-menu__panel--open')
+        })
+      })
+    })
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.que-menu__panel--open').forEach(p => p.classList.remove('que-menu__panel--open'))
+      document.getElementById('ctx-panel')?.classList.remove('que-menu__panel--open')
+    })
+
+    // Context menu
+    const ctxArea = document.getElementById('ctx-area')
+    const ctxPanel = document.getElementById('ctx-panel')
+    ctxArea?.addEventListener('contextmenu', e => {
+      e.preventDefault()
+      ctxPanel.style.left = e.clientX + 'px'
+      ctxPanel.style.top = e.clientY + 'px'
+      ctxPanel.classList.add('que-menu__panel--open')
+    })
+    ctxPanel?.querySelectorAll('.que-menu-item').forEach(item => {
+      item.addEventListener('click', e => {
+        e.stopPropagation()
+        const log = document.getElementById('menu-log')
+        if (log) log.textContent = 'Selected: ' + item.querySelector('.que-menu-item__label')?.textContent
+        ctxPanel.classList.remove('que-menu__panel--open')
+      })
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui â€" Sidebar (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .app-shell {
+      display: flex;
+      height: 400px;
+      border: 1px solid var(--que-color-border);
+      border-radius: var(--que-radius-lg);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .app-content {
+      flex: 1;
+      padding: 24px;
+      background: var(--que-color-bg);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .app-content h3 {
+      margin: 0 0 4px;
+      font-size: var(--que-font-size-base);
+      color: var(--que-color-text);
+    }
+    .app-content p {
+      margin: 0;
+      font-size: var(--que-font-size-sm);
+      color: var(--que-color-text-muted);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="index.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="index-js.html" variant="ghost" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="light" checked /><span class="que-segmented__label">Light</span></label>
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="dark" /><span class="que-segmented__label">Dark</span></label>
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="system" /><span class="que-segmented__label">System</span></label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Full layout with toggle</h2>
+    <div class="app-shell">
+      <que-sidebar id="sidebar-demo">
+        <que-sidebar-header>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--que-color-primary)" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          <span>que-ui</span>
+        </que-sidebar-header>
+
+        <que-sidebar-section label="Navigation">
+          <que-sidebar-item active>
+            <span class="que-sidebar__item__icon">ðŸ </span>
+            <span class="que-sidebar__item__label">Dashboard</span>
+          </que-sidebar-item>
+          <que-sidebar-item>
+            <span class="que-sidebar__item__icon">ðŸ“Š</span>
+            <span class="que-sidebar__item__label">Analytics</span>
+          </que-sidebar-item>
+          <que-sidebar-item>
+            <span class="que-sidebar__item__icon">ðŸ“¦</span>
+            <span class="que-sidebar__item__label">Products</span>
+          </que-sidebar-item>
+          <que-sidebar-item>
+            <span class="que-sidebar__item__icon">ðŸ'¥</span>
+            <span class="que-sidebar__item__label">Users</span>
+          </que-sidebar-item>
+        </que-sidebar-section>
+
+        <que-sidebar-section label="System">
+          <que-sidebar-item>
+            <span class="que-sidebar__item__icon">âš™ï¸</span>
+            <span class="que-sidebar__item__label">Settings</span>
+          </que-sidebar-item>
+          <que-sidebar-item disabled>
+            <span class="que-sidebar__item__icon">ðŸ"'</span>
+            <span class="que-sidebar__item__label">Admin (disabled)</span>
+          </que-sidebar-item>
+        </que-sidebar-section>
+
+        <que-sidebar-footer>
+          <span class="que-sidebar__item__icon">ðŸ'¤</span>
+          <span class="que-sidebar__item__label" style="flex:1;font-size:var(--que-font-size-sm);font-weight:500;">John Doe</span>
+        </que-sidebar-footer>
+      </que-sidebar>
+
+      <div class="app-content">
+        <div>
+          <que-button id="sidebar-toggle" size="sm" variant="outline">Toggle sidebar</que-button>
+        </div>
+        <h3>Dashboard</h3>
+        <p>Click the button above to collapse/expand the sidebar. Sidebar width transitions smoothly.</p>
+      </div>
+    </div>
+
+    <h2>Collapsed by default</h2>
+    <div class="app-shell">
+      <que-sidebar id="sidebar-collapsed" collapsed>
+        <que-sidebar-header>
+          <span class="que-sidebar__item__icon">ðŸ </span>
+        </que-sidebar-header>
+        <que-sidebar-section>
+          <que-sidebar-item active><span class="que-sidebar__item__icon">ðŸ </span></que-sidebar-item>
+          <que-sidebar-item><span class="que-sidebar__item__icon">ðŸ“Š</span></que-sidebar-item>
+          <que-sidebar-item><span class="que-sidebar__item__icon">âš™ï¸</span></que-sidebar-item>
+        </que-sidebar-section>
+      </que-sidebar>
+      <div class="app-content">
+        <p>Collapsed width = <code>--que-sidebar-collapsed-width</code> (default 56px).</p>
+      </div>
+    </div>
+    <h2>Right position</h2>
+    <div class="app-shell">
+      <div class="app-content">
+        <p>Content on the left side.</p>
+      </div>
+      <que-sidebar position="right">
+        <que-sidebar-header>
+          <span style="font-size:var(--que-font-size-sm);font-weight:600;">Properties</span>
+        </que-sidebar-header>
+        <que-sidebar-section>
+          <que-sidebar-item>Color</que-sidebar-item>
+          <que-sidebar-item active>Typography</que-sidebar-item>
+          <que-sidebar-item>Spacing</que-sidebar-item>
+        </que-sidebar-section>
+      </que-sidebar>
+    </div>
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/sidebar.js'
+    const ctrl = applyTheme(createTheme())
+    const toggle = document.getElementById('theme-toggle')
+    if (toggle) {
+      toggle.addEventListener('change', e => ctrl.setMode(e.target.value))
+      const sync = () => { const i = toggle.querySelector(`input[value="${ctrl.mode}"]`); if (i) i.checked = true }
+      ctrl.onChange(sync); sync()
+    }
+    document.getElementById('sidebar-toggle')?.addEventListener('click', () => {
+      document.getElementById('sidebar-demo')?.toggle()
+    })
+  </script>
+</body>
+</html>
+

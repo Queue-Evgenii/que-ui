@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Sidebar (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/sidebar.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .app-shell {
+      display: flex;
+      height: 400px;
+      border: 1px solid var(--que-color-border);
+      border-radius: var(--que-radius-lg);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .app-content {
+      flex: 1;
+      padding: 24px;
+      background: var(--que-color-bg);
+      overflow-y: auto;
+    }
+    .app-content p {
+      margin: 0;
+      font-size: var(--que-font-size-sm);
+      color: var(--que-color-text-muted);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="index.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="index-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html"        class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="light" checked /><span class="que-segmented__label">Light</span></label>
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="dark" /><span class="que-segmented__label">Dark</span></label>
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="system" /><span class="que-segmented__label">System</span></label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Full layout with toggle</h2>
+    <div class="app-shell">
+      <aside class="que-sidebar" id="sidebar-demo">
+        <div class="que-sidebar__header">
+          <span style="font-size:18px;">🏠</span>
+          <span style="font-size:var(--que-font-size-sm);font-weight:600;">que-ui</span>
+        </div>
+        <div class="que-sidebar__section">
+          <div class="que-sidebar__section-label">Navigation</div>
+          <a href="#" class="que-sidebar__item que-sidebar__item--active">
+            <span class="que-sidebar__item__icon">🏠</span>
+            <span class="que-sidebar__item__label">Dashboard</span>
+          </a>
+          <a href="#" class="que-sidebar__item">
+            <span class="que-sidebar__item__icon">📊</span>
+            <span class="que-sidebar__item__label">Analytics</span>
+          </a>
+          <a href="#" class="que-sidebar__item">
+            <span class="que-sidebar__item__icon">📦</span>
+            <span class="que-sidebar__item__label">Products</span>
+          </a>
+          <a href="#" class="que-sidebar__item">
+            <span class="que-sidebar__item__icon">👥</span>
+            <span class="que-sidebar__item__label">Users</span>
+          </a>
+        </div>
+        <div class="que-sidebar__section">
+          <div class="que-sidebar__section-label">System</div>
+          <a href="#" class="que-sidebar__item">
+            <span class="que-sidebar__item__icon">⚙️</span>
+            <span class="que-sidebar__item__label">Settings</span>
+          </a>
+          <a href="#" class="que-sidebar__item que-sidebar__item--disabled">
+            <span class="que-sidebar__item__icon">🔒</span>
+            <span class="que-sidebar__item__label">Admin (disabled)</span>
+          </a>
+        </div>
+        <div class="que-sidebar__footer">
+          <span class="que-sidebar__item__icon">👤</span>
+          <span class="que-sidebar__item__label" style="font-size:var(--que-font-size-sm);font-weight:500;">John Doe</span>
+        </div>
+      </aside>
+      <div class="app-content">
+        <div>
+          <button id="sidebar-toggle" class="que-button que-button--outline que-button--sm">Toggle sidebar</button>
+        </div>
+        <p>Main content area. Use <code>--que-sidebar-width</code> to customise the width.</p>
+      </div>
+    </div>
+
+    <h2>Collapsed by default</h2>
+    <div class="app-shell">
+      <aside class="que-sidebar que-sidebar--collapsed">
+        <div class="que-sidebar__header">
+          <span style="font-size:18px;">🏠</span>
+        </div>
+        <div class="que-sidebar__section">
+          <a href="#" class="que-sidebar__item que-sidebar__item--active">
+            <span class="que-sidebar__item__icon">🏠</span>
+          </a>
+          <a href="#" class="que-sidebar__item">
+            <span class="que-sidebar__item__icon">📊</span>
+          </a>
+          <a href="#" class="que-sidebar__item">
+            <span class="que-sidebar__item__icon">⚙️</span>
+          </a>
+        </div>
+      </aside>
+      <div class="app-content">
+        <p>Collapsed — <code>--que-sidebar-collapsed-width</code> (default 56px). Labels are hidden via overflow:hidden.</p>
+      </div>
+    </div>
+
+    <h2>Right position</h2>
+    <div class="app-shell">
+      <div class="app-content">
+        <p>Content on the left side.</p>
+      </div>
+      <aside class="que-sidebar que-sidebar--right">
+        <div class="que-sidebar__header">
+          <span style="font-size:var(--que-font-size-sm);font-weight:600;">Properties</span>
+        </div>
+        <div class="que-sidebar__section">
+          <a href="#" class="que-sidebar__item">Color</a>
+          <a href="#" class="que-sidebar__item que-sidebar__item--active">Typography</a>
+          <a href="#" class="que-sidebar__item">Spacing</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script src="shared.js"></script>
+  <script>
+    document.getElementById('sidebar-toggle')?.addEventListener('click', () => {
+      document.getElementById('sidebar-demo')?.classList.toggle('que-sidebar--collapsed')
+    })
+  </script>
+</body>
+</html>

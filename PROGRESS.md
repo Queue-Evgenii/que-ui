@@ -18,6 +18,7 @@ Legend: ✅ Done · 🚧 In Progress · ⬜ Not Started · ❌ Blocked
 | ✅ | `cssVar` / `tokensToCSSVars` utils |
 | ⬜ | DOM utility helpers (createElement, on, off, etc.) |
 | ⬜ | Positioning algorithm (for tooltips, popovers, menus) |
+| ⬜ | Virtual scroll utility (used by table, combobox, select) |
 | ⬜ | Focus trap utility |
 | ⬜ | Scroll lock utility |
 | ⬜ | Event bus / custom events pattern |
@@ -90,22 +91,21 @@ Legend: ✅ Done · 🚧 In Progress · ⬜ Not Started · ❌ Blocked
 | ✅ | Breadcrumb | `<que-breadcrumb>` |
 | ✅ | Pagination | `<que-pagination>` |
 | ✅ | Stepper | `<que-stepper>` |
-| ⬜ | Menu (dropdown) | `<que-menu>` |
-| ⬜ | Context Menu | `<que-context-menu>` |
-| ⬜ | Navbar | `<que-navbar>` |
-| ⬜ | Sidebar | `<que-sidebar>` |
+| ✅ | Menu (dropdown) | `<que-menu>` |
+| ✅ | Context Menu | `<que-context-menu>` |
+| ✅ | Navbar | `<que-navbar>` |
+| ✅ | Sidebar | `<que-sidebar>` |
 
 ### Data Display
 | Status | Component | Tag |
 |--------|-----------|-----|
 | ✅ | Avatar | `<que-avatar>` |
-| ⬜ | Image | `<que-image>` |
-| ⬜ | Icon | `<que-icon>` |
+| ✅ | Image | `<que-image>` |
+| ✅ | Icon | `<que-icon>` |
 | ✅ | Tag / Chip | merged into `<que-badge shape="rect">` |
 | ✅ | Card | `<que-card>` |
-| ⬜ | Table | `<que-table>` |
-| ⬜ | List (virtualized) | `<que-list>` |
-| ⬜ | Timeline | `<que-timeline>` |
+| ✅ | Table | `<que-table>` |
+| ✅ | Timeline | `<que-timeline>` |
 | ✅ | Stat | `<que-stat>` |
 
 ### Typography
@@ -161,7 +161,6 @@ Legend: ✅ Done · 🚧 In Progress · ⬜ Not Started · ❌ Blocked
 ### Utility Components
 | Status | Component | Tag |
 |--------|-----------|-----|
-| ⬜ | Virtual Scroll | `<que-virtual>` |
 | ⬜ | Transition | `<que-transition>` |
 | ⬜ | Portal | `<que-portal>` |
 | ⬜ | Resizable panel | `<que-resizable>` |

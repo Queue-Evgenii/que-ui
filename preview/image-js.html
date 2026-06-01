@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui â€" Image (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="index.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="index-js.html" variant="ghost" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="light" checked /><span class="que-segmented__label">Light</span></label>
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="dark" /><span class="que-segmented__label">Dark</span></label>
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="system" /><span class="que-segmented__label">System</span></label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Aspect ratio + object-fit</h2>
+    <div class="row" style="align-items:flex-start;gap:16px;flex-wrap:wrap;">
+      <div class="col" style="gap:4px;">
+        <span style="font-size:11px;color:var(--que-color-text-muted);">cover (default)</span>
+        <que-image src="https://picsum.photos/seed/a/400/300" alt="Photo" width="160" height="120" fit="cover" radius="md"></que-image>
+      </div>
+      <div class="col" style="gap:4px;">
+        <span style="font-size:11px;color:var(--que-color-text-muted);">contain</span>
+        <que-image src="https://picsum.photos/seed/b/400/300" alt="Photo" width="160" height="120" fit="contain" radius="md"></que-image>
+      </div>
+      <div class="col" style="gap:4px;">
+        <span style="font-size:11px;color:var(--que-color-text-muted);">aspect="16/9"</span>
+        <que-image src="https://picsum.photos/seed/c/800/450" alt="Photo" width="200" aspect="16/9" radius="lg"></que-image>
+      </div>
+      <div class="col" style="gap:4px;">
+        <span style="font-size:11px;color:var(--que-color-text-muted);">aspect="1/1" radius="full"</span>
+        <que-image src="https://picsum.photos/seed/d/300/300" alt="Photo" width="100" aspect="1/1" radius="full"></que-image>
+      </div>
+    </div>
+
+    <h2>Border radius variants</h2>
+    <div class="row" style="align-items:flex-end;gap:12px;flex-wrap:wrap;">
+      <que-image src="https://picsum.photos/seed/e/200/160" alt="" width="100" height="80" radius="none"></que-image>
+      <que-image src="https://picsum.photos/seed/f/200/160" alt="" width="100" height="80" radius="sm"></que-image>
+      <que-image src="https://picsum.photos/seed/g/200/160" alt="" width="100" height="80" radius="md"></que-image>
+      <que-image src="https://picsum.photos/seed/h/200/160" alt="" width="100" height="80" radius="lg"></que-image>
+      <que-image src="https://picsum.photos/seed/i/200/200" alt="" width="80" height="80" radius="full"></que-image>
+    </div>
+
+    <h2>Fallback</h2>
+    <div class="row" style="align-items:flex-start;gap:16px;flex-wrap:wrap;">
+      <div class="col" style="gap:4px;">
+        <span style="font-size:11px;color:var(--que-color-text-muted);">no src</span>
+        <que-image width="120" height="100" radius="md"></que-image>
+      </div>
+      <div class="col" style="gap:4px;">
+        <span style="font-size:11px;color:var(--que-color-text-muted);">bad src â†' default icon</span>
+        <que-image src="https://not-a-real-image.invalid/photo.jpg" alt="Broken" width="120" height="100" radius="md"></que-image>
+      </div>
+      <div class="col" style="gap:4px;">
+        <span style="font-size:11px;color:var(--que-color-text-muted);">bad src â†' custom slot</span>
+        <que-image src="https://not-a-real-image.invalid/photo.jpg" alt="Broken" width="120" height="100" radius="md">
+          <span style="font-size:12px;color:var(--que-color-text-muted);">No image</span>
+        </que-image>
+      </div>
+    </div>
+
+    <h2>Lazy loading</h2>
+    <div style="max-width:360px;">
+      <que-image src="https://picsum.photos/seed/lazy/600/400" alt="Lazy loaded" width="360" aspect="3/2" radius="lg" lazy></que-image>
+      <p style="font-size:var(--que-font-size-sm);color:var(--que-color-text-muted);margin-top:8px;">Uses native <code>loading="lazy"</code> — loads when in viewport.</p>
+    </div>
+
+    <h2>Zoom / Lightbox</h2>
+    <p style="font-size:var(--que-font-size-sm);color:var(--que-color-text-muted);">Add <code>zoom</code> — click image to open. Zoom in/out, rotate, scroll wheel, keyboard (+/-/←/→/0/Esc).</p>
+    <div class="row" style="align-items:flex-start;gap:16px;flex-wrap:wrap;">
+      <que-image src="https://picsum.photos/seed/zoom1/400/300" alt="Mountain" width="200" aspect="4/3" radius="md" zoom></que-image>
+      <que-image src="https://picsum.photos/seed/zoom2/400/300" alt="City" width="200" aspect="4/3" radius="md" zoom></que-image>
+      <que-image src="https://picsum.photos/seed/zoom3/400/300" alt="Forest" width="200" aspect="4/3" radius="md" zoom></que-image>
+    </div>
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/image.js'
+    const ctrl = applyTheme(createTheme())
+    const toggle = document.getElementById('theme-toggle')
+    if (toggle) {
+      toggle.addEventListener('change', e => ctrl.setMode(e.target.value))
+      const sync = () => { const i = toggle.querySelector(`input[value="${ctrl.mode}"]`); if (i) i.checked = true }
+      ctrl.onChange(sync); sync()
+    }
+  </script>
+</body>
+</html>
+

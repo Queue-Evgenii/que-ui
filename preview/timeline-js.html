@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui â€" Timeline (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="index.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="index-js.html" variant="ghost" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="light" checked /><span class="que-segmented__label">Light</span></label>
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="dark" /><span class="que-segmented__label">Dark</span></label>
+        <label class="que-segmented__item"><input class="que-segmented__input" type="radio" name="theme" value="system" /><span class="que-segmented__label">System</span></label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Status variants</h2>
+    <div style="max-width:480px;">
+      <que-timeline>
+        <que-timeline-item label="Order placed" date="Jun 1" status="done">
+          Your order #1042 has been confirmed and payment received.
+        </que-timeline-item>
+        <que-timeline-item label="Processing" date="Jun 2" status="done">
+          Your items are being prepared for shipment.
+        </que-timeline-item>
+        <que-timeline-item label="Shipped" date="Jun 3" status="active">
+          Package is on its way â€" tracking: UA1234567890.
+        </que-timeline-item>
+        <que-timeline-item label="Out for delivery" date="Jun 4" status="pending"></que-timeline-item>
+        <que-timeline-item label="Delivered" date="Jun 5" status="pending"></que-timeline-item>
+      </que-timeline>
+    </div>
+
+    <h2>With error state</h2>
+    <div style="max-width:480px;">
+      <que-timeline>
+        <que-timeline-item label="Submitted" date="May 10" status="done">Application received successfully.</que-timeline-item>
+        <que-timeline-item label="Under review" date="May 12" status="done">Being reviewed by our team.</que-timeline-item>
+        <que-timeline-item label="Verification failed" date="May 15" status="error">
+          Additional documents required. Please upload ID.
+        </que-timeline-item>
+        <que-timeline-item label="Approved" status="pending"></que-timeline-item>
+      </que-timeline>
+    </div>
+
+    <h2>Minimal (no content)</h2>
+    <div style="max-width:360px;">
+      <que-timeline>
+        <que-timeline-item label="Created account" date="Jan 1" status="done"></que-timeline-item>
+        <que-timeline-item label="Completed profile" date="Jan 3" status="done"></que-timeline-item>
+        <que-timeline-item label="First purchase" date="Jan 8" status="done"></que-timeline-item>
+        <que-timeline-item label="Subscribed to Pro" date="Feb 1" status="active"></que-timeline-item>
+        <que-timeline-item label="Next renewal" date="Mar 1" status="pending"></que-timeline-item>
+      </que-timeline>
+    </div>
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/timeline.js'
+    const ctrl = applyTheme(createTheme())
+    const toggle = document.getElementById('theme-toggle')
+    if (toggle) {
+      toggle.addEventListener('change', e => ctrl.setMode(e.target.value))
+      const sync = () => { const i = toggle.querySelector(`input[value="${ctrl.mode}"]`); if (i) i.checked = true }
+      ctrl.onChange(sync); sync()
+    }
+  </script>
+</body>
+</html>
+

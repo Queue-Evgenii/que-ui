@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Typography (JS)</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <que-button href="index.html" variant="ghost" size="sm">CSS</que-button>
+      <que-button href="index-js.html" size="sm">JS</que-button>
+      <que-button href="all.html" variant="ghost" size="sm">All pages</que-button>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Heading levels</h2>
+    <div class="col" style="gap:8px;">
+      <que-heading level="1">Heading 1 — the largest</que-heading>
+      <que-heading level="2">Heading 2 — section title</que-heading>
+      <que-heading level="3">Heading 3 — sub-section</que-heading>
+      <que-heading level="4">Heading 4 — group label</que-heading>
+      <que-heading level="5">Heading 5 — small title</que-heading>
+      <que-heading level="6">Heading 6 — the smallest</que-heading>
+    </div>
+
+    <h2>Text sizes</h2>
+    <div class="col" style="gap:6px;">
+      <que-text size="xs">Extra small text (xs) — captions and labels</que-text>
+      <que-text size="sm">Small text (sm) — default body copy</que-text>
+      <que-text size="md">Medium text (md) — slightly larger body</que-text>
+      <que-text size="lg">Large text (lg) — introductory paragraphs</que-text>
+      <que-text size="xl">Extra large text (xl)</que-text>
+    </div>
+
+    <h2>Weights &amp; colors</h2>
+    <div class="col" style="gap:6px;">
+      <que-text size="md">Normal weight</que-text>
+      <que-text size="md" weight="medium">Medium weight</que-text>
+      <que-text size="md" weight="semibold">Semibold weight</que-text>
+      <que-text size="md" weight="bold">Bold weight</que-text>
+      <que-text size="md" color="muted">Muted color</que-text>
+      <que-text size="md" color="subtle">Subtle color</que-text>
+    </div>
+
+    <h2>Truncate</h2>
+    <div style="max-width:280px;">
+      <que-text size="md" truncate>This is a very long text that will be truncated with an ellipsis when it exceeds the container width.</que-text>
+    </div>
+
+    <h2>Code</h2>
+    <div class="col" style="gap:12px;">
+      <que-text size="md">
+        Use <que-code>npm install que-ui</que-code> to install.
+        Import <que-code>import 'que-ui/button'</que-code> in your app.
+      </que-text>
+      <que-code block>import { applyTheme, createTheme } from 'que-ui/theme'
+
+const ctrl = applyTheme(createTheme())
+ctrl.setMode('dark')</que-code>
+    </div>
+
+    <h2>Link</h2>
+    <div class="col" style="gap:8px;">
+      <que-text size="md">Default hover underline: <que-link href="#">Read the docs</que-link></que-text>
+      <que-text size="md">Always underlined: <que-link href="#" underline="always">Always underlined</que-link></que-text>
+      <que-text size="md">No underline: <que-link href="#" underline="none">No underline</que-link></que-text>
+      <que-text size="md">External (opens in new tab): <que-link href="https://example.com" external>example.com ↗</que-link></que-text>
+      <que-text size="md">
+        Intents:
+        <que-link href="#">Primary</que-link> ·
+        <que-link href="#" intent="secondary">Secondary</que-link> ·
+        <que-link href="#" intent="danger">Danger</que-link> ·
+        <que-link href="#" intent="muted">Muted</que-link>
+      </que-text>
+    </div>
+  </main>
+
+  <script type="module">
+    import { applyTheme, createTheme } from '../dist/theme.js'
+    import '../dist/button.js'
+    import '../dist/typography.js'
+
+    const ctrl = applyTheme(createTheme())
+    const toggle = document.getElementById('theme-toggle')
+    if (toggle) {
+      toggle.addEventListener('change', e => ctrl.setMode(e.target.value))
+      const sync = () => { const i = toggle.querySelector(`input[value="${ctrl.mode}"]`); if (i) i.checked = true }
+      ctrl.onChange(sync)
+      sync()
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>que-ui — Typography (CSS)</title>
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/button.css" />
+  <link rel="stylesheet" href="../dist/typography.css" />
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">que-ui</span>
+    <nav>
+      <a href="index.html" class="que-button que-button--ghost que-button--sm">CSS</a>
+      <a href="index-js.html" class="que-button que-button--ghost que-button--sm">JS</a>
+      <a href="all.html" class="que-button que-button--ghost que-button--sm">All pages</a>
+    </nav>
+    <div class="theme-toggle">
+      <div class="que-segmented que-segmented--pill" id="theme-toggle">
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="light" checked />
+          <span class="que-segmented__label">Light</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="dark" />
+          <span class="que-segmented__label">Dark</span>
+        </label>
+        <label class="que-segmented__item">
+          <input class="que-segmented__input" type="radio" name="theme" value="system" />
+          <span class="que-segmented__label">System</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Heading levels</h2>
+    <div class="col" style="gap:8px;">
+      <p class="que-heading que-heading--1" role="heading" aria-level="1">Heading 1 — the largest</p>
+      <p class="que-heading que-heading--2" role="heading" aria-level="2">Heading 2 — section title</p>
+      <p class="que-heading que-heading--3" role="heading" aria-level="3">Heading 3 — sub-section</p>
+      <p class="que-heading que-heading--4" role="heading" aria-level="4">Heading 4 — group label</p>
+      <p class="que-heading que-heading--5" role="heading" aria-level="5">Heading 5 — small title</p>
+      <p class="que-heading que-heading--6" role="heading" aria-level="6">Heading 6 — the smallest</p>
+    </div>
+
+    <h2>Text sizes</h2>
+    <div class="col" style="gap:6px;">
+      <p class="que-text que-text--xs">Extra small text (xs) — used for captions and labels</p>
+      <p class="que-text que-text--sm">Small text (sm) — default body copy</p>
+      <p class="que-text que-text--md">Medium text (md) — slightly larger body</p>
+      <p class="que-text que-text--lg">Large text (lg) — introductory paragraphs</p>
+      <p class="que-text que-text--xl">Extra large text (xl)</p>
+    </div>
+
+    <h2>Text weights &amp; colors</h2>
+    <div class="col" style="gap:6px;">
+      <p class="que-text que-text--md">Normal weight</p>
+      <p class="que-text que-text--md que-text--medium">Medium weight</p>
+      <p class="que-text que-text--md que-text--semibold">Semibold weight</p>
+      <p class="que-text que-text--md que-text--bold">Bold weight</p>
+      <p class="que-text que-text--md que-text--muted">Muted color</p>
+      <p class="que-text que-text--md que-text--subtle">Subtle color (disabled state)</p>
+    </div>
+
+    <h2>Truncate</h2>
+    <div style="max-width:280px;">
+      <p class="que-text que-text--md que-text--truncate">This is a very long text that will be truncated with an ellipsis when it exceeds the container width.</p>
+    </div>
+
+    <h2>Code</h2>
+    <div class="col" style="gap:12px;">
+      <p class="que-text que-text--md">
+        Use <code class="que-code">npm install que-ui</code> to install the package.
+        Then import <code class="que-code">import 'que-ui/button'</code> in your app.
+      </p>
+      <pre class="que-code que-code--block">import { applyTheme, createTheme } from 'que-ui/theme'
+
+const ctrl = applyTheme(createTheme())
+ctrl.setMode('dark')</pre>
+    </div>
+
+    <h2>Link</h2>
+    <div class="col" style="gap:8px;">
+      <p class="que-text que-text--md">Default hover underline: <a href="#" class="que-link">Read the docs</a></p>
+      <p class="que-text que-text--md">Always underlined: <a href="#" class="que-link que-link--underline-always">Always underlined</a></p>
+      <p class="que-text que-text--md">No underline: <a href="#" class="que-link que-link--underline-none">No underline</a></p>
+      <p class="que-text que-text--md">Intents:
+        <a href="#" class="que-link">Primary</a> ·
+        <a href="#" class="que-link que-link--intent-secondary">Secondary</a> ·
+        <a href="#" class="que-link que-link--intent-danger">Danger</a> ·
+        <a href="#" class="que-link que-link--intent-muted">Muted</a>
+      </p>
+    </div>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

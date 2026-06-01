@@ -101,6 +101,7 @@ Legend: ✅ Done · 🚧 In Progress · ⬜ Not Started · ❌ Blocked
 | ✅ | Avatar | `<que-avatar>` |
 | ⬜ | Image | `<que-image>` |
 | ⬜ | Icon | `<que-icon>` |
+| ✅ | Tag / Chip | merged into `<que-badge shape="rect">` |
 | ✅ | Card | `<que-card>` |
 | ⬜ | Table | `<que-table>` |
 | ⬜ | List (virtualized) | `<que-list>` |
@@ -110,11 +111,11 @@ Legend: ✅ Done · 🚧 In Progress · ⬜ Not Started · ❌ Blocked
 ### Typography
 | Status | Component | Tag |
 |--------|-----------|-----|
-| ⬜ | Text | `<que-text>` |
-| ⬜ | Heading | `<que-heading>` |
-| ⬜ | Code | `<que-code>` |
-| ⬜ | Kbd | `<que-kbd>` |
-| ⬜ | Link | `<que-link>` |
+| ✅ | Text | `<que-text>` |
+| ✅ | Heading | `<que-heading>` |
+| ✅ | Code | `<que-code>` |
+| ✅ | Kbd | `<que-kbd>` |
+| ✅ | Link | `<que-link>` |
 
 ---
 
